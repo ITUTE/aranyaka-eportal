@@ -1,0 +1,98 @@
+
+
+.background-image{
+    background-image: url("article.jpg");
+    background-size: 100%;
+    position: fixed;
+    left: 0;
+    right: 0;
+    display: block;
+    border: 3px solid black;
+    width: 100%;
+    height: 100%;
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(2px);
+    -ms-filter: blur(2px);
+    filter: blur(1px);
+    z-index: -1;
+}
+
+.background-image1{
+    background-image: url("pengu.jpg");
+    background-size: 100%;
+    position: fixed;
+    left: 0;
+    right: 0;
+    display: block;
+    border: 3px solid black;
+    width: 100%;
+    height: 1000%;
+    z-index: -1;
+}
+
+
+
+.content{
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    text-align: inherit;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    line-height: 30px;
+    font-family: American Typewriter;
+    font-size: 25px;
+    color: white;
+    padding: 50px;
+}
+.glyphicon-education{
+    font-size: 54px;
+    color: white;
+}
+.glyphicon-log-in{
+    font-size: 20px;
+}
+.glyphicon-send{
+    font-size: 20px;
+}
+.glyphicon-random{
+    font-size: 20px;
+}
+.glyphicon-search{
+    font-size: 20px;
+}
+.style{
+    font-family: American Typewriter;
+    color:white;
+    background-color: darkcyan;
+    background-size:100%;
+    
+}
+
+
+.glyphicon-book{
+    font-size: 30px;
+    margin-left: 5%;
+}
+.navbar-inverse{
+    background-color: darkcyan;
+  
+}
+
+.nav.navbar-nav li a {
+    color: white;
+}
+
+
+.divider-10{ 
+width:100%; 
+min-height:1px; 
+margin-top:10px; 
+margin-bottom:10px;  
+display:inline-block; 
+position:relative;
+}
