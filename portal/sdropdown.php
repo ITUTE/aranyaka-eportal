@@ -38,7 +38,7 @@
                                 <hr>
 		                        <p>
 		                        </p><div class="divider-10"></div>  
-                                    <select class="selectpicker" multiple title="Choose the Semester"  data-size="4">
+                                    <select class="selectpicker" title="Choose the Semester"  data-size="4">
                                         <option data-subtext="First">I</option>
                                         <option data-subtext="Second">II</option>
                                         <option data-subtext="Third">III</option>
@@ -49,7 +49,7 @@
                                         <option data-subtext="Eighth">VIII</option>
                                     </select>
                                     <div class="divider-10"></div>                   
-                                    <select class="selectpicker" multiple title="Choose the Course"  data-size="5">
+                                    <select class="selectpicker" title="Choose the Course"  data-size="5">
                                         <option>Depends on the selected Semester</option>
                                         <option>Depends on the selected Semester</option>
                                         <option>Depends on the selected Semester</option>
