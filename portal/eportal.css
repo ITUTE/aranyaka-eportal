@@ -1,4 +1,8 @@
-
+.btn-xl{
+    padding: 10px 30px;
+    font-size: 23px;
+    border-radius: 10px;
+}
 
 .background-image{
     background-image: url("article.jpg");

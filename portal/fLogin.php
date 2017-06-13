@@ -81,7 +81,7 @@
             <div class="background-image"></div>
                 <div class="content">
                     <div class="text-center">
-                        <h2><strong>Login</strong></h2> <hr>
+                        <h2><strong>Faculty Login</strong></h2> <hr>
                         <div class="form-group">
             
                         </div>
@@ -91,15 +91,14 @@
 ?>
     <div class="form-group">
              <div class="alert alert-danger">
-    <span class="glyphicon glyphicon-info-sign"></span> <?php echo $errMSG; ?>
+                <?php echo $errMSG; ?>
                 </div>
              </div>
                 <?php
    }
    ?>
                     </div>
-                    <p> To continue, please enter your Username and Password 
-                    </p> <div class='container-fluid'> 
+                    <p>Username: </p> 
                     <div class="form-group">
             	       <div class="input-group">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
@@ -107,7 +106,7 @@
                 </div>
                         <span class="text-danger"><?php echo $emailError; ?></span>
             </div>
-            </div>
+            <p>Password:</p>
                 <div class="form-group">
             	<div class="input-group">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
@@ -116,19 +115,16 @@
                 <span class="text-danger"><?php echo $passError; ?></span>
             </div>
                     <div class="text-center"> 
-                    <i class='glyphicon glyphicon-random'></i>
+                    
                     
                                 <div class="form-group">
-             <button type="submit" class="btn btn-block btn-primary" name="btn-login">Sign In</button>
+             <button type="submit" class="btn btn-xl btn-success" name="btn-login">Sign In</button>
             </div>
-                                        <i class='glyphicon glyphicon-search'></i>
-                                        <br>
-                                    <div class="btn-group">
-                                <a class="btn btn-lg btn-success" href="http://www.google.com" target="_blank">Login with Google</a>
-                                        </div><hr>
-                        <div class="form-group">
-             <a href="fSignup2.php">Sign Up Here...</a>
-            </div>
+                                        
+                                        
+                                   <hr>
+                        
+                       
 
                                     </div>
                 </div> </form></div>
