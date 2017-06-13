@@ -22,7 +22,7 @@
     background-image: url("pengu.jpg");
     background-size: 100%;
     position: fixed;
-    left: 0;
+    left: 0; 
     right: 0;
     display: block;
     border: 3px solid black;
@@ -49,6 +49,19 @@
     color: white;
     padding: 50px;
 }
+
+.navbar {
+      margin-bottom: 0;
+      background-color: #f4511e;
+      z-index: 9999;
+      border: 0;
+      font-size: 12px !important;
+      line-height: 1.42857143 !important;
+      letter-spacing: 4px;
+      border-radius: 0;
+      
+  }
+
 .glyphicon-education{
     font-size: 54px;
     color: white;
@@ -97,3 +110,35 @@ display:inline-block;
 position:relative;
 }
 
+.container-fluid {
+    padding-top: 20px;
+    padding-bottom: 70px;
+}
+
+
+
+.bg1 {
+    padding-top:70px;
+    color:white;
+    background-color: #80deea;
+}
+
+.bg2 {
+    color:white;
+    background-color: #4dd0e1;
+}
+
+.bg3 {
+    color:white;
+    background-color: #26c6da;
+}
+
+.bg4 {
+    color:white;
+    background-color: #00bcd4;
+}
+
+.bg5 {
+    color:white;
+    background-color: #00acc1;
+}
