@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>E-PORTAL</title>
+  <title>Student PORTAL</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -42,27 +42,27 @@
 </nav>    
 
 <div id="section1" class="container-fluid bg1 text-center">
-  <h1>Unit 1</h1>
+  <h1>Unit 1</h1><hr>
   <p>Here we shall display the materials</p>
   <p></p>
 </div>
 <div id="section2" class="container-fluid bg2 text-center">
-  <h1>Unit 2</h1>
+  <h1>Unit 2</h1><hr>
   <p>Here we shall display the materials</p>
   
 </div>
 <div id="section3" class="container-fluid bg3 text-center">
-  <h1>Unit 3</h1>
+  <h1>Unit 3</h1><hr>
   <p>Here we shall display the materials</p>
   
 </div>
 <div id="section4" class="container-fluid bg4 text-center">
-  <h1>Unit 4</h1>
+  <h1>Unit 4</h1><hr>
   <p>Here we shall display the materials</p>
   
 </div>
 <div id="section5" class="container-fluid bg5 text-center">
-  <h1>Unit 5</h1>
+  <h1>Unit 5</h1><hr>
   <p>Here we shall display the materials</p>
 </div>
 

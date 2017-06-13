@@ -61,12 +61,13 @@
                                     </select>
                                 <div class="divider-10"></div> 
                                 <button type="submit" class="btn btn-md btn-primary" name="btn-viewmat">Choose File</button>
-                                <div class="divider-10"></div> <div class="divider-10"></div> 
+                                <div class="divider-10"></div> 
                                 <button type="submit" class="btn btn-lg btn-success" name="btn-viewmat">Upload</button>
-
+                                <hr>
                                     
                             </div>
                         </div>
+                
                         <div class='style1'>
                         </div>
                 </div>

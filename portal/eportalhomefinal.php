@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Theme Made By www.w3schools.com - No Copyright -->
+  
   <title>E-portal home</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,29 +17,29 @@
       color: #f5f6f7;
       
   }
-  p {font-size: 25px;}
+  p {font-size: 23px;}
   .margin {margin-bottom: 30px;
       font-size: 50px}
   .margin1 { margin-bottom: 13px}
   .bg-1 { 
       background-image: url(home.jpg);
-      background-size: 100%; /* Green */
+      background-size: 100%; 
       color: #ffffff;
       
       
   }
   .bg-2 { 
-      background-color: #474e5d; /* Dark Blue */
+      background-color: #474e5d; 
       color: #ffffff;
   }
   .bg-3 { 
-      background-color: #ffffff; /* White */
+      background-color: #ffffff; 
       color: darkcyan;
   }
   .bg-4 { 
       padding-top: 0px;
       padding-bottom: 2px;
-      background-color: darkcyan; /* Black Gray */
+      background-color: darkcyan; 
       color: #fff;
   }
  
@@ -61,7 +61,7 @@
 
 
 <div class="container-fluid bg-3 text-center">    
-  <h3 class="margin"><strong>Enter the E-Portal</strong></h3><br>
+  <h3 class="margin"><strong>Enter the E-Portal</strong></h3><hr><br>
   <div class="row">
     <div class="col-sm-6">
       <p>A faculty member can only <strong>upload</strong>, <strong>view</strong> and <strong>delete</strong> the course materials.</p>

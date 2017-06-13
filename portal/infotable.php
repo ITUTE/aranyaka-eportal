@@ -31,7 +31,7 @@
         <div class='row'>
             <div class="container">
                                     
-                      <h2>THE TABLE OF DOOM</h2>
+                      <h2>THE TABLE OF DOOM</h2><hr>
                       <p>The course names and course codes organised on the basis of semester</p>            
                       <table class="table table-hover table-bordered">
                         <thead>

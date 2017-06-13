@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>E-PORTAL</title>
+		<title>Student PORTAL</title>
         <link href='css/bootstrap.css' rel='stylesheet'>
         <link rel="stylesheet" type="text/css" href="eportal.css">
 	</head>
@@ -60,10 +60,10 @@
                                         
                                     </select>
                                 <div class="divider-10"></div> 
-                                <button type="submit" class="btn btn- btn-primary" name="btn-viewmat">View Materials</button>
+                                <button type="submit" class="btn btn- btn-primary" name="btn-viewmat">View Materials</button><hr>
                                 <div class="divider-10"></div> 
                                 <div class="divider-10"></div>
-                                <p>If you do not know which semester the course you are searching for belongs to then
+                                <p><font size="5">If you do not know which semester the course you are searching for belongs to then</font>
                                     <a href="infotable.html" class="btn btn-lg btn-link" role="button">Click Here</a></p>
 
                                     
