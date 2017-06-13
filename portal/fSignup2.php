@@ -41,7 +41,7 @@
    $emailError = "Please enter valid email address.";
   } else {
    // check email exist or not
-   $query = "SELECT userEmail FROM users WHERE userEmail='$email'";
+   $query = "SELECT userEmail FROM faculty WHERE userEmail='$email'";
    $result = mysql_query($query);
    $count = mysql_num_rows($result);
    if($count!=0){
@@ -64,7 +64,7 @@
   // if there's no error, continue to signup
   if( !$error ) {
    
-   $query = "INSERT INTO users(userName,userEmail,userPass) VALUES('$name','$email','$password')";
+   $query = "INSERT INTO faculty(userName,userEmail,userPass) VALUES('$name','$email','$password')";
    $res = mysql_query($query);
     
    if ($res) {
