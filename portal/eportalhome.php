@@ -65,11 +65,11 @@
   <div class="row slide">
     <div class="col-sm-6">
       <p>A faculty member can only <strong>upload</strong>, <strong>view</strong> and <strong>delete</strong> the course materials.</p>
-      <a href="fLogin.php" class="btn btn-lg btn-success" role="button">Faculty Login</a>
+      <a href="fLogin.html" class="btn btn-lg btn-success" role="button">Faculty Login</a>
     </div>
     <div class="col-sm-6"> 
       <p>A student can only <strong>view</strong> and <strong>download</strong> the desired course materials.</p>
-      <a href="slogin.php" class="btn btn-lg btn-primary" role="button">Student Login</a>
+      <a href="slogin.html" class="btn btn-lg btn-primary" role="button">Student Login</a>
     </div>
   </div>
 </div>
