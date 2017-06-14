@@ -2,7 +2,7 @@
 	<head>
 		<title>Faculty Upload</title>
         <link href='css/bootstrap.css' rel='stylesheet'>
-        <link rel="stylesheet" type="text/css" href="eportal.css">
+        <link rel="stylesheet" type="text/css" href="eportalhome.css">
 	</head>
 	<body>
         <div class='row'>
@@ -38,7 +38,7 @@
                                 <hr>
 		                        <p>
 		                        </p><div class="divider-10"></div>  
-                                    <select class="selectpicker" title="Choose the Semester"  data-size="4">
+                                    <select class="selectpicker slide" title="Choose the Semester"  data-size="4">
                                         <option data-subtext="First">I</option>
                                         <option data-subtext="Second">II</option>
                                         <option data-subtext="Third">III</option>
@@ -49,7 +49,7 @@
                                         <option data-subtext="Eighth">VIII</option>
                                     </select>
                                     <div class="divider-10"></div>                   
-                                    <select class="selectpicker" title="Choose the Course"  data-size="5">
+                                    <select class="selectpicker slide" title="Choose the Course"  data-size="5">
                                         <option>Depends on the selected Semester</option>
                                         <option>Depends on the selected Semester</option>
                                         <option>Depends on the selected Semester</option>
@@ -60,9 +60,9 @@
                                         
                                     </select>
                                 <div class="divider-10"></div> 
-                                <button type="submit" class="btn btn-md btn-primary" name="btn-viewmat">Choose File</button>
+                                <button type="submit" class="btn btn-md btn-primary slide" name="btn-viewmat">Choose File</button>
                                 <div class="divider-10"></div> 
-                                <button type="submit" class="btn btn-lg btn-success" name="btn-viewmat">Upload</button>
+                                <button type="submit" class="btn btn-lg btn-success slide" name="btn-viewmat">Upload</button>
                                 <hr>
                                     
                             </div>

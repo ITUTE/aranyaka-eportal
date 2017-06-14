@@ -2,7 +2,7 @@
 	<head>
 		<title>Student PORTAL</title>
         <link href='css/bootstrap.css' rel='stylesheet'>
-        <link rel="stylesheet" type="text/css" href="eportal.css">
+        <link rel="stylesheet" type="text/css" href="eportalhome.css">
 	</head>
 	<body>
         <div class='row'>
@@ -33,12 +33,12 @@
                     <div class="background-image1" ></div>
                         <div class="content">
                             <div class="text-center">
-                                <i class='glyphicon glyphicon-education'></i>
-                                <h2><strong>Welcome to this side of the portal</strong></h2>
+                                <i class='glyphicon glyphicon-education slide'></i>
+                                <h2 class="slide"><strong>Welcome to this side of the portal</strong></h2>
                                 <hr>
 		                        <p>
 		                        </p><div class="divider-10"></div>  
-                                    <select class="selectpicker" title="Choose the Semester"  data-size="4">
+                                    <select class="selectpicker slide" title="Choose the Semester"  data-size="4">
                                         <option data-subtext="First">I</option>
                                         <option data-subtext="Second">II</option>
                                         <option data-subtext="Third">III</option>
@@ -49,7 +49,7 @@
                                         <option data-subtext="Eighth">VIII</option>
                                     </select>
                                     <div class="divider-10"></div>                   
-                                    <select class="selectpicker" title="Choose the Course"  data-size="5">
+                                    <select class="selectpicker slide" title="Choose the Course"  data-size="5">
                                         <option>Depends on the selected Semester</option>
                                         <option>Depends on the selected Semester</option>
                                         <option>Depends on the selected Semester</option>
@@ -60,11 +60,11 @@
                                         
                                     </select>
                                 <div class="divider-10"></div> 
-                                <button type="submit" class="btn btn- btn-primary" name="btn-viewmat">View Materials</button><hr>
+                                <button type="submit" class="btn btn- btn-primary slide" name="btn-viewmat">View Materials</button><hr>
                                 <div class="divider-10"></div> 
                                 <div class="divider-10"></div>
-                                <p><font size="5">If you do not know which semester the course you are searching for belongs to then</font>
-                                    <a href="infotable.html" class="btn btn-lg btn-link" role="button">Click Here</a></p>
+                                <p class="slide"><font size="5">If you do not know which semester the course you are searching for belongs to then</font>
+                                    <a href="infotable.html" class="btn btn-lg btn-link slide" role="button">Click Here</a></p>
 
                                     
                             </div>

@@ -3,7 +3,7 @@
 	<head>
 		<title>E-PORTAL</title>
         <link href='css/bootstrap.css' rel='stylesheet'>
-        <link rel="stylesheet" type="text/css" href="eportal.css">
+        <link rel="stylesheet" type="text/css" href="eportalhome.css">
 	</head>
 	<body>
         <div class='row'>
@@ -30,10 +30,9 @@
         </div>
         <div class='row'>
             <div class="container">
-                                    
-                      <h2>THE TABLE OF DOOM</h2><hr>
-                      <p>The course names and course codes organised on the basis of semester</p>            
-                      <table class="table table-hover table-bordered">
+                    <hr>
+                      <p><strong>The course names and course codes organised on the basis of semester</strong></p>            
+                      <table class="table table-hover table-bordered slide">
                         <thead>
                           <tr>
                             <th>Semester</th>

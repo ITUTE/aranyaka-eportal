@@ -14,7 +14,7 @@
   body {
       font-family: American Typewriter;
       line-height: 1.8;
-      color: #f5f6f7;
+      color: #f5f6f7; 
       
   }
   p {font-size: 23px;}
@@ -52,17 +52,17 @@
 
 
 
-<div class="container-fluid bg-1 text-center">
-  <h2 class="margin"><strong>E-PORTAL</strong></h2>
-  <img src="rv.JPG" class="img-responsive img-circle margin1" style="display:inline" alt="Bird" width="150" height="150">
-  <h3><strong>R.V. College of Engineering, Bangalore</strong></h3>
+<div class="container-fluid bg-1 text-center ">
+  <h2 class="margin slide"><strong>E-PORTAL</strong></h2>
+  <img src="rv.JPG" class="img-responsive img-circle margin1 slide" style="display:inline" alt="Bird" width="150" height="150">
+  <h3 class="slide"><strong>R.V. College of Engineering, Bangalore</strong></h3>
   
 </div>
 
 
-<div class="container-fluid bg-3 text-center">    
+<div class="container-fluid bg-3 text-center slide">    
   <h3 class="margin"><strong>Enter the E-Portal</strong></h3><hr><br>
-  <div class="row">
+  <div class="row slide">
     <div class="col-sm-6">
       <p>A faculty member can only <strong>upload</strong>, <strong>view</strong> and <strong>delete</strong> the course materials.</p>
       <a href="fLogin.php" class="btn btn-lg btn-success" role="button">Faculty Login</a>

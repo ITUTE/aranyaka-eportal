@@ -61,7 +61,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Faculty Login</title> 
             <link href='css/bootstrap.css' rel='stylesheet'> 
-            <link rel="stylesheet" type="text/css" href="eportal.css">
+            <link rel="stylesheet" type="text/css" href="eportalhome.css">
                 <style> 
                 </style>
     </head> 
@@ -81,7 +81,8 @@
             <div class="background-image"></div>
                 <div class="content">
                     <div class="text-center">
-                        <h2><strong>Faculty Login</strong></h2> <hr>
+                        <i class='glyphicon glyphicon-education slide'></i>
+                        <h2 class="slide"><strong>Faculty Login</strong></h2> <hr>
                         <div class="form-group">
             
                         </div>
@@ -99,7 +100,7 @@
    ?>
                     </div>
                     <p>Username: </p> 
-                    <div class="form-group">
+                    <div class="form-group slide">
             	       <div class="input-group">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
             	             <input type="email" name="email" class="form-control" placeholder="Your Email" value="<?php echo $email; ?>" maxlength="40" />
@@ -107,7 +108,7 @@
                         <span class="text-danger"><?php echo $emailError; ?></span>
             </div>
             <p>Password:</p>
-                <div class="form-group">
+                <div class="form-group slide">
             	<div class="input-group">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
             	<input type="password" name="pass" class="form-control" placeholder="Your Password" maxlength="15" />
@@ -118,7 +119,7 @@
                     
                     
                                 <div class="form-group">
-             <button type="submit" class="btn btn-xl btn-success" name="btn-login">Sign In</button>
+             <button type="submit" class="btn btn-xl btn-success slide" name="btn-login">Sign In</button>
             </div>
                                         
                                         
