@@ -41,7 +41,7 @@
    $emailError = "Please enter valid email address.";
   } else {
    // check email exist or not
-   $query = "SELECT userEmail FROM faculty WHERE userEmail='$email'";
+   $query = "SELECT userEmail FROM student WHERE userEmail='$email'";
    $result = mysql_query($query);
    $count = mysql_num_rows($result);
    if($count!=0){
@@ -64,7 +64,7 @@
   // if there's no error, continue to signup
   if( !$error ) {
    
-   $query = "INSERT INTO faculty(userName,userEmail,userPass) VALUES('$name','$email','$password')";
+   $query = "INSERT INTO student(userName,userEmail,userPass) VALUES('$name','$email','$password')";
    $res = mysql_query($query);
     
    if ($res) {
@@ -89,7 +89,7 @@
         <title> Sign-Up
         </title> 
         <link href='css/bootstrap.css' rel='stylesheet'> 
-        <link rel="stylesheet" type="text/css" href="eportal.css">
+        <link rel="stylesheet" type="text/css" href="eportalhome.css">
             <style>
             </style>
     </head> 
@@ -104,10 +104,10 @@
             <div class='container'>
                 <div id="login-form">
     <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">
-                <div class="background-image"></div>
+                <div class="background-image1"></div>
                     <div class="content">
                         <div class="text-center">
-                            <h1><strong>Faculty Sign-Up</strong></h1> <hr> </div>
+                            <h1><strong>Student Sign-Up</strong></h1> <hr> </div>
                         <?php
                         if ( isset($errMSG) ) {
                         ?>
@@ -154,7 +154,7 @@
                                             
                                         <button type="submit" class="btn btn-block btn-primary" name="btn-signup">Create a new Account</button><hr>
             <div class="form-group">
-             <a href="fLogin1.php">Sign in Here...</a>
+             <a href="slogin.php">Sign in Here...</a>
             </div></div>
                         
                      </div>

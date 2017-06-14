@@ -99,7 +99,7 @@
    }
    ?>
                     </div>
-                    <p>Username: </p> 
+                    <p>UserEmail: </p> 
                     <div class="form-group slide">
             	       <div class="input-group">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
@@ -126,7 +126,7 @@
                                    <hr>
                         
                        
-
+                                    <a href="fSignup2.php">Sign Up Here...</a>
                                     </div>
                 </div> </form></div>
                         
