@@ -65,7 +65,7 @@
   <div class="row">
     <div class="col-sm-6">
       <p>A faculty member can only <strong>upload</strong>, <strong>view</strong> and <strong>delete</strong> the course materials.</p>
-      <a href="fLogin1.php" class="btn btn-lg btn-success" role="button">Faculty Login</a>
+      <a href="fLogin.php" class="btn btn-lg btn-success" role="button">Faculty Login</a>
     </div>
     <div class="col-sm-6"> 
       <p>A student can only <strong>view</strong> and <strong>download</strong> the desired course materials.</p>
