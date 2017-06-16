@@ -59,8 +59,16 @@
                                         <option>Depends on the selected Semester</option>
                                         
                                     </select>
-                                <div class="divider-10"></div> 
-                                <button type="submit" class="btn btn-md btn-primary slide" name="btn-viewmat">Choose File</button>
+                                <div class="divider-10"></div>
+                                <select class="selectpicker slide" title="Choose the Course"  data-size="5">
+                                        <option>Unit I</option>
+                                        <option>Unit II</option>
+                                        <option>Unit III</option>
+                                        <option>Unit IV</option>
+                                        <option>Unit V</option>
+                                </select>
+                                        <div class="divider-10"></div>
+                                    <button type="submit" class="btn btn-md btn-primary slide" name="btn-viewmat">Choose File</button>
                                 <div class="divider-10"></div> 
                                 <button type="submit" class="btn btn-lg btn-success slide" name="btn-viewmat">Upload</button>
                                 <hr>
