@@ -76,6 +76,7 @@
                                         <option>Depends on the selected Semester</option>
                                         
                                     </select>
+<<<<<<< HEAD
                                     <div class="divider-10"></div>  
                                     <select class="selectpicker slide" title="Choose the Unit"  data-size="4">
                                         <option data-subtext="First">I</option>
@@ -83,6 +84,15 @@
                                         <option data-subtext="Third">III</option>
                                         <option data-subtext="Fourth">IV</option>
                                         <option data-subtext="Fifth">V</option>
+=======
+                                <div class="divider-10"></div>
+                                <select class="selectpicker slide" title="Choose the Unit"  data-size="5">
+                                        <option>Unit I</option>
+                                        <option>Unit II</option>
+                                        <option>Unit III</option>
+                                        <option>Unit IV</option>
+                                        <option>Unit V</option>
+>>>>>>> 7bef9d821bb7264bab3ef49ed4afabb180b52193
                                 </select>
                                 <div class="divider-10"></div> 
                                 <button type="submit" class="btn btn-md btn-primary slide" name="btn-viewmat">Choose File</button>
