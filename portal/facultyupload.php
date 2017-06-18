@@ -1,3 +1,18 @@
+<?php
+ ob_start();
+ session_start();
+ require_once 'dbconnect.php';
+ 
+ // if session is not set this will redirect to login page
+ if( !isset($_SESSION['user']) ) {
+  header("Location: fLogin.php");
+  exit;
+ }
+ // select loggedin users detail
+ $res=mysql_query("SELECT * FROM faculty WHERE userId=".$_SESSION['user']);
+ $userRow=mysql_fetch_array($res);
+?>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Faculty Upload</title>
@@ -19,8 +34,10 @@
                             <span class='icon-bar'></span>
                             </button>
                             <ul class='nav nav-tabs navbar-right collapse navbar-collapse'>
-                                <li><a href='Help.html'><font color='black'><font size='3px'>Help</font></font></a></li>
-                                <li><a href='about-us.html'><font color='black'><font size='3px'>About Us</font></font></a></li>
+                                <a data-toggle='dropdown'><font color='black'><font size='3px'><span class="glyphicon glyphicon-user"></span>&nbsp;Hi' <?php echo $userRow['userEmail']; ?>&nbsp;<span class="caret"></span></font></font>
+                                <ul class="dropdown-menu">
+                                    <li><a href="logout.php?logout"><font color='black'><font size='3px'><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign Out</font></font></a>
+                                    </ul></a>
                             </ul>
                         </h1>
                     </div>
@@ -59,16 +76,16 @@
                                         <option>Depends on the selected Semester</option>
                                         
                                     </select>
-                                <div class="divider-10"></div>
-                                <select class="selectpicker slide" title="Choose the Course"  data-size="5">
-                                        <option>Unit I</option>
-                                        <option>Unit II</option>
-                                        <option>Unit III</option>
-                                        <option>Unit IV</option>
-                                        <option>Unit V</option>
+                                    <div class="divider-10"></div>  
+                                    <select class="selectpicker slide" title="Choose the Unit"  data-size="4">
+                                        <option data-subtext="First">I</option>
+                                        <option data-subtext="Second">II</option>
+                                        <option data-subtext="Third">III</option>
+                                        <option data-subtext="Fourth">IV</option>
+                                        <option data-subtext="Fifth">V</option>
                                 </select>
-                                        <div class="divider-10"></div>
-                                    <button type="submit" class="btn btn-md btn-primary slide" name="btn-viewmat">Choose File</button>
+                                <div class="divider-10"></div> 
+                                <button type="submit" class="btn btn-md btn-primary slide" name="btn-viewmat">Choose File</button>
                                 <div class="divider-10"></div> 
                                 <button type="submit" class="btn btn-lg btn-success slide" name="btn-viewmat">Upload</button>
                                 <hr>
@@ -89,5 +106,6 @@
 		
 </body>
 </html>
+<?php ob_end_flush(); ?>
 		
 	
