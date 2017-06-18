@@ -60,7 +60,7 @@
                                         
                                     </select>
                                 <div class="divider-10"></div>
-                                <select class="selectpicker slide" title="Choose the Course"  data-size="5">
+                                <select class="selectpicker slide" title="Choose the Unit"  data-size="5">
                                         <option>Unit I</option>
                                         <option>Unit II</option>
                                         <option>Unit III</option>
