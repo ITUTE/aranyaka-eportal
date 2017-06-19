@@ -296,3 +296,10 @@ position:relative;
     color:white;
     background-color: #00acc1;
 }
+
+.bg-4 { 
+      padding-top: 0px;
+      padding-bottom: 2px;
+      background-color: darkcyan; 
+      color: #fff;
+  }
