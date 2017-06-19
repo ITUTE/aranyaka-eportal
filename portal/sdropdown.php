@@ -15,7 +15,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Faculty Upload</title>
+		<title>Student Portal</title>
         <link href='css/bootstrap.css' rel='stylesheet'>
         <link rel="stylesheet" type="text/css" href="eportalhome.css">
 	</head>
@@ -55,7 +55,7 @@
                                 <hr>
 		                        <p>
 		                        </p><div class="divider-10"></div>  
-                                     
+                                 <div>    
                                 <?php
                                             $sql = "SELECT * FROM tbl_country ORDER BY country_name";
                                             try {
@@ -74,7 +74,7 @@
                                                     <?php } ?>
                                                 </select>
                                         </label>
-                                    
+                                   </div> 
                                 <div class="divider-10"></div>                   
     
                                         <div id="output1"></div>
@@ -85,7 +85,7 @@
                                     <div class="divider-10"></div> 
                                     
                                     <hr>
-                                    
+                                    <p>If you don't know which course belongs to which semester, then<a href="infotable.html" class="btn btn-md btn-info" role="button">Click Here</a></p>
                             </div>
                         </div>
                 
