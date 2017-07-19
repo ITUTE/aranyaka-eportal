@@ -1,1 +1,0 @@
-This is the demo text file. Welcome to JQuery and Ajax.
