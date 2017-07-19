@@ -56,11 +56,19 @@
 </head>
 
 <body>
-        <div class='row'>
+         <div class="row">
             <div class='col-xs-12'>
                 <div class="style"> 
-                    <div class='navbar navbar-inverse navbar-static-top'>
-                        <h1><i class='glyphicon glyphicon-book'></i>E-Portal</h1>
+                    <div class='navbar navbar-inverse navbar-fixed-top'>
+                            <ul class="nav navbar-nav">
+                                <li><a><strong><font size=5px>E-Portal</font></strong></a></li>
+                                <li><a class="btn btn-success" href="index.php">HOME</a></li>
+                            </ul>
+							<ul class="nav nav-tabs navbar-right logout">
+                                <li><form method="POST"><input class="btn navbar-btn btn-danger" type="submit" value="Logout " name="Logout"/></form></li>
+							</ul>
+						
+						
                     </div>
                 </div>
             </div>

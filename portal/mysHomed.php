@@ -1,3 +1,7 @@
+<?php
+	ob_start();
+	session_start();
+?>
 <!DOCTYPE html>
 <html>
     <head> 
@@ -10,7 +14,8 @@
 		<link rel="stylesheet" type="text/css" href="eportal.css">
 		<style>
 		html{
-			overflow:scroll
+			overflow-y:scroll;
+			overflow-x:hidden;
 		}
          body {
           font-family: American Typewriter;
@@ -51,6 +56,9 @@
                 margin-left: 30%;
                 margin-right: 30%;
             }
+		.logout{
+			margin-right:3%;
+		}
 		</style>
 		<script>
 		function sub_list(str) 	
@@ -87,11 +95,19 @@
 </head> 
 <body>
     <div class="se-pre-con"></div>
-        <div class="row">
+          <div class="row">
             <div class='col-xs-12'>
                 <div class="style"> 
                     <div class='navbar navbar-inverse navbar-fixed-top'>
-                        <h1><i class='glyphicon glyphicon-book'></i>E-Portal</h1>
+                            <ul class="nav navbar-nav">
+                                <li><a><strong><font size=5px>E-Portal</font></strong></a></li>
+                                <li><a class="btn btn-success" href="index.php">HOME</a></li>
+                            </ul>
+							<ul class="nav nav-tabs navbar-right logout">
+                                <li><form method="POST"><input class="btn navbar-btn btn-danger" type="submit" value="Logout " name="Logout"/></form></li>
+							</ul>
+						
+						
                     </div>
                 </div>
             </div>
@@ -110,7 +126,7 @@
           <div class="row slide">
               <form method="POST">
 				<p class="slide">Select Semester:</p>
-					<select class="form-control col-md-6 slide dropsize" name="semester" onclick="sub_list(this.value)" onkeyup="sub_list(this.value)" onkeydown="sub_list(this.value)">
+					<select class="form-control col-md-6 slide dropsize" name="semester" onclick="sub_list(this.value)" onkeyup="sub_list(this.value)" onkeydown="sub_list(this.value)" onchange="sub_list(this.value)">
                         <option value="">Select...</option>
 						<option value="3">Third</option>
 						<option value="4">Fourth</option>
@@ -120,8 +136,7 @@
 					</select>
               </form><br><hr>
               <p>To see information about syllabus <a href="infotable.php" class="btn btn-md btn-info">Click Here</a></p>
-              <div id="sublist"></div>	<hr><br>
-					<form method="POST"><input class="slide btn btn-danger" type="submit" value="Logout" name="Logout"></form>  
+              <div id="sublist"></div>	<hr><br> 
           </div> 
         </div>
     
@@ -143,8 +158,6 @@
 </html> 
 
 <?php
- ob_start();
- session_start();
  require_once 'dbconnect.php';
  
  // if session is not set this will redirect to login page

@@ -1,38 +1,78 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="eportal.css">
+	<link rel="stylesheet" type="text/css" href="index.css">
+	  
+	<script>
+		
+	</script>
+</head>
 <body>
-<?php
-	session_start();
-	include 'dbconnect.php';
-	$Tid = $_SESSION['id'];
-	$query = "SELECT id, subject, name FROM upload WHERE Tid = '$Tid'";
-	$result = mysqli_query($conn, $query) or die('Error, query failed');
-	
-	if(mysqli_num_rows($result)==0) 
+      <div class="row">
+            <div class='col-xs-12'>
+                <div class="style"> 
+                    <div class='navbar navbar-inverse navbar-fixed-top'>
+                            <ul class="nav navbar-nav">
+                                <li><a><strong><font size=5px>E-Portal</font></strong></a></li>
+                                <li><a class="btn btn-success" href="index.php">HOME</a></li>
+                            </ul>
+							<ul class="nav nav-tabs navbar-right logout">
+                                <li><form method="POST"><input class="btn navbar-btn btn-danger" type="submit" value="Logout " name="Logout"/></form></li>
+							</ul>
+						
+						
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="row">
+            <?php
+                session_start();
+                include 'dbconnect.php';
+                $Tid = $_SESSION['id'];
+                $query = "SELECT id, subject, name FROM upload WHERE Tid = '$Tid'";
+                $result = mysqli_query($conn, $query) or die('Error, query failed');
+
+                if(mysqli_num_rows($result)==0) 
+                {
+                    die("You have not uploaded any content yet!");
+                }
+
+                echo "<table class=\"table table-striped table-hover\" style=\"width:100%\">
+                         <tr>
+                            <th></th>
+                            <th></th> 
+                            <th></th>
+                         </tr>";
+                while(list($id, $sub, $name) = mysqli_fetch_array($result))
+                {
+                    echo "<tr>";
+                    echo "<td>"; echo $sub . " " . $name . " "; echo "</td>";
+                    ?>
+                    <td><a href="DownloadFile.php?id=<?php echo $id; ?>" ><button class="btn-success">Download</button></a></td>
+                    <td><button class="btn-danger" id= <?php echo $id; ?> onclick="del(this.id)">Delete</button></td>
+                <?php
+                    echo "</tr>";
+                }
+                ?>
+                <?php 
+                echo "</table>";
+            ?>
+        </div>
+
+<script>
+	function del(id)
 	{
-		die("You have not uploaded any content yet!");
+		if (confirm("Confirm") == true) {
+			location.assign("DeleteFile.php?id="+id);
+		} 
+		else {
+			die();
+		}
 	}
-	
-	<?php
-    echo "<table class=/"table table-striped table-hover/" style=/"width:100%/">
-             <tr>
-                <th>File Name</th>
-                <th>Download</th> 
-                <th>Delete</th>
-             </tr>";
-    while(list($id, $sub, $name) = mysqli_fetch_array($result))
-	{
-		echo "<tr>";
-        echo "<td>"; echo $sub . " " . $name . " "; echo "</td>";
-        ?>
-        <td><a href="DownloadFile.php?id=<?php echo $id; ?>" ><button class="btn-success">Download</button></a></td>
-        <td><a href="DeleteFile.php?id=<?php echo $id; ?>" ><button class="btn-danger">Delete</button></a></td>
-    <?php
-        echo "</tr>";
-	}
-	?>
-	<?php 
-    echo "</table>";
-?>
+</script>
 </body>
 </html>

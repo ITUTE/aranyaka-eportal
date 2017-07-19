@@ -1,3 +1,8 @@
+<?php 
+	ob_start();
+	session_start();
+?>
+
 <!DOCTYPE html>
 <html>
     <head> 
@@ -38,18 +43,28 @@
               color: darkcyan;
               padding-bottom: 10px;
           }
+            .xxx{
+                color: darkcyan;
+            }
           .bg-4 { 
               padding-top: 0px;
               padding-bottom: 2px;
               background-color: darkcyan; 
               color: #fff;
           }
-            .dropsize{
+          .dropsize{
                 width: 40%;
                 margin-left: 30%;
                 margin-right: 30%;
             }
-
+		  .logout{
+				margin-right: 3%;
+		  }
+          .padright{
+                 margin-right: 10px;
+                 padding-bottom: 3px;
+                 
+            }
   
             
 		</style>
@@ -88,15 +103,21 @@
     </head> 
     <body>
     
-     <div class="se-pre-con"></div>
         <div class="row">
             <div class='col-xs-12'>
                 <div class="style"> 
-                    <div class='navbar navbar-inverse navbar-fixed-top' id="mynavbar">
-                        <h1><i class='glyphicon glyphicon-book'></i>E-Portal</h1>
-                        
+                    <div class='navbar navbar-inverse navbar-fixed-top'>
+                            <ul class="nav navbar-nav">
+                                <li><a><strong><font size=5px>E-Portal</font></strong></a></li>
+                                <li><a class="btn btn-success" href="index.php">HOME</a></li>
+                            </ul>
+							<ul class="nav nav-tabs navbar-right logout">
+                                <li><form method="POST"><input class="btn navbar-btn btn-danger" type="submit" value="Logout " name="Logout"/></form></li>
+							</ul>
+						
+						
                     </div>
-                </div>    
+                </div>
             </div>
         </div>
     
@@ -113,7 +134,7 @@
               <div class="row slide">
                      <form method="POST">
                     <p class="slide">Select Semester:</p>
-                        <select class="form-control col-md-6 slide dropsize" name="semester" onclick="sub_list(this.value)" onkeyup="sub_list(this.value)" onkeydown="sub_list(this.value)">
+                        <select class="form-control col-md-6 slide dropsize" name="semester" onclick="sub_list(this.value)" onkeyup="sub_list(this.value)" onkeydown="sub_list(this.value)" onchange="sub_list(this.value)">
                             <option value="">Select...</option>
                             <option value="3">Third</option>
                             <option value="4">Fourth</option>
@@ -136,8 +157,31 @@
               </div> 
             </div>
         </div>
+    
+        
+                #bottom part is the curricular event thing
+
+                <div class="container-fluid bg-3 text-center slide">    
+                      <h3 class="margin"><strong>Upload Extra Circular</strong></h3><hr><br>
+                      <div class="row slide">
+                        <div class=col-xs-6>
+                            <h2 class="xxx">Upload Circulars</h2>
+                            <a href="delete.php"><button class="btn-lg btn-info slide" id="click" name="click" value="Delete">Upload Circular</button></a><hr>
+                        </div>
+                        <div class=col-xs-6>
+                            <h2 class="xxx">Upload Events</h2>
+                            <a href="delete.php"><button class="btn-lg btn-info slide" id="click" name="click" value="Delete">Upload Event</button></a><hr>
+                        </div>
 
 
+                      </div> 
+                </div>
+
+
+                #remove these hash comments later
+
+    
+        
     <footer class="container-fluid bg-4 text-center">
       <p><font size = "2">Developed by undergraduate students of CSE department.</font></p> 
     </footer>
@@ -158,8 +202,6 @@
 </html>
 
 <?php
- ob_start();
- session_start();
  require_once 'dbconnect.php';
  
  // if session is not set this will redirect to login page

@@ -74,6 +74,13 @@
   </div> 
 </div>
 
+                    <div class="container-fluid bg-3 text-center slide">    
+                      <h3 class="margin"><strong>Events and Circulars</strong></h3><hr><br>
+                      <div class="row slide">
+                        <a href="delete.php"><button class="btn-lg btn-success slide" id="click" name="click" value="Delete">View</button></a><hr>
+                      </div> 
+                    </div>
+
 
 <footer class="container-fluid bg-4 text-center">
   <p><font size = "2">Developed by undergraduate students of CSE department.</font></p> 
