@@ -4,15 +4,15 @@
  require_once 'dbconnect.php';
  
  // it will never let you open index(login) page if session is set
- if (@$_SESSION['student'] != "" ) 
+ if (@$_SESSION['faculty'] != "") 
  {
-	 header("Location: mysHomed.php");
+	 header("Location: myfHomed.php");
 	 exit;
  }
  
  $error = false;
  
- if( isset($_POST['submit']) )
+ if( isset($_POST['submit']) ) 
  {	 	 
      // prevent sql injections/ clear user invalid inputs
      $user = trim($_POST['user']);
@@ -27,17 +27,18 @@
      // if there's no error, continue to login
      if (!$error) 
 	 {
-		 $query = mysqli_query($conn, "SELECT * FROM slogin WHERE password='$pass' AND username='$user'");
-		 $rows = mysqli_num_rows($query);
+		 $query = mysqli_query($conn, "SELECT id FROM flogin WHERE password='$pass' AND username='$user'");
+		 $rows = mysqli_num_rows($query); 
 		 
 		 if($rows==1) 
 		 {
-			 $_SESSION['student'] = $user;
-			 if (@$_SESSION['student'] != "" ) 
-			 {
-				 //echo $_SESSION['student'];
-				 header("Location: mysHomed.php");
-				 exit;
+			 $row = mysqli_fetch_assoc($query);
+			 $_SESSION['faculty']=$user;
+			 $_SESSION['id']=$row["id"];
+			 if (@$_SESSION['faculty'] != "") 
+			 { 
+				header("Location: myfHomed.php");
+				exit;
 			 }
 		 }
 		 else 
@@ -54,16 +55,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Student Login</title> 
+        <title>Faculty Login</title> 
         <link href='css/bootstrap.css' rel='stylesheet'> 
         <link rel="stylesheet" type="text/css" href="eportal.css">
         <link rel="stylesheet" type="text/css" href="index.css">
-		<script>
-		history.pushState(null, null, document.URL);
-		window.addEventListener('popstate', function () {
-			history.pushState(null, null, document.URL);
-		});
-		</script>
 		<style>
 		  body {
 				  font-family: American Typewriter;
@@ -100,33 +95,36 @@
 				  background-color: darkcyan; 
 				  color: #fff;
 			  }
-				 .dropsize{
-					width: 70%;
-					margin-left: 15%;
-					margin-right: 15%;
-				}
 		</style>
+		<script>
+			history.pushState(null, null, document.URL);
+			window.addEventListener('popstate', function () {
+				history.pushState(null, null, document.URL);
+			});
+		</script>
 	</head>
     <body>
      <div class="se-pre-con"></div>
+       <div class="container-fluid">
         <div class="row">
             <div class='col-xs-12'>
                 <div class="style"> 
                     <div class='navbar navbar-inverse navbar-fixed-top'>
                             <ul class="nav navbar-nav">
-                                <li><a href="index.php" title="Go Back"><img src="back.png" style="width:50px;height:50px;"></a></li>
-                                <li><strong><font size=5px>E-Portal</font></strong></li>
-                                <li><a class="btn btn-success" href="index.php">HOME</a></li>
-                            </ul>				
+                                <li><a class="btn navbar-btn" href="myfLogind.php">Go Back</a></li>
+                                <li  class="titlenav"><strong><font size=6px>#E-Portal</font></strong></li>
+                                <li><a class="navbar-btn btn btn-success" href="index.php">HOME</a></li>
+                            </ul>	
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 	
             <div class="container-fluid bg-1 text-center">
-                <br><br><br><br><br><br>
+                <br><br><br>
                 <i class='glyphicon glyphicon-education slide'></i> 
-                    <h2 class="margin slide"><strong>Welcome, Student!</strong></h2>
+                    <h2 class="margin slide"><strong>Welcome, Faculty of RVCE!</strong></h2>
                     <br>
             </div>
 
@@ -135,7 +133,7 @@
               <div class="row slide">
                   <form method="post" autocomplete="off"> 	
                     <p>User Email: </p> 
-						<div class="form-group  dropsize slide">
+						<div class="form-group dropsize slide">
 							<div class="input-group">
 								<span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
 									<input  name="user" id="user" class="form-control" placeholder="Your Email" maxlength="40" required />
@@ -149,11 +147,11 @@
 									<input type="password" name="pass" id="pass" class="form-control" placeholder="Your Password" maxlength="30" required />
 							</div>
                         </div><br><hr>
-              <div class="text-center"> 
+              
 				<div class="form-group">
 				    <input type="submit" value="Login" name="submit" class = "btn btn-lg btn-success"> 
 				</div>  
-              </div> 
+               
              </form>
             </div>
           </div>

@@ -176,3 +176,29 @@ input[type="file"] {
 	background: url(Preloader_3.gif) center no-repeat #fff;
     background-color: white;
 }
+ .dropsize{
+        width: 60%;
+        margin-left: 20%;
+        margin-right: 20%;
+}
+.titlenav{
+        margin-top: 3%;
+        margin-right: 10px;
+}
+
+ @media only screen and (max-device-width: 1500px){
+    .logout{
+            margin-left: 42%;
+         }
+ }
+
+.logout{
+            margin-right: 3%;
+            margin-top: 1%;
+}
+.padright{
+         margin-right: 10px;
+         padding-bottom: 3px;
+                 
+} 
+          
