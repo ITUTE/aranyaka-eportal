@@ -55,10 +55,10 @@
                 width: 40%;
                 margin-left: 30%;
                 margin-right: 30%;
-            }
-		.logout{
+      }
+	  .logout{
 			margin-right:3%;
-		}
+	  }
 		</style>
 		<script>
 		function sub_list(str) 	
@@ -91,23 +91,28 @@
 				xmlhttp.send();
 			}
 		}
-		</script>		
+		</script>	
+		<script>
+		history.pushState(null, null, document.URL);
+		window.addEventListener('popstate', function () {
+			history.pushState(null, null, document.URL);
+		});
+		</script>
 </head> 
 <body>
     <div class="se-pre-con"></div>
-          <div class="row">
+        <div class="row">
             <div class='col-xs-12'>
                 <div class="style"> 
                     <div class='navbar navbar-inverse navbar-fixed-top'>
                             <ul class="nav navbar-nav">
-                                <li><a><strong><font size=5px>E-Portal</font></strong></a></li>
+                                <li><a href="mysLogind.php" title="Go Back"><img src="back.png" style="width:50px;height:50px;"></a></li>
+                                <li><strong><font size=5px>E-Portal</font></strong></li>
                                 <li><a class="btn btn-success" href="index.php">HOME</a></li>
                             </ul>
 							<ul class="nav nav-tabs navbar-right logout">
                                 <li><form method="POST"><input class="btn navbar-btn btn-danger" type="submit" value="Logout " name="Logout"/></form></li>
-							</ul>
-						
-						
+							</ul>				
                     </div>
                 </div>
             </div>

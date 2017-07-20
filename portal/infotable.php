@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>E-PORTAL</title>
@@ -8,6 +8,11 @@
         <link href='css/bootstrap.css' rel='stylesheet'>
         <link rel="stylesheet" type="text/css" href="eportal.css">
         <link rel="stylesheet" type="text/css" href="index.css">
+		<style>
+			.logout{
+				margin-right:3%;
+			}
+		</style>
 	</head>
 	<body>
         <div class="row">
@@ -15,20 +20,15 @@
                 <div class="style"> 
                     <div class='navbar navbar-inverse navbar-fixed-top'>
                             <ul class="nav navbar-nav">
-                                <li><a><strong><font size=5px>E-Portal</font></strong></a></li>
+                                <li><strong><font size=5px>E-Portal</font></strong></li>
                                 <li><a class="btn btn-success" href="index.php">HOME</a></li>
-                            </ul>
-							<ul class="nav nav-tabs navbar-right logout">
-                                <li><form method="POST"><input class="btn navbar-btn btn-danger" type="submit" value="Logout " name="Logout"/></form></li>
-							</ul>
-						
-						
+                            </ul>						
                     </div>
                 </div>
             </div>
         </div>
         <div class='row'>
-            <div class="container">
+            <div class="container-fluid">
                     <hr>
                       <p><strong>The course names and course codes organised on the basis of semester</strong></p>            
                       <table class="table table-hover table-bordered slide">
@@ -267,37 +267,18 @@
                             <td>12GG7XX </td>
                             <td>GLOBAL ELECTIVE G </td>
                         </tr> 
-                            <tr class="blank_row">
-                                    <td bgcolor="darkcyan" colspan="3">&nbsp;</td>
-                            </tr>
-                            
-                        </tbody>
-                      </table>
-                    </div>
-                        <div class='style1'>
-                    </div>
-                </div>
-        
+                        <tr class="blank_row">
+                            <td bgcolor="darkcyan" colspan="3">&nbsp;</td>
+                        </tr>                        
+                    </tbody>
+                </table>
+            </div>
+            <div class='style1'>
+			</div>
+        </div>			
         <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
-        
-
         <script src='js/bootstrap.js'></script>
-        
-		
 </body>
 </html>
-		
-	
-
-
-
-
-
-
-
-
-
-
-

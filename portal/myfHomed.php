@@ -64,10 +64,15 @@
                  margin-right: 10px;
                  padding-bottom: 3px;
                  
-            }
-  
-            
+          }    
 		</style>
+		<script>
+		history.pushState(null, null, document.URL);
+		window.addEventListener('popstate', function () {
+			history.pushState(null, null, document.URL);
+		});
+		</script>
+		
 		<script>
 		function sub_list(str) 	
 		{
@@ -108,7 +113,8 @@
                 <div class="style"> 
                     <div class='navbar navbar-inverse navbar-fixed-top'>
                             <ul class="nav navbar-nav">
-                                <li><a><strong><font size=5px>E-Portal</font></strong></a></li>
+                                <li><a href="myfLogind.php" title="Go Back"><img src="back.png" style="width:50px;height:50px;"></a></li>
+                                <li><strong><font size=5px>E-Portal</font></strong></li>
                                 <li><a class="btn btn-success" href="index.php">HOME</a></li>
                             </ul>
 							<ul class="nav nav-tabs navbar-right logout">
@@ -158,9 +164,6 @@
             </div>
         </div>
     
-        
-                #bottom part is the curricular event thing
-
                 <div class="container-fluid bg-3 text-center slide">    
                       <h3 class="margin"><strong>Upload Extra Circular</strong></h3><hr><br>
                       <div class="row slide">
@@ -176,12 +179,7 @@
 
                       </div> 
                 </div>
-
-
-                #remove these hash comments later
-
-    
-        
+       
     <footer class="container-fluid bg-4 text-center">
       <p><font size = "2">Developed by undergraduate students of CSE department.</font></p> 
     </footer>
@@ -196,29 +194,21 @@
         </script>
         
     </body>
-
-	
-
 </html>
 
 <?php
- require_once 'dbconnect.php';
- 
- // if session is not set this will redirect to login page
- if(@$_SESSION['faculty'] == "") 
- { 
-	 header("Location: myfLogind.php");
-	 exit;
- } 
- 
- if(isset($_POST['Logout']))
- {
-	 session_destroy();
-	 header("Location: myfLogind.php");
-	 exit;
- }
- 
- //$res=mysqli_query($conn, "SELECT id, username FROM flogin WHERE username=".$_SESSION['faculty']);
- 
- ob_end_flush(); 
+	require_once 'dbconnect.php';
+	if(@$_SESSION['faculty'] == "") 
+	{ 
+		header("Location: myfLogind.php");
+		exit;
+	} 
+	if(isset($_POST['Logout']))
+	{
+		session_destroy();
+		header("Location: myfLogind.php");
+		exit;
+	}
+	//$res=mysqli_query($conn, "SELECT id, username FROM flogin WHERE username=".$_SESSION['faculty']); 
+	ob_end_flush(); 
 ?>

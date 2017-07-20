@@ -1,3 +1,7 @@
+<?php
+	session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,115 +52,119 @@
                 width: 40%;
                 margin-left: 30%;
                 margin-right: 30%;
-            }
-
-  
-            
+            }   
+			.logout {
+				margin-right:3%;
+			}
 		</style>
+		
+		<script>
+		history.pushState(null, null, document.URL);
+		window.addEventListener('popstate', function () {
+			history.pushState(null, null, document.URL);
+		});
+		</script>
 </head>
 
 <body>
-         <div class="row">
-            <div class='col-xs-12'>
-                <div class="style"> 
-                    <div class='navbar navbar-inverse navbar-fixed-top'>
-                            <ul class="nav navbar-nav">
-                                <li><a><strong><font size=5px>E-Portal</font></strong></a></li>
-                                <li><a class="btn btn-success" href="index.php">HOME</a></li>
-                            </ul>
-							<ul class="nav nav-tabs navbar-right logout">
-                                <li><form method="POST"><input class="btn navbar-btn btn-danger" type="submit" value="Logout " name="Logout"/></form></li>
-							</ul>
-						
-						
-                    </div>
+    <div class="row">
+        <div class='col-xs-12'>
+            <div class="style"> 
+                <div class='navbar navbar-inverse navbar-fixed-top'>
+                        <ul class="nav navbar-nav">
+                            <li><a href="myfHomed.php" title="Go Back"><img src="back.png" style="width:50px;height:50px;"></a></li>
+                            <li><strong><font size=5px>E-Portal</font></strong></li>
+                            <li><a class="btn btn-success" href="myfHomed.php">HOME</a></li>
+                        </ul>
+						<ul class="nav nav-tabs navbar-right logout">
+                            <li><form method="POST"><input class="btn navbar-btn btn-danger" type="submit" value="Logout " name="Logout"/></form></li>
+						</ul>		
                 </div>
             </div>
         </div>
+    </div>
+      
+    <div class="container-fluid bg-1 text-center"><br><br><br><br>
+		<i class='glyphicon glyphicon-education slide'></i> 
+        <h2 class="margin slide"><strong>Upload Home</strong></h2><br>
+    </div>
     
         
-        <div class="container-fluid bg-1 text-center">
-                <br><br><br><br>
-                <i class='glyphicon glyphicon-education slide'></i> 
-                    <h2 class="margin slide"><strong>Upload Home</strong></h2>
-                    <br>
-        </div>
-    
-        
-            <div class="container-fluid bg-3 text-center slide">    
-              <h3 class="margin"><strong>Upload document</strong></h3><hr><br>
-              <div class="row slide">
-                <p class="slide">Choose file to be uploaded!</p>
-						     <form method="POST" enctype="multipart/form-data"> 
-                                <label class="custom-file-upload btn btn-lg btn-info slide" for="userfile">
-                                    <input name="userfile" type="file" id="userfile"/>
-                                        Choose File
-                                </label><br><br>
-                                 <p class="slide">Now hit Upload to upload your document</p>
-                                <input class="btn-lg btn-success slide" name="upload" type="submit" id="upload" value=" Upload ">
-                             </form><br>
-                  <br><hr>
+    <div class="container-fluid bg-3 text-center slide">    
+        <h3 class="margin"><strong>Upload document</strong></h3><hr><br>
+        <div class="row slide">
+            <p class="slide">Choose file to be uploaded!</p>
+			<form method="POST" enctype="multipart/form-data"> 
+                <label class="custom-file-upload btn btn-lg btn-info slide" for="userfile">
+                    <input name="userfile" type="file" id="userfile"/>
+                    Choose File
+                </label><br><br>
+                <p class="slide">Now hit Upload to upload your document</p>
+                <input class="btn-lg btn-success slide" name="upload" type="submit" id="upload" value=" Upload ">
+            </form><br><br><hr>
                   
-              </div> 
-            </div>
+        </div> 
+    </div>
         
+    <div class="container-fluid bg-3 text-center slide">    
+        <div class="row slide">
+			<p>To see information about syllabus <a href="infotable.php" class="btn btn-md btn-info">Click Here</a></p>
+        </div> 
+    </div>
         
-        
-            <div class="container-fluid bg-3 text-center slide">    
-              <div class="row slide">
-                 <p>To see information about syllabus <a href="infotable.php" class="btn btn-md btn-info">Click Here</a></p>
-              </div> 
-            </div>
-        
-
-
-            <footer class="container-fluid bg-4 text-center">
-              <p><font size = "2">Developed by undergraduate students of CSE department.</font></p> 
-            </footer>
+	<footer class="container-fluid bg-4 text-center">
+        <p><font size = "2">Developed by undergraduate students of CSE department.</font></p> 
+    </footer>
                 
 </body>
 </html>
 	
 <?php
-session_start();
-$allowed = array('jpg', 'jpeg', 'png', 'doc', 'docx', 'pdf', 'xls', 'xlsm');
 
-if(isset($_POST['upload']))
-{
-	if($_FILES['userfile']['size'] > 0)
+	/*if(isset($_POST['Logout']))
 	{
-		require_once 'dbconnect.php';
-		
-		$fileName = $_FILES['userfile']['name'];
-		$tmpName  = $_FILES['userfile']['tmp_name'];
-		$fileSize = $_FILES['userfile']['size'];
-		$fileType = $_FILES['userfile']['type'];
-		
-		$file_ext = explode(".", $fileName);
-		$file_ext = strtolower(end($file_ext));
-		
-		if(in_array($file_ext, $allowed))
-		{
-			$fp = fopen($tmpName, 'r');
-			$content = fread($fp, filesize($tmpName));
-			$content = addslashes($content);
-			fclose($fp);
-			if(!get_magic_quotes_gpc())
-				$fileName = addslashes($fileName);
-			
-			$subject = $_GET['sub'];
-			$TeacherID = $_SESSION['id'];
-			$query = "INSERT INTO upload (Tid, subject, name, size, type, content) VALUES ('$TeacherID', '$subject', '$fileName', '$fileSize', '$fileType', '$content')";
+		session_destroy();
+		header("Location: mysLogind.php");
+		exit;
+	}*/
+	$allowed = array('jpg', 'jpeg', 'png', 'doc', 'docx', 'pdf', 'xls', 'xlsm');
 
-			mysqli_query($conn, $query) or die('Error, query failed'); 
-			echo "<script type='text/javascript'>alert('File $fileName uploaded');</script>";
+	if(isset($_POST['upload']))
+	{
+		if($_FILES['userfile']['size'] > 0)
+		{
+			require_once 'dbconnect.php';
+			
+			$fileName = $_FILES['userfile']['name'];
+			$tmpName  = $_FILES['userfile']['tmp_name'];
+			$fileSize = $_FILES['userfile']['size'];
+			$fileType = $_FILES['userfile']['type'];
+			
+			$file_ext = explode(".", $fileName);
+			$file_ext = strtolower(end($file_ext));
+			
+			if(in_array($file_ext, $allowed))
+			{
+				$fp = fopen($tmpName, 'r');
+				$content = fread($fp, filesize($tmpName));
+				$content = addslashes($content);
+				fclose($fp);
+				if(!get_magic_quotes_gpc())
+					$fileName = addslashes($fileName);
+				
+				$subject = $_GET['sub'];
+				$TeacherID = $_SESSION['id'];
+				$query = "INSERT INTO upload (Tid, subject, name, size, type, content) VALUES ('$TeacherID', '$subject', '$fileName', '$fileSize', '$fileType', '$content')";
+
+				mysqli_query($conn, $query) or die('Error, query failed'); 
+				echo "<script type='text/javascript'>alert('File $fileName uploaded');</script>";
+			}
+			else
+				echo "<script type='text/javascript'>alert('FileType Not Supported');</script>";
+			
+			mysqli_close($conn);
 		}
 		else
-			echo "<script type='text/javascript'>alert('FileType Not Supported');</script>";
-		
-		mysqli_close($conn);
-	}
-	else
-		echo "<script type='text/javascript'>alert('Please Choose a File to Upload');</script>";
-} 
+			echo "<script type='text/javascript'>alert('Please Choose a File to Upload');</script>";
+	} 
 ?> 

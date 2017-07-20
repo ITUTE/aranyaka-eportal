@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="eportal.css">
-    <link rel="stylesheet" type="text/css" href="index.css">
+  <link rel="stylesheet" type="text/css" href="index.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   
@@ -47,9 +47,14 @@
       background-color: darkcyan; 
       color: #fff;
   }
- 
-  
   </style> 
+  
+	<script>
+		history.pushState(null, null, document.URL);
+		window.addEventListener('popstate', function () {
+			history.pushState(null, null, document.URL);
+		});
+	</script>
 </head>
 
 <body>   
@@ -77,7 +82,7 @@
                     <div class="container-fluid bg-3 text-center slide">    
                       <h3 class="margin"><strong>Events and Circulars</strong></h3><hr><br>
                       <div class="row slide">
-                        <a href="delete.php"><button class="btn-lg btn-success slide" id="click" name="click" value="Delete">View</button></a><hr>
+                        <a href="CircularEvent.php"><button class="btn-lg btn-success slide" id="click" name="click" value="Delete">View</button></a><hr>
                       </div> 
                     </div>
 

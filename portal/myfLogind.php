@@ -49,8 +49,6 @@
  }
 ?>
 
-
-
 <!doctype html>
 <html> 
     <head> 
@@ -61,56 +59,66 @@
         <link href='css/bootstrap.css' rel='stylesheet'> 
         <link rel="stylesheet" type="text/css" href="eportal.css">
         <link rel="stylesheet" type="text/css" href="index.css">
-    </head> 
-    <style>
-      body {
-              font-family: American Typewriter;
-              line-height: 1.8;
-              color: #f5f6f7;    
-          }
-          p {
-              font-size: 23px; 
-          }
-          .margin {
-              margin-bottom: 30px;
-              font-size: 50px;
-          }
-          .margin1 { 
-                margin-bottom: 13px;
-          }
-          .bg-1 { 
-              background-image: url(home.jpg);
-              background-size: cover; 
-              color: #ffffff;
-          }
-          .bg-2 { 
-              background-color: #474e5d; 
-              color: #ffffff;
-          }
-          .bg-3 { 
-              background-color: #ffffff; 
-              color: darkcyan;
-              padding-bottom: 10px;
-          }
-          .bg-4 { 
-              padding-top: 0px;
-              padding-bottom: 2px;
-              background-color: darkcyan; 
-              color: #fff;
-          }
-             .dropsize{
-                width: 60%;
-                margin-left: 20%;
-                margin-right: 20%;
-            }
-    </style>
+		<style>
+		  body {
+				  font-family: American Typewriter;
+				  line-height: 1.8;
+				  color: #f5f6f7;    
+			  }
+			  p {
+				  font-size: 23px; 
+			  }
+			  .margin {
+				  margin-bottom: 30px;
+				  font-size: 50px;
+			  }
+			  .margin1 { 
+					margin-bottom: 13px;
+			  }
+			  .bg-1 { 
+				  background-image: url(home.jpg);
+				  background-size: cover; 
+				  color: #ffffff;
+			  }
+			  .bg-2 { 
+				  background-color: #474e5d; 
+				  color: #ffffff;
+			  }
+			  .bg-3 { 
+				  background-color: #ffffff; 
+				  color: darkcyan;
+				  padding-bottom: 10px;
+			  }
+			  .bg-4 { 
+				  padding-top: 0px;
+				  padding-bottom: 2px;
+				  background-color: darkcyan; 
+				  color: #fff;
+			  }
+				 .dropsize{
+					width: 60%;
+					margin-left: 20%;
+					margin-right: 20%;
+				}
+		</style>
+		<script>
+			history.pushState(null, null, document.URL);
+			window.addEventListener('popstate', function () {
+				history.pushState(null, null, document.URL);
+			});
+		</script>
+	</head>
     <body>
      <div class="se-pre-con"></div>
         <div class="row">
             <div class='col-xs-12'>
                 <div class="style"> 
                     <div class='navbar navbar-inverse navbar-fixed-top'>
-                        <h1><i class='glyphicon glyphicon-book'></i>E-Portal</h1>
+                            <ul class="nav navbar-nav">
+								<li><a href="index.php" title="Go Back"><img src="back.png" style="width:50px;height:50px;"></a></li>
+                                <li><strong><font size=5px>E-Portal</font></strong></li>
+                                <li><a class="btn btn-success" href="index.php">HOME</a></li>
+                            </ul>				
                     </div>
                 </div>
             </div>
