@@ -53,9 +53,6 @@
                 margin-left: 30%;
                 margin-right: 30%;
             }   
-			.logout {
-				margin-right:3%;
-			}
 		</style>
 		
 		<script>
@@ -77,11 +74,6 @@
                                 <li  class="titlenav"><strong><font size=6px>#E-Portal</font></strong></li>
                                 <li><a class="navbar-btn btn btn-success" href="index.php">HOME</a></li>
                             </ul>	
-							<ul class="nav navbar-nav navbar-right logout">
-                                <li><form method="POST"><input class="btn navbar-btn btn-danger" type="submit" value="Logout " name="Logout"/></form></li>
-							</ul>
-						
-						
                     </div>
                 </div>
             </div>
@@ -112,7 +104,7 @@
         
     <div class="container-fluid bg-3 text-center slide">    
         <div class="row slide">
-			<p>To see information about syllabus <a href="infotable.php" class="btn btn-md btn-info">Click Here</a></p>
+			<p>To see information about syllabus <a href="infotablef.php" class="btn btn-md btn-info">Click Here</a></p>
         </div> 
     </div>
         
@@ -125,13 +117,7 @@
 	
 <?php
 
-	/*if(isset($_POST['Logout']))
-	{
-		session_destroy();
-		header("Location: mysLogind.php");
-		exit;
-	}*/
-	$allowed = array('jpg', 'jpeg', 'png', 'doc', 'docx', 'pdf', 'xls', 'xlsm');
+	$allowed = array('jpg', 'jpeg', 'png', 'doc', 'docx', 'pdf', 'xls', 'xlsm', 'ppt', 'pptx');
 
 	if(isset($_POST['upload']))
 	{

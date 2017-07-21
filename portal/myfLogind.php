@@ -49,7 +49,7 @@
  }
 ?>
 
-<!doctype html>
+<!DOCTYPE html>
 <html> 
     <head> 
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -111,7 +111,7 @@
                 <div class="style"> 
                     <div class='navbar navbar-inverse navbar-fixed-top'>
                             <ul class="nav navbar-nav">
-                                <li><a class="btn navbar-btn" href="myfLogind.php">Go Back</a></li>
+                                <li><a class="btn navbar-btn" href="index.php">Go Back</a></li>
                                 <li  class="titlenav"><strong><font size=6px>#E-Portal</font></strong></li>
                                 <li><a class="navbar-btn btn btn-success" href="index.php">HOME</a></li>
                             </ul>	

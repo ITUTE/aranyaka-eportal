@@ -157,22 +157,19 @@
               </div> 
             </div>
         </div>
-    
-                <div class="container-fluid bg-3 text-center slide">    
-                      <h3 class="margin"><strong>Upload Extra Circular</strong></h3><hr><br>
-                      <div class="row slide">
-                        <div class=col-xs-6>
-                            <h2 class="xxx">Upload Circulars</h2>
-                            <a href="delete.php"><button class="btn-lg btn-info slide" id="click" name="click" value="Delete">Upload Circular</button></a><hr>
-                        </div>
-                        <div class=col-xs-6>
-                            <h2 class="xxx">Upload Events</h2>
-                            <a href="delete.php"><button class="btn-lg btn-info slide" id="click" name="click" value="Delete">Upload Event</button></a><hr>
-                        </div>
-
-
-                      </div> 
+        <div class="container-fluid bg-3 text-center slide">    
+            <h3 class="margin"><strong>Upload Extra Circular</strong></h3><hr><br>
+            <div class="row slide">
+                <div class=col-xs-6>
+                    <h2 class="xxx">Upload Circulars</h2>
+                    <a href="CEventUpload.php?id=1"><button class="btn-lg btn-info slide" id="click" name="click" value="Delete">Upload Circular</button></a><hr>
                 </div>
+                <div class=col-xs-6>
+                    <h2 class="xxx">Upload Events</h2>
+                    <a href="CEventUpload.php?id=2"><button class="btn-lg btn-info slide" id="click" name="click" value="Delete">Upload Event</button></a><hr>
+                </div>
+			</div> 
+        </div>
        
     <footer class="container-fluid bg-4 text-center">
       <p><font size = "2">Developed by undergraduate students of CSE department.</font></p> 

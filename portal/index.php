@@ -82,7 +82,7 @@
                     <div class="container-fluid bg-3 text-center slide">    
                       <h3 class="margin"><strong>Events and Circulars</strong></h3><hr><br>
                       <div class="row slide">
-                        <a href="CircularEvent.php"><button class="btn-lg btn-success slide" id="click" name="click" value="Delete">View</button></a><hr>
+                        <a href="CEvent.php"><button class="btn-lg btn-success slide" id="click" name="click" value="View">View</button></a><hr>
                       </div> 
                     </div>
 

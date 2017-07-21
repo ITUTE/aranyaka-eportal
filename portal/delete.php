@@ -6,12 +6,6 @@
 	<link rel="stylesheet" type="text/css" href="eportal.css">
 	<link rel="stylesheet" type="text/css" href="index.css">
 	
-	<style>
-		.logout {
-			margin-right:3%;
-		}
-	</style>
-	
 	<script>
 		history.pushState(null, null, document.URL);
 		window.addEventListener('popstate', function () {
@@ -31,17 +25,11 @@
                                 <li  class="titlenav"><strong><font size=6px>#E-Portal</font></strong></li>
                                 <li><a class="navbar-btn btn btn-success" href="index.php">HOME</a></li>
                             </ul>	
-							<ul class="nav navbar-nav navbar-right logout">
-                                <li><form method="POST"><input class="btn navbar-btn btn-danger" type="submit" value="Logout " name="Logout"/></form></li>
-							</ul>
-						
-						
                     </div>
                 </div>
             </div>
         </div>
     </div>
-	<br><br>
     <div class="row">
 		<div class="container-fluid">
             <?php
