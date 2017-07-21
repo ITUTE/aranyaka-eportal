@@ -67,17 +67,17 @@
 </head>
 
 <body>
-  <div class="se-pre-con"></div>
+	<div class="se-pre-con"></div>
     <div class="container-fluid">
         <div class="row">
             <div class='col-xs-12'>
                 <div class="style"> 
                     <div class='navbar navbar-inverse navbar-fixed-top'>
-                            <ul class="nav navbar-nav">
-                                <li><a class="btn navbar-btn" href="myfHomed.php">Go Back</a></li>
-                                <li  class="titlenav"><strong><font size=6px>#E-Portal</font></strong></li>
-                                <li><a class="navbar-btn btn btn-success" href="index.php">HOME</a></li>
-                            </ul>	
+                        <ul class="nav navbar-nav">
+                            <li><a class="btn navbar-btn" href="myfHomed.php">Go Back</a></li>
+                            <li class="titlenav"><strong><font size=6px>#E-Portal</font></strong></li>
+                            <li><a class="navbar-btn btn btn-success" href="index.php">HOME</a></li>
+                        </ul>	
                     </div>
                 </div>
             </div>
@@ -96,13 +96,11 @@
             <p class="slide">Choose file to be uploaded!</p>
 			<form method="POST" enctype="multipart/form-data"> 
                 <label class="custom-file-upload btn btn-lg btn-info slide" for="userfile">
-                    <input name="userfile" type="file" id="userfile"/>
-                    Choose File
+                    <input name="userfile" type="file" id="userfile"/>Choose File
                 </label><br><br>
                 <p class="slide">Now hit Upload to upload your document</p>
-                <input class="btn-lg btn-success slide" name="upload" type="submit" id="upload" value=" Upload ">
-            </form><br><br><hr>
-                  
+                <input class="btn-lg btn-success slide" name="upload" type="submit" id="upload" value=" Upload "/>
+            </form><br><br><hr>          
         </div> 
     </div>
         
@@ -114,7 +112,7 @@
         
 	<footer class="container-fluid bg-4 text-center">
         <p><font size = "2">Developed by undergraduate students of CSE department.</font></p>
-      <p><a href="http://www.rvce.edu.in/" target = "_blank"><font size=2px color="white">R.V. College of Engineering</font></a></p> 
+		<p><a href="http://www.rvce.edu.in/" target = "_blank"><font size=2px color="white">R.V. College of Engineering</font></a></p> 
     </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -125,9 +123,8 @@
         $(window).load(function() {
             $(".se-pre-con").fadeOut(1500);;
         });
-    </script>
-                
- </body>
+    </script>                
+</body>
 </html>
 	
 <?php

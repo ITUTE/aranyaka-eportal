@@ -15,15 +15,15 @@
 </head>
 
 <body>
-  <div class="se-pre-con"></div>
-  <div class="container-fluid">
+	<div class="se-pre-con"></div>
+	<div class="container-fluid">
         <div class="row">
             <div class='col-xs-12'>
                 <div class="style"> 
                     <div class='navbar navbar-inverse navbar-fixed-top'>
                             <ul class="nav navbar-nav">
                                 <li><a class="btn navbar-btn" href="myfHomed.php">Go Back</a></li>
-                                <li  class="titlenav"><strong><font size=6px>#E-Portal</font></strong></li>
+                                <li class="titlenav"><strong><font size=6px>#E-Portal</font></strong></li>
                                 <li><a class="navbar-btn btn btn-success" href="index.php">HOME</a></li>
                             </ul>	
                     </div>
@@ -31,6 +31,16 @@
             </div>
         </div>
     </div>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.3/jquery.scrollTo.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+
+	<script>
+		$(window).load(function() {
+			$(".se-pre-con").fadeOut(1500);;
+		});
+	</script>
     
     <div class="container-fluid slide">
         <div class="row">
@@ -43,8 +53,8 @@
 
                 if(mysqli_num_rows($result)==0) 
                 {
-                    echo "<h2> Sir/Ma'am, no course material has been uploaded by you!</h2>";
-                    die("You have not uploaded any content yet!");
+                    echo "<p> Sir/Ma'am, no course material has been uploaded by you!</p>";
+                    die();
                 }
 
                 echo "<table class=\"table table-striped table-hover\" style=\"width:100%\">
@@ -70,27 +80,16 @@
         </div>
 	</div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.3/jquery.scrollTo.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
-
-<script>
-	$(window).load(function() {
-		$(".se-pre-con").fadeOut(1500);;
-	});
-</script>
-
-<script>
-	function del(id)
-	{
-		if (confirm("Confirm") == true) {
-			location.assign("DeleteFile.php?id="+id);
-		} 
-		else {
-			die();
+	<script>
+		function del(id)
+		{
+			if (confirm("Confirm") == true) {
+				location.assign("DeleteFile.php?id="+id);
+			} 
+			else {
+				die();
+			}
 		}
-	}
-</script>
-
-    </body>
+	</script>
+</body>
 </html>
