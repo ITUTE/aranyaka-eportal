@@ -123,8 +123,8 @@ h2 {
   .slide {
       animation-name: slide;
       -webkit-animation-name: slide;
-      animation-duration: 1s;
-      -webkit-animation-duration: 1s;
+      animation-duration: 2s;
+      -webkit-animation-duration: 2s;
       visibility: visible;
   }
   @keyframes slide {
@@ -183,20 +183,6 @@ h2 {
     filter: blur(1px);
     z-index: -1;
 }
-
-.background-image1{
-    background-image: url("pengu.jpg");
-    background-size: 100%;
-    position: fixed;
-    left: 0; 
-    right: 0;
-    display: block;
-    border: 3px solid black;
-    width: 100%;
-    height: 1000%;
-    z-index: -1;
-}
-
 
 
 .content{

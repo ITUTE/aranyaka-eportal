@@ -32,6 +32,9 @@
               background-image: url(home.jpg);
               background-size: cover; 
               color: #ffffff;
+              background-attachment: fixed;
+              background-position: center;
+              background-repeat: no-repeat;
           }
           .bg-2 { 
               background-color: #474e5d; 
@@ -64,6 +67,7 @@
 </head>
 
 <body>
+  <div class="se-pre-con"></div>
     <div class="container-fluid">
         <div class="row">
             <div class='col-xs-12'>
@@ -83,7 +87,7 @@
     <div class="container-fluid bg-1 text-center"><br><br>
 		<i class='glyphicon glyphicon-education slide'></i> 
         <h2 class="margin slide"><strong>Upload Home</strong></h2><br>
-    </div>
+    </div> 
     
         
     <div class="container-fluid bg-3 text-center slide">    
@@ -95,15 +99,26 @@
                     <input name="userfile" type="file" id="userfile"/>
                     Choose File
                 </label><br><br>
-                <p class="slide">Now hit Upload to upload your document</p>
+                <p class="slide">Now hit Upload to upload your file</p>
                 <input class="btn-lg btn-success slide" name="upload" type="submit" id="upload" value=" Upload ">
             </form><br><br><hr>        
         </div> 
     </div>
         
-	<footer class="container-fluid bg-4 text-center">
-        <p><font size = "2">Developed by undergraduate students of CSE department.</font></p> 
-    </footer>
+        <footer class="container-fluid bg-4 text-center">
+            <p><font size = "2">Developed by undergraduate students of CSE department.</font></p>
+      <p><a href="http://www.rvce.edu.in/" target = "_blank"><font size=2px color="white">R.V. College of Engineering</font></a></p> 
+        </footer>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.3/jquery.scrollTo.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+
+    <script>
+        $(window).load(function() {
+            $(".se-pre-con").fadeOut(1500);;
+        });
+    </script>
                 
 </body>
 </html>

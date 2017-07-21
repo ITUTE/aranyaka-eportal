@@ -81,9 +81,12 @@
 					margin-bottom: 13px;
 			  }
 			  .bg-1 { 
-				  background-image: url(home.jpg);
+				  background-image: url(pics/home2.jpg);
 				  background-size: cover; 
 				  color: #ffffff;
+                  background-attachment: fixed;
+                  background-position: center;
+                  background-repeat: no-repeat;
 			  }
 			  .bg-2 { 
 				  background-color: #474e5d; 
@@ -160,7 +163,8 @@
             </div>
           </div>
         <footer class="container-fluid bg-4 text-center">
-            <p><font size = "2">Developed by undergraduate students of CSE department.</font></p> 
+            <p><font size = "2">Developed by undergraduate students of CSE department.</font></p>
+      <p><a href="http://www.rvce.edu.in/" target = "_blank"><font size=2px color="white">R.V. College of Engineering</font></a></p>
         </footer>
             
         

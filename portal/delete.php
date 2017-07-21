@@ -15,6 +15,7 @@
 </head>
 
 <body>
+  <div class="se-pre-con"></div>
   <div class="container-fluid">
         <div class="row">
             <div class='col-xs-12'>
@@ -30,8 +31,9 @@
             </div>
         </div>
     </div>
-    <div class="row">
-		<div class="container-fluid">
+    
+    <div class="container-fluid slide">
+        <div class="row">
             <?php
                 session_start();
                 include 'dbconnect.php';
@@ -41,6 +43,7 @@
 
                 if(mysqli_num_rows($result)==0) 
                 {
+                    echo "<h2> Sir/Ma'am, no course material has been uploaded by you!</h2>";
                     die("You have not uploaded any content yet!");
                 }
 
@@ -67,6 +70,16 @@
         </div>
 	</div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.3/jquery.scrollTo.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+
+<script>
+	$(window).load(function() {
+		$(".se-pre-con").fadeOut(1500);;
+	});
+</script>
+
 <script>
 	function del(id)
 	{
@@ -78,5 +91,6 @@
 		}
 	}
 </script>
-</body>
+
+    </body>
 </html>

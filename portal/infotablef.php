@@ -12,9 +12,10 @@
 			.logout{
 				margin-right:3%;
 			}
-		</style>
+		</style> 
 	</head>
 	<body>
+     <div class="se-pre-con"></div>
         <div class="container-fluid">
         <div class="row">
             <div class='col-xs-12'>
@@ -32,7 +33,7 @@
     </div>
         <div class='row'>
             <div class="container-fluid">
-                    <hr>
+                    <h1>SYLLABUS INFORMATION</h1><hr>
                       <p><strong>The course names and course codes organised on the basis of semester</strong></p>            
                       <table class="table table-hover table-bordered slide">
                         <thead>
@@ -279,9 +280,19 @@
             <div class='style1'>
 			</div>
         </div>			
-        <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
-        <script src='js/bootstrap.js'></script>
-</body>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+    <script src='js/bootstrap.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.3/jquery.scrollTo.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+
+    <script>
+        $(window).load(function() {
+            $(".se-pre-con").fadeOut(1500);;
+        });
+    </script>
+
+    </body>
 </html>

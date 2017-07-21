@@ -34,9 +34,12 @@
             margin-bottom: 13px;
       }
       .bg-1 { 
-          background-image: url(home.jpg); 
+          background-image: url(pics/home2.jpg); 
           color: #ffffff;
           background-size: cover;
+          background-attachment: fixed;
+          background-position: center;
+          background-repeat: no-repeat;
       }
       .bg-2 { 
           background-color: #474e5d; 
@@ -144,14 +147,16 @@
 						<option value="6">Sixth</option>
 						<option value="7">Seventh</option>
 					</select>
-              </form><br><hr>
-              <p>To see information about syllabus <a href="infotables.php" class="btn btn-md btn-info">Click Here</a></p>
-              <div id="sublist"></div>	<hr><br> 
+              </form><br><p><font size=3px>Select a semester and then pick the desired course</font></p><hr>
+              <div id="sublist"></div><br>
+              <p>To see information about syllabus <a target="_blank" href="infotables.php" class="btn btn-md btn-info">Click Here</a></p>
+               
           </div> 
         </div>
     
     <footer class="container-fluid bg-4 text-center">
-      <p><font size = "2">Developed by undergraduate students of CSE department.</font></p> 
+      <p><font size = "2">Developed by undergraduate students of CSE department.</font></p>
+      <p><a href="http://www.rvce.edu.in/" target = "_blank"><font size=2px color="white">R.V. College of Engineering</font></a></p> 
     </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

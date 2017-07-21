@@ -30,9 +30,12 @@
                 margin-bottom: 13px;
           }
           .bg-1 { 
-              background-image: url(home.jpg);
+              background-image: url(pics/home.jpg);
               background-size: cover; 
               color: #ffffff;
+              background-attachment: fixed;
+              background-position: center;
+              background-repeat: no-repeat;
           }
           .bg-2 { 
               background-color: #474e5d; 
@@ -101,6 +104,7 @@
 		</script>		
     </head> 
     <body>
+    <div class="se-pre-con"></div>
     <div class="container-fluid">
         <div class="row">
             <div class='col-xs-12'>
@@ -130,7 +134,7 @@
             </div>
         <div id="upload">
             <div class="container-fluid bg-3 text-center slide">    
-              <h3 class="margin"><strong>Upload documents</strong></h3><hr><br>
+              <h3 class="margin slide"><strong>Upload documents</strong></h3><hr><br>
               <div class="row slide">
                      <form method="POST">
                     <p class="slide">Select Semester:</p>
@@ -142,9 +146,10 @@
                             <option value="6">Sixth</option>
                             <option value="7">Seventh</option>
                         </select><br>
-                  </form><br><hr>
-                  <p>To see information about syllabus <a href="infotablef.php" class="btn btn-md btn-info">Click Here</a></p>
-                  <div id="sublist"></div>	<hr>
+                </form><br><p><font size=3px>Select a semester and then pick the desired course</font></p><hr>
+              <div id="sublist"></div><br>
+              <p>To see information about syllabus <a target = "_blank" href="infotablef.html" class="btn btn-md btn-info">Click Here</a></p>
+                  <br><hr>
               </div> 
             </div>
         </div>
@@ -153,7 +158,7 @@
              <div class="container-fluid bg-3 text-center slide">    
               <h3 class="margin"><strong>Delete Documents</strong></h3><hr><br>
               <div class="row slide">
-                <a href="delete.php"><button class="btn-lg btn-danger slide" id="click" name="click" value="Delete">Delete Contents</button></a><hr>
+                <a href="delete.php"><button class="btn-lg btn-danger slide" id="click" name="click" value="Delete">Delete Contents</button></a><br><br><hr>
               </div> 
             </div>
         </div>
@@ -162,21 +167,24 @@
             <div class="row slide">
                 <div class=col-xs-6>
                     <h2 class="xxx">Upload Circulars</h2>
-                    <a href="CEventUpload.php?id=1"><button class="btn-lg btn-info slide" id="click" name="click" value="Delete">Upload Circular</button></a><hr>
+                    <a href="CEventUpload.php?id=1"><button class="btn-lg btn-info slide" id="click" name="click" value="Delete">Upload Circular</button></a>
                 </div>
                 <div class=col-xs-6>
                     <h2 class="xxx">Upload Events</h2>
-                    <a href="CEventUpload.php?id=2"><button class="btn-lg btn-info slide" id="click" name="click" value="Delete">Upload Event</button></a><hr>
+                    <a href="CEventUpload.php?id=2"><button class="btn-lg btn-info slide" id="click" name="click" value="Delete">Upload Event</button></a>
                 </div>
 			</div> 
-        </div>
+        </div><br><br>
        
     <footer class="container-fluid bg-4 text-center">
-      <p><font size = "2">Developed by undergraduate students of CSE department.</font></p> 
+      <p><font size = "2">Developed by undergraduate students of CSE department.</font></p>
+      <p><a href="http://www.rvce.edu.in/" target = "_blank"><font size=2px color="white">R.V. College of Engineering</font></a></p>
     </footer>
-     
+        
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
         <script>
             $(window).load(function() {

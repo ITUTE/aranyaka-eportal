@@ -36,7 +36,8 @@
 	</style>
 </head>
 <body>
-    <div class="container-fluid">
+  <div class="se-pre-con"></div>
+    <div class="container-fluid slide">
         <div class="row">
             <div class='col-xs-12'>
                 <div class="style"> 
@@ -69,7 +70,7 @@
 					$result = mysqli_query($conn, $query) or die('Error, query failed');
 					if(mysqli_num_rows($result)==0) 
 					{
-						echo "No contents uploaded for this subject!";	
+						echo "<h2> Sorry mate, no contents uploaded for this subject!</h2><br><p>Contact the concerned faculty to upload materials, or just come back later :)";
 						die();
 					}
 					?>
@@ -94,5 +95,14 @@
 				?>
 			</div>
 		</div>
-	</body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.3/jquery.scrollTo.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+
+    <script>
+        $(window).load(function() {
+            $(".se-pre-con").fadeOut(1500);;
+        });
+    </script>
+</body>
 </html>
