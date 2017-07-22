@@ -25,6 +25,9 @@ def get_selected_course(event):
     e3.insert(END, selected[3])
     e4.delete(0, END)
     e4.insert(END, selected[4])
+    position_val.set(selected[2])
+    permit_val.set(selected[6])
+    dept_val.set(selected[5])
 
 def clear_button():
     e1.delete(0, END)
@@ -43,11 +46,11 @@ def view_cmd():
 
 def search_cmd():
     listbox.delete(0, END)
-    for row in db.search(permit_val.get(), name_val.get().lower()):
+    for row in db.search(str(permit_val.get()), name_val.get().lower()):
         listbox.insert(END, row)
 
 def add_cmd():
-    db.insert(name_val.get().lower(), position_val.get(), user_val.get(), pass_val.get(), dept_val.get(), permit_val.get())
+    db.insert(name_val.get().lower(), position_val.get(), user_val.get(), pass_val.get(), dept_val.get(), str(permit_val.get()))
     view_cmd()
 
 def del_cmd():
@@ -55,7 +58,7 @@ def del_cmd():
     view_cmd()
 
 def update_cmd():
-    db.update(selected[0], name_val.get(), position_val.get(), user_val.get(), pass_val.get(), dept_val.get(), permit_val.get())
+    db.update(selected[0], name_val.get(), position_val.get(), user_val.get(), pass_val.get(), dept_val.get(), str(permit_val.get()))
     view_cmd()
 
 
