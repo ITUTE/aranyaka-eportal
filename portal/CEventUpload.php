@@ -92,7 +92,20 @@
     
         
     <div class="container-fluid bg-3 text-center slide">    
-        <h3 class="margin"><strong>Upload Circular</strong></h3><hr><br>
+		<?php
+			if($_GET['id']==1) 
+			{
+				?>
+				<h3 class="margin"><strong>Upload Circular</strong></h3><hr><br>
+				<?php
+			}
+			else
+			{
+				?>
+				<h3 class="margin"><strong>Upload Event</strong></h3><hr><br>
+				<?php
+			}
+		?>
         <div class="row slide">
             <p class="slide">Choose file to be uploaded!</p>
 			<form method="POST" enctype="multipart/form-data"> 

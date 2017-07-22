@@ -90,7 +90,7 @@ position_val = StringVar()
 e2 = OptionMenu(window, position_val, *choices)
 e2.grid(row = 0, column = 4, sticky = N+S+E+W)
 
-l3 = Label(window, text = "User ID:")
+l3 = Label(window, text = "Username:")
 l3.grid(row = 1, column = 0, sticky = N+S+E+W)
 
 user_val = StringVar()
