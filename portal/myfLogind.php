@@ -95,7 +95,7 @@
 					<div class="form-group dropsize slide">
 						<div class="input-group">
 							<span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-							<input name="user" id="user" autofocus class="form-control" placeholder="Your Email" maxlength="40" required />
+							<input name="user" id="user" class="form-control" placeholder="Your Email" maxlength="40" required />
 						</div>
 					</div><br>
 					
