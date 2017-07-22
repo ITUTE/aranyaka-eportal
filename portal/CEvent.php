@@ -17,7 +17,7 @@
 	<style>
         .heading{
             color: darkcyan;
-            font: American Typewriter;
+            font-family: American Typewriter;
         }
     </style>
 	
@@ -30,6 +30,7 @@
 
 </head>
 <body>
+    <div class="se-pre-con"></div>
     <div class="container-fluid">
         <div class="row">
             <div class='col-xs-12'>
@@ -45,6 +46,16 @@
 			</div>
 		</div>
     </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.3/jquery.scrollTo.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script> 
+    
+    <script>
+		$(window).load(function() {
+			$(".se-pre-con").fadeOut(1500);;
+		});
+	</script>
 	
     <div class="container-fluid slide">
         <div class="row">
@@ -116,8 +127,6 @@
             </div> 
         </div>
 	</div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.3/jquery.scrollTo.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>    
+       
 </body>
 </html>
