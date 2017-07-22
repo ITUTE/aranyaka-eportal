@@ -56,9 +56,8 @@
         });
     </script>
 	
-	<br><br>
 	<div class="row">
-		<div class="container-fluid">
+		<div class="container-fluid slide">
 			<?php
 				if(@$_GET['sub']!="") 
 				{
