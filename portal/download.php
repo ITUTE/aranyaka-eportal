@@ -58,6 +58,7 @@
 	
 	<div class="row">
 		<div class="container-fluid slide">
+            <form method="POST">
 			<?php
 				if(@$_GET['sub']!="") 
 				{
@@ -76,8 +77,9 @@
 				echo "<table class=\"table table-striped table-hover\" style=\"width:100%\">
 					 <tr>
 						<th>File Name</th>
+                        
 						<th></th> 
-					 </tr>";
+					 </tr>"; 
 				while(list($id, $sub, $name) = mysqli_fetch_array($result))
 				{
 					echo "<tr>";
@@ -88,7 +90,7 @@
 					echo "</tr>";
 				}
  				echo "</table>";
-			?>
+            ?>
 			</form>
 		</div>
 	</div>
