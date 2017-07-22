@@ -53,7 +53,7 @@
 
                 if(mysqli_num_rows($result)==0) 
                 {
-                    echo "<p> Sir/Ma'am, no course material has been uploaded by you!</p>";
+                    echo "<h2 class=\"my-block slide\"><font size=5px face = \"Comic sans MS\">Sir/Ma'am, no course material has been uploaded by you!</font></h2>";
                     die();
                 }
 

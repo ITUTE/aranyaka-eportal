@@ -190,5 +190,13 @@ input[type="file"] {
                  
 }         
 .right {
-	margin-right:0px;
+	
+        margin-right:0px;
+}
+
+ .my-block {
+        
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
 }
