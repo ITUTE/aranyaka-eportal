@@ -1,3 +1,9 @@
+<?php
+	session_start();
+	ob_start();
+	require_once 'dbconnect.php';
+?>
+
 <!DOCTYPE html>
 <html> 
 <head>
@@ -54,10 +60,6 @@
 	<div class="row">
 		<div class="container-fluid">
 			<?php
-				session_start();
-				ob_start();
-				require_once 'dbconnect.php';
-				
 				if(@$_GET['sub']!="") 
 				{
 					$subject = $_GET['sub'];
@@ -83,7 +85,7 @@
 						echo "<tr>";
 						echo "<td>"; echo $sub . " " . $name . " "; echo "</td>";
 						?>
-						<td><a href="DownloadFile.php?id=<?php echo $id; ?>" ><button class="btn-success">Download</button></a></td>
+						<td><a href="DownloadFile.php?id=<?php echo $id; ?>" ><button class="btn-success" class="right">Download</button></a></td>
 						<?php
 						echo "</tr>";
 					}

@@ -158,20 +158,31 @@
 				</div> 
             </div>
         </div>
-        <div class="container-fluid bg-3 text-center slide">    
-            <h3 class="margin"><strong>Upload Extra Circular</strong></h3><hr><br>
-            <div class="row slide">
-                <div class=col-xs-6>
-				    <h2 class="xxx">Upload Circulars</h2>
-                    <a href="CEventUpload.php?id=1"><button class="btn-lg btn-info slide" id="click" name="click" value="Delete">Upload Circular</button></a>
-                </div>
-                <div class=col-xs-6>
-                    <h2 class="xxx">Upload Events</h2>
-                    <a href="CEventUpload.php?id=2"><button class="btn-lg btn-info slide" id="click" name="click" value="Delete">Upload Event</button></a>
-                </div>
-			</div> 
-        </div><br><br>
-       
+		
+		<?php
+			$query = "SELECT permit FROM flogin WHERE id = " . $_SESSION['id'];
+			$result = mysqli_query($conn, $query);
+			$row = mysqli_fetch_row($result);
+			if($row[0]=="YES")
+			{
+				?>
+				<div class="container-fluid bg-3 text-center slide">    
+					<h3 class="margin"><strong>Upload Extra Circular</strong></h3><hr><br>
+					<div class="row slide">
+						<div class=col-xs-6>
+							<h2 class="xxx">Upload Circulars</h2>
+							<a href="CEventUpload.php?id=1"><button class="btn-lg btn-info slide" id="click" name="click" value="Delete">Upload Circular</button></a>
+						</div>
+						<div class=col-xs-6>
+							<h2 class="xxx">Upload Events</h2>
+							<a href="CEventUpload.php?id=2"><button class="btn-lg btn-info slide" id="click" name="click" value="Delete">Upload Event</button></a>
+						</div>
+					</div> 
+				</div><br><br>
+				<?php
+			}
+		?>
+		
 		<footer class="container-fluid bg-4 text-center">
 			<p><font size = "2">Developed by undergraduate students of CSE department.</font></p>
 			<p><a href="http://www.rvce.edu.in/" target = "_blank"><font size=2px color="white">R.V. College of Engineering</font></a></p>

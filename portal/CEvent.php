@@ -70,7 +70,7 @@
 							echo "<tr>";
 							echo "<td>"; echo $name . " "; echo "</td>";
 							?>
-							<td><a href="CEventDownload.php?id=<?php echo $id; ?>" ><button class="btn-success">Download</button></a></td>
+							<td><a href="CEventDownload.php?id=<?php echo $id; ?>" ><button class="btn-success" class="right">Download</button></a></td>
 						<?php
 							echo "</tr>";
 						}

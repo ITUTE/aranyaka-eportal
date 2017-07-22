@@ -2,51 +2,6 @@
 	ob_start();
 	session_start();
 	require_once 'dbconnect.php';
-	 
-	// it will never let you open index(login) page if session is set
-	if (@$_SESSION['faculty'] != "") 
-	{
-		header("Location: myfHomed.php");
-		exit;
-	} 
-	 
-	$error = false;
-	 
-	if( isset($_POST['submit']) ) 
-	{	 	 
-		// prevent sql injections/ clear user invalid inputs
-		$user = trim($_POST['user']);
-		$user = strip_tags($user);
-		$user = htmlspecialchars($user);
-		 
-		// prevent sql injections / clear user invalid inputs
-		$pass = trim($_POST['pass']);
-		$pass = strip_tags($pass);
-		$pass = htmlspecialchars($pass);
-	  
-		// if there's no error, continue to login
-		if (!$error) 
-		{
-			$query = mysqli_query($conn, "SELECT id FROM flogin WHERE passw='$pass' AND username='$user'");
-			$rows = mysqli_num_rows($query); 
-		 
-			if($rows==1) 
-			{
-				$row = mysqli_fetch_assoc($query);
-				$_SESSION['faculty']=$user;
-				$_SESSION['id']=$row["id"];
-				if (@$_SESSION['faculty'] != "") 
-				{ 
-					header("Location: myfHomed.php");
-					exit;
-				}
-			}
-			else 
-				echo "Invalid Credentials";
-			 
-			//mysqli_close($conn);		 
-		}
-	}
 ?>
 
 <!DOCTYPE html>
@@ -151,6 +106,8 @@
 							<input type="password" name="pass" id="pass" class="form-control" placeholder="Your Password" maxlength="30" required />
 						</div>
                     </div><br><hr>
+					
+					<p id="validate" style="text-align:center"></p>
               
 					<div class="form-group">
 						<input type="submit" value="Login" name="submit" class = "btn btn-lg btn-success"/> 
@@ -176,4 +133,56 @@
         </script> 
     </body> 
 </html>
-<?php ob_end_flush(); ?> 
+
+<?php
+	// it will never let you open index(login) page if session is set
+	if (@$_SESSION['faculty'] != "") 
+	{
+		header("Location: myfHomed.php");
+		exit;
+	} 
+	 
+	$error = false;
+	 
+	if( isset($_POST['submit']) ) 
+	{	 	 
+		// prevent sql injections/ clear user invalid inputs
+		$user = trim($_POST['user']);
+		$user = strip_tags($user);
+		$user = htmlspecialchars($user);
+		 
+		// prevent sql injections / clear user invalid inputs
+		$pass = trim($_POST['pass']);
+		$pass = strip_tags($pass);
+		$pass = htmlspecialchars($pass);
+	  
+		// if there's no error, continue to login
+		if (!$error) 
+		{
+			$query = mysqli_query($conn, "SELECT id FROM flogin WHERE passw='$pass' AND username='$user'");
+			$rows = mysqli_num_rows($query); 
+		 
+			if($rows==1) 
+			{
+				$row = mysqli_fetch_assoc($query);
+				$_SESSION['faculty']=$user;
+				$_SESSION['id']=$row["id"];
+				if (@$_SESSION['faculty'] != "") 
+				{ 
+					header("Location: myfHomed.php");
+					exit;
+				}
+			}
+			else 
+			{
+				echo "<script>
+						document.getElementById(\"validate\").innerHTML = \"Invalid Credentials\";
+					  </script>";
+				die();
+			}
+			 
+			//mysqli_close($conn);		 
+		}
+	}
+	ob_end_flush(); 
+?> 

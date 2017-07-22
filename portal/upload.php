@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	require_once 'dbconnect.php';
 ?>
 
 <!DOCTYPE html>
@@ -96,7 +97,7 @@
             <p class="slide">Choose file to be uploaded!</p>
 			<form method="POST" enctype="multipart/form-data"> 
                 <label class="custom-file-upload btn btn-lg btn-info slide" for="userfile">
-                    <input name="userfile" type="file" id="userfile"/>Choose File
+                    <input type="file" name="userfile" id="userfile"/>Choose File
                 </label><br><br>
                 <p class="slide">Now hit Upload to upload your document</p>
                 <input class="btn-lg btn-success slide" name="upload" type="submit" id="upload" value=" Upload "/>
@@ -134,9 +135,7 @@
 	if(isset($_POST['upload']))
 	{
 		if($_FILES['userfile']['size'] > 0)
-		{
-			require_once 'dbconnect.php';
-			
+		{			
 			$fileName = $_FILES['userfile']['name'];
 			$tmpName  = $_FILES['userfile']['tmp_name'];
 			$fileSize = $_FILES['userfile']['size'];
