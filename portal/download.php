@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	ob_start();
-	require_once 'dbconnect.php';
+	include 'dbconnect.php';
 ?>
 
 <!DOCTYPE html>
@@ -70,30 +70,62 @@
 				$result = mysqli_query($conn, $query) or die('Error, query failed');
 				if(mysqli_num_rows($result)==0) 
 				{
-					echo "<p> Sorry mate, no contents uploaded for this subject!<br>Contact the concerned faculty to upload materials, or just come back later :)</p>";
+					echo "<p style=\"text-align:center\"><font color=\"darkcyan\" size=5px face = \"Comic sans MS\">Sorry mate, no contents uploaded for this subject!<br>Contact the concerned faculty to upload materials, or just come back later :)</font></p>";
 					die();
 				}
-				?>
-				<?php
-					echo "<table class=\"table table-striped table-hover\" style=\"width:100%\">
-						 <tr>
-							<th>File Name</th>
-							<th></th> 
-						 </tr>";
-					while(list($id, $sub, $name) = mysqli_fetch_array($result))
-					{
-						echo "<tr>";
-						echo "<td>"; echo $sub . " " . $name . " "; echo "</td>";
-						?>
-						<td><a href="DownloadFile.php?id=<?php echo $id; ?>" ><button class="btn-success" class="right">Download</button></a></td>
-						<?php
-						echo "</tr>";
-					}
-				?>
-				<?php 
-					echo "</table>";
-				?>
+				echo "<form>";
+				echo "<table class=\"table table-striped table-hover\" style=\"width:100%\">
+					 <tr>
+						<th>File Name</th>
+						<th></th> 
+					 </tr>";
+				while(list($id, $sub, $name) = mysqli_fetch_array($result))
+				{
+					echo "<tr>";
+					echo "<td>"; echo $sub . " " . $name . " "; echo "</td>";
+					?>
+					<td><button class="btn-success" name="download" value="<?php echo $id; ?>" >Download</button></td>
+					<?php
+					echo "</tr>";
+				}
+ 				echo "</table>";
+			?>
+			</form>
 		</div>
 	</div>
 </body>
 </html>
+
+<?php
+	if(isset($_GET['download']))
+	{
+		$id = $_GET['download'];
+		$query = "SELECT name, type, size, content FROM upload WHERE id = '$id'";
+		$result = mysqli_query($conn, $query) or die('Error retrieving files');
+		list($name, $type, $size, $content) = mysqli_fetch_row($result);
+		header("Content-type: $type");
+		header("Content-Disposition: attachment; filename=$name");
+		header("Content-length: $size");
+		ob_clean();
+		flush();
+		echo $content;
+	}
+	
+	/*if(isset($_GET['download_all']))
+	{
+		$result = mysqli_query($conn, $query);
+		while(list($id, $sub, $name) = mysqli_fetch_array($result))
+		{
+			$query = "SELECT name, type, size, content FROM upload WHERE id = '$id'";
+			$res = mysqli_query($conn, $query) or die('Error retrieving files');
+			list($fname, $type, $size, $content) = mysqli_fetch_row($res);
+			header("Content-type: $type");
+			header("Content-Disposition: attachment; filename=$fname");
+			header("Content-length: $size");
+			ob_clean();
+			//flush();
+			echo $content;
+		}
+		flush();
+	}*/
+?>

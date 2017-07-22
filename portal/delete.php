@@ -53,7 +53,7 @@
 
                 if(mysqli_num_rows($result)==0) 
                 {
-                    echo "<h2 class=\"my-block slide\"><font size=5px face = \"Comic sans MS\">Sir/Ma'am, no course material has been uploaded by you!</font></h2>";
+					echo "<p style=\"text-align:center\"><font color=\"darkcyan\" size=5px face = \"Comic sans MS\">Sir/Ma'am, no course material has been uploaded by you!</font></p>";
                     die();
                 }
 
@@ -68,7 +68,7 @@
                     echo "<tr>";
                     echo "<td>"; echo $sub . " " . $name . " "; echo "</td>";
                     ?>
-                    <td><a href="DownloadFile.php?id=<?php echo $id; ?>" ><button class="btn-success">Download</button></a></td>
+                    <td><button class="btn-success" name="download" value="<?php echo $id; ?>" >Download</button></td>
                     <td><button class="btn-danger" id= <?php echo $id; ?> onclick="del(this.id)">Delete</button></td>
                 <?php
                     echo "</tr>";
@@ -93,3 +93,19 @@
 	</script>
 </body>
 </html>
+
+<?php
+	if(isset($_GET['download']))
+	{
+		$id = $_GET['download'];
+		$query = "SELECT name, type, size, content FROM upload WHERE id = '$id'";
+		$result = mysqli_query($conn, $query) or die('Error retrieving files');
+		list($name, $type, $size, $content) = mysqli_fetch_row($result);
+		header("Content-type: $type");
+		header("Content-Disposition: attachment; filename=$name");
+		header("Content-length: $size");
+		ob_clean();
+		flush();
+		echo $content;
+	}
+?>

@@ -1,6 +1,6 @@
 <?php 
 	session_start();
-	require_once 'dbconnect.php';
+	include 'dbconnect.php';
 	ob_start();
 ?>
 
@@ -60,6 +60,7 @@
                     }
 					else
 					{
+						echo "<form>";
 						echo "<table class=\"table table-striped table-hover\" style=\"width:100%\">
 								 <tr>
 									<th>Name</th>
@@ -70,13 +71,12 @@
 							echo "<tr>";
 							echo "<td>"; echo $name . " "; echo "</td>";
 							?>
-							<td><a href="CEventDownload.php?id=<?php echo $id; ?>" ><button class="btn-success" class="right">Download</button></a></td>
+							<td><button class="btn-success" name="download" value="<?php echo $id; ?>" >Download</button></td>
 						<?php
 							echo "</tr>";
 						}
-						?>
-						<?php 
 						echo "</table>";
+						echo "</form>";
 					}
                 ?>
             </div>
@@ -94,6 +94,7 @@
 					}
 					else
 					{
+						echo "<form>";
 						echo "<table class=\"table table-striped table-hover\" style=\"width:100%\">
 								 <tr>
 									<th>Name</th>
@@ -104,13 +105,12 @@
 							echo "<tr>";
 							echo "<td>"; echo $name . " "; echo "</td>";
 							?>
-							<td><a href="CEventDownload.php?id=<?php echo $id; ?>" ><button class="btn-success">Download</button></a></td>
+							<td><button class="btn-success" name="download" value="<?php echo $id; ?>" >Download</button></td>
 							<?php
 							echo "</tr>";
 						}
-						?>
-						<?php 
 						echo "</table>";
+						echo "</form>";
 					}
                 ?>
             </div> 
@@ -121,3 +121,19 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>    
 </body>
 </html>
+
+<?php
+	if(isset($_GET['download'])) 
+	{
+		$id = $_GET['download'];
+		$query = "SELECT name, type, size, content FROM circularevent WHERE id = '$id'";
+		$result = mysqli_query($conn, $query) or die('Error retrieving files');
+		list($name, $type, $size, $content) = mysqli_fetch_row($result);
+		header("Content-type: $type");
+		header("Content-Disposition: attachment; filename=$name");
+		header("Content-length: $size");
+		ob_clean();
+		flush();
+		echo $content;
+	}
+?>
