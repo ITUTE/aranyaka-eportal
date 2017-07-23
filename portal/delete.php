@@ -59,7 +59,7 @@
 					echo "<p style=\"text-align:center\"><font color=\"darkcyan\" size=5px face = \"Comic sans MS\">Sir/Ma'am, no course material has been uploaded by you!</font></p>";
                     die();
                 }
-
+				
                 echo "<table class=\"table table-striped table-hover\" style=\"width:100%\">
                          <tr>
                             <th></th>
@@ -71,7 +71,7 @@
                     echo "<tr>";
                     echo "<td>"; echo $sub . " " . $name . " "; echo "</td>";
                     ?>
-                    <td><button class="btn-success" name="download" value="<?php echo $id; ?>" >Download</button></td>
+                    <form><td><button class="btn-success" name="download" value="<?php echo $id; ?>" >Download</button></td></form>
                     <td><button class="btn-danger" id= <?php echo $id; ?> onclick="del(this.id)">Delete</button></td>
                 <?php
                     echo "</tr>";

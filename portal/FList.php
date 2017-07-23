@@ -18,7 +18,7 @@
 		 ?>
 		 <ul>
              <li>Applied Mathematics - IV <a class="btn btn-success" href="upload.php?sub=12MA41">&nbsp;&nbsp;Upload</a></li><hr>
-             <li>Environmental Science and Biology for Engineers - ESBE  <a class="btn btn-success" href="upload.php?sub=12ME42">&nbsp;&nbsp;Upload</a></li><hr>
+             <li>Environmental Science and Biology for Engineers - ESBE  <a class="btn btn-success" href="upload.php?sub=12EB42">&nbsp;&nbsp;Upload</a></li><hr>
 			 <li>Theory of Computations - TOC   <a class="btn btn-success" href="upload.php?sub=12CS43">&nbsp;&nbsp;Upload</a></li><hr>
 			 <li>Operating Systems - OS   <a class="btn btn-success" href="upload.php?sub=12CS44">&nbsp;&nbsp;Upload</a></li><hr>
 		     <li>Design and Analysis of Algorithms - DAA   <a class="btn btn-success" href="upload.php?sub=12CS45">&nbsp;&nbsp;Upload</a></li><hr>

@@ -4,10 +4,12 @@
 	 {
 		 ?>
 		 <ul>
-			 <li>Data Structures in C - DSC<a class="btn btn-success" href="download.php?sub=12CS31">View</a></li><hr>
-			 <li>Digital Logic Design - DLD<a class="btn btn-success" href="download.php?sub=12CS32">View</a></li><hr>
-		     <li>Computer Organisation and Arch. - COA<a class="btn btn-success" href="download.php?sub=12CS33">View</a></li><hr>
-			 <li>Discrete Mathematical Structures - DMS <a class="btn btn-success" href="download.php?sub=12CS34">View</a></li><hr>
+			 <li>Applied Mathematics - III <a class="btn btn-success" href="download.php?sub=12MA31">&nbsp;&nbsp;View</a></li><hr>
+             <li>Engineering Materials - EM  <a class="btn btn-success" href="download.php?sub=12ME32">&nbsp;&nbsp;View</a></li><hr>
+			 <li>Data Structures in C - DSC<a class="btn btn-success" href="download.php?sub=12CS33">View</a></li><hr>
+			 <li>Digital Logic Design - DLD<a class="btn btn-success" href="download.php?sub=12CS34">View</a></li><hr>
+		     <li>Computer Organisation and Arch. - COA<a class="btn btn-success" href="download.php?sub=12CS35">View</a></li><hr>
+			 <li>Discrete Mathematical Structures - DMS <a class="btn btn-success" href="download.php?sub=12CS36">View</a></li><hr>
 		 </ul>
 		 <?php
 	 }
@@ -15,10 +17,12 @@
 	 {
 		 ?>
 		 <ul>
-			 <li>Theory of Computations - TOC   <a class="btn btn-success" href="download.php?sub=12CS41">View</a></li><hr>
-			 <li>Operating Systems - OS   <a class="btn btn-success" href="download.php?sub=12CS42">View</a></li><hr>
-		     <li>Design and Analysis of Algorithms - DAA  <a class="btn btn-success" href="download.php?sub=12CS43">View</a></li><hr>
-			 <li>Object Oriented Programming - OOPS   <a class="btn btn-success" href="download.php?sub=12CS44">View</a></li><hr>
+		     <li>Applied Mathematics - IV <a class="btn btn-success" href="download.php?sub=12MA41">&nbsp;&nbsp;View</a></li><hr>
+             <li>Environmental Science and Biology for Engineers - ESBE  <a class="btn btn-success" href="download.php?sub=12EB42">&nbsp;&nbsp;View</a></li><hr>
+			 <li>Theory of Computations - TOC   <a class="btn btn-success" href="download.php?sub=12CS43">View</a></li><hr>
+			 <li>Operating Systems - OS   <a class="btn btn-success" href="download.php?sub=12CS44">View</a></li><hr>
+		     <li>Design and Analysis of Algorithms - DAA  <a class="btn btn-success" href="download.php?sub=12CS45">View</a></li><hr>
+			 <li>Object Oriented Programming - OOPS   <a class="btn btn-success" href="download.php?sub=12CS46">View</a></li><hr>
 		 </ul>
 		 <?php
 	 }

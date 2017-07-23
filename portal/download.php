@@ -88,6 +88,7 @@
 					echo "</tr>";
 				}
  				echo "</table>";
+				echo "</form>";
             ?>
 		</div>
 	</div>
