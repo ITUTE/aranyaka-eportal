@@ -58,7 +58,7 @@ def del_cmd():
     view_cmd()
 
 def update_cmd():
-    db.update(selected[0], name_val.get(), position_val.get(), user_val.get(), pass_val.get(), dept_val.get(), str(permit_val.get()))
+    db.update(selected[0], name_val.get(), position_val.get(), user_val.get(), pass_val.get(), str(permit_val.get()), dept_val.get())
     view_cmd()
 
 
