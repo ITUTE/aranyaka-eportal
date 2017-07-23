@@ -114,6 +114,17 @@
 								<li><a class="btn navbar-btn" href="myfLogind.php">Go Back</a></li>
 								<li class="titlenav"><strong><font size=6px>#E-Portal</font></strong></li>
 								<li><a class="navbar-btn btn btn-success" href="index.php">HOME</a></li>
+                                <?php
+                                    $query = "SELECT permit FROM flogin WHERE id = " . $_SESSION['id'];
+                                    $result = mysqli_query($conn, $query);
+                                    $row = mysqli_fetch_row($result);
+                                    if($row[0]=="YES")
+                                    {
+                                        ?>
+                                        <li><a class="navbar-btn btn btn-info" href="#upload">EVENTS</a></li>
+                                        <?php
+                                    }
+                                ?>
 							</ul>	
 							<ul class="nav navbar-nav navbar-right logout">
 								<li><form method="POST"><input class="btn navbar-btn btn-danger" type="submit" value="Logout " name="Logout"/></form></li>
@@ -128,33 +139,37 @@
             <i class='glyphicon glyphicon-education slide'></i> 
             <h2 class="margin slide"><strong>Faculty Home</strong></h2><br>
         </div>
-        <div id="upload">
-            <div class="container-fluid bg-3 text-center slide">    
+            
+        <div class="container-fluid bg-3 text-center slide">    
 				<h3 class="margin slide"><strong>Upload documents</strong></h3><hr><br>
-				<div class="row slide">
+            <div class="row slide">
 					<form method="POST">
 						<p class="slide">Select Semester:</p>
                         <select class="form-control col-md-6 slide dropsize" name="semester" onclick="sub_list(this.value)" onkeyup="sub_list(this.value)" onkeydown="sub_list(this.value)" onchange="sub_list(this.value)">
-							<option value="">Select...</option>
-                            <option value="3">Third</option>
-                            <option value="4">Fourth</option>
-                            <option value="5">Fifth</option>
-                            <option value="6">Sixth</option>
-                            <option value="7">Seventh</option>
+							<option value="">Select Semester</option>
+                            <option value="1">First Semester</option>
+                            <option value="2">Second Semester</option>
+                            <option value="3">Third Semester</option>
+                            <option value="4">Fourth Semester</option>
+                            <option value="5">Fifth Semester</option>
+                            <option value="6">Sixth Semester</option>
+                            <option value="7">Seventh Semester</option>
                         </select><br>
 					</form><br>
 					<p><font size=3px>Select a semester and then pick the desired course</font></p><hr>
 					<div id="sublist"></div><br>
 					<p>To see information about syllabus <a href="infotablef.php" class="btn btn-md btn-info">Click Here</a></p><br><hr>
-				</div> 
-            </div>
+            </div> 
         </div>
         
         <div id="dload">
             <div class="container-fluid bg-3 text-center slide">    
 				<h3 class="margin"><strong>Delete Documents</strong></h3><hr><br>
 				<div class="row slide">
-					<a href="delete.php"><button class="btn-lg btn-danger slide" id="click" name="click" value="Delete">Delete Contents</button></a><br><br><hr>
+					<a href="delete.php"><button class="btn-lg btn-danger slide" id="click" name="click" value="Delete">Delete Contents</button></a><br><br>
+                    <p><font size=3px>Here you can view all the materials uploaded by members of faculty,<br> with the additional feature of deleting the ones uploaded by you</font></p>
+                    <br><hr>
+                    
 				</div> 
             </div>
         </div>
@@ -166,14 +181,20 @@
 			if($row[0]=="YES")
 			{
 				?>
+<<<<<<< HEAD
+            
+                <div class="container-fluid bg-3 text-center slide" id="upload">   
+					<h3 class="margin"><strong>Upload Extra Curriculars</strong></h3><hr><br>
+=======
 				<div class="container-fluid bg-3 text-center slide">    
 					<h3 class="margin"><strong>Extra Curricular</strong></h3><hr><br>
+>>>>>>> 15320d64dc00b62e2a5ff7cbedef50447eba16e1
 					<div class="row slide">
 						<div class=col-xs-6>
 							<h2 class="xxx">Upload Circulars</h2>
 							<a href="CEventUpload.php?id=1"><button class="btn-lg btn-info slide" name="click" value="Delete">Upload Circular</button></a>
 						</div>
-						<div class=col-xs-6>
+                        <div class=col-xs-6>
 							<h2 class="xxx">Upload Events</h2>
 							<a href="CEventUpload.php?id=2"><button class="btn-lg btn-info slide" name="click" value="Delete">Upload Event</button></a>
 						</div>
@@ -191,11 +212,12 @@
 							<a href="EventDelete.php"><button class="btn-lg btn-info slide"  name="click" value="Delete">Delete Event</button></a>
 						</div>
 					</div> 
-				</div><br><br>
+                </div><br><br>
+            
 				<?php
 			}
 		?>
-		
+        
 		<footer class="container-fluid bg-4 text-center">
 			<p><font size = "2">Developed by undergraduate students of CSE department.</font></p>
 			<p><a href="http://www.rvce.edu.in/" target = "_blank"><font size=2px color="white">R.V. College of Engineering</font></a></p>

@@ -4,10 +4,12 @@
 	 {
 		 ?>
 		 <ul>
-			 <li>Data Structures in C - DSC  <a class="btn btn-success" href="upload.php?sub=12CS31">&nbsp;&nbsp;Upload</a></li><hr>
-			 <li>Digital Logic Design - DLD   <a class="btn btn-success" href="upload.php?sub=12CS32">&nbsp;&nbsp;Upload</a></li><hr>
-		     <li>Computer Organisation and Arch. - COA   <a class="btn btn-success" href="upload.php?sub=12CS33">&nbsp;&nbsp;Upload</a></li><hr>
-			 <li>Discrete Mathematical Structures - DMS   <a class="btn btn-success" href="upload.php?sub=12CS34">&nbsp;&nbsp;Upload</a></li><hr>
+			 <li>Applied Mathematics - III <a class="btn btn-success" href="upload.php?sub=12MA31">&nbsp;&nbsp;Upload</a></li><hr>
+             <li>Engineering Materials - EM  <a class="btn btn-success" href="upload.php?sub=12ME32">&nbsp;&nbsp;Upload</a></li><hr>
+             <li>Data Structures in C - DSC  <a class="btn btn-success" href="upload.php?sub=12CS33">&nbsp;&nbsp;Upload</a></li><hr>
+			 <li>Digital Logic Design - DLD   <a class="btn btn-success" href="upload.php?sub=12CS34">&nbsp;&nbsp;Upload</a></li><hr>
+		     <li>Computer Organisation and Arch. - COA   <a class="btn btn-success" href="upload.php?sub=12CS35">&nbsp;&nbsp;Upload</a></li><hr>
+			 <li>Discrete Mathematical Structures - DMS   <a class="btn btn-success" href="upload.php?sub=12CS36">&nbsp;&nbsp;Upload</a></li><hr>
 		 </ul>
 		 <?php
 	 }
@@ -15,10 +17,12 @@
 	 {
 		 ?>
 		 <ul>
-			 <li>Theory of Computations - TOC   <a class="btn btn-success" href="upload.php?sub=12CS41">&nbsp;&nbsp;Upload</a></li><hr>
-			 <li>Operating Systems - OS   <a class="btn btn-success" href="upload.php?sub=12CS42">&nbsp;&nbsp;Upload</a></li><hr>
-		     <li>Design and Analysis of Algorithms - DAA   <a class="btn btn-success" href="upload.php?sub=12CS43">&nbsp;&nbsp;Upload</a></li><hr>
-			 <li>Object Oriented Programming - OOPS   <a class="btn btn-success" href="upload.php?sub=12CS44">&nbsp;&nbsp;Upload</a></li><hr>
+             <li>Applied Mathematics - IV <a class="btn btn-success" href="upload.php?sub=12MA41">&nbsp;&nbsp;Upload</a></li><hr>
+             <li>Environmental Science and Biology for Engineers - ESBE  <a class="btn btn-success" href="upload.php?sub=12ME42">&nbsp;&nbsp;Upload</a></li><hr>
+			 <li>Theory of Computations - TOC   <a class="btn btn-success" href="upload.php?sub=12CS43">&nbsp;&nbsp;Upload</a></li><hr>
+			 <li>Operating Systems - OS   <a class="btn btn-success" href="upload.php?sub=12CS44">&nbsp;&nbsp;Upload</a></li><hr>
+		     <li>Design and Analysis of Algorithms - DAA   <a class="btn btn-success" href="upload.php?sub=12CS45">&nbsp;&nbsp;Upload</a></li><hr>
+			 <li>Object Oriented Programming - OOPS   <a class="btn btn-success" href="upload.php?sub=12CS46">&nbsp;&nbsp;Upload</a></li><hr>
 		 </ul>
 		 <?php
 	 }
@@ -55,5 +59,29 @@
 		 </ul>
 		 <?php
 	 }
-
+     elseif($semester==1)
+     {
+         ?>
+         <ul>
+			 <li>Applied Mathematics - I    <a class="btn btn-success" href="upload.php?sub=16MA11">Upload</a></li><hr>
+			 <li>Engineering Chemistry  <a class="btn btn-success" href="upload.php?sub=16CH12">Upload</a></li><hr>
+		     <li>Programming in C - PIC   <a class="btn btn-success" href="upload.php?sub=16CS13">Upload</a></li><hr>
+			 <li>Basics of Electronics Engineering   <a class="btn btn-success" href="upload.php?sub=16EC14">Upload</a></li><hr>
+             <li>Basics of Mechanical Engineering   <a class="btn btn-success" href="uplaod.php?sub=16ME15">Upload</a></li><hr>
+		 </ul>
+        	 <?php
+	 }
+     elseif($semester==2)
+     {
+         ?>
+         <ul>
+			 <li>Applied Mathematics - II<a class="btn btn-success" href="upload.php?sub=16MA21">Upload</a></li><hr>
+			 <li>Engineering Physics   <a class="btn btn-success" href="upload.php?sub=16PH22">Upload</a></li><hr>
+		     <li>Elements of Civil Engineering   <a class="btn btn-success" href="upload.php?sub=16CV23">Upload</a></li><hr>
+             <li>Computer Aided Engineering Drawing   <a class="btn btn-success" href="upload.php?sub=16ME24">Upload</a></li><hr>
+             <li>Elements of Electrical Engineering   <a class="btn btn-success" href="upload.php?sub=16EE25">Upload</a></li><hr>
+			 <li>CONSTITUTION OF INDIA AND LEGAL STUDIES FOR ENGINEERS   <a class="btn btn-success" href="upload.php?sub=16HSC26">Upload</a></li><hr>
+		 </ul>
+        <?php
+      }
 ?>

@@ -101,7 +101,8 @@
                 </label><br><br>
                 <p class="slide">Now hit Upload to upload your document</p>
                 <input class="btn-lg btn-success slide" name="upload" type="submit" id="upload" value=" Upload "/>
-            </form><br><br><hr>          
+            </form><br><br>
+            <p><font size=3px>Please hit the<strong> Go Back </strong>button once you're done uploading to return to the home page.<br><strong> Thank you for uploading materials to help us students!</strong></font></p><hr>         
         </div> 
     </div>
         

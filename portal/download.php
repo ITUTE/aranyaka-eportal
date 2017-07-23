@@ -89,7 +89,6 @@
 				}
  				echo "</table>";
             ?>
-			</form>
 		</div>
 	</div>
 </body>

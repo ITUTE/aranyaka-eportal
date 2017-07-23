@@ -53,7 +53,7 @@
                             <td></td>
                             <td>16CH12/16CH22 </td>
                             <td>ENGINEERING CHEMISTRY</td>  
-                          </tr>
+                          </tr> 
                           <tr>
                             <td></td>
                             <td>16CS13/16CS23 </td>

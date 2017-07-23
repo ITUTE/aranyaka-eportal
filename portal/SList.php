@@ -55,5 +55,29 @@
 		 </ul>
 		 <?php
 	 }
-
+     elseif($semester==1)
+     {
+         ?>
+         <ul>
+			 <li>Applied Mathematics - I    <a class="btn btn-success" href="download.php?sub=16MA11">View</a></li><hr>
+			 <li>Engineering Chemistry  <a class="btn btn-success" href="download.php?sub=16CH12">View</a></li><hr>
+		     <li>Programming in C - PIC   <a class="btn btn-success" href="download.php?sub=16CS13">View</a></li><hr>
+			 <li>Basics of Electronics Engineering   <a class="btn btn-success" href="download.php?sub=16EC14">View</a></li><hr>
+             <li>Basics of Mechanical Engineering   <a class="btn btn-success" href="download.php?sub=16ME15">View</a></li><hr>
+		 </ul>
+        	 <?php
+	 }
+     elseif($semester==2)
+     {
+         ?>
+         <ul>
+			 <li>Applied Mathematics - II<a class="btn btn-success" href="download.php?sub=16MA21">View</a></li><hr>
+			 <li>Engineering Physics   <a class="btn btn-success" href="download.php?sub=16PH22">View</a></li><hr>
+		     <li>Elements of Civil Engineering   <a class="btn btn-success" href="download.php?sub=16CV23">View</a></li><hr>
+             <li>Computer Aided Engineering Drawing   <a class="btn btn-success" href="download.php?sub=16ME24">View</a></li><hr>
+             <li>Elements of Electrical Engineering   <a class="btn btn-success" href="download.php?sub=16EE25">View</a></li><hr>
+			 <li>CONSTITUTION OF INDIA AND LEGAL STUDIES FOR ENGINEERS   <a class="btn btn-success" href="download.php?sub=16HSC26">View</a></li><hr>
+		 </ul>
+        <?php
+      }
 ?>

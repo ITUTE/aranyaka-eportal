@@ -138,12 +138,14 @@
 				<form method="POST">
 					<p class="slide">Select Semester:</p>
 					<select class="form-control col-md-6 slide dropsize" name="semester" onclick="sub_list(this.value)" onkeyup="sub_list(this.value)" onkeydown="sub_list(this.value)" onchange="sub_list(this.value)">
-                        <option value="">Select...</option>
-						<option value="3">Third</option>
-						<option value="4">Fourth</option>
-                        <option value="5">Fifth</option>
-						<option value="6">Sixth</option>
-						<option value="7">Seventh</option>
+                        <option value="">Select Semester</option>
+                        <option value="1">First Semester</option>
+                        <option value="2">Second Semester</option>
+                        <option value="3">Third Semester</option>
+                        <option value="4">Fourth Semester</option>
+                        <option value="5">Fifth Semester</option>
+                        <option value="6">Sixth Semester</option>
+                        <option value="7">Seventh Semester</option>
 					</select>
 				</form><br>
 				<p><font size=3px>Select a semester and then pick the desired course</font></p><hr>
