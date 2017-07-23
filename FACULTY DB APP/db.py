@@ -50,4 +50,4 @@ def update(id, name, position, username, passw, permit, dept):
     conn.commit()
     conn.close()
 
-connect()       #must always run whenever program is opened
+connect()

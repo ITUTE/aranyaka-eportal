@@ -13,7 +13,7 @@ User can:
 """
 
 from tkinter import *
-import db                #py file containing all the necessary back end functions
+import db               #py file containing all the necessary back end functions
 
 def get_selected_course(event):
     global selected
@@ -33,9 +33,9 @@ def clear_button():
     e1.delete(0, END)
     e3.delete(0, END)
     e4.delete(0, END)
-    position_val.set("Null")
-    permit_val.set("Null")
-    dept_val.set("Null")
+    position_val.set("Nothing chosen")
+    permit_val.set("Nothing chosen")
+    dept_val.set("Nothing chosen")
 
 #defining the functions that links backend function to front end gui for buttons
 
@@ -76,55 +76,55 @@ for i in range(8):
 
 #adding labels and entry forms to the UI
 l1 = Label(window, text = "Faculty Name:")
-l1.grid(row = 0, column = 0, sticky = N+S+E+W)
+l1.grid(row = 0, column = 0, padx=(30,0), sticky = N+S+E+W)
 
 name_val = StringVar()
 e1 = Entry(window, textvariable = name_val)
-e1.grid(row = 0, column = 1, sticky = N+S+E+W)
+e1.grid(row = 0, column = 1, padx=(30,0), sticky = N+S+E+W)
 
 l2 = Label(window, text = "Position:")
-l2.grid(row = 0, column = 3, sticky = N+S+E+W)
+l2.grid(row = 0, column = 3, padx=(30,0), sticky = N+S+E+W)
 
-choices = {"Null", "Assistant Professor", "Associate Professor"}
+choices = {"Professor", "Assistant Professor", "Associate Professor"}
 position_val = StringVar()
 e2 = OptionMenu(window, position_val, *choices)
-e2.grid(row = 0, column = 4, sticky = N+S+E+W)
+e2.grid(row = 0, column = 4, padx=(30,0), sticky = N+S+E+W)
 
 l3 = Label(window, text = "Username:")
-l3.grid(row = 1, column = 0, sticky = N+S+E+W)
+l3.grid(row = 1, column = 0, padx=(30,0), sticky = N+S+E+W)
 
 user_val = StringVar()
 e3 = Entry(window, textvariable = user_val)
-e3.grid(row = 1, column = 1, sticky = N+S+E+W)
+e3.grid(row = 1, column = 1, padx=(30,0), sticky = N+S+E+W)
 
 l4 = Label(window, text = "Password:")
-l4.grid(row = 1, column = 3, sticky = N+S+E+W)
+l4.grid(row = 1, column = 3, padx=(30,0), sticky = N+S+E+W)
 
 pass_val = StringVar()
 e4 = Entry(window, textvariable = pass_val)
-e4.grid(row = 1, column = 4, sticky = N+S+E+W)
+e4.grid(row = 1, column = 4, padx=(30,0), sticky = N+S+E+W)
 
 l5 = Label(window, text = "Department:")
-l5.grid(row = 2, column = 0, sticky = N+S+E+W)
+l5.grid(row = 2, column = 0, padx=(30,0), sticky = N+S+E+W)
 
-choices2 = {"Null", "CSE", "Other"}
+choices2 = {"CSE", "Other"}
 dept_val = StringVar()
 e5 = OptionMenu(window, dept_val, *choices2)
-e5.grid(row = 2, column = 1, sticky = N+S+E+W)
+e5.grid(row = 2, column = 1, padx=(30,0), sticky = N+S+E+W)
 
 l6 = Label(window, text = "Permission:")
-l6.grid(row = 2, column = 3, sticky = N+S+E+W)
+l6.grid(row = 2, column = 3, padx=(30,0), sticky = N+S+E+W)
 
-choices3 = {"Null", "YES", "NO"}
+choices3 = {"YES", "NO"}
 permit_val = StringVar()
 e6 = OptionMenu(window, permit_val, *choices3)
-e6.grid(row = 2, column = 4, sticky = N+S+E+W)
+e6.grid(row = 2, column = 4, padx=(30,0), sticky = N+S+E+W)
 
 listbox = Listbox(window, height = 8, width = 35)
-listbox.grid(row = 3, column = 0, rowspan = 7, columnspan = 2, padx = (30,0), sticky = N+S+E+W)
+listbox.grid(row = 4, column = 0, rowspan = 7, columnspan = 5, padx = (30,0), pady=(15,33), sticky = N+S+E+W)
 
 scrollbar1 = Scrollbar(window)
-scrollbar1.grid(row = 3, column = 3, rowspan = 6)
+scrollbar1.grid(row = 4, column = 5, rowspan = 6, padx = 8)
 
 #now to link the scrollbar with the listbox
 
@@ -137,25 +137,25 @@ listbox.bind('<<ListboxSelect>>', get_selected_course)
 
 #now adding buttons to the UI
 clear = Button(window, text = "Reset", width = 12, command = clear_button)
-clear.grid(row = 3, column = 4, padx = (0, 10), sticky = N+S+E+W)
+clear.grid(row = 4, column = 6, padx = (0, 10), pady = (10,5), ipadx = 35, sticky = N+S+E+W)
 
 view = Button(window, text = "View All", width = 12, command = view_cmd)
-view.grid(row = 4, column = 4, padx = (0, 10), sticky = N+S+E+W)
+view.grid(row = 5, column = 6, padx = (0, 10), pady = 5, sticky = N+S+E+W)
 
 search = Button(window, text = "Search for Faculty", width = 12, command = search_cmd)
-search.grid(row = 5, column = 4, padx = (0, 10), sticky = N+S+E+W)
+search.grid(row = 6, column = 6, padx = (0, 10), pady = 5, sticky = N+S+E+W)
 
 add = Button(window, text = "Add Faculty", width = 12, command = add_cmd)
-add.grid(row = 6, column = 4, padx = (0, 10), sticky = N+S+E+W)
+add.grid(row = 7, column = 6, padx = (0, 10), pady = 5, sticky = N+S+E+W)
 
 delete = Button(window, text = "Delete Selected", width = 12, command = del_cmd)
-delete.grid(row = 8, column = 4, padx = (0, 10), sticky = N+S+E+W)
+delete.grid(row = 9, column = 6, padx = (0, 10), pady = 5, sticky = N+S+E+W)
 
 update = Button(window, text = "Update Selected", width = 12, command = update_cmd)
-update.grid(row = 7, column = 4, padx = (0, 10), sticky = N+S+E+W)
+update.grid(row = 8, column = 6, padx = (0, 10), pady = 5, sticky = N+S+E+W)
 
 exit = Button(window, text = "Exit", width = 12, command = window.destroy)
-exit.grid(row = 9, column = 4, padx = (0, 10), sticky = N+S+E+W)
+exit.grid(row = 10, column = 6, padx = (0, 10), pady = (5,30), sticky = N+S+E+W)
 
 view_cmd()
 
