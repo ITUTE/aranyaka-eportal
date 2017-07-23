@@ -167,15 +167,28 @@
 			{
 				?>
 				<div class="container-fluid bg-3 text-center slide">    
-					<h3 class="margin"><strong>Upload Extra Circular</strong></h3><hr><br>
+					<h3 class="margin"><strong>Extra Curricular</strong></h3><hr><br>
 					<div class="row slide">
 						<div class=col-xs-6>
 							<h2 class="xxx">Upload Circulars</h2>
-							<a href="CEventUpload.php?id=1"><button class="btn-lg btn-info slide" id="click" name="click" value="Delete">Upload Circular</button></a>
+							<a href="CEventUpload.php?id=1"><button class="btn-lg btn-info slide" name="click" value="Delete">Upload Circular</button></a>
 						</div>
 						<div class=col-xs-6>
 							<h2 class="xxx">Upload Events</h2>
-							<a href="CEventUpload.php?id=2"><button class="btn-lg btn-info slide" id="click" name="click" value="Delete">Upload Event</button></a>
+							<a href="CEventUpload.php?id=2"><button class="btn-lg btn-info slide" name="click" value="Delete">Upload Event</button></a>
+						</div>
+					</div> 
+				</div><br><br>
+				
+				<div class="container-fluid bg-3 text-center slide">    
+					<div class="row slide">
+						<div class=col-xs-6>
+							<h2 class="xxx">Delete Circulars</h2>
+							<a href="CircularDelete.php"><button class="btn-lg btn-info slide"  name="click" value="Delete">Delete Circular</button></a>
+						</div>
+						<div class=col-xs-6>
+							<h2 class="xxx">Delete Events</h2>
+							<a href="EventDelete.php"><button class="btn-lg btn-info slide"  name="click" value="Delete">Delete Event</button></a>
 						</div>
 					</div> 
 				</div><br><br>

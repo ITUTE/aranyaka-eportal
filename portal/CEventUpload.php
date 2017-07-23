@@ -30,7 +30,7 @@
                 margin-bottom: 13px;
           }
           .bg-1 { 
-              background-image: url(home.jpg);
+              background-image: url(pics/home.jpg);
               background-size: cover; 
               color: #ffffff;
               background-attachment: fixed;

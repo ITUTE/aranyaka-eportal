@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    include 'dbconnect.php';
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,8 +50,6 @@
     <div class="container-fluid slide">
         <div class="row">
             <?php
-                session_start();
-                include 'dbconnect.php';
                 $Tid = $_SESSION['id'];
                 $query = "SELECT id, subject, name FROM upload WHERE Tid = '$Tid'";
                 $result = mysqli_query($conn, $query) or die('Error, query failed');

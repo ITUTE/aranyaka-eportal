@@ -56,7 +56,6 @@
                     if(mysqli_num_rows($result)==0) 
                     {
                         echo "<h3> No Circulars have been uploaded yet!</h3>";	
-                        die();
                     }
 					else
 					{
@@ -90,7 +89,6 @@
                     if(mysqli_num_rows($result)==0) 
                     {
                         echo "<h3> No Events have been uploaded yet!</h3>";	
-                        //die();
 					}
 					else
 					{
