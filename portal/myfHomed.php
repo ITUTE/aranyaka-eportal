@@ -181,14 +181,12 @@
 			if($row[0]=="YES")
 			{
 				?>
-<<<<<<< HEAD
+
             
-                <div class="container-fluid bg-3 text-center slide" id="upload">   
+            <div class="container-fluid bg-3 text-center slide" id="upload">   
 					<h3 class="margin"><strong>Upload Extra Curriculars</strong></h3><hr><br>
-=======
 				<div class="container-fluid bg-3 text-center slide">    
-					<h3 class="margin"><strong>Extra Curricular</strong></h3><hr><br>
->>>>>>> 15320d64dc00b62e2a5ff7cbedef50447eba16e1
+				
 					<div class="row slide">
 						<div class=col-xs-6>
 							<h2 class="xxx">Upload Circulars</h2>
@@ -205,15 +203,15 @@
 					<div class="row slide">
 						<div class=col-xs-6>
 							<h2 class="xxx">Delete Circulars</h2>
-							<a href="CircularDelete.php"><button class="btn-lg btn-info slide"  name="click" value="Delete">Delete Circular</button></a>
+							<a href="CircularDelete.php"><button class="btn-lg btn-danger slide"  name="click" value="Delete">Delete Circular</button></a>
 						</div>
 						<div class=col-xs-6>
 							<h2 class="xxx">Delete Events</h2>
-							<a href="EventDelete.php"><button class="btn-lg btn-info slide"  name="click" value="Delete">Delete Event</button></a>
+							<a href="EventDelete.php"><button class="btn-lg btn-danger slide"  name="click" value="Delete">Delete Event</button></a>
 						</div>
 					</div> 
                 </div><br><br>
-            
+            </div>
 				<?php
 			}
 		?>
@@ -233,7 +231,6 @@
                 $(".se-pre-con").fadeOut(1500);;
             });
         </script>
-   
     </body>
 </html>
 
