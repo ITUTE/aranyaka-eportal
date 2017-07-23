@@ -58,7 +58,6 @@
 	
 	<div class="row">
 		<div class="container-fluid slide">
-            <form method="POST">
 			<?php
 				if(@$_GET['sub']!="") 
 				{
@@ -76,8 +75,7 @@
 				echo "<form>";
 				echo "<table class=\"table table-striped table-hover\" style=\"width:100%\">
 					 <tr>
-						<th>File Name</th>
-                        
+						<th>File Name</th>        
 						<th></th> 
 					 </tr>"; 
 				while(list($id, $sub, $name) = mysqli_fetch_array($result))
@@ -101,6 +99,7 @@
 	if(isset($_GET['download']))
 	{
 		$id = $_GET['download'];
+		echo $id;
 		$query = "SELECT name, type, size, content FROM upload WHERE id = '$id'";
 		$result = mysqli_query($conn, $query) or die('Error retrieving files');
 		list($name, $type, $size, $content) = mysqli_fetch_row($result);
