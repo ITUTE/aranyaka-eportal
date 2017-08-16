@@ -14,42 +14,42 @@
 	  body {
 		  font-family: American Typewriter;
 		  line-height: 1.8;
-		  color: #f5f6f7;    
+		  color: #f5f6f7;
 	    }
 	  p {
-		  font-size: 23px; 
+		  font-size: 23px;
 	    }
 	  .margin {
 		  margin-bottom: 30px;
 		  font-size: 50px;
 	    }
-	  .margin1 { 
+	  .margin1 {
 			margin-bottom: 13px;
 	    }
-	  .bg-1 { 
+	  .bg-1 {
 		  background-image: url(pics/home1.jpg);
-		  background-size: cover; 
+		  background-size: cover;
 		  color: #ffffff;
 		  background-attachment: fixed;
 		  background-position: center;
 		  background-repeat: no-repeat;
 	    }
-	  .bg-2 { 
-		  background-color: #474e5d; 
+	  .bg-2 {
+		  background-color: #474e5d;
 		  color: #ffffff;
 		}
-	  .bg-3 { 
-		  background-color: #ffffff; 
+	  .bg-3 {
+		  background-color: #ffffff;
 		  color: darkcyan;
 		}
-	  .bg-4 { 
+	  .bg-4 {
 		  padding-top: 0px;
 		  padding-bottom: 2px;
-		  background-color: darkcyan; 
+		  background-color: darkcyan;
 		  color: #fff;
 		}
-	</style> 
-  
+	</style>
+
 	<script>
 		history.pushState(null, null, document.URL);
 		window.addEventListener('popstate', function () {
@@ -58,39 +58,39 @@
 	</script>
 </head>
 
-<body>   
+<body>
 	<div class="se-pre-con"></div>
 	<div class="container-fluid bg-1 text-center ">
 		<h2 class="margin slide"><strong>E-PORTAL</strong></h2>
 		<img src="pics/rv.JPG" class="img-responsive img-circle margin1 slide" style="display:inline" alt="Bird" width="150" height="150">
-		<h3 class="slide"><strong>R.V. College of Engineering, Bangalore</strong></h3> 
+		<h3 class="slide"><strong>R.V. College of Engineering, Bangalore</strong></h3>
 	</div>
 
-	<div class="container-fluid bg-3 text-center slide">    
+	<div class="container-fluid bg-3 text-center slide">
 		<h3 class="margin"><strong>Enter the E-Portal</strong></h3><hr><br>
 		<div class="row slide">
 			<div class="col-sm-6">
 				<p>A faculty member can only <strong>upload</strong> and <strong>delete</strong> the course materials.</p>
 				<a href="myfLogind.php" class="btn btn-lg btn-success" role="button">Faculty Login</a>
 			</div>
-			<div class="col-sm-6"> 
+			<div class="col-sm-6">
 				<p>A student can only <strong>view</strong> and <strong>download</strong> the desired course materials.</p>
 				<a href="mysLogind.php" class="btn btn-lg btn-primary" role="button">Student Login</a>
 			</div>
-		</div> 
+		</div>
 	</div>
 
-   <div class="container-fluid bg-3 text-center slide">    
+   <div class="container-fluid bg-3 text-center slide">
         <h3 class="margin"><strong>Events and Circulars</strong></h3><hr><br>
         <div class="row slide">
-            <a href="CEvent.php"><button class="btn-lg btn-success slide" id="click" name="click" value="View">View</button></a><hr>
-        </div> 
+            <a href="CEvent.php"><button class="btn-lg btn-success slide" id="click" name="click" value="View">View</button></a>
+        </div>
     </div>
 
 
 	<footer class="container-fluid bg-4 text-center">
 		<p><font size = "2">Developed by undergraduate students of CSE department.</font></p>
-		<p><a href="http://www.rvce.edu.in/" target = "_blank"><font size=2px color="white">R.V. College of Engineering</font></a></p> 
+		<p><a href="http://www.rvce.edu.in/" target = "_blank"><font size=2px color="white">R.V. College of Engineering</font></a></p>
 	</footer>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -103,5 +103,5 @@
 		});
 	</script>
 
-</body> 
+</body>
 </html>
