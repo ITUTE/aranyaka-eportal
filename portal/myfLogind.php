@@ -182,14 +182,14 @@
 		// if there's no error, continue to login
 		if (!$error) 
 		{
-			$query = mysqli_query($conn, "SELECT id FROM flogin WHERE passw='$pass' AND username='$user'");
-			$rows = mysqli_num_rows($query); 
+			$query = mysqli_query($conn, "SELECT fac_id FROM faculty_login WHERE fac_password='$pass' AND fac_username='$user'");
+			$no_of_rows = mysqli_num_rows($query); 
 		 
-			if($rows==1) 
+			if($no_of_rows==1) 
 			{
 				$row = mysqli_fetch_assoc($query);
 				$_SESSION['faculty']=$user;
-				$_SESSION['id']=$row["id"];
+				$_SESSION['id']=$row["fac_id"];
 				if (@$_SESSION['faculty'] != "") 
 				{ 
 					header("Location: myfHomed.php");

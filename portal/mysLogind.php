@@ -15,13 +15,6 @@
         <link rel="stylesheet" type="text/css" href="eportal.css">
         <link rel="stylesheet" type="text/css" href="index.css">
 		
-		<script>
-		history.pushState(null, null, document.URL);
-		window.addEventListener('popstate', function () {
-			history.pushState(null, null, document.URL);
-		});
-		</script>
-		
 		<style>
 			body {
 				font-family: American Typewriter;
@@ -121,7 +114,7 @@
 					<div class="form-group  dropsize slide">
 						<div class="input-group">
 							<span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-							<input  name="user" id="user" class="form-control" placeholder="Your Email" maxlength="40" required />
+							<input  name="user" id="user" class="form-control" placeholder="Your Email" maxlength="100" required />
 						</div>
 					</div><br>
 					
@@ -129,7 +122,7 @@
 					<div class="form-group dropsize slide">
 						<div class="input-group">
 							<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-							<input type="password" name="pass" id="pass" class="form-control" placeholder="Your Password" maxlength="30" required />
+							<input type="password" name="pass" id="pass" class="form-control" placeholder="Your Password" maxlength="100" required />
 						</div>
                     </div><br><hr>
 					
@@ -186,14 +179,14 @@
 		// if there's no error, continue to login
 		if (!$error) 
 		{
-			$query = mysqli_query($conn, "SELECT * FROM slogin WHERE password='$pass' AND username='$user'");
+			$query = mysqli_query($conn, "SELECT * FROM student_login WHERE stu_password='$pass' AND stu_usn='$user'");
 			$rows = mysqli_num_rows($query);
 		 
 			if($rows==1) 
 			{
 				$row = mysqli_fetch_assoc($query);
                 $_SESSION['student'] = $user;
-                $_SESSION['id'] = $row["id"];
+                $_SESSION['id'] = $row["stu_id"];
 				if (@$_SESSION['student'] != "" ) 
 				{
 					header("Location: mysHomed.php");
