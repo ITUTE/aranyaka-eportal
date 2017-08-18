@@ -20,38 +20,40 @@
             font: American Typewriter;
         }
     </style>
-	
-	<script>
-		history.pushState(null, null, document.URL);
-		window.addEventListener('popstate', function () {
-			history.pushState(null, null, document.URL);
-		});
-	</script>
 
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class='col-xs-12'>
-                <div class="style"> 
-                    <div class='navbar navbar-inverse navbar-fixed-top'>
-                        <ul class="nav navbar-nav">
-                            <li><a class="btn navbar-btn" href="index.php">Go Back</a></li>
-                            <li class="titlenav"><strong><font size=6px>#E-Portal</font></strong></li>
-                            <li><a class="navbar-btn btn btn-success" href="index.php">HOME</a></li>
-                        </ul>	
-					</div>
-				</div>
-			</div>
-		</div>
-    </div>
+    <div class="se-pre-con"></div>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span> 
+            </button>
+            <a class="navbar-left" href="http://www.rvce.edu.in/" target = "_blank"><img src="pics/rv.JPG" class="img-circle" height=50 ondragstart="return false;" alt="logo"/></a>
+            <a href="index.php" class="navbar-brand"><strong>#E-PORTAL</strong></a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                    <li class=""><a href="index.php">Home</a></li> 
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+     
+            </ul>
+        </div>
+    </nav>
+    
+    <br>
+    <br>
+	
 	
     <div class="container-fluid slide">
         <div class="row">
             <div class="col-xs-6">
                 <h2 class="heading">CIRCULARS</h2>
                 <?php
-                    $query = "SELECT id, name FROM circularevent WHERE category=1";
+                    $query = "SELECT file_id, file_name FROM file WHERE file_category=1";
                     $result = mysqli_query($conn, $query) or die('Error, query failed');
                     if(mysqli_num_rows($result)==0) 
                     {
@@ -84,7 +86,7 @@
                 <h2 class="heading">EVENTS</h2>
                 <?php
 				
-                    $query = "SELECT id, name FROM circularevent WHERE category=2";
+                    $query = "SELECT file_id, file_name FROM file WHERE file_category=1";
                     $result = mysqli_query($conn, $query) or die('Error, query failed');
                     if(mysqli_num_rows($result)==0) 
                     {
@@ -116,7 +118,13 @@
 	</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.3/jquery.scrollTo.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>    
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script> 
+    <script src='js/bootstrap.js'></script> 
+    <script>
+        $(window).load(function() {
+                $(".se-pre-con").fadeOut(1500);;
+        });
+    </script> 
 </body>
 </html>
 
@@ -124,7 +132,7 @@
 	if(isset($_GET['download'])) 
 	{
 		$id = $_GET['download'];
-		$query = "SELECT name, type, size, content FROM circularevent WHERE id = '$id'";
+		$query = "SELECT file_name, file_type, file_size, file_content FROM file WHERE id = '$id'";
 		$result = mysqli_query($conn, $query) or die('Error retrieving files');
 		list($name, $type, $size, $content) = mysqli_fetch_row($result);
 		header("Content-type: $type");
