@@ -71,7 +71,8 @@
 	
     <body>
 		<div class="se-pre-con"></div>
-		<div class="container-fluid">
+		<!--
+        <div class="container-fluid">
 			<div class="row">
 				<div class='col-xs-12'>
 					<div class="style"> 
@@ -86,6 +87,26 @@
 				</div>
 			</div>
 		</div>
+        -->
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> 
+                </button>
+              <a class="navbar-left" href="http://www.rvce.edu.in/" target = "_blank"><img src="pics/rv.JPG" class="img-circle" height=50 ondragstart="return false;" alt="logo"/></a>
+              <a href="index.php" class="navbar-brand"><strong>#E-PORTAL</strong></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class=""><a href="index.php">Home</a></li> 
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+     
+                </ul>
+            </div>
+        </nav>
 	
         <div class="container-fluid bg-1 text-center"><br><br><br>
             <i class='glyphicon glyphicon-education slide'></i> 
