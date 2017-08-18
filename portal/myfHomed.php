@@ -167,7 +167,7 @@
         </div>
 
 
-		<ul class="nav nav-tabs">
+		<ul class="nav nav-tabs nav-justified">
 			  <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
 			  <li><a data-toggle="tab" href="#upload">Upload Documents</a></li>
 			  <li><a data-toggle="tab" href="#groups">My Groups</a></li>
@@ -192,14 +192,14 @@
 							<div class="row slide">
 
                     			<p><font size=3px>Here you can view all the information about you.</font></p>
-													<?php
-																	$query = "SELECT name, position, dept FROM flogin WHERE id = " . $_SESSION['id'];
-																	$result = mysqli_query($conn, $query);
-																	list($name, $pos, $dept) = mysqli_fetch_array($result);
-																 	echo "<font size = 6><strong> Name:</strong>"; echo " "; echo $name; echo "</font><br>";
-																	echo "<font size = 6><strong> Position:</strong>"; echo " "; echo $pos; echo "</font><br>";
-																	echo "<font size = 6><strong> Department:</strong>"; echo " "; echo $dept; echo "</font><br>";
-													?>
+								<?php
+												 $query = "SELECT name, position, dept FROM flogin WHERE id = " . $_SESSION['id'];
+												$result = mysqli_query($conn, $query);
+												list($name, $pos, $dept) = mysqli_fetch_array($result);
+												echo "<font size = 6><strong> Name:</strong>"; echo " "; echo $name; echo "</font><br>";
+												echo "<font size = 6><strong> Position:</strong>"; echo " "; echo $pos; echo "</font><br>";
+												echo "<font size = 6><strong> Department:</strong>"; echo " "; echo $dept; echo "</font><br>";
+								?>
                     <br>
                   			</div>
             	</div>

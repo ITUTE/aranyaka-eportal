@@ -170,7 +170,9 @@
 		 
 			if($rows==1) 
 			{
-				$_SESSION['student'] = $user;
+				$row = mysqli_fetch_assoc($query);
+                $_SESSION['student'] = $user;
+                $_SESSION['id'] = $row["id"];
 				if (@$_SESSION['student'] != "" ) 
 				{
 					header("Location: mysHomed.php");

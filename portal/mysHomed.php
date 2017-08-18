@@ -108,7 +108,8 @@
 
 	<body>
 		<div class="se-pre-con"></div>
-		<div class="container-fluid">
+		<!--
+        <div class="container-fluid">
 			<div class="row">
 				<div class='col-xs-12'>
 					<div class="style">
@@ -126,12 +127,48 @@
 				</div>
 			</div>
 		</div>
+        -->
+        
+        <nav class="navbar navbar-inverse">
+          
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> 
+                </button>
+              <a class="navbar-left" href="http://www.rvce.edu.in/" target = "_blank"><img src="pics/rv.JPG" class="img-circle" height=50 ondragstart="return false;" alt="logo"/></a>
+              <a href="index.php" class="navbar-brand"><strong>#E-PORTAL</strong></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class=""><a href="index.php">Home</a></li> 
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <?php 
+                            $query = "SELECT username from slogin WHERE id = " . $_SESSION['id'];
+                            $result = mysqli_query($conn, $query);
+                            list($name) = mysqli_fetch_array($result);
+                            echo "Hi, "; echo "<strong><font size = 3>"; echo $name; echo "</font></strong>";
+                            ?>
+                        
+                        <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#home"><font color = "darkcyan">Profile</font></a></li>
+                            <li><a class = ""><form method="POST"><input type="submit" value="Logout " name="Logout"/></form></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
         <div class="container-fluid bg-1 text-center"><br><br><br>
             <i class='glyphicon glyphicon-education slide'></i>
             <h2 class="margin slide"><strong>Student Home</strong></h2><br>
         </div>
-
+<!--
         <div class="container-fluid bg-3 text-center slide">
 			<h3 class="margin"><strong>Download resources based on your semester</strong></h3><hr><br>
 			<div class="row slide">
@@ -153,6 +190,29 @@
 				<p>To see information about syllabus <a href="infotables.php" class="btn btn-md btn-info">Click Here</a></p>
 			</div>
         </div>
+        -->
+        
+        <ul class="nav nav-tabs">
+			  <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+			  <li><a data-toggle="tab" href="#dload">Download Documents</a></li>
+			  <li><a data-toggle="tab" href="#groups">My Groups</a></li>
+		</ul>
+        
+        <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+                <h3>HOME</h3>
+                <p>Some content.</p>
+            </div>
+            <div id="dload" class="tab-pane fade">
+                <h3>Menu 1</h3>
+                <p>Some content in menu 1.</p>
+            </div>
+            <div id="groups" class="tab-pane fade">
+                <h3>Menu 2</h3>
+                <p>Some content in menu 2.</p>
+            </div>
+        </div>
+        
 
 		<footer class="container-fluid bg-4 text-center">
 			<p><font size = "2">Developed by undergraduate students of CSE department.</font></p>

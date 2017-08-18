@@ -177,7 +177,7 @@
 			{
 				echo "<script>
 						document.getElementById(\"validate\").innerHTML = \"Invalid Credentials\";
-					  </script>";
+					  </script>"; 
 				die();
 			}
 			 
