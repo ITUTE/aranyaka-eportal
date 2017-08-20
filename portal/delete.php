@@ -6,7 +6,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<title>Delete</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="eportal.css">
 	<link rel="stylesheet" type="text/css" href="index.css">
@@ -56,14 +57,16 @@
 				
                 echo "<table class=\"table table-striped table-hover\" style=\"width:100%\">
                          <tr>
+                            <th>Course Code</th>
+                            <th>File Name</th> 
                             <th></th>
-                            <th></th> 
                             <th></th>
                          </tr>";
                 while(list($id, $sub, $name) = mysqli_fetch_array($result))
                 {
                     echo "<tr>";
-                    echo "<td>"; echo $sub . " " . $name . " "; echo "</td>";
+                    echo "<td>"; echo $sub; echo "</td>";
+                    echo "<td>"; echo $name; echo "</td>";
                     ?>
                     <form><td><button class="btn-success" name="download" value="<?php echo $id; ?>" >Download</button></td></form>
                     <td><button class="btn-danger" id= <?php echo $id; ?> onclick="del(this.id)">Delete</button></td>

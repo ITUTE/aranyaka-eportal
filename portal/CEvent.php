@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html> 
 <head>
-    <title>Circular Event download</title>
+    <title>Circular and Events</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -86,7 +86,7 @@
                 <h2 class="heading">EVENTS</h2>
                 <?php
 				
-                    $query = "SELECT file_id, file_name FROM file WHERE file_category=1";
+                    $query = "SELECT file_id, file_name FROM file WHERE file_category=2";
                     $result = mysqli_query($conn, $query) or die('Error, query failed');
                     if(mysqli_num_rows($result)==0) 
                     {

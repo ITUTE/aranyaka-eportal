@@ -185,6 +185,7 @@
 				$_SESSION['faculty']=$user;
 				$_SESSION['id']=$row["fac_id"];
 				$_SESSION['fac_dept']=$row["fac_dept_code"];
+                $_SESSION['dept']=$row["fac_dept_code"];
 				if (@$_SESSION['faculty'] != "") 
 				{ 
 					header("Location: myfHomed.php");

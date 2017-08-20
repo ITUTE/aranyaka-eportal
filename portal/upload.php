@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>File Upload</title>
+	<title>File Uploads</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -62,6 +62,7 @@
 
 <body>
 	<div class="se-pre-con"></div>
+    <!--
     <div class="container-fluid">
         <div class="row">
             <div class='col-xs-12'>
@@ -77,15 +78,60 @@
             </div>
         </div>
     </div>
-      
-    <div class="container-fluid bg-1 text-center"><br><br>
+    -->
+    
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span> 
+            </button>
+          <a class="navbar-left" href="http://www.rvce.edu.in/" target = "_blank"><img src="pics/rv.JPG" class="img-circle" height=50 ondragstart="return false;" alt="logo"/></a>
+              <a href="index.php" class="navbar-brand"><strong>#E-PORTAL</strong></a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class=""><a href="index.php">Home</a></li> 
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <?php 
+                                $query = "SELECT stu_name from student_login WHERE stu_id = " . $_SESSION['id'];
+                                $result = mysqli_query($conn, $query);
+                                list($name) = mysqli_fetch_array($result);
+                                echo "Hi, " .  "<strong><font size = 3>" . $name . "</font></strong>";
+                        ?>
+                        
+                    <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#home"><font color = "darkcyan">Profile</font></a></li>
+                        <li><a class = ""><form method="POST"><input type="submit" value="Logout " name="Logout"/></form></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container-fluid bg-1 text-center"><br><br><br><br>
 		<i class='glyphicon glyphicon-education slide'></i> 
         <h2 class="margin slide"><strong>Upload Home</strong></h2><br>
     </div>
     
         
     <div class="container-fluid bg-3 text-center slide">    
-        <h3 class="margin"><strong>Upload document</strong></h3><hr><br>
+        <h3 class="margin"><strong>Upload document</strong></h3>
+        <?php
+            	if(isset($_GET['sub']))
+		            $_SESSION['fac_course_code'] = $_GET['sub'];
+                
+                $query = "SELECT course_name FROM course WHERE course_code = '" . $_SESSION['fac_course_code'] . "'";
+                $result = mysqli_query($conn, $query);
+                list($course_name) = mysqli_fetch_array($result);
+                echo "<h3> Course Name: <strong>"; echo $course_name; echo"</strong></h3>";
+        ?>
+        <hr><br>
         <div class="row slide">
             <p class="slide">Choose file to be uploaded!</p>
 			<form method="POST" enctype="multipart/form-data"> 
@@ -95,13 +141,13 @@
                 <p class="slide">Now hit Upload to upload your document</p>
                 <input class="btn-lg btn-success slide" name="upload" type="submit" id="upload" value=" Upload "/>
             </form><br><br>
-            <p><font size=3px>Please hit the<strong> Go Back </strong>button once you're done uploading to return to the home page.<br><strong> Thank you for uploading materials to help us students!</strong></font></p><hr>         
+            <p><font size=3px>Please hit the<strong> Go Back </strong>button once you're done uploading to return to the home page.<br><strong> Thank you for uploading materials to help us students!</strong></font></p><br><hr>         
         </div> 
     </div>
         
     <div class="container-fluid bg-3 text-center slide">    
         <div class="row slide">
-			<p>To see information about syllabus <a href="infotablef.php" class="btn btn-md btn-info">Click Here</a></p>
+			<p>To see information about syllabus <a href="infotable.php" target="_blank" class="btn btn-md btn-info">Click Here</a></p><br>
         </div> 
     </div>
         

@@ -62,12 +62,6 @@
 					margin-right: 30%;
 			  }
 		</style>
-		<script>
-		history.pushState(null, null, document.URL);
-		window.addEventListener('popstate', function () {
-			history.pushState(null, null, document.URL);
-		});
-		</script>
 
 		<script>
 		function sub_list(str)
@@ -150,7 +144,7 @@
                                 echo "Hi, "; echo "<strong><font size = 3>"; echo $name; echo "</font></strong>";
                         ?>
                         
-                    <span class="caret"></span></a>
+                    <span class="caret"></span>&nbsp;</a>
                     <ul class="dropdown-menu">
                       <li><a href="#home"><font color = "darkcyan">Profile</font></a></li>
                         <li><a class = ""><form method="POST"><input type="submit" value="Logout " name="Logout"/></form></a></li>
@@ -223,18 +217,54 @@
 								</form><br>
 								<p><font size=3px>Select a semester and then pick the desired course</font></p><hr>
 								<div id="sublist"></div><br>
-								<p>To see information about syllabus <a href="infotablef.php" class="btn btn-md btn-info">Click Here</a></p>
+								<p>To see information about syllabus <a href="infotable.php" target="_blank" class="btn btn-md btn-info">Click Here</a></p>
 										<br>
 			            	</div>
 		       		 </div>
 			</div>
 			<div id="groups" class="tab-pane fade">
-			    <div class="container-fluid bg-3 text-center">
-						<h3 class="margin slide"><strong>My Groups</strong></h3><hr><br>
-							<div class="row slide">
-
-                    			<p><font size=3px>Here you can view all the groups you are associated with.</font></p>
-                    <br>
+			    <div class="container-fluid bg-3">
+						<div class="row slide">
+                            <h3 class="margin slide text-center"><strong>My Groups</strong></h3><hr>
+                            <p class='text-center'><font size=3px>Here you can view all the groups you are associated with.</font></p>
+                                <br>
+                                <?php 
+                                    $query = "SELECT g.grp_name from groups g, faculty_section_groups fsg WHERE fsg.fsg_fac_username = '" . $_SESSION['faculty'] . "' AND g.grp_code = fsg.fsg_ss_code";
+                                     
+                                    $result = mysqli_query($conn, $query);
+                                    echo "<div class=\"container-mid\">";
+                                    echo "<p class=\"slide text-center\"><strong>Class Groups</strong></p>";
+                                    echo "<table class=\"table table-striped table-hover\" style=\"width:100%\">
+                                             <tr>
+                                                <th>Group Names</th>
+                                                <th> </th> 
+                                             </tr>";
+                                    while(list($group_names) = mysqli_fetch_array($result))
+                                    {
+                                        echo "<tr>";
+                                        echo "<td>"; echo $group_names; echo "</td>";
+                                        echo "<td><a href=#>enter group </a></td>";
+                                        echo "</tr>";
+                                    }
+                                    echo "</table><hr>";
+                                    echo "<p class=\"slide text-center\"><strong>Other Groups</strong></p>";
+                                    $query = "SELECT g.grp_name from groups g, faculty_other_groups fog WHERE fog.fog_fac_username = '" . $_SESSION['faculty'] . "' AND g.grp_code = fog.fog_grp_code";
+                                    $result = mysqli_query($conn, $query);
+                                    echo "<table class=\"table table-striped table-hover\" style=\"width:100%\">
+                                             <tr>
+                                                <th>Group Names</th>
+                                                <th> </th> 
+                                             </tr>";
+                                    while(list($group_names) = mysqli_fetch_array($result))
+                                    {
+                                        echo "<tr>";
+                                        echo "<td>"; echo $group_names; echo "</td>";
+                                        echo "<td><a href=#>enter group </a></td>";
+                                        echo "</tr>";
+                                    }
+                                    echo "</table><hr>";
+                                    echo "</div>";
+                                ?>
                   			</div>
             	</div>
 			</div>

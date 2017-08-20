@@ -144,9 +144,9 @@
                                 echo "Hi, " .  "<strong><font size = 3>" . $name . "</font></strong>";
                         ?>
                         
-                    <span class="caret"></span></a>
+                    <span class="caret"></span>&nbsp;</a>
                     <ul class="dropdown-menu">
-                      <li><a href="#home"><font color = "darkcyan">Profile</font></a></li>
+                        <li><a href="#home"><font color = "darkcyan">Profile</font></a></li>
                         <li><a class = ""><form method="POST"><input type="submit" value="Logout " name="Logout"/></form></a></li>
                     </ul>
                 </li>
@@ -206,31 +206,62 @@
 								</form><br>
 								<p><font size=3px>Select a semester and then pick the desired course</font></p><hr>
 								<div id="sublist"></div><br>
-								<p>To see information about syllabus <a href="infotablef.php" class="btn btn-md btn-info">Click Here</a></p>
+								<p>To see information about syllabus <a href="infotable.php" target="_blank" class="btn btn-md btn-info">Click Here</a></p>
 										<br>
 			            	</div>
 		       		 </div>
 			</div>
 			<div id="groups" class="tab-pane fade">
-			    <div class="container-fluid bg-3 text-center">
-						<h3 class="margin slide"><strong>My Groups</strong></h3><hr><br>
+			    <div class="container-fluid bg-3">
+						<h3 class="margin slide text-center"><strong>My Groups</strong></h3><hr>
 							<div class="row slide">
 
-                    			<p><font size=3px>Here you can view all the groups you are associated with.</font></p>
-                    <br>
+                                <p class='text-center'><font size=3px>Here you can view all the groups you are associated with.</font></p>
+                                <br>
+                                <?php 
+                                    $query1 = "SELECT ss_code FROM semester_section WHERE ss_dept_code = '" . $_SESSION['stu_dept'] . "' AND ss_sem_code = '" . $_SESSION['stu_sem'] . "' AND sem_section = '" . $_SESSION['stu_section'] . "'";
+                                    $result1 = mysqli_query($conn, $query1);
+                                    $ss_code = mysqli_fetch_row($result);    
+                                    
+                                    $query2 = "SELECT grp_name FROM groups WHERE grp_code = '" . $ss_code[0] . "'";
+                                    $result2 = mysqli_query($conn, $query2);
+                                    echo "<div class=\"container-mid\">";
+                                        echo "<p class=\"slide text-center\"><strong>Class Group</strong></p>";
+                                        echo "<table class=\"table table-striped table-hover\" style=\"width:100%\">
+                                                 <tr>
+                                                    <th>Group Names</th>
+                                                    <th> </th> 
+                                                 </tr>";
+                                        while(list($group_names) = mysqli_fetch_array($result2))
+                                        {
+                                            echo "<tr>";
+                                            echo "<td>"; echo $group_names; echo "</td>";
+                                            echo "<td><a href=\"student-group.php\">enter group </a></td>";
+                                            echo "</tr>";
+                                        }
+                                        echo "</table><hr>";
+
+                                        echo "<p class=\"slide text-center\"><strong>Other Groups</strong></p>";
+                                        $query = "SELECT g.grp_name FROM groups g, student_groups sg WHERE sg.sg_usn = '" . $_SESSION['student'] . "' AND sg.sg_grp_code = g.grp_code";
+                                        $result = mysqli_query($conn, $query);
+                                        echo "<table class=\"table table-striped table-hover\" style=\"width:100%\">
+                                                 <tr>
+                                                    <th>Group Names</th>
+                                                    <th> </th> 
+                                                 </tr>";
+                                        while(list($group_names) = mysqli_fetch_array($result))
+                                        {
+                                            echo "<tr>";
+                                            echo "<td>"; echo $group_names; echo "</td>";
+                                            echo "<td><a href=\"student-group.php\">enter group </a></td>";
+                                            echo "</tr>";
+                                        }
+                                        echo "</table><hr>";
+                                    echo "</div>";
+                                ?>
                   			</div>
             	</div>
 			</div>
-			<div id="delete" class="tab-pane fade">
-           		 	<div class="container-fluid bg-3 text-center">
-						<h3 class="margin slide"><strong>Delete Documents</strong></h3><hr><br>
-							<div class="row slide">
-								<a href="delete.php"><button class="btn-lg btn-danger slide" id="click" name="click" value="Delete">Delete Contents</button></a><br><br>
-                    			<p><font size=3px>Here you can view all the materials uploaded by members of faculty,<br> with the additional feature of deleting the ones uploaded by you</font></p>
-                    <br>
-                  			</div>
-            		</div>
-        	</div>
 		</div>
 
 		<footer class="container-fluid bg-4 text-center">

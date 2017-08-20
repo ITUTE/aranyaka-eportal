@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Circular_Event Upload</title>
+	<title>Circular Event Upload</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -63,6 +63,7 @@
 
 <body>
     <div class="se-pre-con"></div>
+    <!--
     <div class="container-fluid">
         <div class="row">
             <div class='col-xs-12'>
@@ -78,7 +79,43 @@
             </div>
         </div>
     </div>
-      
+    -->
+    
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+          
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span> 
+            </button>
+            <a class="navbar-left" href="http://www.rvce.edu.in/" target = "_blank"><img src="pics/rv.JPG" class="img-circle" height=50 ondragstart="return false;" alt="logo"/></a>
+            <a href="index.php" class="navbar-brand"><strong>#E-PORTAL</strong></a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class=""><a href="index.php">Home</a></li> 
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <?php 
+                                $query = "SELECT fac_name from faculty_login WHERE fac_id = " . $_SESSION['id'];
+                                $result = mysqli_query($conn, $query);
+                                list($name) = mysqli_fetch_array($result);
+                                echo "Hi, "; echo "<strong><font size = 3>"; echo $name; echo "</font></strong>";
+                        ?>
+                        
+                    <span class="caret"></span>&nbsp;</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#home"><font color = "darkcyan">Profile</font></a></li>
+                        <li><a class = ""><form method="POST"><input type="submit" value="Logout " name="Logout"/></form></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
     <div class="container-fluid bg-1 text-center"><br><br>
 		<i class='glyphicon glyphicon-education slide'></i> 
         <h2 class="margin slide"><strong>Upload Home</strong></h2><br>

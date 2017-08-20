@@ -189,6 +189,7 @@
                 $_SESSION['student'] = $user;
                 $_SESSION['id'] = $row["stu_id"];
 				$_SESSION['stu_dept'] = $row["stu_dept_code"];
+                $_SESSION['dept'] = $row["stu_dept_code"];
 				$_SESSION['stu_sem'] = $row["stu_sem_code"];
 				$_SESSION['stu_section'] = $row["stu_section"];
 				if (@$_SESSION['student'] != "" ) 

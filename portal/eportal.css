@@ -200,3 +200,16 @@ input[type="file"] {
             display: table-cell;
             vertical-align: middle;
 }
+
+th {
+    color: darkcyan;
+}
+
+td {
+    color: black;
+}
+
+ .container-mid{
+                margin-left: 20%;
+                margin-right: 20%;
+}
