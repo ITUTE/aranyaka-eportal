@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	require_once 'dbconnect.php';
+	include 'dbconnect.php';
 ?>
 
 <!DOCTYPE html>
@@ -59,12 +59,6 @@
             }   
 		</style>
 		
-		<script>
-		history.pushState(null, null, document.URL);
-		window.addEventListener('popstate', function () {
-			history.pushState(null, null, document.URL);
-		});
-		</script>
 </head>
 
 <body>
@@ -162,7 +156,8 @@
 				
 				$Category = $_GET['id'];
 				$TeacherID = $_SESSION['id'];
-				$query = "INSERT INTO circularevent (Tid, category, name, size, type, content) VALUES ('$TeacherID', '$Category', '$fileName', '$fileSize', '$fileType', '$content')";
+				$upload_date = date("Y-m-d");
+				$query = "INSERT INTO file (file_fac_id, file_name, file_size, file_type, file_content, file_category, file_date_upload) VALUES ('$TeacherID', '$fileName', '$fileSize', '$fileType', '$content', '$Category', '$upload_date')";
 
 				mysqli_query($conn, $query) or die('Error, query failed'); 
 				echo "<script type='text/javascript'>alert('File $fileName uploaded');</script>";

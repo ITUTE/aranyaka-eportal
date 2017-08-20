@@ -11,12 +11,6 @@
 	<link rel="stylesheet" type="text/css" href="eportal.css">
 	<link rel="stylesheet" type="text/css" href="index.css">
 	
-	<script>
-		history.pushState(null, null, document.URL);
-		window.addEventListener('popstate', function () {
-			history.pushState(null, null, document.URL);
-		});
-	</script>
 </head>
 
 <body>
@@ -51,7 +45,7 @@
         <div class="row">
             <?php
                 $Tid = $_SESSION['id'];
-                $query = "SELECT id, name FROM circularevent WHERE Tid = '$Tid' AND category=1";
+                $query = "SELECT file_id, file_name FROM file WHERE file_fac_id = '$Tid' AND file_category=1";
                 $result = mysqli_query($conn, $query) or die('Error, query failed');
 
                 if(mysqli_num_rows($result)==0) 

@@ -10,7 +10,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Faculty Home</title>
+        <title>Student Home</title>
         <link href='css/bootstrap.css' rel='stylesheet'>
         <link rel="stylesheet" type="text/css" href="index.css">
 		<link rel="stylesheet" type="text/css" href="eportal.css">
@@ -90,7 +90,7 @@
 						document.getElementById("sublist").innerHTML = this.responseText;
 					}
 				};
-				xmlhttp.open("GET","FList.php?q="+str,true);
+				xmlhttp.open("GET","SList.php?q="+str,true);
 				xmlhttp.send();
 			}
 		}
@@ -141,7 +141,7 @@
                                 $query = "SELECT stu_name from student_login WHERE stu_id = " . $_SESSION['id'];
                                 $result = mysqli_query($conn, $query);
                                 list($name) = mysqli_fetch_array($result);
-                                echo "Hi, "; echo "<strong><font size = 3>"; echo $name; echo "</font></strong>";
+                                echo "Hi, " .  "<strong><font size = 3>" . $name . "</font></strong>";
                         ?>
                         
                     <span class="caret"></span></a>
@@ -157,7 +157,7 @@
 
         <div class="container-fluid bg-1 text-center"><br><br><br>
             <i class='glyphicon glyphicon-education slide'></i>
-            <h2 class="margin slide"><strong>Faculty Home</strong></h2><br>
+            <h2 class="margin slide"><strong>Student Home</strong></h2><br>
         </div>
 
 
@@ -178,10 +178,10 @@
 								    $query = "SELECT stu_name, stu_usn, stu_dept_code, stu_sem_code FROM student_login WHERE stu_id = " . $_SESSION['id'];
 								    $result = mysqli_query($conn, $query);
 								    list($name, $pos, $dept, $sem) = mysqli_fetch_array($result);
-								    echo "<font size = 6><strong> Name:</strong>"; echo " "; echo $name; echo "</font><br>";
-								    echo "<font size = 6><strong> USN:</strong>"; echo " "; echo $pos; echo "</font><br>";
-								    echo "<font size = 6><strong> Department:</strong>"; echo " "; echo $dept; echo "</font><br>";
-                                    echo "<font size = 6><strong> Semester:</strong>"; echo " "; echo $sem; echo "</font><br>";
+								    echo "<font size = 6><strong> Name:</strong>" . " " . $name . "</font><br>";
+								    echo "<font size = 6><strong> USN:</strong>" . " " . $pos . "</font><br>";
+								    echo "<font size = 6><strong> Department:</strong>" . " " . $dept . "</font><br>";
+                                    echo "<font size = 6><strong> Semester:</strong>" . " " . $sem . "</font><br>";
 								?>
                     <br>
                   			</div>
@@ -189,7 +189,7 @@
 			</div>
 			<div id="dload" class="tab-pane fade">
 			    	 <div class="container-fluid bg-3 text-center">
-						<h3 class="margin slide"><strong>Upload documents</strong></h3><hr><br>
+						<h3 class="margin slide"><strong>Download documents</strong></h3><hr><br>
 			            	<div class="row slide">
 								<form method="POST">
 									<p class="slide">Select Semester:</p>

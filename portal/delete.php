@@ -10,13 +10,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="eportal.css">
 	<link rel="stylesheet" type="text/css" href="index.css">
-	
-	<script>
-		history.pushState(null, null, document.URL);
-		window.addEventListener('popstate', function () {
-			history.pushState(null, null, document.URL);
-		});
-	</script>
+
 </head>
 
 <body>
@@ -51,7 +45,7 @@
         <div class="row">
             <?php
                 $Tid = $_SESSION['id'];
-                $query = "SELECT id, subject, name FROM upload WHERE Tid = '$Tid'";
+                $query = "SELECT file_id, file_course_code, file_name FROM file WHERE file_fac_id = '$Tid' AND file_category=0";
                 $result = mysqli_query($conn, $query) or die('Error, query failed');
 
                 if(mysqli_num_rows($result)==0) 
@@ -101,7 +95,7 @@
 	if(isset($_GET['download']))
 	{
 		$id = $_GET['download'];
-		$query = "SELECT name, type, size, content FROM upload WHERE id = '$id'";
+		$query = "SELECT file_name, file_type, file_size, file_content FROM file WHERE file_id = '$id'";
 		$result = mysqli_query($conn, $query) or die('Error retrieving files');
 		list($name, $type, $size, $content) = mysqli_fetch_row($result);
 		header("Content-type: $type");

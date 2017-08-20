@@ -3,7 +3,7 @@
 	if(isset($_GET['id']))
 	{
 		$id = $_GET['id'];
-		$query = "DELETE FROM circularevent WHERE id = '$id'";
+		$query = "DELETE FROM file WHERE file_id = '$id'";
 		$result = mysqli_query($conn, $query) or die("Failed to Delete!");
 	}
 ?>

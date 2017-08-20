@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	require_once 'dbconnect.php';
+	include 'dbconnect.php';
 ?>
 
 <!DOCTYPE html>
@@ -58,13 +58,6 @@
                 margin-right: 30%;
             }   
 		</style>
-		
-		<script>
-		history.pushState(null, null, document.URL);
-		window.addEventListener('popstate', function () {
-			history.pushState(null, null, document.URL);
-		});
-		</script>
 </head>
 
 <body>
@@ -133,6 +126,9 @@
 
 	$allowed = array('jpg', 'jpeg', 'png', 'doc', 'docx', 'pdf', 'xls', 'xlsm', 'ppt', 'pptx');
 
+	if(isset($_GET['sub']))
+		$_SESSION['fac_course_code'] = $_GET['sub'];
+	
 	if(isset($_POST['upload']))
 	{
 		if($_FILES['userfile']['size'] > 0)
@@ -154,9 +150,11 @@
 				if(!get_magic_quotes_gpc())
 					$fileName = addslashes($fileName);
 				
-				$subject = $_GET['sub'];
+				$course_code = $_SESSION['fac_course_code'];
+				$sem_code = $_SESSION['fac_sem_code'];
 				$TeacherID = $_SESSION['id'];
-				$query = "INSERT INTO upload (Tid, subject, name, size, type, content) VALUES ('$TeacherID', '$subject', '$fileName', '$fileSize', '$fileType', '$content')";
+				$upload_date = date("Y-m-d");
+				$query = "INSERT INTO file (file_fac_id, file_course_code, file_sem_code, file_name, file_size, file_type, file_content, file_category, file_date_upload) VALUES ('$TeacherID', '$course_code', '$sem_code', '$fileName', '$fileSize', '$fileType', '$content', 0, '$upload_date')";
 
 				mysqli_query($conn, $query) or die('Error, query failed'); 
 				echo "<script type='text/javascript'>alert('File $fileName uploaded');</script>";
