@@ -219,11 +219,11 @@
                                 <p class='text-center'><font size=3px>Here you can view all the groups you are associated with.</font></p>
                                 <br>
                                 <?php 
-                                    $query1 = "SELECT ss_code FROM semester_section WHERE ss_dept_code = '" . $_SESSION['stu_dept'] . "' AND ss_sem_code = '" . $_SESSION['stu_sem'] . "' AND sem_section = '" . $_SESSION['stu_section'] . "'";
+                                    $query1 = "SELECT ss_code FROM semester_section WHERE ss_dept_code = '" . $_SESSION['stu_dept'] . "' AND ss_sem_code = '" . $_SESSION['stu_sem'] . "' AND ss_section = '" . $_SESSION['stu_section'] . "'";   
                                     $result1 = mysqli_query($conn, $query1);
-                                    $ss_code = mysqli_fetch_row($result);    
-                                    
-                                    $query2 = "SELECT grp_name FROM groups WHERE grp_code = '" . $ss_code[0] . "'";
+									$row = mysqli_fetch_row($result1);
+									$ss_code = $row[0];
+                                    $query2 = "SELECT grp_name FROM groups WHERE grp_code = '" . $ss_code . "'";
                                     $result2 = mysqli_query($conn, $query2);
                                     echo "<div class=\"container-mid\">";
                                         echo "<p class=\"slide text-center\"><strong>Class Group</strong></p>";
@@ -232,31 +232,31 @@
                                                     <th>Group Names</th>
                                                     <th> </th> 
                                                  </tr>";
-                                        while(list($group_names) = mysqli_fetch_array($result2))
-                                        {
-                                            echo "<tr>";
-                                            echo "<td>"; echo $group_names; echo "</td>";
-                                            echo "<td><a href=\"student-group.php\">enter group </a></td>";
-                                            echo "</tr>";
-                                        }
+                                        list($group_names) = mysqli_fetch_array($result2);
+										echo "<tr>";
+										echo "<td>"; echo $group_names; echo "</td>";
+										echo "<td><a href=\"student-group.php\">enter group </a></td>";
+                                        echo "</tr>";
                                         echo "</table><hr>";
-
-                                        echo "<p class=\"slide text-center\"><strong>Other Groups</strong></p>";
-                                        $query = "SELECT g.grp_name FROM groups g, student_groups sg WHERE sg.sg_usn = '" . $_SESSION['student'] . "' AND sg.sg_grp_code = g.grp_code";
-                                        $result = mysqli_query($conn, $query);
-                                        echo "<table class=\"table table-striped table-hover\" style=\"width:100%\">
-                                                 <tr>
-                                                    <th>Group Names</th>
-                                                    <th> </th> 
-                                                 </tr>";
-                                        while(list($group_names) = mysqli_fetch_array($result))
-                                        {
-                                            echo "<tr>";
-                                            echo "<td>"; echo $group_names; echo "</td>";
-                                            echo "<td><a href=\"student-group.php\">enter group </a></td>";
-                                            echo "</tr>";
-                                        }
-                                        echo "</table><hr>";
+                                        $query1 = "SELECT g.grp_name from groups g, student_groups sg WHERE sg.sg_stu_usn = '" . $_SESSION['student'] . "' AND g.grp_code=sg.sg_grp_code"; 
+										$result1 = mysqli_query($conn, $query1);    
+										if(mysqli_num_rows($result1)!=0)
+										{
+											echo "<p class=\"slide text-center\"><strong>Other Groups</strong></p>";
+											echo "<table class=\"table table-striped table-hover\" style=\"width:100%\">
+													 <tr>
+														<th>Group Names</th>
+														<th> </th> 
+													 </tr>";
+											while(list($group_names) = mysqli_fetch_array($result1))
+											{
+												echo "<tr>";
+												echo "<td>"; echo $group_names; echo "</td>";
+												echo "<td><a href=\"student-group.php\">enter group </a></td>";
+												echo "</tr>";
+											}
+											echo "</table><hr>";
+										}
                                     echo "</div>";
                                 ?>
                   			</div>

@@ -246,23 +246,26 @@
                                         echo "<td><a href=#>enter group </a></td>";
                                         echo "</tr>";
                                     }
-                                    echo "</table><hr>";
-                                    echo "<p class=\"slide text-center\"><strong>Other Groups</strong></p>";
+                                    echo "</table><hr>";                            
                                     $query = "SELECT g.grp_name from groups g, faculty_other_groups fog WHERE fog.fog_fac_username = '" . $_SESSION['faculty'] . "' AND g.grp_code = fog.fog_grp_code";
                                     $result = mysqli_query($conn, $query);
-                                    echo "<table class=\"table table-striped table-hover\" style=\"width:100%\">
-                                             <tr>
-                                                <th>Group Names</th>
-                                                <th> </th> 
-                                             </tr>";
-                                    while(list($group_names) = mysqli_fetch_array($result))
-                                    {
-                                        echo "<tr>";
-                                        echo "<td>"; echo $group_names; echo "</td>";
-                                        echo "<td><a href=#>enter group </a></td>";
-                                        echo "</tr>";
-                                    }
-                                    echo "</table><hr>";
+									if(mysqli_num_rows($result)!=0)
+									{
+										echo "<p class=\"slide text-center\"><strong>Other Groups</strong></p>";
+										echo "<table class=\"table table-striped table-hover\" style=\"width:100%\">
+												 <tr>
+													<th>Group Names</th>
+													<th> </th> 
+												 </tr>";
+										while(list($group_names) = mysqli_fetch_array($result))
+										{
+											echo "<tr>";
+											echo "<td>"; echo $group_names; echo "</td>";
+											echo "<td><a href=#>enter group </a></td>";
+											echo "</tr>";
+										}
+										echo "</table><hr>";
+									}
                                     echo "</div>";
                                 ?>
                   			</div>
