@@ -169,19 +169,33 @@
 
 		<div class="tab-content">
 			<div id="home" class="tab-pane fade in active">
-			    <div class="container-fluid bg-3 text-center">
-						<h3 class="margin slide"><strong>Profile Home</strong></h3><hr><br>
+			    <div class="container-fluid bg-3">
+						<h3 class="margin slide text-center"><strong>Profile Home</strong></h3><hr><br>
 							<div class="row slide">
 
-                    			<p><font size=3px>Here you can view all the information about you.</font></p>
+                    			<p class='text-center'><font size=3px>Here you can view all the information about you.</font></p><br>
 								<?php
 								    $query = "SELECT stu_name, stu_usn, stu_dept_code, stu_sem_code FROM student_login WHERE stu_id = " . $_SESSION['id'];
 								    $result = mysqli_query($conn, $query);
-								    list($name, $pos, $dept, $sem) = mysqli_fetch_array($result);
-								    echo "<font size = 6><strong> Name:</strong>" . " " . $name . "</font><br>";
-								    echo "<font size = 6><strong> USN:</strong>" . " " . $pos . "</font><br>";
-								    echo "<font size = 6><strong> Department:</strong>" . " " . $dept . "</font><br>";
-                                    echo "<font size = 6><strong> Semester:</strong>" . " " . $sem . "</font><br>";
+								    list($name, $usn, $dept, $sem) = mysqli_fetch_array($result);
+								    echo "<div class=\"container-mid\">
+                                            <table class=\"table slide\" style=\"width:100%\">
+                                                 <tr>
+                                                    
+                                                 </tr>";
+                                    echo "<tr class=\"success\">
+                                            <td><font size = 6><strong> Name:</strong></font></td><td class=\"text-center\"><font size = 6>" . " " . $name . "</font></td></tr>";
+								    echo "<tr class=\"info\">
+                                            <td><font size = 6><strong> USN:</strong></font></td><td class=\"text-center\"><font size = 6>" . " " . $usn . "</font></td></tr>";
+                                    $query1 = "SELECT dept_name FROM department WHERE dept_code = '" . $dept . "'";
+                                    $result1 = mysqli_query($conn, $query1);
+                                    $dept = mysqli_fetch_row($result1)[0];
+								    echo "<tr class=\"info\">
+                                            <td><font size = 6><strong> Semester:</strong></font></td><td class=\"text-center\"><font size = 6 >" . " " . $sem . "</font></td></tr>";
+                                    echo "<tr class=\"success\">
+                                            <td><font size = 6><strong> Department:</strong></font></td><td class=\"text-center\"><font size = 6>" . " " . $dept . "</font></td></tr>";
+                                    echo "  </table>
+                                        </div>";
 								?>
                     <br>
                   			</div>
@@ -214,23 +228,25 @@
 			<div id="groups" class="tab-pane fade">
 			    <div class="container-fluid bg-3">
 						<h3 class="margin slide text-center"><strong>My Groups</strong></h3><hr>
-							<div class="row slide">
+							<div class="row">
 
                                 <p class='text-center'><font size=3px>Here you can view all the groups you are associated with.</font></p>
                                 <br>
                                 <?php 
                                     $query1 = "SELECT ss_code FROM semester_section WHERE ss_dept_code = '" . $_SESSION['stu_dept'] . "' AND ss_sem_code = '" . $_SESSION['stu_sem'] . "' AND ss_section = '" . $_SESSION['stu_section'] . "'";   
                                     $result1 = mysqli_query($conn, $query1);
-									$row = mysqli_fetch_row($result1);
-									$ss_code = $row[0];
+									$ss_code = mysqli_fetch_row($result1)[0];
+									//$ss_code = $row[0];
                                     $query2 = "SELECT grp_name FROM groups WHERE grp_code = '" . $ss_code . "'";
                                     $result2 = mysqli_query($conn, $query2);
                                     echo "<div class=\"container-mid\">";
-                                        echo "<p class=\"slide text-center\"><strong>Class Group</strong></p>";
-                                        echo "<table class=\"table table-striped table-hover\" style=\"width:100%\">
+                                    if(mysqli_num_rows($result2)!=0)
+                                    {    
+                                        echo "<p class=\"text-center\"><strong>Class Group</strong></p>";
+                                        echo "<table class=\"table table-striped table-hover slide\" style=\"width:100%\">
                                                  <tr>
                                                     <th>Group Names</th>
-                                                    <th> </th> 
+                                                    <th></th> 
                                                  </tr>";
                                         list($group_names) = mysqli_fetch_array($result2);
 										echo "<tr>";
@@ -238,17 +254,18 @@
 										echo "<td><a href=\"student-group.php\">enter group </a></td>";
                                         echo "</tr>";
                                         echo "</table><hr>";
-                                        $query1 = "SELECT g.grp_name from groups g, student_groups sg WHERE sg.sg_stu_usn = '" . $_SESSION['student'] . "' AND g.grp_code=sg.sg_grp_code"; 
-										$result1 = mysqli_query($conn, $query1);    
-										if(mysqli_num_rows($result1)!=0)
+                                    }
+                                        $query = "SELECT g.grp_name FROM groups g, student_groups sg WHERE sg.sg_usn = '" . $_SESSION['student'] . "' AND g.grp_code=sg.sg_grp_code"; 
+										$result = mysqli_query($conn, $query);    
+										if(mysqli_num_rows($result)!=0)
 										{
-											echo "<p class=\"slide text-center\"><strong>Other Groups</strong></p>";
-											echo "<table class=\"table table-striped table-hover\" style=\"width:100%\">
+											echo "<p class=\"text-center\"><strong>Other Groups</strong></p>";
+											echo "<table class=\"table table-striped table-hover slide\" style=\"width:100%\">
 													 <tr>
 														<th>Group Names</th>
 														<th> </th> 
 													 </tr>";
-											while(list($group_names) = mysqli_fetch_array($result1))
+											while(list($group_names) = mysqli_fetch_array($result))
 											{
 												echo "<tr>";
 												echo "<td>"; echo $group_names; echo "</td>";

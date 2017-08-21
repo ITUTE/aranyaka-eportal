@@ -181,23 +181,37 @@
 
 		<div class="tab-content">
 			<div id="home" class="tab-pane fade in active">
-			    <div class="container-fluid bg-3 text-center">
-						<h3 class="margin slide"><strong>Profile Home</strong></h3><hr><br>
+			    <div class="container-fluid bg-3">
+						<h3 class="margin slide text-center"><strong>Profile Home</strong></h3><hr><br>
 							<div class="row slide">
 
-                    			<p><font size=3px>Here you can view all the information about you.</font></p>
+                    			<p class='text-center'><font size=3px>Here you can view all the information about you.</font></p><br>
 								<?php
 								    $query = "SELECT fac_name, fac_position, fac_dept_code FROM faculty_login WHERE fac_id = " . $_SESSION['id'];
 								    $result = mysqli_query($conn, $query);
 								    list($name, $pos, $dept) = mysqli_fetch_array($result);
-								    echo "<font size = 6><strong> Name:</strong>"; echo " "; echo $name; echo "</font><br>";
-								    echo "<font size = 6><strong> Position:</strong>"; echo " "; echo $pos; echo "</font><br>";
-								    echo "<font size = 6><strong> Department:</strong>"; echo " "; echo $dept; echo "</font><br>";
+								    echo "<div class=\"container-mid\">
+                                            <table class=\"table slide\" style=\"width:100%\">
+                                                 <tr>
+                                                    
+                                                 </tr>";
+                                    echo "<tr>
+                                            <td><font size = 6><strong> Name:</strong></font></td><td class=\"text-center\"><font size = 6>" . " " . $name . "</font></td></tr>";
+								    echo "<tr>
+                                            <td><font size = 6><strong> Position:</strong></font></td><td class=\"text-center\"><font size = 6>" . " " . $pos . "</font></td></tr>";
+                                    $query1 = "SELECT dept_name FROM department WHERE dept_code = '" . $dept . "'";
+                                    $result1 = mysqli_query($conn, $query1);
+                                    $dept = mysqli_fetch_row($result1)[0];
+								    echo "<tr>
+                                            <td><font size = 6><strong> Department:</strong></font></td><td class=\"text-center\"><font size = 6>" . " " . $dept . "</font></td></tr>";
+                                    echo "  </table>
+                                        </div>";
 								?>
-                    <br>
-                  			</div>
             	</div>
 			</div>
+            </div>
+                 
+            
 			<div id="upload" class="tab-pane fade">
 			    	 <div class="container-fluid bg-3 text-center">
 						<h3 class="margin slide"><strong>Upload documents</strong></h3><hr><br>
