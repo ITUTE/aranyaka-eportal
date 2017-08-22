@@ -95,6 +95,7 @@
 			}
 		}
 		</script>
+        
     </head>
 
     <body>
@@ -257,7 +258,7 @@
                                     {
                                         echo "<tr>";
                                         echo "<td>"; echo $group_names; echo "</td>";
-                                        echo "<td><a href=#>enter group </a></td>";
+                                        echo "<td><a href=\"faculty-group.php\">enter group </a></td>";
                                         echo "</tr>";
                                     }
                                     echo "</table><hr>";                            
@@ -275,7 +276,7 @@
 										{
 											echo "<tr>";
 											echo "<td>"; echo $group_names; echo "</td>";
-											echo "<td><a href=#>enter group </a></td>";
+											echo "<td><a href=\"faculty-group.php\">enter group </a></td>";
 											echo "</tr>";
 										}
 										echo "</table><hr>";
@@ -340,6 +341,8 @@
 				  			</div>
 				</div>
 		</div>
+    
+                      
 
 		<footer class="container-fluid bg-4 text-center">
 			<p><font size = "2">Developed by undergraduate students of CSE department.</font></p>
