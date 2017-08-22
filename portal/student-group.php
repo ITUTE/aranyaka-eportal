@@ -1,7 +1,7 @@
 <?php
 	ob_start();
 	session_start();
-	require_once 'dbconnect.php';
+	include 'dbconnect.php';
 ?>
 
 <!DOCTYPE html>
@@ -63,38 +63,6 @@
 			  }
 		</style>
 
-		<script>
-		function sub_list(str)
-		{
-			if (str == "")
-			{
-				document.getElementById("sublist").innerHTML = "";
-				return;
-			}
-			else
-			{
-				//alert(str);
-				if (window.XMLHttpRequest)
-				{
-					// code for IE7+, Firefox, Chrome, Opera, Safari
-					xmlhttp = new XMLHttpRequest();
-				}
-				else
-				{
-					// code for IE6, IE5
-					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-				}
-				xmlhttp.onreadystatechange = function() {
-					if (this.readyState == 4 && this.status == 200)
-					{
-						document.getElementById("sublist").innerHTML = this.responseText;
-					}
-				};
-				xmlhttp.open("GET","SList.php?q="+str,true);
-				xmlhttp.send();
-			}
-		}
-		</script>
     </head>
 
     <body>
@@ -229,6 +197,5 @@
 		header("Location: index.php");
 		exit;
 	}
-	//$res=mysqli_query($conn, "SELECT id, username FROM flogin WHERE username=".$_SESSION['faculty']);
 	ob_end_flush();
 ?>

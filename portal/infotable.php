@@ -71,7 +71,7 @@
                         </thead>
                         <tbody>
                         <?php
-                            $query = "SELECT course_code, course_name FROM course WHERE course_dept_code = '" . $_SESSION['dept'] . "'";
+                            $query = "SELECT course_code, course_name FROM course WHERE course_dept_code = '" . $_SESSION['stu_dept'] . "'";
                             $result = mysqli_query($conn, $query) or die('Error, query failed');
                             if(mysqli_num_rows($result)==0) 
                             {

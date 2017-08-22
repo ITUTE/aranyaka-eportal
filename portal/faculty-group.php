@@ -1,7 +1,15 @@
 <?php
 	ob_start();
 	session_start();
-	require_once 'dbconnect.php';
+	include 'dbconnect.php';
+	
+	if(@$_SESSION['faculty'] == "")
+	{
+		header("Location: myfLogind.php");
+		exit;
+	}
+	if(isset($_GET['grp_code']))
+		$grp_code = $_GET['grp_code'];
 ?>
 
 <!DOCTYPE html>
@@ -66,38 +74,6 @@
                 }
 		</style>
 
-		<script>
-		function sub_list(str)
-		{
-			if (str == "")
-			{
-				document.getElementById("sublist").innerHTML = "";
-				return;
-			}
-			else
-			{
-				//alert(str);
-				if (window.XMLHttpRequest)
-				{
-					// code for IE7+, Firefox, Chrome, Opera, Safari
-					xmlhttp = new XMLHttpRequest();
-				}
-				else
-				{
-					// code for IE6, IE5
-					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-				}
-				xmlhttp.onreadystatechange = function() {
-					if (this.readyState == 4 && this.status == 200)
-					{
-						document.getElementById("sublist").innerHTML = this.responseText;
-					}
-				};
-				xmlhttp.open("GET","SList.php?q="+str,true);
-				xmlhttp.send();
-			}
-		}
-		</script>
         <script type="text/javascript">
                 $(document).ready(function(){
                     $("#myModal").on('show.bs.modal', function(event){
@@ -111,60 +87,39 @@
 
     <body>
 		<div class="se-pre-con"></div>
-		<!--
-        <div class="container-fluid">
-			<div class="row">
-				<div class='col-xs-12'>
-					<div class="style">
-						<div class='navbar navbar-inverse navbar-fixed-top'>
-							<ul class="nav navbar-nav">
-								<li><a class="btn navbar-btn" href="myfLogind.php">Go Back</a></li>
-								<li class="titlenav"><strong><font size=6px>#E-Portal</font></strong></li>
-								<li><a class="navbar-btn btn btn-success" href="index.php">HOME</a></li>
-							</ul>
-							<ul class="nav navbar-nav navbar-right logout">
-								<li><form method="POST"><input class="btn navbar-btn btn-danger" type="submit" value="Logout " name="Logout"/></form></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-        -->
         <nav class="navbar navbar-inverse navbar-fixed-top">
-          
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span> 
                 </button>
-              <a class="navbar-left" href="http://www.rvce.edu.in/" target = "_blank"><img src="pics/rv.JPG" class="img-circle" height=50 ondragstart="return false;" alt="logo"/></a>
-              <a href="index.php" class="navbar-brand"><strong>#E-PORTAL</strong></a>
+				<a class="navbar-left" href="http://www.rvce.edu.in/" target = "_blank"><img src="pics/rv.JPG" class="img-circle" height=50 ondragstart="return false;" alt="logo"/></a>
+				<a href="index.php" class="navbar-brand"><strong>#E-PORTAL</strong></a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
-              <ul class="nav navbar-nav">
-                <li class=""><a href="index.php">Home</a></li> 
-              </ul>
-              <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <?php 
+				<ul class="nav navbar-nav">
+					<li class=""><a href="index.php">Home</a></li> 
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+							<?php 
                                 $query = "SELECT fac_name from faculty_login WHERE fac_id = " . $_SESSION['id'];
                                 $result = mysqli_query($conn, $query);
                                 list($name) = mysqli_fetch_array($result);
                                 echo "Hi, " .  "<strong><font size = 3>" . $name . "</font></strong>";
-                        ?>
-                        
-                    <span class="caret"></span>&nbsp;</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#home"><font color = "darkcyan">Profile</font></a></li>
-                        <li><a class = ""><form method="POST"><input type="submit" value="Logout " name="Logout"/></form></a></li>
-                    </ul>
-                </li>
-              </ul>
+							?>
+							<span class="caret"></span>&nbsp;
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="#home"><font color = "darkcyan">Profile</font></a></li>
+							<li><a class = ""><form method="POST"><input type="submit" value="Logout " name="Logout"/></form></a></li>
+						</ul>
+					</li>
+				</ul>
             </div>
-          </div>
+		  </div>
         </nav>
 
         <div class="container-fluid bg-1 text-center"><br><br><br>
@@ -172,58 +127,89 @@
             <h2 class="margin slide"><strong>Group</strong></h2><br>
         </div>
 
-
 		<ul class="nav nav-tabs nav-justified">
-			  <li class="active"><a data-toggle="tab" href="#home">Assignments</a></li>
-			  <li><a data-toggle="tab" href="#ann">Announcements</a></li>
-			  <li><a data-toggle="tab" href="#mat">Materials</a></li>
+			<li class="active"><a data-toggle="tab" href="#home">Assignments</a></li>
+			<li><a data-toggle="tab" href="#ann">Announcements</a></li>
+			<li><a data-toggle="tab" href="#mat">Materials</a></li>
 		</ul>
 
 		<div class="tab-content">
 			<div id="home" class="tab-pane fade in active">
 			    <div class="container-fluid bg-3 text-center">
-						<h3 class="margin slide"><strong>Assignments</strong></h3><hr><br>
-							<div class="row slide">
-                                <table class="table table-hovered">
-                                    <tr>
-                                        <th>Assignment name</th>
-                                        <th><a href="#" class="btn btn-info" data-toggle="modal" data-target="#myModal">+Add Assignment</a></th>
-                                    </tr>
-                                </table>
-                    			<p><font size=3px>Here you can view all the assignments assigned to your group.</font></p>
-								<br>
-                  			</div>
-            	</div>
+					<h3 class="margin slide"><strong>Assignments</strong></h3>
+					<p><font size=3px>Here you can view all the assignments assigned to your group.</font></p>
+					<div class="row slide">
+						<a href="#" class="btn btn-info" data-toggle="modal" data-target="#myModal" value="0">+Add Assignment</a><br><br>
+						<table class="table table-hovered">
+							<tr>
+								<th class="text-center">Assignment name</th>
+                            </tr>
+							<?php
+								$query = "SELECT gf_id, gf_file_name, gf_description FROM group_files WHERE gf_grp_code = '$grp_code' AND gf_file_category=0";
+								$result = mysqli_query($conn, $query);
+								while(list($id, $name, $description) = mysqli_fetch_array($result))
+								{
+									echo "<tr><td>" . $name . " ";
+									?>
+									<a href="submission.php?gf_id=<?php echo $id;?>"><?php echo $description;?></a>
+									</td></tr>
+									<?php
+								}
+							?>
+						</table><br>
+                  	</div>
+				</div>
 			</div>
+			
 			<div id="ann" class="tab-pane fade">
-			    	 <div class="container-fluid bg-3 text-center">
-						<h3 class="margin slide"><strong>Announcements</strong></h3><hr><br>
-			            	<div class="row slide">
-								<p>Here you can see all the announcements.</p>
-                                <table class="table table-hovered">
-                                    <tr>
-                                        <th>Announcement name</th>
-                                        <th><a href="#" class="btn btn-info" data-toggle="modal" data-target="#myModal">+ Add Announcement</a></th>
-                                    </tr>
-                                </table>
-										<br>
-			            	</div>
-		       		 </div>
+			    <div class="container-fluid bg-3 text-center">
+					<h3 class="margin slide"><strong>Announcements</strong></h3>
+					<p><font size=3px>Here you can see all the announcements.</font></p>
+		           	<div class="row slide">
+						<a href="#" class="btn btn-info" data-toggle="modal" data-target="#myModal" value="1">+ Add Announcement</a><br><br>
+                        <table class="table table-hovered">
+							<tr>
+								<th>Announcement name</th>
+							</tr>
+							<?php
+								$query = "SELECT gf_id, gf_file_name, gf_description FROM group_files WHERE gf_grp_code = '$grp_code' AND gf_file_category=1";
+								$result = mysqli_query($conn, $query);
+								while(list($id, $name, $description) = mysqli_fetch_array($result))
+								{
+									echo "<tr><td>" . $name . " " . $description;
+									?>
+									</td></tr>
+									<?php
+								}
+							?>
+						</table><br>
+			        </div>
+		       	</div>
 			</div>
+			
 			<div id="mat" class="tab-pane fade">
-			    <div class="container-fluid bg-3">
-						<h3 class="margin slide text-center"><strong>Materials</strong></h3><hr>
-							<div class="row slide">
-
-                                <p class='text-center'><font size=3px>Here you can view all the private materials your group is associated with.</font></p>
-                                <table class="table table-hovered">
-                                    <tr>
-                                        <th>Material name</th>
-                                        <th><a href="#" class="btn btn-info" data-toggle="modal" data-target="#myModal">+ Add Material</a></th>
-                                    </tr>
-                                </table>
-                                <br>
-                  			</div>
+			    <div class="container-fluid bg-3 text-center">
+					<h3 class="margin slide text-center"><strong>Materials</strong></h3>
+					<p><font size=3px>Here you can view all the private materials your group is associated with.</font></p>
+					<div class="row slide">
+						<a href="#" class="btn btn-info" data-toggle="modal" data-target="#myModal" value="2">+ Add Material</a><br><br>
+						<table class="table table-hovered">
+							<tr>
+								<th>Material name</th>
+							</tr>
+							<?php
+								$query = "SELECT gf_id, gf_file_name, gf_description FROM group_files WHERE gf_grp_code = '$grp_code' AND gf_file_category=2";
+								$result = mysqli_query($conn, $query);
+								while(list($id, $name, $description) = mysqli_fetch_array($result))
+								{
+									echo "<tr><td>" . $name . " " . $description;
+									?>
+									</td></tr>
+									<?php
+								}
+							?>
+                        </table><br>
+                  	</div>
             	</div>
 			</div>
 		</div>
@@ -235,34 +221,30 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         <h4 class="modal-title">Upload</h4>
                     </div>
-                    <div class="modal-body">
-                        <form role="form">
+					<form method="POST" enctype="multipart/form-data">
+						<div class="modal-body"> 
                             <div class="form-group">
-                                <label for="recipient-name" class="control-label"><font color="darkcyan">Assignment Description</font></label>
-                                <textarea type="text" class="form-control" id="recipient-name"></textarea>
+                                <label for="description" class="control-label"><font color="darkcyan">Description</font></label>
+                                <textarea type="text" name="description" class="form-control" id="description"></textarea>
                             </div>
-                        </form>
-                        <br>
-                        <form method="POST" enctype="multipart/form-data"> 
+						
                             <label class="custom-file-upload btn btn-lg btn-info slide" for="userfile">
                                 <input type="file" name="userfile" id="userfile"/>Choose File
-                            </label>
-                        </form>
-                        <br>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-success">Upload</button>
-                    </div>
+                            </label><br>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+							<button type="submit" name="submit" id="submit" value="Submit" class="btn btn-success">Upload</button>
+						</div>
+					</form><br>
                 </div>
             </div>
-        </div>        
+        </div>     	   
 
 		<footer class="container-fluid bg-4 text-center">
 			<p><font size = "2">Developed by undergraduate students of CSE department.</font></p>
 			<p><a href="http://www.rvce.edu.in/" target = "_blank"><font size=2px color="white">R.V. College of Engineering</font></a></p>
 		</footer>
-
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
@@ -277,10 +259,46 @@
 </html>
 
 <?php
-	if(@$_SESSION['faculty'] == "")
+
+	$allowed = array('jpg', 'jpeg', 'png', 'doc', 'docx', 'pdf', 'xls', 'xlsm', 'ppt', 'pptx');
+	if(isset($_POST['submit']))
 	{
-		header("Location: myfLogind.php");
-		exit;
+		if($_FILES['userfile']['size'] > 0)
+		{			
+			$fileName = $_FILES['userfile']['name'];
+			$tmpName  = $_FILES['userfile']['tmp_name'];
+			$fileSize = $_FILES['userfile']['size'];
+			$fileType = $_FILES['userfile']['type'];
+			
+			$file_ext = explode(".", $fileName);
+			$file_ext = strtolower(end($file_ext));
+			
+			if(in_array($file_ext, $allowed))
+			{
+				$fp = fopen($tmpName, 'r');
+				$content = fread($fp, filesize($tmpName));
+				$content = addslashes($content);
+				fclose($fp);
+				if(!get_magic_quotes_gpc())
+					$fileName = addslashes($fileName);
+				
+				$TeacherID = $_SESSION['id'];
+				$upload_date = date("Y-m-d");
+				$category = 0;
+				$description = $_POST['description'];
+				
+				//echo $TeacherID . " " . $description . " " . $category . " " . $upload_date;
+				//echo "<br>" . $fileName . " " . $fileSize . " " . $fileType;
+				$query = "INSERT INTO group_files (gf_file_name, gf_file_size, gf_file_type, gf_file_content, gf_file_category, gf_description, gf_fac_id, gf_grp_code, gf_date_upload) VALUES ('$fileName', '$fileSize', '$fileType', '$content', '$category', '$description', '$TeacherID', '$grp_code', '$upload_date')";
+				mysqli_query($conn, $query) or die('Error, query failed'); 
+				echo "<script type='text/javascript'>alert('File $fileName uploaded');</script>";
+			}
+			else
+				echo "<script type='text/javascript'>alert('FileType Not Supported');</script>";
+			mysqli_close($conn);
+		}
+		else
+			echo "<script type='text/javascript'>alert('Please Choose a File to Upload');</script>";
 	}
 	if(isset($_POST['Logout']))
 	{
@@ -288,6 +306,5 @@
 		header("Location: index.php");
 		exit;
 	}
-	//$res=mysqli_query($conn, "SELECT id, username FROM flogin WHERE username=".$_SESSION['faculty']);
 	ob_end_flush();
 ?>

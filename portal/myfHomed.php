@@ -244,7 +244,7 @@
                             <p class='text-center'><font size=3px>Here you can view all the groups you are associated with.</font></p>
                                 <br>
                                 <?php 
-                                    $query = "SELECT g.grp_name from groups g, faculty_section_groups fsg WHERE fsg.fsg_fac_username = '" . $_SESSION['faculty'] . "' AND g.grp_code = fsg.fsg_ss_code";
+                                    $query = "SELECT g.grp_code, g.grp_name from groups g, faculty_section_groups fsg WHERE fsg.fsg_fac_username = '" . $_SESSION['faculty'] . "' AND g.grp_code = fsg.fsg_ss_code";
                                      
                                     $result = mysqli_query($conn, $query);
                                     echo "<div class=\"container-mid\">";
@@ -254,15 +254,15 @@
                                                 <th>Group Names</th>
                                                 <th> </th> 
                                              </tr>";
-                                    while(list($group_names) = mysqli_fetch_array($result))
+                                    while(list($group_codes, $group_names) = mysqli_fetch_array($result))
                                     {
                                         echo "<tr>";
                                         echo "<td>"; echo $group_names; echo "</td>";
-                                        echo "<td><a href=\"faculty-group.php\">enter group </a></td>";
+                                        echo "<td><a href=\"faculty-group.php?grp_code=$group_codes\">Enter Group </a></td>";
                                         echo "</tr>";
                                     }
                                     echo "</table><hr>";                            
-                                    $query = "SELECT g.grp_name from groups g, faculty_other_groups fog WHERE fog.fog_fac_username = '" . $_SESSION['faculty'] . "' AND g.grp_code = fog.fog_grp_code";
+                                    $query = "SELECT g.grp_code, g.grp_name from groups g, faculty_other_groups fog WHERE fog.fog_fac_username = '" . $_SESSION['faculty'] . "' AND g.grp_code = fog.fog_grp_code";
                                     $result = mysqli_query($conn, $query);
 									if(mysqli_num_rows($result)!=0)
 									{
@@ -272,11 +272,11 @@
 													<th>Group Names</th>
 													<th> </th> 
 												 </tr>";
-										while(list($group_names) = mysqli_fetch_array($result))
+										while(list($group_codes, $group_names) = mysqli_fetch_array($result))
 										{
 											echo "<tr>";
 											echo "<td>"; echo $group_names; echo "</td>";
-											echo "<td><a href=\"faculty-group.php\">enter group </a></td>";
+											echo "<td><a href=\"faculty-group.php?grp_code=$group_codes\">Enter Group </a></td>";
 											echo "</tr>";
 										}
 										echo "</table><hr>";
