@@ -68,7 +68,7 @@
                     echo "<td>"; echo $sub; echo "</td>";
                     echo "<td>"; echo $name; echo "</td>";
                     ?>
-                    <form><td><button class="btn-success" name="download" value="<?php echo $id; ?>" >Download</button></td></form>
+                    <form><td><button class="btn-success" name="download" value="<?php echo $id; ?>" >View</button></td></form>
                     <td><button class="btn-danger" id= <?php echo $id; ?> onclick="del(this.id)">Delete</button></td>
                 <?php
                     echo "</tr>";
@@ -102,7 +102,7 @@
 		$result = mysqli_query($conn, $query) or die('Error retrieving files');
 		list($name, $type, $size, $content) = mysqli_fetch_row($result);
 		header("Content-type: $type");
-		header("Content-Disposition: attachment; filename=$name");
+		header("Content-Disposition: inline; filename=$name");
 		header("Content-length: $size");
 		ob_clean();
 		flush();

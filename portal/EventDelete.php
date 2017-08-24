@@ -16,23 +16,6 @@
 
 <body>
 	<div class="se-pre-con"></div>
-	<!--
-    <div class="container-fluid">
-        <div class="row">
-            <div class='col-xs-12'>
-                <div class="style"> 
-                    <div class='navbar navbar-inverse navbar-fixed-top'>
-                            <ul class="nav navbar-nav">
-                                <li><a class="btn navbar-btn" href="myfHomed.php">Go Back</a></li>
-                                <li class="titlenav"><strong><font size=6px>#E-Portal</font></strong></li>
-                                <li><a class="navbar-btn btn btn-success" href="index.php">HOME</a></li>
-                            </ul>	
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-	-->
     
     <nav class="navbar navbar-inverse navbar-fixed-top">
           
@@ -78,7 +61,7 @@
 			$(".se-pre-con").fadeOut(1500);;
 		});
 	</script>
-    
+    <br><br><br>
     <div class="container-fluid slide">
         <div class="row">
             <?php

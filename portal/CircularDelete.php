@@ -16,23 +16,6 @@
 
 <body>
 	<div class="se-pre-con"></div>
-	<!--
-    <div class="container-fluid">
-        <div class="row">
-            <div class='col-xs-12'>
-                <div class="style"> 
-                    <div class='navbar navbar-inverse navbar-fixed-top'>
-                            <ul class="nav navbar-nav">
-                                <li><a class="btn navbar-btn" href="myfHomed.php">Go Back</a></li>
-                                <li class="titlenav"><strong><font size=6px>#E-Portal</font></strong></li>
-                                <li><a class="navbar-btn btn btn-success" href="index.php">HOME</a></li>
-                            </ul>	
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-	-->
     
     <nav class="navbar navbar-inverse navbar-fixed-top">
           
@@ -45,6 +28,7 @@
             <a class="navbar-left" href="http://www.rvce.edu.in/" target = "_blank"><img src="pics/rv.JPG" class="img-circle" height=50 ondragstart="return false;" alt="logo"/></a>
             <a href="index.php" class="navbar-brand"><strong>#E-PORTAL</strong></a>
         </div>
+		
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li class=""><a href="index.php">Home</a></li> 
@@ -78,7 +62,7 @@
 			$(".se-pre-con").fadeOut(1500);;
 		});
 	</script>
-    
+    <br><br><br>
     <div class="container-fluid slide">
         <div class="row">
             <?php
@@ -103,6 +87,7 @@
                     echo "<tr>";
                     echo "<td>"; echo $name . " "; echo "</td>";
                     ?>
+					<form><td><button class="btn-success" name="download" value="<?php echo $id; ?>" >View</button></td></form>
                     <td><button class="btn-danger" id= <?php echo $id; ?> onclick="del(this.id)">Delete</button></td>
                 <?php
                     echo "</tr>";
@@ -127,3 +112,19 @@
 	</script>
 </body>
 </html>
+
+<?php
+	if(isset($_GET['download']))
+	{
+		$id = $_GET['download'];
+		$query = "SELECT file_name, file_type, file_size, file_content FROM file WHERE file_id = '$id'";
+		$result = mysqli_query($conn, $query) or die('Error retrieving files');
+		list($name, $type, $size, $content) = mysqli_fetch_row($result);
+		header("Content-type: $type");
+		header("Content-Disposition: inline; filename=$name");
+		header("Content-length: $size");
+		ob_clean();
+		flush();
+		echo $content;
+	}
+?>

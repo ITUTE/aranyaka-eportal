@@ -1,7 +1,7 @@
 <?php
 	ob_start();
 	session_start();
-	require_once 'dbconnect.php';
+	include 'dbconnect.php';
 ?>
 
 <!DOCTYPE html>
@@ -62,64 +62,43 @@
 					margin-right: 30%;
 			  }
 		</style>
-
+        
 		<script>
-		function sub_list(str)
-		{
-			if (str == "")
+			function sub_list(str)
 			{
-				document.getElementById("sublist").innerHTML = "";
-				return;
-			}
-			else
-			{
-				//alert(str);
-				if (window.XMLHttpRequest)
+				if (str == "")
 				{
-					// code for IE7+, Firefox, Chrome, Opera, Safari
-					xmlhttp = new XMLHttpRequest();
+					document.getElementById("sublist").innerHTML = "";
+					return;
 				}
 				else
 				{
-					// code for IE6, IE5
-					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-				}
-				xmlhttp.onreadystatechange = function() {
-					if (this.readyState == 4 && this.status == 200)
+					//alert(str);
+					if (window.XMLHttpRequest)
 					{
-						document.getElementById("sublist").innerHTML = this.responseText;
+						// code for IE7+, Firefox, Chrome, Opera, Safari
+						xmlhttp = new XMLHttpRequest();
 					}
-				};
-				xmlhttp.open("GET","FList.php?q="+str,true);
-				xmlhttp.send();
+					else
+					{
+						// code for IE6, IE5
+						xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+					}
+					xmlhttp.onreadystatechange = function() {
+						if (this.readyState == 4 && this.status == 200)
+						{
+							document.getElementById("sublist").innerHTML = this.responseText;
+						}
+					};
+					xmlhttp.open("GET","FList.php?q="+str,true);
+					xmlhttp.send();
+				}
 			}
-		}
 		</script>
-        
     </head>
 
     <body>
 		<div class="se-pre-con"></div>
-		<!--
-        <div class="container-fluid">
-			<div class="row">
-				<div class='col-xs-12'>
-					<div class="style">
-						<div class='navbar navbar-inverse navbar-fixed-top'>
-							<ul class="nav navbar-nav">
-								<li><a class="btn navbar-btn" href="myfLogind.php">Go Back</a></li>
-								<li class="titlenav"><strong><font size=6px>#E-Portal</font></strong></li>
-								<li><a class="navbar-btn btn btn-success" href="index.php">HOME</a></li>
-							</ul>
-							<ul class="nav navbar-nav navbar-right logout">
-								<li><form method="POST"><input class="btn navbar-btn btn-danger" type="submit" value="Logout " name="Logout"/></form></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-        -->
         <nav class="navbar navbar-inverse navbar-fixed-top">
           
             <div class="navbar-header">
@@ -208,35 +187,32 @@
                                     echo "  </table>
                                         </div>";
 								?>
-            	</div>
-			</div>
+							</div>
+				</div>
             </div>
-                 
-            
+			
 			<div id="upload" class="tab-pane fade">
-			    	 <div class="container-fluid bg-3 text-center">
-						<h3 class="margin slide"><strong>Upload documents</strong></h3><hr><br>
-			            	<div class="row slide">
-								<form method="POST">
-									<p class="slide">Select Semester:</p>
-			             <select class="form-control col-md-6 slide dropsize" name="semester" onclick="sub_list(this.value)" onkeyup="sub_list(this.value)" onkeydown="sub_list(this.value)" onchange="sub_list(this.value)">
-										 <option value="">Select Semester</option>
-			                      <option value="1">First Semester</option>
-			                      <option value="2">Second Semester</option>
-			                      <option value="3">Third Semester</option>
-			                      <option value="4">Fourth Semester</option>
-			                      <option value="5">Fifth Semester</option>
-			                      <option value="6">Sixth Semester</option>
-			                      <option value="7">Seventh Semester</option>
-			              </select><br>
-								</form><br>
-								<p><font size=3px>Select a semester and then pick the desired course</font></p><hr>
-								<div id="sublist"></div><br>
-								<p>To see information about syllabus <a href="infotable.php" target="_blank" class="btn btn-md btn-info">Click Here</a></p>
-										<br>
-			            	</div>
-		       		 </div>
+				<div class="container-fluid bg-3 text-center">
+					<h3 class="margin slide"><strong>Upload documents</strong></h3><hr><br>
+					<div class="row slide">
+						<p class="slide">Select Semester:</p>
+						<select class="form-control col-md-6 slide dropsize abc" name="semester" onclick="sub_list(this.value)" onkeyup="sub_list(this.value)" onkeydown="sub_list(this.value)" onchange="sub_list(this.value)">
+							<option value="">Select Semester</option>
+							<option value="1">First Semester</option>
+							<option value="2">Second Semester</option>
+							<option value="3">Third Semester</option>
+							<option value="4">Fourth Semester</option>
+							<option value="5">Fifth Semester</option>
+							<option value="6">Sixth Semester</option>
+							<option value="7">Seventh Semester</option>
+						</select><br><br>
+						<p><font size=3px>Select a semester and then pick the desired course</font></p><hr>
+						<div id="sublist"></div><br>
+						<p>To see information about syllabus <a href="infotable.php" target="_blank" class="btn btn-md btn-info">Click Here</a></p><br>
+					</div>
+				</div>
 			</div>
+                
 			<div id="groups" class="tab-pane fade">
 			    <div class="container-fluid bg-3">
 						<div class="row slide">

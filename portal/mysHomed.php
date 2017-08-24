@@ -1,7 +1,7 @@
 <?php
 	ob_start();
 	session_start();
-	require_once 'dbconnect.php';
+	include 'dbconnect.php';
 ?>
 
 <!DOCTYPE html>
@@ -237,7 +237,7 @@
                                     $result1 = mysqli_query($conn, $query1);
 									$ss_code = mysqli_fetch_row($result1)[0];
 									//$ss_code = $row[0];
-                                    $query2 = "SELECT grp_name FROM groups WHERE grp_code = '" . $ss_code . "'";
+                                    $query2 = "SELECT grp_name, grp_code FROM groups WHERE grp_code = '" . $ss_code . "'";
                                     $result2 = mysqli_query($conn, $query2);
                                     echo "<div class=\"container-mid\">";
                                     if(mysqli_num_rows($result2)!=0)
@@ -248,14 +248,14 @@
                                                     <th>Group Names</th>
                                                     <th></th> 
                                                  </tr>";
-                                        list($group_names) = mysqli_fetch_array($result2);
+                                        list($group_names, $group_codes) = mysqli_fetch_array($result2);
 										echo "<tr>";
 										echo "<td>"; echo $group_names; echo "</td>";
-										echo "<td><a href=\"student-group.php\">enter group </a></td>";
+										echo "<td><a href=\"student-group.php?grp_code=$group_codes\">Enter Group </a></td>";
                                         echo "</tr>";
                                         echo "</table><hr>";
                                     }
-                                        $query = "SELECT g.grp_name FROM groups g, student_groups sg WHERE sg.sg_usn = '" . $_SESSION['student'] . "' AND g.grp_code=sg.sg_grp_code"; 
+                                        $query = "SELECT g.grp_name, g.grp_code FROM groups g, student_groups sg WHERE sg.sg_usn = '" . $_SESSION['student'] . "' AND g.grp_code=sg.sg_grp_code"; 
 										$result = mysqli_query($conn, $query);    
 										if(mysqli_num_rows($result)!=0)
 										{
@@ -265,11 +265,11 @@
 														<th>Group Names</th>
 														<th> </th> 
 													 </tr>";
-											while(list($group_names) = mysqli_fetch_array($result))
+											while(list($group_names, $group_codes) = mysqli_fetch_array($result))
 											{
 												echo "<tr>";
 												echo "<td>"; echo $group_names; echo "</td>";
-												echo "<td><a href=\"student-group.php\">enter group </a></td>";
+												echo "<td><a href=\"student-group.php?grp_code=$group_codes\">Enter Group </a></td>";
 												echo "</tr>";
 											}
 											echo "</table><hr>";
@@ -311,6 +311,5 @@
 		header("Location: index.php");
 		exit;
 	}
-	//$res=mysqli_query($conn, "SELECT id, username FROM flogin WHERE username=".$_SESSION['faculty']);
 	ob_end_flush();
 ?>

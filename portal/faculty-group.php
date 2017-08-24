@@ -5,7 +5,7 @@
 	
 	if(@$_SESSION['faculty'] == "")
 	{
-		header("Location: myfLogind.php");
+		header("Location: index.php");
 		exit;
 	}
 	if(isset($_GET['grp_code']))
@@ -74,7 +74,7 @@
 					margin-right: 30%;
 			  }
             .bs-example{
-                    margin-top: 18%;
+                    margin-top: 10%;
                 }
 		</style>
     </head>

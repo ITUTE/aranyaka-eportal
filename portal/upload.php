@@ -62,23 +62,6 @@
 
 <body>
 	<div class="se-pre-con"></div>
-    <!--
-    <div class="container-fluid">
-        <div class="row">
-            <div class='col-xs-12'>
-                <div class="style"> 
-                    <div class='navbar navbar-inverse navbar-fixed-top'>
-                        <ul class="nav navbar-nav">
-                            <li><a class="btn navbar-btn" href="myfHomed.php">Go Back</a></li>
-                            <li class="titlenav"><strong><font size=6px>#E-Portal</font></strong></li>
-                            <li><a class="navbar-btn btn btn-success" href="index.php">HOME</a></li>
-                        </ul>	
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    -->
     
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-header">
@@ -98,7 +81,7 @@
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <?php 
-                                $query = "SELECT stu_name from student_login WHERE stu_id = " . $_SESSION['id'];
+                                $query = "SELECT fac_name from faculty_login WHERE fac_id = " . $_SESSION['id'];
                                 $result = mysqli_query($conn, $query);
                                 list($name) = mysqli_fetch_array($result);
                                 echo "Hi, " .  "<strong><font size = 3>" . $name . "</font></strong>";
@@ -213,4 +196,10 @@
 		else
 			echo "<script type='text/javascript'>alert('Please Choose a File to Upload');</script>";
 	} 
+	if(isset($_POST['Logout']))
+	{
+		session_destroy();
+		header("Location: index.php");
+		exit;
+	}
 ?> 
