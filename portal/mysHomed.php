@@ -155,9 +155,9 @@
 
                     			<p class='text-center'><font size=3px>Here you can view all the information about you.</font></p><br>
 								<?php
-								    $query = "SELECT stu_name, stu_usn, stu_dept_code, stu_sem_code FROM student_login WHERE stu_id = " . $_SESSION['id'];
+								    $query = "SELECT stu_name, stu_usn, stu_dept_code, stu_sem_code, stu_section FROM student_login WHERE stu_id = " . $_SESSION['id'];
 								    $result = mysqli_query($conn, $query);
-								    list($name, $usn, $dept, $sem) = mysqli_fetch_array($result);
+								    list($name, $usn, $dept, $sem, $section) = mysqli_fetch_array($result);
 								    echo "<div class=\"container-mid\">
                                             <table class=\"table slide\" style=\"width:100%\">
                                                  <tr>
@@ -170,9 +170,9 @@
                                     $query1 = "SELECT dept_name FROM department WHERE dept_code = '" . $dept . "'";
                                     $result1 = mysqli_query($conn, $query1);
                                     $dept = mysqli_fetch_row($result1)[0];
-								    echo "<tr class=\"info\">
-                                            <td><font size = 6><strong> Semester:</strong></font></td><td class=\"text-center\"><font size = 6 >" . " " . $sem . "</font></td></tr>";
-                                    echo "<tr class=\"success\">
+								    echo "<tr class=\"success\">
+                                            <td><font size = 6><strong> Class:</strong></font></td><td class=\"text-center\"><font size = 6 >" . " " . $sem . "-" . $section . "</font></td></tr>";
+                                    echo "<tr class=\"info\">
                                             <td><font size = 6><strong> Department:</strong></font></td><td class=\"text-center\"><font size = 6>" . " " . $dept . "</font></td></tr>";
                                     echo "  </table>
                                         </div>";

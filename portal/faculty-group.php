@@ -76,6 +76,9 @@
             .bs-example{
                     margin-top: 10%;
                 }
+            .well{
+                color: black;
+            }
 		</style>
     </head>
 
@@ -132,7 +135,7 @@
         </div>
 
 		<ul class="nav nav-tabs nav-justified">
-			<li class="active"><a data-toggle="tab" href="#home">Assignments</a></li>
+			<li class="active"><a data-toggle="tab" href="#ass">Assignments</a></li>
 			<li><a data-toggle="tab" href="#ann">Announcements</a></li>
 			<li><a data-toggle="tab" href="#mat">Materials</a></li>
 		</ul>
@@ -206,26 +209,35 @@
 		?>	
 
 		<div class="tab-content">
-			<div id="home" class="tab-pane fade in active">
+			<div id="ass" class="tab-pane fade in active">
 			    <div class="container-fluid bg-3 text-center">
 					<h3 class="margin slide"><strong>Assignments</strong></h3>
 					<p><font size=3px>Here you can view all the assignments assigned to your group.</font></p>
 					<div class="row slide">
 						<a class="btn btn-info abc" data-toggle="modal" href="#myModal" value="0">+Add Assignment</a><br><br>
-						<table class="table table-hovered">
+						<table class="table table-hovered table-striped">
 							<tr>
-								<th class="text-center">Assignment name</th>
+								<th class="text-center">Date of Upload</th>
+                                <th class="text-center">Uploaded by</th>
+                                <th class="text-center">Assignment name</th>
+                                <th></th>
 							</tr>
 							<?php
 								include 'dbconnect.php';
-								$query = "SELECT gf_id, gf_file_name, gf_description FROM group_files WHERE gf_grp_code = '$grp_code' AND gf_category=0 AND gf_fac_id = '" . $_SESSION['id'] . "'";
+								$query = "SELECT gf_id, gf_file_name, gf_description, gf_date_upload, gf_fac_id FROM group_files WHERE gf_grp_code = '$grp_code' AND gf_category=0";
 								$result = mysqli_query($conn, $query);
-								while(list($id, $name, $description) = mysqli_fetch_array($result))
+								while(list($id, $name, $description, $date, $faculty_id) = mysqli_fetch_array($result))
 								{
-									echo "<tr><td>" . $name . " ";
+								    $query1 = "SELECT fac_name FROM faculty_login WHERE fac_id='" . $faculty_id . "'";
+                                    $result1 = mysqli_query($conn, $query1);
+                                    list($faculty_name) = mysqli_fetch_array($result1);
+                                    
+                                    echo "<tr><td>" . $date . "</td> ";
+                                    echo "<td>" . $faculty_name . "</td> ";
+                                    echo "<td>" . $description . "</td> ";
 									?>
-									<a href="submission.php?gf_id=<?php echo $id;?>"><?php echo $description;?></a>
-									</td></tr>
+									<td><a class="btn btn-primary" href="submission.php?gf_id=<?php echo $id;?>">View Submissions</a>&nbsp;&nbsp;<a class="btn btn-danger" href="#">Delete Assignment</a></td>
+									</tr>
 									<?php
 								}
 							?>
@@ -236,28 +248,32 @@
 			
 			<div id="ann" class="tab-pane fade">
 			    <div class="container-fluid bg-3 text-center">
-					<h3 class="margin slide"><strong>Announcements</strong></h3>
-					<p><font size=3px>Here you can see all the announcements.</font></p>
+					<h3 class="margin slide text-center"><strong>Announcements</strong></h3>
+					<p class="text-center"><font size=3px>Here you can see all the announcements.</font></p>
 		           	<div class="row slide">
-						<a class="btn btn-info abc" data-toggle="modal" href="#myModal" value="1">+Add Announcement</a><br><br>
-						<table class="table table-hovered">
+						<a class="btn btn-info abc text-center" data-toggle="modal" href="#myModal" value="1">+Add Announcement</a><br><br>
+						<table class="table table-hovered table-striped">
 							<tr>
-								<th class="text-center">Announcement name</th>
+								<th class="text-center">Announcements</th>
 							</tr>
+                        </table>
 							<?php
 								include 'dbconnect.php';
-								$query = "SELECT gf_id, gf_file_name, gf_description FROM group_files WHERE gf_grp_code = '$grp_code' AND gf_category=1 AND gf_fac_id = '" . $_SESSION['id'] . "'";
+								$query = "SELECT gf_id, gf_file_name, gf_description, gf_date_upload, gf_fac_id FROM group_files WHERE gf_grp_code = '$grp_code' AND gf_category=1";
 								$result = mysqli_query($conn, $query);
-								while(list($id, $name, $description) = mysqli_fetch_array($result))
+								while(list($id, $file_name, $description, $date, $faculty_id) = mysqli_fetch_array($result))
 								{
-									echo "<tr><td>" . $name . " ";
+									$query1 = "SELECT fac_name FROM faculty_login WHERE fac_id='" . $faculty_id . "'";
+                                    $result1 = mysqli_query($conn, $query1);
+                                    list($faculty_name) = mysqli_fetch_array($result1);
+                                    
+                                    echo "<div class=\"well\"><strong><h3 class=\"xxx\">" . $date . "</strong> by <strong>" . $faculty_name . "</strong></h3><br>" . $description . "<br><br><a class=\"btn btn-danger\">Delete Announcement</a></div> ";
 									?>
-									<a value="1" href="submission.php?gf_id=<?php echo $id;?>"><?php echo $description;?></a>
-									</td></tr>
+									<br>
 									<?php
+                                    
 								}
 							?>
-						</table><br>
 			        </div>
 		       	</div>
 			</div>
@@ -270,18 +286,27 @@
 						<a class="btn btn-info abc" data-toggle="modal" href="#myModal" value="2">+Add Material</a><br><br>
 						<table class="table table-hovered">
 							<tr>
-								<th class="text-center">Material name</th>
+								<th class="text-center">Date of Upload</th>
+                                <th class="text-center">Uploaded by</th>
+                                <th class="text-center">Material name</th>
+                                <th></th>
 							</tr>
 							<?php
 								include 'dbconnect.php';
-								$query = "SELECT gf_id, gf_file_name, gf_description FROM group_files WHERE gf_grp_code = '$grp_code' AND gf_category=2 AND gf_fac_id = '" . $_SESSION['id'] . "'";
+								$query = "SELECT gf_id, gf_file_name, gf_description, gf_date_upload, gf_fac_id FROM group_files WHERE gf_grp_code = '$grp_code' AND gf_category=2 AND gf_fac_id = '" . $_SESSION['id'] . "'";
 								$result = mysqli_query($conn, $query);
-								while(list($id, $name, $description) = mysqli_fetch_array($result))
+								while(list($id, $name, $description, $date, $faculty_id) = mysqli_fetch_array($result))
 								{
-									echo "<tr><td>" . $name . " ";
+									$query1 = "SELECT fac_name FROM faculty_login WHERE fac_id='" . $faculty_id . "'";
+                                    $result1 = mysqli_query($conn, $query1);
+                                    list($faculty_name) = mysqli_fetch_array($result1);
+                                    
+                                    echo "<tr><td>" . $date . "</td> ";
+                                    echo "<td>" . $faculty_name . "</td> ";
+                                    echo "<td>" . $name . "</td> ";
 									?>
-									<a href="submission.php?gf_id=<?php echo $id;?>"><?php echo $description;?></a>
-									</td></tr>
+									<td><a class="btn btn-success">Download button</a>&nbsp;&nbsp;<a class="btn btn-danger">Delete button</a></td>
+									</tr>
 									<?php
 								}
 							?>

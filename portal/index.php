@@ -48,27 +48,41 @@
 		  background-color: darkcyan;
 		  color: #fff;
 		}
+        #video-background {
+            /*  making the video fullscreen  */
+              position: fixed;
+              right: 0; 
+              bottom: 0;
+              min-width: 100%; 
+              min-height: 100%;
+              width: auto; 
+              height: auto;
+              z-index: -100;
+            }
 	</style>
 
 </head>
 
 <body>
 	<div class="se-pre-con"></div>
-	<div class="container-fluid bg-1 text-center ">
+	<div class="container-fluid text-center ">
 		<h2 class="margin slide"><strong>E-PORTAL</strong></h2>
 		<img src="pics/rv.JPG" class="img-responsive img-circle margin1 slide" style="display:inline" alt="Bird" width="150" height="150">
 		<h3 class="slide"><strong>R.V. College of Engineering, Bangalore</strong></h3>
+        <video autoplay loop id="video-background" muted plays-inline>
+          <source src="https://player.vimeo.com/external/158148793.hd.mp4?s=8e8741dbee251d5c35a759718d4b0976fbf38b6f&profile_id=119&oauth2_token_id=57447761" type="video/mp4">
+        </video>
 	</div>
 
 	<div class="container-fluid bg-3 text-center slide">
 		<h3 class="margin"><strong>Enter the E-Portal</strong></h3><hr><br>
 		<div class="row slide">
 			<div class="col-sm-6">
-				<p>A faculty member can only <strong>upload</strong> and <strong>delete</strong> the course materials.</p>
+				<p>I'm a member of<strong> Faculty</strong> in <strong>RVCE, Bangalore</strong></p>
 				<a href="myfLogind.php" class="btn btn-lg btn-success" role="button">Faculty Login</a>
 			</div>
 			<div class="col-sm-6">
-				<p>A student can only <strong>view</strong> and <strong>download</strong> the desired course materials.</p>
+                <p>I'm a <strong>Student</strong> of <strong>RVCE, Bangalore</strong></p>
 				<a href="mysLogind.php" class="btn btn-lg btn-primary" role="button">Student Login</a>
 			</div>
 		</div>
@@ -86,6 +100,8 @@
 		<p><font size = "2">Developed by undergraduate students of CSE department.</font></p>
 		<p><a href="http://www.rvce.edu.in/" target = "_blank"><font size=2px color="white">R.V. College of Engineering</font></a></p>
 	</footer>
+    
+   
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.3/jquery.scrollTo.min.js"></script>
