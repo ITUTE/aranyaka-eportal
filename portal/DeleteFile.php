@@ -3,10 +3,10 @@
 	if(isset($_GET['id']))
 	{
 		$id = $_GET['id'];
-		$query = "DELETE FROM upload WHERE id = '$id'";
+		$query = "DELETE FROM file WHERE file_id = '$id'";
 		$result = mysqli_query($conn, $query) or die("Failed to Delete!");
 	}
 ?>
 <script>
-	location.assign("delete.php");
+	history.go(-1);
 </script>

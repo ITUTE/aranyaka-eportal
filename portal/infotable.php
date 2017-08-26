@@ -14,6 +14,13 @@
         <link href='css/bootstrap.css' rel='stylesheet'>
         <link rel="stylesheet" type="text/css" href="eportal.css">
         <link rel="stylesheet" type="text/css" href="index.css">
+		
+		<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+        <script src='js/bootstrap.js'></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+		
 		<style>
 			.logout{
 				margin-right:3%;
@@ -22,23 +29,6 @@
 	</head>
 	<body>
     <div class="se-pre-con"></div>
-    <!--
-    <div class="container-fluid">
-        <div class="row">
-            <div class='col-xs-12'>
-                <div class="style"> 
-                    <div class='navbar navbar-inverse navbar-fixed-top'>
-                            <ul class="nav navbar-nav">
-                                <li><a class="btn navbar-btn" href="mysHomed.php">Go Back</a></li>
-                                <li  class="titlenav"><strong><font size=6px>#E-Portal</font></strong></li>
-                                <li><a class="navbar-btn btn btn-success" href="index.php">HOME</a></li>
-                            </ul>	
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    -->
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -93,13 +83,6 @@
             <div class='style1'>
 			</div>
         </div>			
-        <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
-        <script src='js/bootstrap.js'></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.3/jquery.scrollTo.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
 
     <script>
         $(window).load(function() {

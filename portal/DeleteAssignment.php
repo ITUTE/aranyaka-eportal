@@ -8,5 +8,5 @@
 	}
 ?>
 <script>
-	location.assign("student-group.php");
+	history.go(-1);
 </script>

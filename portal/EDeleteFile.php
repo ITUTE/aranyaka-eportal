@@ -8,5 +8,5 @@
 	}
 ?>
 <script>
-	location.assign("EventDelete.php");
+	history.go(-1);
 </script>

@@ -99,26 +99,6 @@
 
     <body>
 		<div class="se-pre-con"></div>
-		<!--
-        <div class="container-fluid">
-			<div class="row">
-				<div class='col-xs-12'>
-					<div class="style">
-						<div class='navbar navbar-inverse navbar-fixed-top'>
-							<ul class="nav navbar-nav">
-								<li><a class="btn navbar-btn" href="myfLogind.php">Go Back</a></li>
-								<li class="titlenav"><strong><font size=6px>#E-Portal</font></strong></li>
-								<li><a class="navbar-btn btn btn-success" href="index.php">HOME</a></li>
-							</ul>
-							<ul class="nav navbar-nav navbar-right logout">
-								<li><form method="POST"><input class="btn navbar-btn btn-danger" type="submit" value="Logout " name="Logout"/></form></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-        -->
         <nav class="navbar navbar-inverse navbar-fixed-top">
           
             <div class="navbar-header">

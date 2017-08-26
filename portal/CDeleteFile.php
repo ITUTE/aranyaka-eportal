@@ -8,5 +8,5 @@
 	}
 ?>
 <script>
-	location.assign("CircularDelete.php");
+	history.go(-1);
 </script>
