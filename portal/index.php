@@ -66,35 +66,42 @@
 <body>
 	<div class="se-pre-con"></div>
 	<div class="container-fluid text-center ">
+        <br>
 		<h2 class="margin slide"><strong>E-PORTAL</strong></h2>
 		<img src="pics/rv.JPG" class="img-responsive img-circle margin1 slide" style="display:inline" alt="Bird" width="150" height="150">
 		<h3 class="slide"><strong>R.V. College of Engineering, Bangalore</strong></h3>
-        <video autoplay loop id="video-background" muted plays-inline>
-          <source src="https://player.vimeo.com/external/158148793.hd.mp4?s=8e8741dbee251d5c35a759718d4b0976fbf38b6f&profile_id=119&oauth2_token_id=57447761" type="video/mp4">
+        <video autoplay loop id="video-background" muted plays-inline preload="none">
+            <source src="https://player.vimeo.com/external/158148793.hd.mp4?s=8e8741dbee251d5c35a759718d4b0976fbf38b6f&profile_id=119&oauth2_token_id=57447761" type="video/mp4">
+            <img src="pics/home1.jpg">
         </video>
 	</div>
 
-	<div class="container-fluid bg-3 text-center slide">
+	<div class="container bg-3 text-center slide">
+        <br><br>
 		<h3 class="margin"><strong>Enter the E-Portal</strong></h3><hr><br>
 		<div class="row slide">
 			<div class="col-sm-6">
 				<p>I'm a member of<strong> Faculty</strong> in <strong>RVCE, Bangalore</strong></p>
 				<a href="myfLogind.php" class="btn btn-lg btn-success" role="button">Faculty Login</a>
+                <br><br><hr>
 			</div>
 			<div class="col-sm-6">
                 <p>I'm a <strong>Student</strong> of <strong>RVCE, Bangalore</strong></p>
 				<a href="mysLogind.php" class="btn btn-lg btn-primary" role="button">Student Login</a>
+                <br><br><hr>
 			</div>
 		</div>
+        <br><br>
 	</div>
 
-   <div class="container-fluid bg-3 text-center slide">
+   <div class="container bg-3 text-center slide">
         <h3 class="margin"><strong>Events and Circulars</strong></h3><hr><br>
         <div class="row slide">
             <a href="CEvent.php"><button class="btn-lg btn-success slide" id="click" name="click" value="View">View</button></a>
+            <br><br><br>
         </div>
     </div>
-
+<br><br>
 
 	<footer class="container-fluid bg-4 text-center">
 		<p><font size = "2">Developed by undergraduate students of CSE department.</font></p>

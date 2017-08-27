@@ -194,9 +194,9 @@
 			}
 			else 
 			{
-				echo "<script>
-						document.getElementById(\"validate\").innerHTML = \"Invalid Credentials\";
-					  </script>"; 
+				echo "<div class=\"alert alert-danger\">
+                          Invalid username or password
+                        </div>"; 
 				die();
 			}
 			 

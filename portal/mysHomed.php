@@ -97,186 +97,186 @@
 		</script>
     </head>
 
-    <body>
-		<div class="se-pre-con"></div>
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-          
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span> 
-              </button>
-              <a class="navbar-left" href="http://www.rvce.edu.in/" target = "_blank"><img src="pics/rv.JPG" class="img-circle" height=50 ondragstart="return false;" alt="logo"/></a>
-              <a href="index.php" class="navbar-brand"><strong>#E-PORTAL</strong></a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-              <ul class="nav navbar-nav">
-                <li class=""><a href="index.php">Home</a></li> 
-              </ul>
-              <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <?php 
-                                $query = "SELECT stu_name from student_login WHERE stu_id = " . $_SESSION['id'];
-                                $result = mysqli_query($conn, $query);
-                                list($name) = mysqli_fetch_array($result);
-                                echo "Hi, " .  "<strong><font size = 3>" . $name . "</font></strong>";
-                        ?>
-                        
-                    <span class="caret"></span>&nbsp;</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#home"><font color = "darkcyan">Profile</font></a></li>
-                        <li><a class = ""><form method="POST"><input type="submit" value="Logout " name="Logout"/></form></a></li>
-                    </ul>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
+<body>
+    <div class="se-pre-con"></div>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
 
-        <div class="container-fluid bg-1 text-center"><br><br><br>
-            <i class='glyphicon glyphicon-education slide'></i>
-            <h2 class="margin slide"><strong>Student Home</strong></h2><br>
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span> 
+          </button>
+          <a class="navbar-left" href="http://www.rvce.edu.in/" target = "_blank"><img src="pics/rv.JPG" class="img-circle" height=50 ondragstart="return false;" alt="logo"/></a>
+          <a href="index.php" class="navbar-brand"><strong>#E-PORTAL</strong></a>
         </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="index.php">Home</a></li> 
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <?php 
+                            $query = "SELECT stu_name from student_login WHERE stu_id = " . $_SESSION['id'];
+                            $result = mysqli_query($conn, $query);
+                            list($name) = mysqli_fetch_array($result);
+                            echo "Hi, " .  "<strong><font size = 3>" . $name . "</font></strong>";
+                    ?>
+
+                <span class="caret"></span>&nbsp;</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#home"><font color = "darkcyan">Profile</font></a></li>
+                    <li><a class = ""><form method="POST"><input type="submit" value="Logout " name="Logout"/></form></a></li>
+                </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid bg-1 text-center"><br><br><br>
+        <i class='glyphicon glyphicon-education slide'></i>
+        <h2 class="margin slide"><strong>Student Home</strong></h2><br>
+    </div>
 
 
-		<ul class="nav nav-tabs nav-justified">
-			  <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-			  <li><a data-toggle="tab" href="#dload">Download Documents</a></li>
-			  <li><a data-toggle="tab" href="#groups">My Groups</a></li>
-		</ul>
+    <ul class="nav nav-tabs nav-justified">
+          <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+          <li><a data-toggle="tab" href="#dload">Download Documents</a></li>
+          <li><a data-toggle="tab" href="#groups">My Groups</a></li>
+    </ul>
 
-		<div class="tab-content">
-			<div id="home" class="tab-pane fade in active">
-			    <div class="container-fluid bg-3">
-						<h3 class="margin slide text-center"><strong>Profile Home</strong></h3><hr><br>
-							<div class="row slide">
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+            <div class="container-fluid bg-3">
+                    <h3 class="margin slide text-center"><strong>Profile Home</strong></h3><hr><br>
+                        <div class="row slide">
 
-                    			<p class='text-center'><font size=3px>Here you can view all the information about you.</font></p><br>
-								<?php
-								    $query = "SELECT stu_name, stu_usn, stu_dept_code, stu_sem_code, stu_section FROM student_login WHERE stu_id = " . $_SESSION['id'];
-								    $result = mysqli_query($conn, $query);
-								    list($name, $usn, $dept, $sem, $section) = mysqli_fetch_array($result);
-								    echo "<div class=\"container-mid\">
-                                            <table class=\"table slide\" style=\"width:100%\">
-                                                 <tr>
-                                                    
-                                                 </tr>";
-                                    echo "<tr class=\"success\">
-                                            <td><font size = 6><strong> Name:</strong></font></td><td class=\"text-center\"><font size = 6>" . " " . $name . "</font></td></tr>";
-								    echo "<tr class=\"info\">
-                                            <td><font size = 6><strong> USN:</strong></font></td><td class=\"text-center\"><font size = 6>" . " " . $usn . "</font></td></tr>";
-                                    $query1 = "SELECT dept_name FROM department WHERE dept_code = '" . $dept . "'";
-                                    $result1 = mysqli_query($conn, $query1);
-                                    $dept = mysqli_fetch_row($result1)[0];
-								    echo "<tr class=\"success\">
-                                            <td><font size = 6><strong> Class:</strong></font></td><td class=\"text-center\"><font size = 6 >" . " " . $sem . "-" . $section . "</font></td></tr>";
-                                    echo "<tr class=\"info\">
-                                            <td><font size = 6><strong> Department:</strong></font></td><td class=\"text-center\"><font size = 6>" . " " . $dept . "</font></td></tr>";
-                                    echo "  </table>
-                                        </div>";
-								?>
-                    <br>
-                  			</div>
-            	</div>
-			</div>
-			<div id="dload" class="tab-pane fade">
-			    	 <div class="container-fluid bg-3 text-center">
-						<h3 class="margin slide"><strong>Download documents</strong></h3><hr><br>
-			            	<div class="row slide">
-								<form method="POST">
-									<p class="slide">Select Semester:</p>
-			             <select class="form-control col-md-6 slide dropsize" name="semester" onclick="sub_list(this.value)" onkeyup="sub_list(this.value)" onkeydown="sub_list(this.value)" onchange="sub_list(this.value)">
-										 <option value="">Select Semester</option>
-			                      <option value="1">First Semester</option>
-			                      <option value="2">Second Semester</option>
-			                      <option value="3">Third Semester</option>
-			                      <option value="4">Fourth Semester</option>
-			                      <option value="5">Fifth Semester</option>
-			                      <option value="6">Sixth Semester</option>
-			                      <option value="7">Seventh Semester</option>
-			              </select><br>
-								</form><br>
-								<p><font size=3px>Select a semester and then pick the desired course</font></p><hr>
-								<div id="sublist"></div><br>
-								<p>To see information about syllabus <a href="infotable.php" target="_blank" class="btn btn-md btn-info">Click Here</a></p>
-										<br>
-			            	</div>
-		       		 </div>
-			</div>
-			<div id="groups" class="tab-pane fade">
-			    <div class="container-fluid bg-3">
-						<h3 class="margin slide text-center"><strong>My Groups</strong></h3><hr>
-							<div class="row">
+                            <p class='text-center'><font size=3px>Here you can view all the information about you.</font></p><br>
+                            <?php
+                                $query = "SELECT stu_name, stu_usn, stu_dept_code, stu_sem_code, stu_section FROM student_login WHERE stu_id = " . $_SESSION['id'];
+                                $result = mysqli_query($conn, $query);
+                                list($name, $usn, $dept, $sem, $section) = mysqli_fetch_array($result);
+                                echo "<div class=\"container-mid\">
+                                        <table class=\"table slide\" style=\"width:100%\">
+                                             <tr>
 
-                                <p class='text-center'><font size=3px>Here you can view all the groups you are associated with.</font></p>
-                                <br>
-                                <?php 
-                                    $query1 = "SELECT ss_code FROM semester_section WHERE ss_dept_code = '" . $_SESSION['stu_dept'] . "' AND ss_sem_code = '" . $_SESSION['stu_sem'] . "' AND ss_section = '" . $_SESSION['stu_section'] . "'";   
-                                    $result1 = mysqli_query($conn, $query1);
-									$ss_code = mysqli_fetch_row($result1)[0];
-									//$ss_code = $row[0];
-                                    $query2 = "SELECT grp_name, grp_code FROM groups WHERE grp_code = '" . $ss_code . "'";
-                                    $result2 = mysqli_query($conn, $query2);
-                                    echo "<div class=\"container-mid\">";
-                                    if(mysqli_num_rows($result2)!=0)
-                                    {    
-                                        echo "<p class=\"text-center\"><strong>Class Group</strong></p>";
+                                             </tr>";
+                                echo "<tr class=\"success\">
+                                        <td><font size = 6><strong> Name:</strong></font></td><td class=\"text-center\"><font size = 6>" . " " . $name . "</font></td></tr>";
+                                echo "<tr class=\"info\">
+                                        <td><font size = 6><strong> USN:</strong></font></td><td class=\"text-center\"><font size = 6>" . " " . $usn . "</font></td></tr>";
+                                $query1 = "SELECT dept_name FROM department WHERE dept_code = '" . $dept . "'";
+                                $result1 = mysqli_query($conn, $query1);
+                                $dept = mysqli_fetch_row($result1)[0];
+                                echo "<tr class=\"success\">
+                                        <td><font size = 6><strong> Class:</strong></font></td><td class=\"text-center\"><font size = 6 >" . " " . $sem . "-" . $section . "</font></td></tr>";
+                                echo "<tr class=\"info\">
+                                        <td><font size = 6><strong> Department:</strong></font></td><td class=\"text-center\"><font size = 6>" . " " . $dept . "</font></td></tr>";
+                                echo "  </table>
+                                    </div>";
+                            ?>
+                <br>
+                        </div>
+            </div>
+        </div>
+        <div id="dload" class="tab-pane fade">
+                 <div class="container-fluid bg-3 text-center">
+                    <h3 class="margin slide"><strong>Download documents</strong></h3><hr><br>
+                        <div class="row slide">
+                            <form method="POST">
+                                <p class="slide">Select Semester:</p>
+                     <select class="form-control col-md-6 slide dropsize" name="semester" onclick="sub_list(this.value)" onkeyup="sub_list(this.value)" onkeydown="sub_list(this.value)" onchange="sub_list(this.value)">
+                                     <option value="">Select Semester</option>
+                              <option value="1">First Semester</option>
+                              <option value="2">Second Semester</option>
+                              <option value="3">Third Semester</option>
+                              <option value="4">Fourth Semester</option>
+                              <option value="5">Fifth Semester</option>
+                              <option value="6">Sixth Semester</option>
+                              <option value="7">Seventh Semester</option>
+                      </select><br>
+                            </form><br>
+                            <p><font size=3px>Select a semester and then pick the desired course</font></p><hr>
+                            <div id="sublist"></div><br>
+                            <p>To see information about syllabus <a href="infotable.php" target="_blank" class="btn btn-md btn-info">Click Here</a></p>
+                                    <br>
+                        </div>
+                 </div>
+        </div>
+        <div id="groups" class="tab-pane fade">
+            <div class="container-fluid bg-3">
+                    <h3 class="margin slide text-center"><strong>My Groups</strong></h3><hr>
+                        <div class="row">
+
+                            <p class='text-center'><font size=3px>Here you can view all the groups you are associated with.</font></p>
+                            <br>
+                            <?php 
+                                $query1 = "SELECT ss_code FROM semester_section WHERE ss_dept_code = '" . $_SESSION['stu_dept'] . "' AND ss_sem_code = '" . $_SESSION['stu_sem'] . "' AND ss_section = '" . $_SESSION['stu_section'] . "'";   
+                                $result1 = mysqli_query($conn, $query1);
+                                $ss_code = mysqli_fetch_row($result1)[0];
+                                //$ss_code = $row[0];
+                                $query2 = "SELECT grp_name, grp_code FROM groups WHERE grp_code = '" . $ss_code . "'";
+                                $result2 = mysqli_query($conn, $query2);
+                                echo "<div class=\"container-mid\">";
+                                if(mysqli_num_rows($result2)!=0)
+                                {    
+                                    echo "<p class=\"text-center\"><strong>Class Group</strong></p>";
+                                    echo "<table class=\"table table-striped table-hover slide\" style=\"width:100%\">
+                                             <tr>
+                                                <th>Group Names</th>
+                                                <th></th> 
+                                             </tr>";
+                                    list($group_names, $group_codes) = mysqli_fetch_array($result2);
+                                    echo "<tr>";
+                                    echo "<td>"; echo $group_names; echo "</td>";
+                                    echo "<td><a href=\"student-group.php?grp_code=$group_codes\">Enter Group </a></td>";
+                                    echo "</tr>";
+                                    echo "</table><hr>";
+                                }
+                                    $query = "SELECT g.grp_name, g.grp_code FROM groups g, student_groups sg WHERE sg.sg_usn = '" . $_SESSION['student'] . "' AND g.grp_code=sg.sg_grp_code"; 
+                                    $result = mysqli_query($conn, $query);    
+                                    if(mysqli_num_rows($result)!=0)
+                                    {
+                                        echo "<p class=\"text-center\"><strong>Other Groups</strong></p>";
                                         echo "<table class=\"table table-striped table-hover slide\" style=\"width:100%\">
                                                  <tr>
                                                     <th>Group Names</th>
-                                                    <th></th> 
+                                                    <th> </th> 
                                                  </tr>";
-                                        list($group_names, $group_codes) = mysqli_fetch_array($result2);
-										echo "<tr>";
-										echo "<td>"; echo $group_names; echo "</td>";
-										echo "<td><a href=\"student-group.php?grp_code=$group_codes\">Enter Group </a></td>";
-                                        echo "</tr>";
+                                        while(list($group_names, $group_codes) = mysqli_fetch_array($result))
+                                        {
+                                            echo "<tr>";
+                                            echo "<td>"; echo $group_names; echo "</td>";
+                                            echo "<td><a href=\"student-group.php?grp_code=$group_codes\">Enter Group </a></td>";
+                                            echo "</tr>";
+                                        }
                                         echo "</table><hr>";
                                     }
-                                        $query = "SELECT g.grp_name, g.grp_code FROM groups g, student_groups sg WHERE sg.sg_usn = '" . $_SESSION['student'] . "' AND g.grp_code=sg.sg_grp_code"; 
-										$result = mysqli_query($conn, $query);    
-										if(mysqli_num_rows($result)!=0)
-										{
-											echo "<p class=\"text-center\"><strong>Other Groups</strong></p>";
-											echo "<table class=\"table table-striped table-hover slide\" style=\"width:100%\">
-													 <tr>
-														<th>Group Names</th>
-														<th> </th> 
-													 </tr>";
-											while(list($group_names, $group_codes) = mysqli_fetch_array($result))
-											{
-												echo "<tr>";
-												echo "<td>"; echo $group_names; echo "</td>";
-												echo "<td><a href=\"student-group.php?grp_code=$group_codes\">Enter Group </a></td>";
-												echo "</tr>";
-											}
-											echo "</table><hr>";
-										}
-                                    echo "</div>";
-                                ?>
-                  			</div>
-            	</div>
-			</div>
-		</div>
+                                echo "</div>";
+                            ?>
+                        </div>
+            </div>
+        </div>
+    </div>
 
-		<footer class="container-fluid bg-4 text-center">
-			<p><font size = "2">Developed by undergraduate students of CSE department.</font></p>
-			<p><a href="http://www.rvce.edu.in/" target = "_blank"><font size=2px color="white">R.V. College of Engineering</font></a></p>
-		</footer>
+    <footer class="container-fluid bg-4 text-center">
+        <p><font size = "2">Developed by undergraduate students of CSE department.</font></p>
+        <p><a href="http://www.rvce.edu.in/" target = "_blank"><font size=2px color="white">R.V. College of Engineering</font></a></p>
+    </footer>
 
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-        <script>
-            $(window).load(function() {
-                $(".se-pre-con").fadeOut(1500);;
-            });
-        </script>
-    </body>
+    <script>
+        $(window).load(function() {
+            $(".se-pre-con").fadeOut(1500);;
+        });
+    </script>
+</body>
 </html>
 
 <?php

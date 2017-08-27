@@ -86,256 +86,263 @@
 		</style>
     </head>
 
-    <body>
+<body>
 	
-		<script>
-			$(document).ready(function(){
-				$(".abc").click(function() {
-					var val = $(this).attr('value');
-					$("#submit").val(val);
-				});
-			});
-		</script>
-		
-		<script>
-			function del(id)
-			{
-				if (confirm("Confirm") == true) {
-					location.assign("DelFacAssignment.php?id="+id);
-				} 
-				else {
-					die();
-				}
-			}
-		</script>
-		
-		<div class="se-pre-con"></div>
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span> 
-                </button>
-				<a class="navbar-left" href="http://www.rvce.edu.in/" target = "_blank"><img src="pics/rv.JPG" class="img-circle" height=50 ondragstart="return false;" alt="logo"/></a>
-				<a href="index.php" class="navbar-brand"><strong>#E-PORTAL</strong></a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-				<ul class="nav navbar-nav">
-					<li class=""><a href="index.php">Home</a></li> 
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-							<?php 
-                                $query = "SELECT fac_name from faculty_login WHERE fac_id = " . $_SESSION['id'];
-                                $result = mysqli_query($conn, $query);
-                                list($name) = mysqli_fetch_array($result);
-                                echo "Hi, " .  "<strong><font size = 3>" . $name . "</font></strong>";
-							?>
-							<span class="caret"></span>&nbsp;
-						</a>
-						<ul class="dropdown-menu">
-							<li><a href="#home"><font color = "darkcyan">Profile</font></a></li>
-							<li><a><form method="POST"><input type="submit" value="Logout " name="Logout"/></form></a></li>
-						</ul>
-					</li>
-				</ul>
-            </div>
-		  </div>
-        </nav>
+<script>
+    $(document).ready(function(){
+        $(".abc").click(function() {
+            var val = $(this).attr('value');
+            $("#submit").val(val);
+        });
+    });
+</script>
 
-        <div class="container-fluid bg-1 text-center"><br><br><br>
-            <font size=50><i class='glyphicon glyphicon-globe slide'></i></font>
-            <h2 class="margin slide"><strong>Group</strong></h2><br>
-        </div>
+<script>
+    function del(id)
+    {
+        if (confirm("Confirm Deletion of this Announcement?") == true) {
+            location.assign("DelFacAssignment.php?id="+id);
+        } 
+        else {
+            die();
+        }
+    }
+</script>
 
-		<ul class="nav nav-tabs nav-justified">
-			<li class="active"><a data-toggle="tab" href="#ass">Assignments</a></li>
-			<li><a data-toggle="tab" href="#ann">Announcements</a></li>
-			<li><a data-toggle="tab" href="#mat">Materials</a></li>
-		</ul>
-		
-		<div id="myModal" class="modal fade bs-example text-center">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h4 class="modal-title">Upload</h4>
+<div class="se-pre-con"></div>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span> 
+        </button>
+        <a class="navbar-left" href="http://www.rvce.edu.in/" target = "_blank"><img src="pics/rv.JPG" class="img-circle" height=50 ondragstart="return false;" alt="logo"/></a>
+        <a href="index.php" class="navbar-brand"><strong>#E-PORTAL</strong></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+            <li class=""><a href="index.php">Home</a></li> 
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <?php 
+                        $query = "SELECT fac_name from faculty_login WHERE fac_id = " . $_SESSION['id'];
+                        $result = mysqli_query($conn, $query);
+                        list($name) = mysqli_fetch_array($result);
+                        echo "Hi, " .  "<strong><font size = 3>" . $name . "</font></strong>";
+                    ?>
+                    <span class="caret"></span>&nbsp;
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#home"><font color = "darkcyan">Profile</font></a></li>
+                    <li><a><form method="POST"><input type="submit" value="Logout " name="Logout"/></form></a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+  </div>
+</nav>
+
+<?php
+    $group_code = $_SESSION['grp_code'];
+    $query = "SELECT grp_name FROM groups WHERE grp_code = '$group_code'";
+    $result = mysqli_query($conn, $query);
+    $name = mysqli_fetch_row($result)[0];
+?>
+
+<div class="container-fluid bg-1 text-center"><br><br><br>
+    <font size=50><i class='glyphicon glyphicon-globe slide'></i></font>
+    <h2 class="margin slide"><strong>Group - <?php echo $name; ?></strong></h2><br>
+</div>
+
+<ul class="nav nav-tabs nav-justified">
+    <li class="active"><a data-toggle="tab" href="#ass">Assignments</a></li>
+    <li><a data-toggle="tab" href="#ann">Announcements</a></li>
+    <li><a data-toggle="tab" href="#mat">Materials</a></li>
+</ul>
+
+<div id="myModal" class="modal fade bs-example text-center">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Upload</h4>
+            </div>
+            <form method="POST" enctype="multipart/form-data" action="uploadFaculty.php">
+                <div class="modal-body"> 
+                    <div class="form-group">
+                        <label for="description" class="control-label"><font color="darkcyan">Description</font></label>
+                        <textarea type="text" name="description" class="form-control" id="description"></textarea>
                     </div>
-					<form method="POST" enctype="multipart/form-data" action="uploadFaculty.php">
-						<div class="modal-body"> 
-                            <div class="form-group">
-                                <label for="description" class="control-label"><font color="darkcyan">Description</font></label>
-                                <textarea type="text" name="description" class="form-control" id="description"></textarea>
-                            </div>
-						
-                            <label class="custom-file-upload btn btn-lg btn-info slide" for="userfile">
-                                <input type="file" name="userfile" id="userfile"/>Choose File
-                            </label><br>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-							<button type="submit" name="submit" id="submit" value="" class="btn btn-success">Upload</button>
-						</div>
-					</form><br>
+
+                    <label class="custom-file-upload btn btn-lg btn-info slide" for="userfile">
+                        <input type="file" name="userfile" id="userfile"/>Choose File
+                    </label><br>
                 </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" name="submit" id="submit" value="" class="btn btn-success">Upload</button>
+                </div>
+            </form><br>
+        </div>
+    </div>
+</div>   
+
+<div class="tab-content">
+    <div id="ass" class="tab-pane fade in active">
+        <div class="container-fluid bg-3 text-center">
+            <h3 class="margin slide"><strong>Assignments</strong></h3>
+            <p><font size=3px>Here you can view all the assignments assigned to your group.</font></p>
+            <div class="row slide">
+                <a class="btn btn-info abc" data-toggle="modal" href="#myModal" value="0">+Add Assignment</a><br><br>
+                <table class="table table-hovered table-striped">
+                    <tr>
+                        <th class="text-center">Date of Upload</th>
+                        <th class="text-center">Uploaded by</th>
+                        <th class="text-center">Assignment name</th>
+                        <th></th>
+                    </tr>
+                    <?php
+                        include 'dbconnect.php';
+                        $grp_code = $_SESSION['grp_code'];
+                        $query = "SELECT gf_id, gf_description, gf_date_upload, gf_fac_id FROM group_files WHERE gf_grp_code = '$grp_code' AND gf_category=0";
+                        $result = mysqli_query($conn, $query);
+                        while(list($id, $description, $date, $faculty_id) = mysqli_fetch_array($result))
+                        {
+                            $query1 = "SELECT fac_name FROM faculty_login WHERE fac_id='$faculty_id'";
+                            $result1 = mysqli_query($conn, $query1);
+                            list($faculty_name) = mysqli_fetch_array($result1);
+
+                            echo "<tr><td>" . $date . "</td> ";
+                            echo "<td>" . $faculty_name . "</td> ";
+                            echo "<td>" . $description . "</td> ";
+                            ?>
+                            <td>
+                                <a class="btn btn-primary" href="submission.php?gf_id=<?php echo $id;?>">View Submissions</a>&nbsp;&nbsp;
+                                <?php
+                                    if($faculty_id == $_SESSION['id'])
+                                    {
+                                        ?>
+                                        <button class="btn-danger btn-md" id= <?php echo $id; ?> onclick="del(this.id)">Delete Assignment</button>
+                                        <?php
+                                    }
+                                    else
+                                    {
+                                        ?>
+                                        <a class="btn btn-danger disabled">Delete Assignment</a>
+                                        <?php
+                                    }
+                            echo "</td></tr>";
+                        }
+                    ?>
+                </table><br>
             </div>
-        </div>   
+        </div>
+    </div>
 
-		<div class="tab-content">
-			<div id="ass" class="tab-pane fade in active">
-			    <div class="container-fluid bg-3 text-center">
-					<h3 class="margin slide"><strong>Assignments</strong></h3>
-					<p><font size=3px>Here you can view all the assignments assigned to your group.</font></p>
-					<div class="row slide">
-						<a class="btn btn-info abc" data-toggle="modal" href="#myModal" value="0">+Add Assignment</a><br><br>
-						<table class="table table-hovered table-striped">
-							<tr>
-								<th class="text-center">Date of Upload</th>
-                                <th class="text-center">Uploaded by</th>
-                                <th class="text-center">Assignment name</th>
-                                <th></th>
-							</tr>
-							<?php
-								include 'dbconnect.php';
-								$grp_code = $_SESSION['grp_code'];
-								$query = "SELECT gf_id, gf_description, gf_date_upload, gf_fac_id FROM group_files WHERE gf_grp_code = '$grp_code' AND gf_category=0";
-								$result = mysqli_query($conn, $query);
-								while(list($id, $description, $date, $faculty_id) = mysqli_fetch_array($result))
-								{
-								    $query1 = "SELECT fac_name FROM faculty_login WHERE fac_id='$faculty_id'";
-                                    $result1 = mysqli_query($conn, $query1);
-                                    list($faculty_name) = mysqli_fetch_array($result1);
-                                    
-                                    echo "<tr><td>" . $date . "</td> ";
-                                    echo "<td>" . $faculty_name . "</td> ";
-                                    echo "<td>" . $description . "</td> ";
-									?>
-									<td>
-										<a class="btn btn-primary" href="submission.php?gf_id=<?php echo $id;?>">View Submissions</a>&nbsp;&nbsp;
-										<?php
-											if($faculty_id == $_SESSION['id'])
-											{
-												?>
-												<button class="btn-danger btn-md" id= <?php echo $id; ?> onclick="del(this.id)">Delete Assignment</button>
-												<?php
-											}
-											else
-											{
-												?>
-												<a class="btn btn-danger disabled">Delete Assignment</a>
-												<?php
-											}
-									echo "</td></tr>";
-								}
-							?>
-						</table><br>
-                  	</div>
-				</div>
-			</div>
-			
-			<div id="ann" class="tab-pane fade">
-			    <div class="container-fluid bg-3 text-center">
-					<h3 class="margin slide text-center"><strong>Announcements</strong></h3>
-					<p class="text-center"><font size=3px>Here you can see all the announcements.</font></p>
-		           	<div class="row slide">
-						<a class="btn btn-info abc text-center" data-toggle="modal" href="#myModal" value="1">+Add Announcement</a><br><br>
-						<table class="table table-hovered table-striped">
-							<tr>
-								<th class="text-center">Announcements</th>
-							</tr>
-                        </table>
-							<?php
-								include 'dbconnect.php';
-								$query = "SELECT gf_id, gf_description, gf_date_upload, gf_fac_id FROM group_files WHERE gf_grp_code = '$grp_code' AND gf_category=1";
-								$result = mysqli_query($conn, $query);
-								while(list($id, $description, $date, $faculty_id) = mysqli_fetch_array($result))
-								{
-									$query1 = "SELECT fac_name FROM faculty_login WHERE fac_id='" . $faculty_id . "'";
-                                    $result1 = mysqli_query($conn, $query1);
-                                    list($faculty_name) = mysqli_fetch_array($result1);  
-                                    echo "<div class=\"well\"><strong><h3 class=\"xxx\">" . $date . "</strong> by <strong>" . $faculty_name . "</strong></h3><br>" . $description . "<br><br>";                                    
+    <div id="ann" class="tab-pane fade">
+        <div class="container-fluid bg-3 text-center">
+            <h3 class="margin slide text-center"><strong>Announcements</strong></h3>
+            <p class="text-center"><font size=3px>Here you can see all the announcements.</font></p>
+            <div class="row slide">
+                <a class="btn btn-info abc text-center" data-toggle="modal" href="#myModal" value="1">+Add Announcement</a><br><br>
+                <table class="table table-hovered table-striped">
+                    <tr>
+                        <th class="text-center">Announcements</th>
+                    </tr>
+                </table>
+                    <?php
+                        include 'dbconnect.php';
+                        $query = "SELECT gf_id, gf_description, gf_date_upload, gf_fac_id FROM group_files WHERE gf_grp_code = '$grp_code' AND gf_category=1";
+                        $result = mysqli_query($conn, $query);
+                        while(list($id, $description, $date, $faculty_id) = mysqli_fetch_array($result))
+                        {
+                            $query1 = "SELECT fac_name FROM faculty_login WHERE fac_id='" . $faculty_id . "'";
+                            $result1 = mysqli_query($conn, $query1);
+                            list($faculty_name) = mysqli_fetch_array($result1);  
+                            echo "<br><div class=\"well\"><strong><h3 class=\"xxx\">" . $date . "</strong> by <strong>" . $faculty_name . "</strong></h3><br>" . $description . "<br><br>";                                    
 
-									if($faculty_id == $_SESSION['id'])
-									{
-										?>
-										<button class="btn-danger btn-md" id= <?php echo $id; ?> onclick="del(this.id)">Delete Announcement</button>
-										<?php
-									}
-									else
-									{
-										?>
-										<a class="btn btn-danger disabled">Delete Announcement</a>
-										<?php
-									}
-								}
-							?>
-			        </div>
-		       	</div>
-			</div>
-			
-			<div id="mat" class="tab-pane fade">
-			    <div class="container-fluid bg-3 text-center">
-					<h3 class="margin slide text-center"><strong>Materials</strong></h3>
-					<p><font size=3px>Here you can view all the private materials your group is associated with.</font></p>
-					<div class="row slide">
-						<a class="btn btn-info abc" data-toggle="modal" href="#myModal" value="2">+Add Material</a><br><br>
-						<table class="table table-hovered">
-							<tr>
-								<th class="text-center">Date of Upload</th>
-                                <th class="text-center">Uploaded by</th>
-                                <th class="text-center">Material name</th>
-                                <th></th>
-							</tr>
-							<?php
-								include 'dbconnect.php';
-								$query = "SELECT gf_id, gf_file_name, gf_description, gf_date_upload, gf_fac_id FROM group_files WHERE gf_grp_code = '$grp_code' AND gf_category=2 AND gf_fac_id = '" . $_SESSION['id'] . "'";
-								$result = mysqli_query($conn, $query);
-								while(list($id, $name, $description, $date, $faculty_id) = mysqli_fetch_array($result))
-								{
-									$query1 = "SELECT fac_name FROM faculty_login WHERE fac_id='" . $faculty_id . "'";
-                                    $result1 = mysqli_query($conn, $query1);
-                                    list($faculty_name) = mysqli_fetch_array($result1);
-                                    
-                                    echo "<tr><td>" . $date . "</td> ";
-                                    echo "<td>" . $faculty_name . "</td> ";
-                                    echo "<td>" . $name . "</td> ";
-									?>
-									<td><a class="btn btn-success">Download button</a>&nbsp;&nbsp;
-									<?php
-										if($faculty_id == $_SESSION['id'])
-											{
-												?>
-												<button class="btn-danger btn-md" id= <?php echo $id; ?> onclick="del(this.id)">Delete Material</button>
-												<?php
-											}
-											else
-											{
-												?>
-												<a class="btn btn-danger disabled">Delete Material</a>
-												<?php
-											}
-									echo "</td></tr>";
-								}
-							?>
-						</table><br>
-                  	</div>
-            	</div>
-			</div>
-		</div>
-    	
-		<footer class="container-fluid bg-4 text-center">
-			<p><font size = "2">Developed by undergraduate students of CSE department.</font></p>
-			<p><a href="http://www.rvce.edu.in/" target = "_blank"><font size=2px color="white">R.V. College of Engineering</font></a></p>
-		</footer>
+                            if($faculty_id == $_SESSION['id'])
+                            {
+                                ?>
+                                <button class="btn-danger btn-md" id= <?php echo $id; ?> onclick="del(this.id)">Delete Announcement</button></div><br>
+                                <?php
+                            }
+                            else
+                            {
+                                ?>
+                                <a class="btn btn-danger disabled">Delete Announcement</a></div><br>
+                                <?php
+                            }
+                        }
+                    ?>
+            </div>
+        </div>
+    </div>
 
-        <script>
-            $(window).load(function() {
-                $(".se-pre-con").fadeOut(1500);;
-            });
-        </script>
-    </body>
+    <div id="mat" class="tab-pane fade">
+        <div class="container-fluid bg-3 text-center">
+            <h3 class="margin slide text-center"><strong>Materials</strong></h3>
+            <p><font size=3px>Here you can view all the private materials your group is associated with.</font></p>
+            <div class="row slide">
+                <a class="btn btn-info abc" data-toggle="modal" href="#myModal" value="2">+Add Material</a><br><br>
+                <table class="table table-hovered table-striped">
+                    <tr>
+                        <th class="text-center">Date of Upload</th>
+                        <th class="text-center">Uploaded by</th>
+                        <th class="text-center">Material name</th>
+                        <th></th>
+                    </tr>
+                    <?php
+                        include 'dbconnect.php';
+                        $query = "SELECT gf_id, gf_file_name, gf_description, gf_date_upload, gf_fac_id FROM group_files WHERE gf_grp_code = '$grp_code' AND gf_category=2";
+                        $result = mysqli_query($conn, $query);
+                        while(list($id, $name, $description, $date, $faculty_id) = mysqli_fetch_array($result))
+                        {
+                            $query1 = "SELECT fac_name FROM faculty_login WHERE fac_id='" . $faculty_id . "'";
+                            $result1 = mysqli_query($conn, $query1);
+                            list($faculty_name) = mysqli_fetch_array($result1);
+
+                            echo "<tr><td>" . $date . "</td> ";
+                            echo "<td>" . $faculty_name . "</td> ";
+                            echo "<td>" . $name . "</td> ";
+                            ?>
+                            <td><a class="btn btn-success">Download button</a>&nbsp;&nbsp;
+                            <?php
+                                if($faculty_id == $_SESSION['id'])
+                                    {
+                                        ?>
+                                        <button class="btn-danger btn-md" id= <?php echo $id; ?> onclick="del(this.id)">Delete Material</button>
+                                        <?php
+                                    }
+                                    else
+                                    {
+                                        ?>
+                                        <a class="btn btn-danger disabled">Delete Material</a>
+                                        <?php
+                                    }
+                            echo "</td></tr>";
+                        }
+                    ?>
+                </table><br>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="container-fluid bg-4 text-center">
+    <p><font size = "2">Developed by undergraduate students of CSE department.</font></p>
+    <p><a href="http://www.rvce.edu.in/" target = "_blank"><font size=2px color="white">R.V. College of Engineering</font></a></p>
+</footer>
+
+<script>
+    $(window).load(function() {
+        $(".se-pre-con").fadeOut(1500);;
+    });
+</script>
+</body>
 </html>
 
 <?php
