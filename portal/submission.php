@@ -8,7 +8,10 @@
 <html> 
 <head>
     <title>Assignment Submissions</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>   
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.3/jquery.scrollTo.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -111,10 +114,6 @@
             </ul>
         </div>
     </nav>
-    
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.3/jquery.scrollTo.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
 
     <script>
         $(window).load(function() {
@@ -138,12 +137,12 @@
 					echo "<br><br><br><p style=\"text-align:center\"><font color=\"darkcyan\" size=5px face = \"Comic sans MS\">Sorry ma'am/sir, no students have uploaded anything yet for this assignment!<br>Perhaps you could post an announcement regarding the same.</font></p>";
 					die();
 				}
-				echo "<form>";
+				echo "<form method=\"post\">";
 				echo "<table class=\"table table-striped table-hover\" style=\"width:100%\">
 					 <tr>
 						<th>Date of Upload</th>
-                        <th>Uploaded By: USN</th>
-                        <th>Uploaded By: Name</th>
+                        <th>USN</th>
+                        <th>Name</th>
                         <th>File Name</th>
                         <th></th>
 					 </tr>"; 
@@ -171,35 +170,18 @@
 </html>
 
 <?php
-	if(isset($_GET['download']))
+	if(isset($_POST['download']))
 	{
-		$id = $_GET['download'];
-		$query = "SELECT file_name, file_type, file_size, file_content FROM file WHERE file_id = '$id'";
+		$id = $_POST['download'];
+		//echo "hi " . $id;
+		$query = "SELECT as_file_name, as_file_size, as_file_type, as_file_content FROM assignments WHERE as_id = '$id'";
 		$result = mysqli_query($conn, $query) or die('Error retrieving files');
 		list($name, $type, $size, $content) = mysqli_fetch_row($result);
 		header("Content-type: $type");
-		header("Content-Disposition: attachment; filename=$name");
+		header("Content-Disposition: inline; filename=$name");
 		header("Content-length: $size");
 		ob_clean();
 		flush();
 		echo $content;
 	}
-	
-	/*if(isset($_GET['download_all']))
-	{
-		$result = mysqli_query($conn, $query);
-		while(list($id, $sub, $name) = mysqli_fetch_array($result))
-		{
-			$query = "SELECT name, type, size, content FROM upload WHERE id = '$id'";
-			$res = mysqli_query($conn, $query) or die('Error retrieving files');
-			list($fname, $type, $size, $content) = mysqli_fetch_row($res);
-			header("Content-type: $type");
-			header("Content-Disposition: attachment; filename=$fname");
-			header("Content-length: $size");
-			ob_clean();
-			//flush();
-			echo $content;
-		}
-		flush();
-	}*/
 ?>

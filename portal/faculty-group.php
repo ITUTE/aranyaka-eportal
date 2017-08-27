@@ -9,7 +9,7 @@
 		exit;
 	}
 	if(isset($_GET['grp_code']))
-		$grp_code = $_GET['grp_code'];
+		$_SESSION['grp_code'] = $_GET['grp_code'];
 ?>
 
 <!DOCTYPE html>
@@ -41,6 +41,10 @@
 			  }
 			  .margin1 {
 					margin-bottom: 13px;
+			  }
+			  .disabled {
+				  pointer-events: none;
+				  cursor: default;
 			  }
 			  .bg-1 {
 				  background-image: url(pics/home.jpg);
@@ -91,6 +95,18 @@
 					$("#submit").val(val);
 				});
 			});
+		</script>
+		
+		<script>
+			function del(id)
+			{
+				if (confirm("Confirm") == true) {
+					location.assign("DelFacAssignment.php?id="+id);
+				} 
+				else {
+					die();
+				}
+			}
 		</script>
 		
 		<div class="se-pre-con"></div>
@@ -147,7 +163,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         <h4 class="modal-title">Upload</h4>
                     </div>
-					<form method="POST" enctype="multipart/form-data">
+					<form method="POST" enctype="multipart/form-data" action="uploadFaculty.php">
 						<div class="modal-body"> 
                             <div class="form-group">
                                 <label for="description" class="control-label"><font color="darkcyan">Description</font></label>
@@ -167,47 +183,6 @@
             </div>
         </div>   
 
-		<?php
-			$allowed = array('jpg', 'jpeg', 'png', 'doc', 'docx', 'pdf', 'xls', 'xlsm', 'ppt', 'pptx');
-			if(isset($_POST['submit']))
-			{
-				if($_FILES['userfile']['size'] > 0)
-				{			
-					$fileName = $_FILES['userfile']['name'];
-					$tmpName  = $_FILES['userfile']['tmp_name'];
-					$fileSize = $_FILES['userfile']['size'];
-					$fileType = $_FILES['userfile']['type'];
-					
-					$file_ext = explode(".", $fileName);
-					$file_ext = strtolower(end($file_ext));
-					
-					if(in_array($file_ext, $allowed))
-					{
-						$fp = fopen($tmpName, 'r');
-						$content = fread($fp, filesize($tmpName));
-						$content = addslashes($content);
-						fclose($fp);
-						if(!get_magic_quotes_gpc())
-							$fileName = addslashes($fileName);
-						
-						$TeacherID = $_SESSION['id'];
-						$upload_date = date("Y-m-d");
-						$description = $_POST['description'];
-						$category = $_POST['submit'];
-
-						$query = "INSERT INTO group_files (gf_file_name, gf_file_size, gf_file_type, gf_file_content, gf_category, gf_description, gf_fac_id, gf_grp_code, gf_date_upload) VALUES ('$fileName', '$fileSize', '$fileType', '$content', '$category', '$description', '$TeacherID', '$grp_code', '$upload_date')";
-						mysqli_query($conn, $query) or die('Error, query failed'); 
-						echo "<script type='text/javascript'>alert('File $fileName uploaded');</script>";
-					}
-					else
-						echo "<script type='text/javascript'>alert('FileType Not Supported');</script>";
-					mysqli_close($conn);
-				}
-				else
-					echo "<script type='text/javascript'>alert('Please Choose a File to Upload');</script>";			
-			}
-		?>	
-
 		<div class="tab-content">
 			<div id="ass" class="tab-pane fade in active">
 			    <div class="container-fluid bg-3 text-center">
@@ -224,11 +199,12 @@
 							</tr>
 							<?php
 								include 'dbconnect.php';
-								$query = "SELECT gf_id, gf_file_name, gf_description, gf_date_upload, gf_fac_id FROM group_files WHERE gf_grp_code = '$grp_code' AND gf_category=0";
+								$grp_code = $_SESSION['grp_code'];
+								$query = "SELECT gf_id, gf_description, gf_date_upload, gf_fac_id FROM group_files WHERE gf_grp_code = '$grp_code' AND gf_category=0";
 								$result = mysqli_query($conn, $query);
-								while(list($id, $name, $description, $date, $faculty_id) = mysqli_fetch_array($result))
+								while(list($id, $description, $date, $faculty_id) = mysqli_fetch_array($result))
 								{
-								    $query1 = "SELECT fac_name FROM faculty_login WHERE fac_id='" . $faculty_id . "'";
+								    $query1 = "SELECT fac_name FROM faculty_login WHERE fac_id='$faculty_id'";
                                     $result1 = mysqli_query($conn, $query1);
                                     list($faculty_name) = mysqli_fetch_array($result1);
                                     
@@ -236,9 +212,22 @@
                                     echo "<td>" . $faculty_name . "</td> ";
                                     echo "<td>" . $description . "</td> ";
 									?>
-									<td><a class="btn btn-primary" href="submission.php?gf_id=<?php echo $id;?>">View Submissions</a>&nbsp;&nbsp;<a class="btn btn-danger" href="#">Delete Assignment</a></td>
-									</tr>
-									<?php
+									<td>
+										<a class="btn btn-primary" href="submission.php?gf_id=<?php echo $id;?>">View Submissions</a>&nbsp;&nbsp;
+										<?php
+											if($faculty_id == $_SESSION['id'])
+											{
+												?>
+												<button class="btn-danger btn-md" id= <?php echo $id; ?> onclick="del(this.id)">Delete Assignment</button>
+												<?php
+											}
+											else
+											{
+												?>
+												<a class="btn btn-danger disabled">Delete Assignment</a>
+												<?php
+											}
+									echo "</td></tr>";
 								}
 							?>
 						</table><br>
@@ -259,19 +248,27 @@
                         </table>
 							<?php
 								include 'dbconnect.php';
-								$query = "SELECT gf_id, gf_file_name, gf_description, gf_date_upload, gf_fac_id FROM group_files WHERE gf_grp_code = '$grp_code' AND gf_category=1";
+								$query = "SELECT gf_id, gf_description, gf_date_upload, gf_fac_id FROM group_files WHERE gf_grp_code = '$grp_code' AND gf_category=1";
 								$result = mysqli_query($conn, $query);
-								while(list($id, $file_name, $description, $date, $faculty_id) = mysqli_fetch_array($result))
+								while(list($id, $description, $date, $faculty_id) = mysqli_fetch_array($result))
 								{
 									$query1 = "SELECT fac_name FROM faculty_login WHERE fac_id='" . $faculty_id . "'";
                                     $result1 = mysqli_query($conn, $query1);
-                                    list($faculty_name) = mysqli_fetch_array($result1);
-                                    
-                                    echo "<div class=\"well\"><strong><h3 class=\"xxx\">" . $date . "</strong> by <strong>" . $faculty_name . "</strong></h3><br>" . $description . "<br><br><a class=\"btn btn-danger\">Delete Announcement</a></div> ";
-									?>
-									<br>
-									<?php
-                                    
+                                    list($faculty_name) = mysqli_fetch_array($result1);  
+                                    echo "<div class=\"well\"><strong><h3 class=\"xxx\">" . $date . "</strong> by <strong>" . $faculty_name . "</strong></h3><br>" . $description . "<br><br>";                                    
+
+									if($faculty_id == $_SESSION['id'])
+									{
+										?>
+										<button class="btn-danger btn-md" id= <?php echo $id; ?> onclick="del(this.id)">Delete Announcement</button>
+										<?php
+									}
+									else
+									{
+										?>
+										<a class="btn btn-danger disabled">Delete Announcement</a>
+										<?php
+									}
 								}
 							?>
 			        </div>
@@ -305,9 +302,21 @@
                                     echo "<td>" . $faculty_name . "</td> ";
                                     echo "<td>" . $name . "</td> ";
 									?>
-									<td><a class="btn btn-success">Download button</a>&nbsp;&nbsp;<a class="btn btn-danger">Delete button</a></td>
-									</tr>
+									<td><a class="btn btn-success">Download button</a>&nbsp;&nbsp;
 									<?php
+										if($faculty_id == $_SESSION['id'])
+											{
+												?>
+												<button class="btn-danger btn-md" id= <?php echo $id; ?> onclick="del(this.id)">Delete Material</button>
+												<?php
+											}
+											else
+											{
+												?>
+												<a class="btn btn-danger disabled">Delete Material</a>
+												<?php
+											}
+									echo "</td></tr>";
 								}
 							?>
 						</table><br>

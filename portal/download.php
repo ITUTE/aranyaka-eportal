@@ -171,28 +171,10 @@
 		$result = mysqli_query($conn, $query) or die('Error retrieving files');
 		list($name, $type, $size, $content) = mysqli_fetch_row($result);
 		header("Content-type: $type");
-		header("Content-Disposition: attachment; filename=$name");
+		header("Content-Disposition: inline; filename=$name");
 		header("Content-length: $size");
 		ob_clean();
 		flush();
 		echo $content;
 	}
-	
-	/*if(isset($_GET['download_all']))
-	{
-		$result = mysqli_query($conn, $query);
-		while(list($id, $sub, $name) = mysqli_fetch_array($result))
-		{
-			$query = "SELECT name, type, size, content FROM upload WHERE id = '$id'";
-			$res = mysqli_query($conn, $query) or die('Error retrieving files');
-			list($fname, $type, $size, $content) = mysqli_fetch_row($res);
-			header("Content-type: $type");
-			header("Content-Disposition: attachment; filename=$fname");
-			header("Content-length: $size");
-			ob_clean();
-			//flush();
-			echo $content;
-		}
-		flush();
-	}*/
 ?>

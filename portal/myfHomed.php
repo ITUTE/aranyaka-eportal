@@ -14,6 +14,9 @@
         <link href='css/bootstrap.css' rel='stylesheet'>
         <link rel="stylesheet" type="text/css" href="index.css">
 		<link rel="stylesheet" type="text/css" href="eportal.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<style>
 			  body {
 				  font-family: American Typewriter;
@@ -56,6 +59,9 @@
 				  background-color: darkcyan;
 				  color: #fff;
 			  }
+			  .bs-example{
+                    margin-top: 10%;
+              }
 			  .dropsize{
 					width: 40%;
 					margin-left: 30%;
@@ -94,6 +100,15 @@
 					xmlhttp.send();
 				}
 			}
+		</script>
+		
+		<script>
+			$(document).ready(function(){
+				$(".abc").click(function() {
+					var val = $(this).attr('value');
+					$("#submit").val(val);
+				});
+			});
 		</script>
     </head>
 
@@ -281,8 +296,6 @@
 						if($row[0]==1)
 						{
 							?>
-
-
 				           <div class="container-fluid bg-3 text-center">
 							<h3 class="margin slide"><strong>Upload Extra Curriculars</strong></h3><hr><br>
 								<div class="container-fluid bg-3 text-center slide">
@@ -290,12 +303,12 @@
 								<div class="row slide">
 									<div class=col-xs-6>
 										<h2 class="xxx">Upload Circulars</h2>
-											<a href="CEventUpload.php?id=1"><button class="btn-lg btn-info slide" name="click" value="Delete">Upload Circular</button></a>
-										</div>
-				                        <div class=col-xs-6>
-											<h2 class="xxx">Upload Events</h2>
-											<a href="CEventUpload.php?id=2"><button class="btn-lg btn-info slide" name="click" value="Delete">Upload Event</button></a>
-										</div>
+										<a class="btn btn-info btn-lg abc" data-toggle="modal" href="#myModal" value="1">Upload Circular</a><br><br>
+									</div>
+				                    <div class=col-xs-6>
+										<h2 class="xxx">Upload Events</h2>
+										<a class="btn btn-info btn-lg abc" data-toggle="modal" href="#myModal" value="2">Upload Event</a><br><br>		
+									</div>
 								</div><br><br>
 
 								<div class="container-fluid bg-3 text-center slide">
@@ -317,9 +330,34 @@
 				  			</div>
 				</div>
 		</div>
+		
+		<div id="myModal" class="modal fade bs-example text-center">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">Upload</h4>
+                    </div>
+					<form method="POST" enctype="multipart/form-data" action="uploadCEvent.php">
+						<div class="modal-body"> 
+                            <div class="form-group">
+                                <label for="description" class="control-label"><font color="darkcyan">Description</font></label>
+                                <textarea type="text" name="description" class="form-control" id="description"></textarea>
+                            </div>
+						
+                            <label class="custom-file-upload btn btn-lg btn-info slide" for="userfile">
+                                <input type="file" name="userfile" id="userfile"/>Choose File
+                            </label><br>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+							<button type="submit" name="submit" id="submit" value="" class="btn btn-success">Upload</button>
+						</div>
+					</form><br>
+                </div>
+            </div>
+        </div> 
     
-                      
-
 		<footer class="container-fluid bg-4 text-center">
 			<p><font size = "2">Developed by undergraduate students of CSE department.</font></p>
 			<p><a href="http://www.rvce.edu.in/" target = "_blank"><font size=2px color="white">R.V. College of Engineering</font></a></p>

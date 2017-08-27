@@ -14,6 +14,10 @@
     <link href='css/bootstrap.css' rel='stylesheet'> 
     <link rel="stylesheet" type="text/css" href="index.css">
     <link rel="stylesheet" type="text/css" href="eportal.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.3/jquery.scrollTo.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script> 
+    <script src='js/bootstrap.js'></script> 
 	<style>
         .heading{
             color: darkcyan;
@@ -116,10 +120,6 @@
             </div> 
         </div>
 	</div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.3/jquery.scrollTo.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script> 
-    <script src='js/bootstrap.js'></script> 
     <script>
         $(window).load(function() {
                 $(".se-pre-con").fadeOut(1500);;
