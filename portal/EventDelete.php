@@ -1,5 +1,6 @@
 <?php
     session_start();
+	ob_start();
     include 'dbconnect.php';
 ?>
 
@@ -11,6 +12,9 @@
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="eportal.css">
 	<link rel="stylesheet" type="text/css" href="index.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.3/jquery.scrollTo.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
 
 </head>
 
@@ -52,10 +56,6 @@
         </div>
     </nav>
     
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.3/jquery.scrollTo.min.js"></script>
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
-
 	<script>
 		$(window).load(function() {
 			$(".se-pre-con").fadeOut(1500);;
@@ -86,6 +86,7 @@
                     echo "<tr>";
                     echo "<td>"; echo $name . " "; echo "</td>";
                     ?>
+					<form><td><button class="btn-success" name="download" value="<?php echo $id; ?>" >View</button></td></form>
                     <td><button class="btn-danger" id= <?php echo $id; ?> onclick="del(this.id)">Delete</button></td>
                 <?php
                     echo "</tr>";
@@ -110,3 +111,19 @@
 	</script>
 </body>
 </html>
+
+<?php
+	if(isset($_GET['download']))
+	{
+		$id = $_GET['download'];
+		$query = "SELECT file_name, file_type, file_size, file_content FROM file WHERE file_id = '$id'";
+		$result = mysqli_query($conn, $query) or die('Error retrieving files');
+		list($name, $type, $size, $content) = mysqli_fetch_row($result);
+		header("Content-type: $type");
+		header("Content-Disposition: inline; filename=$name");
+		header("Content-length: $size");
+		ob_clean();
+		flush();
+		echo $content;
+	}
+?>

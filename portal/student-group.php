@@ -166,6 +166,32 @@
                 </div>
             </div>
         </div>   
+		
+		<div id="myModal2" class="modal fade bs-example text-center">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">Your Contribution</h4>
+                    </div>
+					<form method="POST" enctype="multipart/form-data" action="uploadStu_Mat.php">
+						<div class="modal-body"> 	
+							<div class="form-group">
+								<label for="description" class="control-label"><font color="darkcyan">Description</font></label>
+								<textarea type="text" name="description" class="form-control" id="description"></textarea>
+							</div>
+                            <label class="custom-file-upload btn btn-lg btn-info slide" for="userfile">
+                                <input type="file" name="userfile2" id="userfile2"/>Choose File
+                            </label><br>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+							<button type="submit" name="submit2" id="submit2" value="3" class="btn btn-success">Upload</button>
+						</div>
+					</form><br>
+                </div>
+            </div>
+        </div> 
 
 		<div class="tab-content">
 			<div id="home" class="tab-pane fade in active">
@@ -176,7 +202,7 @@
 						<table class="table table-hovered table-striped">
 							<tr>
 								<th class="text-center">Date of Upload</th>
-                                <th class="text-center">Assignment name</th>
+                                <th class="text-center">Assignment Name</th>
                                 <th></th>
                                 <th></th>
 							</tr>
@@ -187,7 +213,10 @@
 								$result = mysqli_query($conn, $query);
 								while(list($id, $name, $description, $date) = mysqli_fetch_array($result))
 								{
-									echo "<tr><td>" . $date . "</td><td>" . $description . "</td>";
+									echo "<tr><td>" . $date . "</td>";
+									?>
+									<form><td><button class="btn-success" name="assignment" value="<?php echo $id; ?>" ><?php echo $description;?></button></td></form>
+									<?php
 									$query = "SELECT as_id FROM assignments WHERE as_num = '$id' AND as_stu_id = '" . $_SESSION['id'] . "'";
 									$result1 = mysqli_query($conn, $query);
 									if(mysqli_num_rows($result1)==0)
@@ -254,20 +283,36 @@
 							</tr>
 							<?php
 								include 'dbconnect.php';
-								$query = "SELECT gf_id, gf_file_name, gf_description, gf_date_upload, gf_fac_id FROM group_files WHERE gf_grp_code = '$grp_code' AND gf_category=2";
+								$query = "SELECT gf_id, gf_file_name, gf_description, gf_date_upload, gf_fac_id, gf_category FROM group_files WHERE gf_grp_code = '$grp_code' AND (gf_category=2 OR gf_category=3)";
 								$result = mysqli_query($conn, $query);
-								while(list($id, $name, $description, $date, $faculty_id) = mysqli_fetch_array($result))
+								while(list($id, $name, $description, $date, $id2, $category) = mysqli_fetch_array($result))
 								{
-									$query1 = "SELECT fac_name FROM faculty_login WHERE fac_id='" . $faculty_id . "'";
-                                    $result1 = mysqli_query($conn, $query1);
-                                    list($faculty_name) = mysqli_fetch_array($result1);
-                                    
-                                    echo "<tr><td>" . $date . "</td> ";
-                                    echo "<td>" . $faculty_name . "</td> ";
-                                    echo "<td>" . $name . "</td> ";
-									?>
-									<td><a class="btn btn-success">Download button</a>&nbsp;&nbsp;
-									<?php
+									if($category==2)
+									{
+										$query1 = "SELECT fac_name FROM faculty_login WHERE fac_id='" . $id2 . "'";
+										$result1 = mysqli_query($conn, $query1);
+										list($faculty_name) = mysqli_fetch_array($result1);
+										
+										echo "<tr><td>" . $date . "</td> ";
+										echo "<td>" . $faculty_name . "</td> ";
+										echo "<td>" . $name . "</td> ";
+										?>
+										<td><a class="btn btn-success">Download button</a>&nbsp;&nbsp;
+										<?php
+									}
+									else if($category==3)
+									{
+										$query1 = "SELECT stu_name FROM student_login WHERE stu_id='" . $id2 . "'";
+										$result1 = mysqli_query($conn, $query1);
+										list($faculty_name) = mysqli_fetch_array($result1);
+										
+										echo "<tr><td>" . $date . "</td> ";
+										echo "<td>" . $faculty_name . "</td> ";
+										echo "<td>" . $name . "</td> ";
+										?>
+										<td><a class="btn btn-success">Download button</a>&nbsp;&nbsp;
+										<?php
+									}
 								}
 							?>
 						</table><br>
@@ -276,7 +321,9 @@
 			</div>
 		</div>
 		
-    	
+    	<div class="container-fluid bg-3 text-center">
+			<a class="stu_mat" data-toggle="modal" href="#myModal2" value="3"><font size="4px">Contribute to the Group</font></a>
+		</div>
 		<footer class="container-fluid bg-4 text-center">
 			<p><font size = "2">Developed by undergraduate students of CSE department.</font></p>
 			<p><a href="http://www.rvce.edu.in/" target = "_blank"><font size=2px color="white">R.V. College of Engineering</font></a></p>
@@ -313,6 +360,19 @@
 	{
 		$id = $_GET['download'];
 		$query = "SELECT as_file_name, as_file_type, as_file_size, as_file_content FROM assignments WHERE as_id = '$id'";
+		$result = mysqli_query($conn, $query) or die('Error retrieving files');
+		list($name, $type, $size, $content) = mysqli_fetch_row($result);
+		header("Content-type: $type");
+		header("Content-Disposition: inline; filename=$name");
+		header("Content-length: $size");
+		ob_clean();
+		flush();
+		echo $content;
+	}
+	if(isset($_GET['assignment']))
+	{
+		$id = $_GET['assignment'];
+		$query = "SELECT gf_file_name, gf_file_type, gf_file_size, gf_file_content FROM group_files WHERE gf_id = '$id'";
 		$result = mysqli_query($conn, $query) or die('Error retrieving files');
 		list($name, $type, $size, $content) = mysqli_fetch_row($result);
 		header("Content-type: $type");

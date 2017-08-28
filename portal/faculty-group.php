@@ -100,7 +100,7 @@
 <script>
     function del(id)
     {
-        if (confirm("Confirm Deletion of this Announcement?") == true) {
+        if (confirm("Confirm?") == true) {
             location.assign("DelFacAssignment.php?id="+id);
         } 
         else {
@@ -154,7 +154,7 @@
 
 <div class="container-fluid bg-1 text-center"><br><br><br>
     <font size=50><i class='glyphicon glyphicon-globe slide'></i></font>
-    <h2 class="margin slide"><strong>Group - <?php echo $name; ?></strong></h2><br>
+    <h2 class="margin slide"><strong><?php echo $name; ?></strong></h2><br>
 </div>
 
 <ul class="nav nav-tabs nav-justified">
@@ -297,7 +297,7 @@
                     </tr>
                     <?php
                         include 'dbconnect.php';
-                        $query = "SELECT gf_id, gf_file_name, gf_description, gf_date_upload, gf_fac_id FROM group_files WHERE gf_grp_code = '$grp_code' AND gf_category=2";
+                        $query = "SELECT gf_id, gf_file_name, gf_description, gf_date_upload, gf_fac_id FROM group_files WHERE gf_grp_code = '$grp_code' AND (gf_category=2 OR gf_category=3)";
                         $result = mysqli_query($conn, $query);
                         while(list($id, $name, $description, $date, $faculty_id) = mysqli_fetch_array($result))
                         {

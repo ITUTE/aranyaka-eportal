@@ -8,16 +8,16 @@
 <html> 
 <head>
     <title>Assignment Submissions</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>   
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.3/jquery.scrollTo.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='css/bootstrap.css' rel='stylesheet'> 
     <link rel="stylesheet" type="text/css" href="index.css">
     <link rel="stylesheet" type="text/css" href="eportal.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.3/jquery.scrollTo.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
 
 	<style>
 		.logout{
@@ -137,7 +137,7 @@
 					echo "<br><br><br><p style=\"text-align:center\"><font color=\"darkcyan\" size=5px face = \"Comic sans MS\">Sorry ma'am/sir, no students have uploaded anything yet for this assignment!<br>Perhaps you could post an announcement regarding the same.</font></p>";
 					die();
 				}
-				echo "<form method=\"post\">";
+				echo "<form>";
 				echo "<table class=\"table table-striped table-hover\" style=\"width:100%\">
 					 <tr>
 						<th>Date of Upload</th>
@@ -170,13 +170,13 @@
 </html>
 
 <?php
-	if(isset($_POST['download']))
+	if(isset($_GET['download']))
 	{
-		$id = $_POST['download'];
-		//echo "hi " . $id;
+		$id = $_GET['download'];
 		$query = "SELECT as_file_name, as_file_size, as_file_type, as_file_content FROM assignments WHERE as_id = '$id'";
+		echo $query;
 		$result = mysqli_query($conn, $query) or die('Error retrieving files');
-		list($name, $type, $size, $content) = mysqli_fetch_row($result);
+		list($name, $size, $type, $content) = mysqli_fetch_row($result);
 		header("Content-type: $type");
 		header("Content-Disposition: inline; filename=$name");
 		header("Content-length: $size");

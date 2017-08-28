@@ -1,5 +1,3 @@
- 
-
 <?php
 	ob_start();
 	session_start();
@@ -67,7 +65,7 @@
 					margin-right: 30%;
 			  }
             .top{
-                margin-top: 18%;
+                margin-top: 10%;
             }
 		</style>
 
