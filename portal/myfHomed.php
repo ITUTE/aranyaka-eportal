@@ -227,7 +227,7 @@
                             </form><br>
                             <p><font size=3px>Select a semester and then pick the desired course</font></p><hr>
                             <div id="sublist"></div><br>
-                            <p>To see information about syllabus <a href="infotable.php" target="_blank" class="btn btn-md btn-info">Click Here</a></p>
+                            <p>To see information about syllabus <a href="infotable_fac.php" target="_blank" class="btn btn-md btn-info">Click Here</a></p>
                                     <br>
                         </div>
                  </div>
