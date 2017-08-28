@@ -70,9 +70,8 @@
 		<h2 class="margin slide"><strong>E-PORTAL</strong></h2>
 		<img src="pics/rv.JPG" class="img-responsive img-circle margin1 slide" style="display:inline" alt="Bird" width="150" height="150">
 		<h3 class="slide"><strong>R.V. College of Engineering, Bangalore</strong></h3>
-        <video autoplay loop id="video-background" muted plays-inline preload="none">
+        <video autoplay loop id="video-background" muted plays-inline preload="none" poster="pics/home1.jpg">
             <source src="https://player.vimeo.com/external/158148793.hd.mp4?s=8e8741dbee251d5c35a759718d4b0976fbf38b6f&profile_id=119&oauth2_token_id=57447761" type="video/mp4">
-            <img src="pics/home1.jpg">
         </video>
 	</div>
 

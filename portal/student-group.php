@@ -178,6 +178,7 @@
 								<th class="text-center">Date of Upload</th>
                                 <th class="text-center">Assignment name</th>
                                 <th></th>
+                                <th></th>
 							</tr>
 							<?php
 								include 'dbconnect.php';

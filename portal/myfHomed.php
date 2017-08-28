@@ -1,3 +1,5 @@
+ 
+
 <?php
 	ob_start();
 	session_start();
@@ -14,7 +16,7 @@
         <link href='css/bootstrap.css' rel='stylesheet'>
         <link rel="stylesheet" type="text/css" href="index.css">
 		<link rel="stylesheet" type="text/css" href="eportal.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<style>
@@ -59,16 +61,16 @@
 				  background-color: darkcyan;
 				  color: #fff;
 			  }
-			  .bs-example{
-                    margin-top: 10%;
-              }
 			  .dropsize{
 					width: 40%;
 					margin-left: 30%;
 					margin-right: 30%;
 			  }
+            .top{
+                margin-top: 18%;
+            }
 		</style>
-        
+
 		<script>
 			function sub_list(str)
 			{
@@ -150,13 +152,13 @@
       </div>
     </nav>
 
-    <div class="container-fluid bg-1 text-center"><br><br><br><br>
+    <div class="container-fluid bg-1 text-center"><br><br><br>
         <i class='glyphicon glyphicon-education slide'></i>
         <h2 class="margin slide"><strong>Faculty Home</strong></h2><br>
     </div>
 
 
-    <ul class="nav nav-tabs nav-justified">
+     <ul class="nav nav-tabs nav-justified">
           <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
           <li><a data-toggle="tab" href="#upload">Upload Documents</a></li>
           <li><a data-toggle="tab" href="#groups">My Groups</a></li>
@@ -202,32 +204,34 @@
                                 echo "  </table>
                                     </div>";
                             ?>
+                <br>
                         </div>
             </div>
         </div>
-
         <div id="upload" class="tab-pane fade">
-            <div class="container-fluid bg-3 text-center">
-                <h3 class="margin slide"><strong>Upload documents</strong></h3><hr><br>
-                <div class="row slide">
-                    <p class="slide">Select Semester:</p>
-                    <select class="form-control col-md-6 slide dropsize abc" name="semester" onclick="sub_list(this.value)" onkeyup="sub_list(this.value)" onkeydown="sub_list(this.value)" onchange="sub_list(this.value)">
-                        <option value="">Select Semester</option>
-                        <option value="1">First Semester</option>
-                        <option value="2">Second Semester</option>
-                        <option value="3">Third Semester</option>
-                        <option value="4">Fourth Semester</option>
-                        <option value="5">Fifth Semester</option>
-                        <option value="6">Sixth Semester</option>
-                        <option value="7">Seventh Semester</option>
-                    </select><br><br>
-                    <p><font size=3px>Select a semester and then pick the desired course</font></p><hr>
-                    <div id="sublist"></div><br>
-                    <p>To see information about syllabus <a href="infotable.php" target="_blank" class="btn btn-md btn-info">Click Here</a></p><br>
-                </div>
-            </div>
+                 <div class="container-fluid bg-3 text-center">
+                    <h3 class="margin slide"><strong>Upload documents</strong></h3><hr><br>
+                        <div class="row slide">
+                            <form method="POST">
+                                <p class="slide">Select Semester:</p>
+                     <select class="form-control col-md-6 slide dropsize" name="semester" onclick="sub_list(this.value)" onkeyup="sub_list(this.value)" onkeydown="sub_list(this.value)" onchange="sub_list(this.value)">
+                                     <option value="">Select Semester</option>
+                              <option value="1">First Semester</option>
+                              <option value="2">Second Semester</option>
+                              <option value="3">Third Semester</option>
+                              <option value="4">Fourth Semester</option>
+                              <option value="5">Fifth Semester</option>
+                              <option value="6">Sixth Semester</option>
+                              <option value="7">Seventh Semester</option>
+                      </select><br>
+                            </form><br>
+                            <p><font size=3px>Select a semester and then pick the desired course</font></p><hr>
+                            <div id="sublist"></div><br>
+                            <p>To see information about syllabus <a href="infotable.php" target="_blank" class="btn btn-md btn-info">Click Here</a></p>
+                                    <br>
+                        </div>
+                 </div>
         </div>
-
         <div id="groups" class="tab-pane fade">
             <div class="container-fluid bg-3">
                     <div class="row slide">
@@ -277,6 +281,7 @@
                         </div>
             </div>
         </div>
+        
         <div id="delete" class="tab-pane fade">
                 <div class="container-fluid bg-3 text-center">
                     <h3 class="margin slide"><strong>Delete Documents</strong></h3><hr><br>
@@ -330,8 +335,8 @@
                         </div>
             </div>
     </div>
-
-    <div id="myModal" class="modal fade bs-example text-center">
+    
+    <div id="myModal" class="modal fade bs-example text-center top">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -356,17 +361,12 @@
                 </form><br>
             </div>
         </div>
-    </div> 
+    </div>
 
     <footer class="container-fluid bg-4 text-center">
         <p><font size = "2">Developed by undergraduate students of CSE department.</font></p>
         <p><a href="http://www.rvce.edu.in/" target = "_blank"><font size=2px color="white">R.V. College of Engineering</font></a></p>
     </footer>
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script>
         $(window).load(function() {
@@ -388,6 +388,6 @@
 		header("Location: index.php");
 		exit;
 	}
-	//$res=mysqli_query($conn, "SELECT id, username FROM flogin WHERE username=".$_SESSION['faculty']);
 	ob_end_flush();
 ?>
+
