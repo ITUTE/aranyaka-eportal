@@ -11,10 +11,10 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<style>
-        body {
+	  body {
 		  font-family: American Typewriter;
 		  line-height: 1.8;
-		  color: #ffffff;
+		  color: #f5f6f7;
 	    }
 	  p {
 		  font-size: 23px;
@@ -26,7 +26,14 @@
 	  .margin1 {
 			margin-bottom: 13px;
 	    }
-	  
+	  .bg-1 {
+		  background-image: url(pics/home1.jpg);
+		  background-size: cover;
+		  color: #ffffff;
+		  background-attachment: fixed;
+		  background-position: center;
+		  background-repeat: no-repeat;
+	    }
 	  .bg-2 {
 		  background-color: #474e5d;
 		  color: #ffffff;
@@ -48,13 +55,13 @@
               bottom: 0;
               min-width: 100%; 
               min-height: 100%;
-              width: 100%; 
+              width: auto; 
               height: auto;
               z-index: -100;
             }
 	</style>
-    
-    </head>
+
+</head>
 
 <body>
 	<div class="se-pre-con"></div>
@@ -63,16 +70,12 @@
 		<h2 class="margin slide"><strong>E-PORTAL</strong></h2>
 		<img src="pics/rv.JPG" class="img-responsive img-circle margin1 slide" style="display:inline" alt="Bird" width="150" height="150">
 		<h3 class="slide"><strong>R.V. College of Engineering, Bangalore</strong></h3>
-        <video autoplay loop id="video-background">
-            <source src="https://player.vimeo.com/external/158148793.hd.mp4?s=8e8741dbee251d5c35a759718d4b0976fbf38b6f&profile_id=119&oauth2_token_id=57447761" type="video/mp4" />
-            <source src="https://player.vimeo.com/external/158148793.hd.mp4?s=8e8741dbee251d5c35a759718d4b0976fbf38b6f&profile_id=119&oauth2_token_id=57447761" type="video/webm" />
-            <source src="https://player.vimeo.com/external/158148793.hd.mp4?s=8e8741dbee251d5c35a759718d4b0976fbf38b6f&profile_id=119&oauth2_token_id=57447761" type="video/ogv" />
+        <video autoplay loop id="video-background" muted plays-inline preload="none" poster="pics/poster.jpg">
+            <source src="https://player.vimeo.com/external/158148793.hd.mp4?s=8e8741dbee251d5c35a759718d4b0976fbf38b6f&profile_id=119&oauth2_token_id=57447761" type="video/mp4">
         </video>
-        <div class="poster hidden">
-            <img src="PICS/poster.jpg" alt="">
-        </div>
-    </div>
-    <div class="container bg-3 text-center slide">
+	</div>
+
+	<div class="container bg-3 text-center slide">
         <br><br>
 		<h3 class="margin"><strong>Enter the E-Portal</strong></h3><hr><br>
 		<div class="row slide">
