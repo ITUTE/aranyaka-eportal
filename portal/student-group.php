@@ -121,7 +121,7 @@
 						</a>
 						<ul class="dropdown-menu">
 							<li><a href="#home"><font color = "darkcyan">Profile</font></a></li>
-							<li><a><form method="POST"><input type="submit" value="Logout " name="Logout"/></form></a></li>
+							<li><a><form method="POST"><input type="submit" value="Logout " style="color:white; background-color:darkcyan;border:2px solid black" name="Logout"/></form></a></li>
 						</ul>
 					</li>
 				</ul>

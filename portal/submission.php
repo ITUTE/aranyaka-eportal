@@ -81,38 +81,25 @@
 <body>
 	<div class="se-pre-con"></div>
     <nav class="navbar navbar-inverse navbar-fixed-top">
-          
+
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span> 
-            </button>
-            <a class="navbar-left" href="http://www.rvce.edu.in/" target = "_blank"><img src="pics/rv.JPG" class="img-circle" height=50 ondragstart="return false;" alt="logo"/></a>
-            <a href="index.php" class="navbar-brand"><strong>#E-PORTAL</strong></a>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span> 
+          </button>
+          <a class="navbar-left" href="http://www.rvce.edu.in/" target = "_blank"><img src="pics/rv.JPG" class="img-circle" height=50 ondragstart="return false;" alt="logo"/></a>
+          <a href="index.php" class="navbar-brand"><strong>#E-PORTAL</strong></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li class=""><a href="index.php">Home</a></li> 
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <?php 
-                                $query = "SELECT fac_name from faculty_login WHERE fac_id = " . $_SESSION['id'];
-                                $result = mysqli_query($conn, $query);
-                                list($name) = mysqli_fetch_array($result);
-                                echo "Hi, "; echo "<strong><font size = 3>"; echo $name; echo "</font></strong>";
-                        ?>
-                        
-                    <span class="caret"></span>&nbsp;</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#home"><font color = "darkcyan">Profile</font></a></li>
-                        <li><a class = ""><form method="POST"><input type="submit" value="Logout " name="Logout"/></form></a></li>
-                    </ul>
-                </li>
+            <ul style="margin-right:2%;" class="nav navbar-nav navbar-right">
+                <li><a class = ""><form method="POST"><input type="submit" value="Logout " style="color:white; background-color:darkcyan;border:2px solid darkcyan;" name="Logout"/></form></a></li>
             </ul>
         </div>
+      </div>
     </nav>
 
     <script>
@@ -184,4 +171,19 @@
 		flush();
 		echo $content;
 	}
+?>
+
+<?php
+	if(@$_SESSION['faculty'] == "")
+	{
+		header("Location: myfLogind.php");
+		exit;
+	}
+	if(isset($_POST['Logout']))
+	{
+		session_destroy();
+		header("Location: index.php");
+		exit;
+	}
+	ob_end_flush();
 ?>
