@@ -161,7 +161,8 @@
 	 
 	$error = false;
 	 
-	if( isset($_POST['submit']) ) 
+	
+    if( isset($_POST['submit']) ) 
 	{	 	 
 		// prevent sql injections/ clear user invalid inputs
 		$user = trim($_POST['user']);
