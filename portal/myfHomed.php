@@ -101,6 +101,26 @@
 				}
 			}
 		</script>
+
+		<script>
+			function validatePassword() {
+				var current_pw,new_pw,confirm_pw;
+
+				current_pw = document.frmChange.current_pw;
+				new_pw = document.frmChange.new_pw;
+				confirm_pw = document.frmChange.confirm_pw;
+				//alert(new_pw.value);
+				//alert(confirm_pw.value);
+
+				if(new_pw.value != confirm_pw.value) {
+					//new_pw.value="";
+					//confirm_pw.value="";
+					alert("Passwords Dont Match");
+					return false;
+				} 	
+				return true;
+			}
+		</script>
 		
 		<script>
 			$(document).ready(function(){
@@ -136,12 +156,13 @@
                             $query = "SELECT fac_name from faculty_login WHERE fac_id = " . $_SESSION['id'];
                             $result = mysqli_query($conn, $query);
                             list($name) = mysqli_fetch_array($result);
-                            echo "Hi, " .  "<strong><font size = 3>" . $name . "</font></strong>";
+                            echo "Welcome " .  "<strong><font size = 3>" . $name . "</font></strong>";
                     ?>
 
                 <span class="caret"></span>&nbsp;</a>
                 <ul class="dropdown-menu">
-                    <li><a href="#home"><font color = "darkcyan">Profile</font></a></li>
+                    <li><a href="#home"><font color = "darkcyan">View Profile</font></a></li>
+		    <a data-toggle="modal" href="#myModal3"><font size="2px" color = "darkcyan">Change Password</font></a>
                     <li><a class = ""><form method="POST"><input type="submit" value="Logout " style="color:white; background-color:darkcyan;border:2px solid black" name="Logout"/></form></a></li>
                 </ul>
             </li>
@@ -149,6 +170,28 @@
         </div>
       </div>
     </nav>
+
+    <div id="myModal3" class="modal fade bs-example text-center">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">Password Settings</h4>
+                    </div>
+					<form name="frmChange" method="POST" onsubmit="return validatePassword()">
+						<div class="modal-body"> 						
+								<input type="password" name="current_pw" id="current_pw" class="form-control" placeholder="Current Password" maxlength="100" required />
+								<input type="password" name="new_pw" id="new_pw" class="form-control" placeholder="New Password" maxlength="100" required />
+								<input type="password" name="confirm_pw" id="confirm_pw" class="form-control" placeholder="Confirm Password" maxlength="100" required />
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+							<button type="submit" name="submit3" id="submit3" class="btn btn-success">Change</button>
+						</div>
+					</form><br>
+                </div>
+            </div>
+    </div>   
 
     <div class="container-fluid bg-1 text-center"><br><br><br>
         <i class='glyphicon glyphicon-education slide'></i>
@@ -380,6 +423,18 @@
 		header("Location: myfLogind.php");
 		exit;
 	}
+
+	if(isset($_POST['submit3']))
+	{
+		$query = "SELECT fac_password FROM faculty_login WHERE fac_id = '" . $_SESSION['id'] . "'";
+		$result = mysqli_query($conn, $query) or die();
+		list($password) = mysqli_fetch_row($result);
+		if($_POST['current_pw'] == $password)
+			mysqli_query($conn, "UPDATE faculty_login set fac_password = '". $_POST['new_pw'] . "' WHERE fac_id = '" . $_SESSION['id'] . "'");
+		else
+			echo "<script>alert(\"Incorrect Password\")</script>";
+	}
+
 	if(isset($_POST['Logout']))
 	{
 		session_destroy();
