@@ -2,7 +2,7 @@
 
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "1607";
 $dbname = "portal";
 
 // Create connection
