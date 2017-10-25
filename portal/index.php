@@ -82,6 +82,7 @@
 			<div class="col-sm-6">
 				<p>I'm a member of<strong> Faculty</strong> in <strong>RVCE, Bangalore</strong></p>
 				<a href="myfLogind.php" class="btn btn-lg btn-success" role="button">Faculty Login</a>
+				<a href="admin-login.php" class="btn btn-lg btn-success" role="button">Admin Login</a>
                 <br><br><hr>
 			</div>
 			<div class="col-sm-6">
