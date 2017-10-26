@@ -115,14 +115,14 @@
               <div class="form-group">
                 <label class="control-label col-sm-2" for="usn">USN:</label>
                 <div class="col-sm-10">
-                  <input type="text" name="usn" class="form-control" id="usn" placeholder="Enter USN">
+                  <input type="text" name="usn" class="form-control" pattern="[1]{1}[R]{1}[V]{1}[1]{1}[4-7]{1}[A-Z]{2}[0-9]{3}" title="Enter in the form of 1RV15CS128, all capitals" id="usn" placeholder="Enter USN">
                 </div>
               </div>
                 
               <div class="form-group">
                 <label class="control-label col-sm-2" for="name">Name:</label>
                 <div class="col-sm-10"> 
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Enter name">
+                  <input type="text" name="name" class="form-control" pattern="[A-Za-z ]{1,50}$" title="Enter only letters" id="name" placeholder="Enter name">
                 </div>
               </div>
                 
@@ -151,7 +151,7 @@
               <div class="form-group">
                 <label class="control-label col-sm-2" for="section">Section:</label>
                 <div class="col-sm-10"> 
-                  <input type="text" name="section" class="form-control" id="section" placeholder="Enter section">
+                  <input type="text" name="section" pattern="[A-Z]{1}" class="form-control" id="section" placeholder="Enter section">
                 </div>
               </div>
                 

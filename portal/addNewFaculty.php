@@ -117,14 +117,14 @@
               <div class="form-group">
                 <label class="control-label col-sm-2" for="name">Name:</label>
                 <div class="col-sm-10"> 
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Enter name">
+                  <input type="text" name="name" class="form-control" pattern="[A-Za-z ]{1,50}$" title="Enter only letters as name" id="name" placeholder="Enter name">
                 </div>
               </div>
                 
               <div class="form-group">
-                <label class="control-label col-sm-2" for="usn">USN:</label>
+                <label class="control-label col-sm-2" for="usn">User-ID:</label>
                 <div class="col-sm-10">
-                  <input type="text" name="username" class="form-control" id="username" placeholder="Enter username">
+                  <input type="email" name="username" class="form-control" id="username" title="Enter only email" placeholder="Enter username">
                 </div>
               </div>    
                 
