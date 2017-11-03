@@ -4,24 +4,32 @@
 	$allowed = array('jpg', 'jpeg', 'png', 'doc', 'docx', 'pdf', 'xls', 'xlsm', 'ppt', 'pptx', 'xlsx');
 	if(isset($_POST['submit']))	
 	{
-		if($_FILES['userfile']['size'] > 0)
-		{			
-			$fileName = $_FILES['userfile']['name'];
-			$tmpName  = $_FILES['userfile']['tmp_name'];
-			$fileSize = $_FILES['userfile']['size'];
-			$fileType = $_FILES['userfile']['type'];
+		if($_FILES['userfile']['size'] > 0 or $_POST['submit']==1)
+		{	
+			$fileName = NULL;
+			$fileSize = NULL;
+			$fileType = NULL;
+			$content = NULL;
+			
+				$fileName = $_FILES['userfile']['name'];
+				$tmpName  = $_FILES['userfile']['tmp_name'];
+				$fileSize = $_FILES['userfile']['size'];
+				$fileType = $_FILES['userfile']['type'];
+				
+				$file_ext = explode(".", $fileName);
+				$file_ext = strtolower(end($file_ext));
 					
-			$file_ext = explode(".", $fileName);
-			$file_ext = strtolower(end($file_ext));
-					
-			if(in_array($file_ext, $allowed))
+			if(in_array($file_ext, $allowed) or $_POST['submit']==1)
 			{
-				$fp = fopen($tmpName, 'r');
-				$content = fread($fp, filesize($tmpName));
-				$content = addslashes($content);
-				fclose($fp);
-				if(!get_magic_quotes_gpc())
-					$fileName = addslashes($fileName);
+				if($fileName!="")
+				{
+					$fp = fopen($tmpName, 'r');
+					$content = fread($fp, filesize($tmpName));
+					$content = addslashes($content);
+					fclose($fp);
+					if(!get_magic_quotes_gpc())
+						$fileName = addslashes($fileName);
+				}
 						
 				$grp_code = $_SESSION['grp_code'];
 				$TeacherID = $_SESSION['id'];

@@ -325,7 +325,7 @@
 <?php
 	if(@$_SESSION['student'] == "")
 	{
-		header("Location: mysLogind.php");
+		header("Location: index.php");
 		exit;
 	}
 
@@ -334,10 +334,11 @@
 		$query = "SELECT stu_password FROM student_login WHERE stu_id = '" . $_SESSION['id'] . "'";
 		$result = mysqli_query($conn, $query) or die();
 		list($password) = mysqli_fetch_row($result);
-		if($_POST['current_pw'] == $password)
-			mysqli_query($conn, "UPDATE student_login set stu_password = '". $_POST['new_pw'] . "' WHERE stu_id = '" . $_SESSION['id'] . "'");
+		if(md5($_POST['current_pw']) == $password)
+			mysqli_query($conn, "UPDATE student_login set stu_password = '". md5($_POST['new_pw']) . "' WHERE stu_id = '" . $_SESSION['id'] . "'");
 		else
 			echo "<script>alert(\"Incorrect Password\")</script>";
+		echo "<script>history.go(-1);</script>";
 	}
 
 	if(isset($_POST['Logout']))

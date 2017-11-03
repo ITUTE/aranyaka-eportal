@@ -88,7 +88,7 @@
                             $query = "SELECT admin_name from admin WHERE admin_id = " . $_SESSION['id'];
                             $result = mysqli_query($conn, $query);
                             list($name) = mysqli_fetch_array($result);
-                            echo "Hi, " .  "<strong><font size = 3>" . $name . "</font></strong>";
+                            echo "Welcome " .  "<strong><font size = 3>" . $name . "</font></strong>";
                     ?>
 
                 <span class="caret"></span>&nbsp;</a>
@@ -110,26 +110,26 @@
 
     <div class="container-fluid bg-3">
         <h3 class="margin slide text-center"><strong>New Student Form</strong></h3><hr><br>
-            <form class="form-horizontal" method="POST">
+            <form class="form-horizontal" method="POST" autocomplete="off">
                 
               <div class="form-group">
                 <label class="control-label col-sm-2" for="usn">USN:</label>
                 <div class="col-sm-10">
-                  <input type="text" name="usn" class="form-control" pattern="[1]{1}[R]{1}[V]{1}[1]{1}[4-7]{1}[A-Z]{2}[0-9]{3}" title="Enter in the form of 1RV15CS128, all capitals" id="usn" placeholder="Enter USN">
+                  <input type="text" name="usn" class="form-control" pattern="[1]{1}[R]{1}[V]{1}[1]{1}[4-7]{1}[A-Z]{2}[0-9]{3}" title="Enter in the form of 1RV15CS128, all capitals" id="usn" placeholder="Enter USN" required>
                 </div>
               </div>
                 
               <div class="form-group">
                 <label class="control-label col-sm-2" for="name">Name:</label>
                 <div class="col-sm-10"> 
-                  <input type="text" name="name" class="form-control" pattern="[A-Za-z ]{1,50}$" title="Enter only letters" id="name" placeholder="Enter name">
+                  <input type="text" name="name" class="form-control" pattern="[A-Za-z ]{1,50}$" title="Enter only letters" id="name" placeholder="Enter name" required>
                 </div>
               </div>
                 
               <div class="form-group">
                 <label class="control-label col-sm-2" for="password">Password:</label>
                 <div class="col-sm-10"> 
-                  <input type="password" name="password" class="form-control" id="password" placeholder="Enter password">
+                  <input type="password" name="password" class="form-control" id="password" placeholder="Enter password" required>
                 </div>
               </div>
                 
@@ -137,21 +137,21 @@
               <div class="form-group">
                 <label class="control-label col-sm-2" for="dept">Department:</label>
                 <div class="col-sm-10"> 
-                  <input type="text" name="dept" class="form-control" id="dept" placeholder="Enter department">
+                  <input type="text" name="dept" class="form-control" id="dept" placeholder="Enter department" required>
                 </div>
               </div>
                 
               <div class="form-group">
                 <label class="control-label col-sm-2" for="semester">Semester:</label>
                 <div class="col-sm-10"> 
-                  <input type="number" name="semester" class="form-control" id="semester" placeholder="Enter semester">
+                  <input type="number" name="semester" class="form-control" id="semester" min="1" max="8" placeholder="Enter semester" required>
                 </div>
               </div>
                 
               <div class="form-group">
                 <label class="control-label col-sm-2" for="section">Section:</label>
                 <div class="col-sm-10"> 
-                  <input type="text" name="section" pattern="[A-Z]{1}" class="form-control" id="section" placeholder="Enter section">
+                  <input type="text" name="section" pattern="[A-Z]{1}" class="form-control" id="section" title="Enter capital letter only" placeholder="Enter section" required>
                 </div>
               </div>
                 
@@ -185,31 +185,25 @@
 </html>
 
 <?php
-
-    echo "hi";
     if (@$_SESSION['admin'] == "" ) 
         {
             header("Location: admin-login.php");
             exit;
         }
-
-    echo "yooo";
-
+		
     if( isset($_POST['submit']) )
     {
-        echo"1";
         $usn = $_POST['usn'];
         $section = $_POST['section'];
         $semester = $_POST['semester'];
-        $password = $_POST['password'];
+        $password = md5($_POST['password']);
         $dept = $_POST['dept'];
         $name = $_POST['name'];
         
         $query = "INSERT INTO `student_login` (`stu_id`, `stu_name`, `stu_usn`, `stu_password`, `stu_dept_code`, `stu_sem_code`, `stu_section`, `stu_active`) VALUES (NULL, '$name', '$usn', '$password', '$dept', '$semester', '$section', '1');";
         
         mysqli_query($conn, $query);
-        echo "<script type='text/javascript'>alert('You've successfully added a new student.);</script>";
-        header("Location: myaHomed.php");
+        echo "<script>history.go(-1);</script>";
     }
 
     if(isset($_POST['Logout']))
@@ -218,8 +212,6 @@
 		header("Location: index.php");
 		exit;
 	}
-    
-
 ?>
 
     

@@ -63,38 +63,6 @@
 			  }
 		</style>
 
-		<script>
-		function sub_list(str)
-		{
-			if (str == "")
-			{
-				document.getElementById("sublist").innerHTML = "";
-				return;
-			}
-			else
-			{
-				//alert(str);
-				if (window.XMLHttpRequest)
-				{
-					// code for IE7+, Firefox, Chrome, Opera, Safari
-					xmlhttp = new XMLHttpRequest();
-				}
-				else
-				{
-					// code for IE6, IE5
-					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-				}
-				xmlhttp.onreadystatechange = function() {
-					if (this.readyState == 4 && this.status == 200)
-					{
-						document.getElementById("sublist").innerHTML = this.responseText;
-					}
-				};
-				xmlhttp.open("GET","SList.php?q="+str,true);
-				xmlhttp.send();
-			}
-		}
-		</script>
     </head>
 
 <body>
@@ -121,7 +89,7 @@
                             $query = "SELECT admin_name from admin WHERE admin_id = " . $_SESSION['id'];
                             $result = mysqli_query($conn, $query);
                             list($name) = mysqli_fetch_array($result);
-                            echo "Hi, " .  "<strong><font size = 3>" . $name . "</font></strong>";
+                            echo "Welcome " .  "<strong><font size = 3>" . $name . "</font></strong>";
                     ?>
 
                 <span class="caret"></span>&nbsp;</a>
@@ -226,7 +194,7 @@
 <?php
 	if(@$_SESSION['admin'] == "")
 	{
-		header("Location: mysLogind.php");
+		header("Location: index.php");
 		exit;
 	}
 	if(isset($_POST['Logout']))

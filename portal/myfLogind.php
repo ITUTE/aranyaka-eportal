@@ -177,6 +177,7 @@
 		// if there's no error, continue to login
 		if (!$error) 
 		{
+			$pass = md5($pass);
 			$query = mysqli_query($conn, "SELECT fac_id, fac_dept_code FROM faculty_login WHERE fac_password='$pass' AND fac_username='$user'");
 			$no_of_rows = mysqli_num_rows($query); 
 		 
@@ -195,9 +196,9 @@
 			}
 			else 
 			{
-				echo "<div class=\"alert alert-danger\">
-                          Invalid username or password
-                        </div>"; 
+				echo "<script>
+						document.getElementById(\"validate\").innerHTML = \"Invalid Credentials\";
+					  </script>";
 				die();
 			}
 			 

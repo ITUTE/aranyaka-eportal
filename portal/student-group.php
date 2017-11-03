@@ -100,12 +100,8 @@
 				current_pw = document.frmChange.current_pw;
 				new_pw = document.frmChange.new_pw;
 				confirm_pw = document.frmChange.confirm_pw;
-				//alert(new_pw.value);
-				//alert(confirm_pw.value);
 
 				if(new_pw.value != confirm_pw.value) {
-					//new_pw.value="";
-					//confirm_pw.value="";
 					alert("Passwords Dont Match");
 					return false;
 				} 	
@@ -173,7 +169,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         <h4 class="modal-title">Your Submission</h4>
                     </div>
-					<form method="POST" enctype="multipart/form-data" action="uploadStudent.php">
+					<form method="POST" enctype="multipart/form-data" action="uploadStudent.php" autocomplete="off">
 						<div class="modal-body"> 						
                             <label class="custom-file-upload btn btn-lg btn-info slide" for="userfile">
                                 <input type="file" name="userfile" id="userfile"/>Choose File

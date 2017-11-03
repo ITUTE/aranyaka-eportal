@@ -75,9 +75,6 @@
               <a href="index.php" class="navbar-brand"><strong>#E-PORTAL</strong></a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <li class=""><a href="index.php">Home</a></li> 
-                </ul>
                 <ul class="nav navbar-nav navbar-right">
      
                 </ul>
@@ -172,9 +169,6 @@
 				//session_destroy();
                 $_SESSION['admin'] = $user;
                 $_SESSION['id'] = $row["admin_id"];
-//				$_SESSION['stu_dept'] = $row["stu_dept_code"];
-//				$_SESSION['stu_sem'] = $row["stu_sem_code"];
-//				$_SESSION['stu_section'] = $row["stu_section"];
 				if (@$_SESSION['admin'] != "" ) 
 				{
 					header("Location: myaHomed.php");
@@ -187,8 +181,7 @@
 						document.getElementById(\"validate\").innerHTML = \"Invalid Credentials\";
 					  </script>";
 				die();
-			}
-			//mysqli_close($conn);		 
+			}	 
 		}
 	}
 	ob_end_flush(); 

@@ -109,12 +109,8 @@
 				current_pw = document.frmChange.current_pw;
 				new_pw = document.frmChange.new_pw;
 				confirm_pw = document.frmChange.confirm_pw;
-				//alert(new_pw.value);
-				//alert(confirm_pw.value);
 
 				if(new_pw.value != confirm_pw.value) {
-					//new_pw.value="";
-					//confirm_pw.value="";
 					alert("Passwords Dont Match");
 					return false;
 				} 	
@@ -420,7 +416,7 @@
 <?php
 	if(@$_SESSION['faculty'] == "")
 	{
-		header("Location: myfLogind.php");
+		header("Location: index.php");
 		exit;
 	}
 
@@ -429,10 +425,11 @@
 		$query = "SELECT fac_password FROM faculty_login WHERE fac_id = '" . $_SESSION['id'] . "'";
 		$result = mysqli_query($conn, $query) or die();
 		list($password) = mysqli_fetch_row($result);
-		if($_POST['current_pw'] == $password)
-			mysqli_query($conn, "UPDATE faculty_login set fac_password = '". $_POST['new_pw'] . "' WHERE fac_id = '" . $_SESSION['id'] . "'");
+		if(md5($_POST['current_pw']) == $password)
+			mysqli_query($conn, "UPDATE faculty_login set fac_password = '". md5($_POST['new_pw']) . "' WHERE fac_id = '" . $_SESSION['id'] . "'");
 		else
 			echo "<script>alert(\"Incorrect Password\")</script>";
+		echo "<script>history.go(-1);</script>";
 	}
 
 	if(isset($_POST['Logout']))

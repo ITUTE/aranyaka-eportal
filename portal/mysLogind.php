@@ -162,6 +162,7 @@
 		// if there's no error, continue to login
 		if (!$error) 
 		{
+			$pass = md5($pass);
 			$query = mysqli_query($conn, "SELECT * FROM student_login WHERE stu_password='$pass' AND stu_usn='$user'");
 			$rows = mysqli_num_rows($query);
 		 

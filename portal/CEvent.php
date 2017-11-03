@@ -39,19 +39,10 @@
             <a href="index.php" class="navbar-brand"><strong>#E-PORTAL</strong></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-                    <li class=""><a href="index.php">Home</a></li> 
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-     
-            </ul>
+            <ul class="nav navbar-nav navbar-right"/>
         </div>
-    </nav>
+    </nav><br><br>
     
-    <br>
-    <br>
-	
-	
     <div class="container-fluid slide">
         <div class="row">
             <div class="col-xs-6">
@@ -132,7 +123,7 @@
 	if(isset($_GET['download'])) 
 	{
 		$id = $_GET['download'];
-		$query = "SELECT file_name, file_type, file_size, file_content FROM file WHERE id = '$id'";
+		$query = "SELECT file_name, file_type, file_size, file_content FROM file WHERE file_id = '$id'";
 		$result = mysqli_query($conn, $query) or die('Error retrieving files');
 		list($name, $type, $size, $content) = mysqli_fetch_row($result);
 		header("Content-type: $type");

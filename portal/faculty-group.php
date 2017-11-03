@@ -213,7 +213,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h4 class="modal-title">Upload</h4>
             </div>
-            <form method="POST" enctype="multipart/form-data" action="uploadFaculty.php">
+            <form method="POST" enctype="multipart/form-data" action="uploadFaculty.php" autocomplete="off">
                 <div class="modal-body"> 
                     <div class="form-group">
                         <label for="description" class="control-label"><font color="darkcyan">Description</font></label>

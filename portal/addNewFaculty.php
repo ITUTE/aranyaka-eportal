@@ -62,6 +62,7 @@
 					margin-right: 30%;
 			  }
 		</style>
+		
     </head>
     
 <body>
@@ -88,7 +89,7 @@
                             $query = "SELECT admin_name from admin WHERE admin_id = " . $_SESSION['id'];
                             $result = mysqli_query($conn, $query);
                             list($name) = mysqli_fetch_array($result);
-                            echo "Hi, " .  "<strong><font size = 3>" . $name . "</font></strong>";
+                            echo "Welcome " .  "<strong><font size = 3>" . $name . "</font></strong>";
                     ?>
 
                 <span class="caret"></span>&nbsp;</a>
@@ -110,28 +111,25 @@
 
     <div class="container-fluid bg-3">
         <h3 class="margin slide text-center"><strong>New Faculty Form</strong></h3><hr><br>
-            <form class="form-horizontal" method="POST">
-                
-              
-                
+            <form class="form-horizontal" method="POST" autocomplete="off">
               <div class="form-group">
                 <label class="control-label col-sm-2" for="name">Name:</label>
                 <div class="col-sm-10"> 
-                  <input type="text" name="name" class="form-control" pattern="[A-Za-z ]{1,50}$" title="Enter only letters as name" id="name" placeholder="Enter name">
+                  <input type="text" name="name" class="form-control" pattern="[A-Za-z ]{1,50}$" title="Enter only letters as name" id="name" placeholder="Enter name" required>
                 </div>
               </div>
                 
               <div class="form-group">
                 <label class="control-label col-sm-2" for="usn">User-ID:</label>
                 <div class="col-sm-10">
-                  <input type="email" name="username" class="form-control" id="username" title="Enter only email" placeholder="Enter username">
+                  <input type="text" name="username" class="form-control" id="username" title="Enter only email" placeholder="Enter username" required>
                 </div>
               </div>    
                 
               <div class="form-group">
                 <label class="control-label col-sm-2" for="password">Password:</label>
                 <div class="col-sm-10"> 
-                  <input type="password" name="password" class="form-control" id="password" placeholder="Enter password">
+                  <input type="password" name="password" class="form-control" id="password" placeholder="Enter password" required>
                 </div>
               </div>
                 
@@ -139,33 +137,30 @@
               <div class="form-group">
                 <label class="control-label col-sm-2" for="dept">Department:</label>
                 <div class="col-sm-10"> 
-                  <input type="text" name="dept" class="form-control" id="dept" placeholder="Enter department">
+                  <input type="text" name="dept" class="form-control" id="dept" placeholder="Enter department" required>
                 </div>
               </div>
                 
               <div class="form-group">
                 <label class="control-label col-sm-2" for="position">Position:</label>
                 <div class="col-sm-10"> 
-                  <input type="text" name="position" class="form-control" id="position" placeholder="Enter position">
+                  <input type="text" name="position" class="form-control" id="position" placeholder="Enter position" required>
                 </div>
               </div>
                 
               <div class="form-group">
                 <label class="control-label col-sm-2" for="section">Permission to upload circulars (1/0):</label>
                 <div class="col-sm-10"> 
-                  <input type="number" name="perm" class="form-control" id="perm" placeholder="Enter permission">
+                  <input type="number" name="perm" class="form-control" id="perm" min="0" max="1" placeholder="Enter permission" required>
                 </div>
               </div>
-                
-                
-              
+      
               <div class="form-group"> 
                 <div class="col-sm-offset-2 col-sm-10">
                   <input type="submit" value="Submit" name="submit" class = "btn btn-lg btn-success"> 
                 </div>
               </div>
-            </form>
-                    
+            </form>               
     </div>
 
     <footer class="container-fluid bg-4 text-center">
@@ -187,31 +182,25 @@
 </html>
 
 <?php
-
-    //echo "hi";
     if (@$_SESSION['admin'] == "" ) 
         {
             header("Location: admin-login.php");
             exit;
         }
 
-    //echo "yooo";
-
     if( isset($_POST['submit']) )
     {
-        //echo"1";
         $username = $_POST['username'];
         $perm = $_POST['perm'];
         $position = $_POST['position'];
-        $password = $_POST['password'];
+        $password = md5($_POST['password']);
         $dept = $_POST['dept'];
         $name = $_POST['name'];
         
         $query = "INSERT INTO `faculty_login` (`fac_id`, `fac_name`, `fac_username`, `fac_password`, `fac_dept_code`, `fac_position`, `fac_circular_event_access`, `fac_active`) VALUES (NULL, '$name', '$username', '$password', '$dept', '$position', '$perm', '1');";
         
         mysqli_query($conn, $query);
-        echo "<script type='text/javascript'>alert('You've successfully added a new student.);</script>";
-        header("Location: myaHomed.php");
+        echo "<script>history.go(-1);</script>";
     }
 
     if(isset($_POST['Logout']))
