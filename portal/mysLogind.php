@@ -171,7 +171,7 @@
 				$row = mysqli_fetch_assoc($query);
 				//session_destroy();
                 $_SESSION['student'] = $user;
-                $_SESSION['id'] = $row["stu_id"];
+                $_SESSION['stu_id'] = $row["stu_id"];
 				$_SESSION['stu_dept'] = $row["stu_dept_code"];
 				$_SESSION['stu_sem'] = $row["stu_sem_code"];
 				$_SESSION['stu_section'] = $row["stu_section"];

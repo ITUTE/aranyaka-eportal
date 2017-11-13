@@ -133,7 +133,7 @@
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     <?php 
-                            $query = "SELECT fac_name from faculty_login WHERE fac_id = " . $_SESSION['id'];
+                            $query = "SELECT fac_name from faculty_login WHERE fac_id = " . $_SESSION['fac_id'];
                             $result = mysqli_query($conn, $query);
                             list($name) = mysqli_fetch_array($result);
                             echo "Hi, " .  "<strong><font size = 3>" . $name . "</font></strong>";
@@ -162,7 +162,7 @@
           <li><a data-toggle="tab" href="#groups">My Groups</a></li>
           <li><a data-toggle="tab" href="#delete">Delete Documents</a></li>
           <?php
-            $query = "SELECT fac_circular_event_access FROM faculty_login WHERE fac_id = " . $_SESSION['id'];
+            $query = "SELECT fac_circular_event_access FROM faculty_login WHERE fac_id = " . $_SESSION['fac_id'];
             $result = mysqli_query($conn, $query);
             $row = mysqli_fetch_row($result);
             if($row[0]==1)
@@ -182,7 +182,7 @@
 
                             <p class='text-center'><font size=3px>Here you can view all the information about you.</font></p><br>
                             <?php
-                                $query = "SELECT fac_name, fac_position, fac_dept_code FROM faculty_login WHERE fac_id = " . $_SESSION['id'];
+                                $query = "SELECT fac_name, fac_position, fac_dept_code FROM faculty_login WHERE fac_id = " . $_SESSION['fac_id'];
                                 $result = mysqli_query($conn, $query);
                                 list($name, $pos, $dept) = mysqli_fetch_array($result);
                                 echo "<div class=\"container-mid\">
@@ -290,7 +290,7 @@
 
          <div id="circular" class="tab-pane fade">
                 <?php
-                    $query = "SELECT fac_circular_event_access FROM faculty_login WHERE fac_id = " . $_SESSION['id'];
+                    $query = "SELECT fac_circular_event_access FROM faculty_login WHERE fac_id = " . $_SESSION['fac_id'];
                     $result = mysqli_query($conn, $query);
                     $row = mysqli_fetch_row($result);
                     if($row[0]==1)
@@ -388,6 +388,5 @@
 		header("Location: index.php");
 		exit;
 	}
-	//$res=mysqli_query($conn, "SELECT id, username FROM flogin WHERE username=".$_SESSION['faculty']);
 	ob_end_flush();
 ?>

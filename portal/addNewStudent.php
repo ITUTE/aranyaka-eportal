@@ -85,7 +85,7 @@
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     <?php 
-                            $query = "SELECT admin_name from admin WHERE admin_id = " . $_SESSION['id'];
+                            $query = "SELECT admin_name from admin WHERE admin_id = " . $_SESSION['admin_id'];
                             $result = mysqli_query($conn, $query);
                             list($name) = mysqli_fetch_array($result);
                             echo "Welcome " .  "<strong><font size = 3>" . $name . "</font></strong>";
@@ -154,16 +154,13 @@
                   <input type="text" name="section" pattern="[A-Z]{1}" class="form-control" id="section" title="Enter capital letter only" placeholder="Enter section" required>
                 </div>
               </div>
-                
-                
               
               <div class="form-group"> 
                 <div class="col-sm-offset-2 col-sm-10">
                   <input type="submit" value="Submit" name="submit" class = "btn btn-lg btn-success"> 
                 </div>
               </div>
-            </form>
-                    
+            </form>                
     </div>
 
     <footer class="container-fluid bg-4 text-center">

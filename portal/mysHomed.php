@@ -138,7 +138,7 @@
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     <?php 
-                            $query = "SELECT stu_name from student_login WHERE stu_id = " . $_SESSION['id'];
+                            $query = "SELECT stu_name from student_login WHERE stu_id = " . $_SESSION['stu_id'];
                             $result = mysqli_query($conn, $query);
                             list($name) = mysqli_fetch_array($result);
                             echo "Welcome " .  "<strong><font size = 3>" . $name . "</font></strong>  ";
@@ -198,7 +198,7 @@
 
                             <p class='text-center'><font size=3px>Here you can view all the information about you.</font></p><br>
                             <?php
-                                $query = "SELECT stu_name, stu_usn, stu_dept_code, stu_sem_code, stu_section FROM student_login WHERE stu_id = " . $_SESSION['id'];
+                                $query = "SELECT stu_name, stu_usn, stu_dept_code, stu_sem_code, stu_section FROM student_login WHERE stu_id = " . $_SESSION['stu_id'];
                                 $result = mysqli_query($conn, $query);
                                 list($name, $usn, $dept, $sem, $section) = mysqli_fetch_array($result);
                                 echo "<div class=\"container-mid\">
@@ -331,11 +331,11 @@
 
 	if(isset($_POST['submit3']))
 	{
-		$query = "SELECT stu_password FROM student_login WHERE stu_id = '" . $_SESSION['id'] . "'";
+		$query = "SELECT stu_password FROM student_login WHERE stu_id = '" . $_SESSION['stu_id'] . "'";
 		$result = mysqli_query($conn, $query) or die();
 		list($password) = mysqli_fetch_row($result);
 		if(md5($_POST['current_pw']) == $password)
-			mysqli_query($conn, "UPDATE student_login set stu_password = '". md5($_POST['new_pw']) . "' WHERE stu_id = '" . $_SESSION['id'] . "'");
+			mysqli_query($conn, "UPDATE student_login set stu_password = '". md5($_POST['new_pw']) . "' WHERE stu_id = '" . $_SESSION['stu_id'] . "'");
 		else
 			echo "<script>alert(\"Incorrect Password\")</script>";
 		echo "<script>history.go(-1);</script>";

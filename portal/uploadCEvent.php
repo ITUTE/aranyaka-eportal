@@ -24,7 +24,7 @@
 					$fileName = addslashes($fileName);
 				
 				$Category = $_POST['submit'];
-				$TeacherID = $_SESSION['id'];
+				$TeacherID = $_SESSION['fac_id'];
 				$upload_date = date("Y-m-d");
 				$query = "INSERT INTO file (file_fac_id, file_name, file_size, file_type, file_content, file_category, file_date_upload) VALUES ('$TeacherID', '$fileName', '$fileSize', '$fileType', '$content', '$Category', '$upload_date')";
 

@@ -62,7 +62,6 @@
 					margin-right: 30%;
 			  }
 		</style>
-
     </head>
 
 <body>
@@ -81,12 +80,13 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
             <li class=""><a href="index.php">Home</a></li> 
+			<li class=""><a href="report.php">Reports</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     <?php 
-                            $query = "SELECT admin_name from admin WHERE admin_id = " . $_SESSION['id'];
+                            $query = "SELECT admin_name from admin WHERE admin_id = " . $_SESSION['admin_id'];
                             $result = mysqli_query($conn, $query);
                             list($name) = mysqli_fetch_array($result);
                             echo "Welcome " .  "<strong><font size = 3>" . $name . "</font></strong>";
@@ -108,7 +108,6 @@
         <h2 class="margin slide"><strong>Administrator Home</strong></h2><br>
     </div>
 
-
     <ul class="nav nav-tabs nav-justified">
           <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
           <li><a data-toggle="tab" href="#add">Add Student/Faculty</a></li>
@@ -123,7 +122,7 @@
 
                             <p class='text-center'><font size=3px>Here you can view all the information about you.</font></p><br>
                             <?php
-                                $query = "SELECT admin_name, admin_dept FROM admin WHERE admin_id = " . $_SESSION['id'];
+                                $query = "SELECT admin_name, admin_dept FROM admin WHERE admin_id = " . $_SESSION['admin_id'];
                                 $result = mysqli_query($conn, $query);
                                 list($name, $dept) = mysqli_fetch_array($result);
                                 echo "<div class=\"container-mid\">

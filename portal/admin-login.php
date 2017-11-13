@@ -121,8 +121,7 @@
             <p><font size = "2">Developed by undergraduate students of CSE department.</font></p>
 			<p><a href="http://www.rvce.edu.in/" target = "_blank"><font size=2px color="white">R.V. College of Engineering</font></a></p>
         </footer>
-            
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.3/jquery.scrollTo.min.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>            
         <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
@@ -144,7 +143,7 @@
  
 	$error = false;
  
-	if( isset($_POST['submit']) )
+	if(isset($_POST['submit']) )
 	{	 	 
 		// prevent sql injections/ clear user invalid inputs
 		$user = trim($_POST['user']);
@@ -164,11 +163,9 @@
 		 
 			if($rows==1) 
 			{
-				echo "hi";
                 $row = mysqli_fetch_assoc($query);
-				//session_destroy();
                 $_SESSION['admin'] = $user;
-                $_SESSION['id'] = $row["admin_id"];
+                $_SESSION['admin_id'] = $row["admin_id"];
 				if (@$_SESSION['admin'] != "" ) 
 				{
 					header("Location: myaHomed.php");

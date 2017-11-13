@@ -148,7 +148,7 @@
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     <?php 
-                        $query = "SELECT fac_name from faculty_login WHERE fac_id = " . $_SESSION['id'];
+                        $query = "SELECT fac_name from faculty_login WHERE fac_id = " . $_SESSION['fac_id'];
                         $result = mysqli_query($conn, $query);
                         list($name) = mysqli_fetch_array($result);
                         echo "Welcome " .  "<strong><font size = 3>" . $name . "</font></strong>";
@@ -265,7 +265,7 @@
                             <td>
                                 <a class="btn btn-primary" href="submission.php?gf_id=<?php echo $id;?>">View Submissions</a>&nbsp;&nbsp;
                                 <?php
-                                    if($faculty_id == $_SESSION['id'])
+                                    if($faculty_id == $_SESSION['fac_id'])
                                     {
                                         ?>
                                         <button class="btn-danger btn-md" id= <?php echo $id; ?> onclick="del(this.id)">Delete Assignment</button>
@@ -307,7 +307,7 @@
                             list($faculty_name) = mysqli_fetch_array($result1);  
                             echo "<br><div class=\"well\"><strong><h3 class=\"xxx\">" . $date . "</strong> by <strong>" . $faculty_name . "</strong></h3><br>" . $description . "<br><br>";                                    
 
-                            if($faculty_id == $_SESSION['id'])
+                            if($faculty_id == $_SESSION['fac_id'])
                             {
                                 ?>
                                 <button class="btn-danger btn-md" id= <?php echo $id; ?> onclick="del(this.id)">Delete Announcement</button></div><br>
@@ -354,7 +354,7 @@
                             ?>
                             <td><a class="btn btn-success">Download button</a>&nbsp;&nbsp;
                             <?php
-                                if($faculty_id == $_SESSION['id'])
+                                if($faculty_id == $_SESSION['fac_id'])
                                     {
                                         ?>
                                         <button class="btn-danger btn-md" id= <?php echo $id; ?> onclick="del(this.id)">Delete Material</button>
@@ -391,11 +391,11 @@
 <?php
 	if(isset($_POST['submit3']))
 	{
-		$query = "SELECT fac_password FROM faculty_login WHERE fac_id = '" . $_SESSION['id'] . "'";
+		$query = "SELECT fac_password FROM faculty_login WHERE fac_id = '" . $_SESSION['fac_id'] . "'";
 		$result = mysqli_query($conn, $query) or die();
 		list($password) = mysqli_fetch_row($result);
-		if($_POST['current_pw'] == $password)
-			mysqli_query($conn, "UPDATE faculty_login set fac_password = '". $_POST['new_pw'] . "' WHERE fac_id = '" . $_SESSION['id'] . "'");
+		if(md5($_POST['current_pw']) == $password)
+			mysqli_query($conn, "UPDATE faculty_login set fac_password = '". md5($_POST['new_pw']) . "' WHERE fac_id = '" . $_SESSION['fac_id'] . "'");
 		else
 			echo "<script>alert(\"Incorrect Password\")</script>";
 	}

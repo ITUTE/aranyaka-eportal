@@ -25,11 +25,13 @@
 				
 				$course_code = $_SESSION['fac_course_code'];
 				$sem_code = $_SESSION['fac_sem_code'];
-				$TeacherID = $_SESSION['id'];
+				$TeacherID = $_SESSION['fac_id'];
 				$upload_date = date("Y-m-d");
 				$query = "INSERT INTO file (file_fac_id, file_course_code, file_sem_code, file_name, file_size, file_type, file_content, file_category, file_date_upload) VALUES ('$TeacherID', '$course_code', '$sem_code', '$fileName', '$fileSize', '$fileType', '$content', 0, '$upload_date')";
-
 				mysqli_query($conn, $query) or die('Error, query failed'); 
+				
+				$query = "UPDATE faculty_login SET material_count = material_count+1 WHERE fac_id = " . $_SESSION['fac_id'];
+				mysqli_query($conn, $query);
 				echo "<script type='text/javascript'>alert('File $fileName uploaded');</script>";
 			}
 			else

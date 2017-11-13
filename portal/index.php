@@ -60,7 +60,6 @@
               z-index: -100;
             }
 	</style>
-
 </head>
 
 <body>
@@ -101,7 +100,7 @@
             <br><br><br>
         </div>
     </div>
-<br><br>
+	<br><br>
 
 	<footer class="container-fluid bg-4 text-center">
 		<p><font size = "2">Developed by undergraduate students of CSE department.</font></p>

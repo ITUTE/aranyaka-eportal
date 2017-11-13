@@ -99,7 +99,7 @@
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <?php 
-                                $query = "SELECT stu_name from student_login WHERE stu_id = " . $_SESSION['id'];
+                                $query = "SELECT stu_name from student_login WHERE stu_id = " . $_SESSION['stu_id'];
                                 $result = mysqli_query($conn, $query);
                                 list($name) = mysqli_fetch_array($result);
                                 echo "Hi, "; echo "<strong><font size = 3>"; echo $name; echo "</font></strong>";

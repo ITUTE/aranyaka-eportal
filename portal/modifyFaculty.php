@@ -85,7 +85,7 @@
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     <?php 
-                            $query = "SELECT admin_name from admin WHERE admin_id = " . $_SESSION['id'];
+                            $query = "SELECT admin_name from admin WHERE admin_id = " . $_SESSION['admin_id'];
                             $result = mysqli_query($conn, $query);
                             list($name) = mysqli_fetch_array($result);
                             echo "Hi, " .  "<strong><font size = 3>" . $name . "</font></strong>";

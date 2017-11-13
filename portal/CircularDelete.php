@@ -41,10 +41,10 @@
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <?php 
-                                $query = "SELECT fac_name from faculty_login WHERE fac_id = " . $_SESSION['id'];
+                                $query = "SELECT fac_name from faculty_login WHERE fac_id = " . $_SESSION['fac_id'];
                                 $result = mysqli_query($conn, $query);
                                 list($name) = mysqli_fetch_array($result);
-                                echo "Hi, "; echo "<strong><font size = 3>"; echo $name; echo "</font></strong>";
+                                echo "Welcome "; echo "<strong><font size = 3>"; echo $name; echo "</font></strong>";
                         ?>
                         
                     <span class="caret"></span>&nbsp;</a>
@@ -66,7 +66,7 @@
     <div class="container-fluid slide">
         <div class="row">
             <?php
-                $Tid = $_SESSION['id'];
+                $Tid = $_SESSION['fac_id'];
                 $query = "SELECT file_id, file_name FROM file WHERE file_fac_id = '$Tid' AND file_category=1";
                 $result = mysqli_query($conn, $query) or die('Error, query failed');
 

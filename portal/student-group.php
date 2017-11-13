@@ -128,7 +128,7 @@
 					<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
 							<?php 
-                                $query = "SELECT stu_name from student_login WHERE stu_id = " . $_SESSION['id'];
+                                $query = "SELECT stu_name from student_login WHERE stu_id = " . $_SESSION['stu_id'];
                                 $result = mysqli_query($conn, $query);
                                 list($name) = mysqli_fetch_array($result);
                                 echo "Welcome " .  "<strong><font size = 3>" . $name . "</font></strong>";
@@ -256,7 +256,7 @@
 									?>
 									<form><td><button class="btn-success" name="assignment" value="<?php echo $id; ?>" ><?php echo $description;?></button></td></form>
 									<?php
-									$query = "SELECT as_id FROM assignments WHERE as_num = '$id' AND as_stu_id = '" . $_SESSION['id'] . "'";
+									$query = "SELECT as_id FROM assignments WHERE as_num = '$id' AND as_stu_id = '" . $_SESSION['stu_id'] . "'";
 									$result1 = mysqli_query($conn, $query);
 									if(mysqli_num_rows($result1)==0)
 									{
@@ -391,11 +391,11 @@
 <?php
 	if(isset($_POST['submit3']))
 	{
-		$query = "SELECT stu_password FROM student_login WHERE stu_id = '" . $_SESSION['id'] . "'";
+		$query = "SELECT stu_password FROM student_login WHERE stu_id = '" . $_SESSION['stu_id'] . "'";
 		$result = mysqli_query($conn, $query) or die();
 		list($password) = mysqli_fetch_row($result);
-		if($_POST['current_pw'] == $password)
-			mysqli_query($conn, "UPDATE student_login set stu_password = '". $_POST['new_pw'] . "' WHERE stu_id = '" . $_SESSION['id'] . "'");
+		if(md5($_POST['current_pw']) == $password)
+			mysqli_query($conn, "UPDATE student_login set stu_password = '". md5($_POST['new_pw']) . "' WHERE stu_id = '" . $_SESSION['stu_id'] . "'");
 		else
 			echo "<script>alert(\"Incorrect Password\")</script>";
 	}

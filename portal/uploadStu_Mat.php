@@ -23,7 +23,7 @@
 				if(!get_magic_quotes_gpc())
 					$fileName = addslashes($fileName);
 						
-				$StudentID = $_SESSION['id'];
+				$StudentID = $_SESSION['stu_id'];
 				$upload_date = date("Y-m-d");
 				$grp_code = $_SESSION['grp_code'];
 				$description = $_POST['description'];

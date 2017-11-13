@@ -1,0 +1,1141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 4.7.0
+- https://www.phpmyadmin.net
+-
+- Host: 127.0.0.1
+- Generation Time: Oct 25, 2017 at 03:58 AM
+- Server version: 10.1.26-MariaDB
+- PHP Version: 7.1.8
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="https://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="portal" collation="latin1_swedish_ci" charset="latin1">
+            <pma:table name="admin">
+                CREATE TABLE `admin` (
+                  `admin_id` int(11) NOT NULL AUTO_INCREMENT,
+                  `admin_user` varchar(100) NOT NULL,
+                  `admin_password` varchar(50) NOT NULL,
+                  `admin_name` varchar(50) NOT NULL,
+                  `admin_dept` varchar(3) NOT NULL,
+                  PRIMARY KEY (`admin_id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="assignments">
+                CREATE TABLE `assignments` (
+                  `as_id` int(11) NOT NULL AUTO_INCREMENT,
+                  `as_file_name` varchar(100) NOT NULL,
+                  `as_file_size` int(11) NOT NULL,
+                  `as_file_type` varchar(100) NOT NULL,
+                  `as_file_content` longblob NOT NULL,
+                  `as_num` int(11) NOT NULL,
+                  `as_stu_id` int(11) NOT NULL,
+                  `as_grp_code` varchar(20) NOT NULL,
+                  `as_date_upload` date NOT NULL,
+                  PRIMARY KEY (`as_id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="course">
+                CREATE TABLE `course` (
+                  `course_dept_code` varchar(20) NOT NULL,
+                  `course_code` varchar(20) NOT NULL,
+                  `course_name` varchar(100) NOT NULL,
+                  `course_active` tinyint(1) NOT NULL,
+                  PRIMARY KEY (`course_code`),
+                  UNIQUE KEY `course_code` (`course_code`),
+                  KEY `course_name_2` (`course_name`),
+                  KEY `course_name` (`course_name`),
+                  KEY `course_name_3` (`course_name`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="department">
+                CREATE TABLE `department` (
+                  `dept_code` varchar(20) NOT NULL,
+                  `dept_name` varchar(100) NOT NULL,
+                  `dept_active` tinyint(1) NOT NULL,
+                  PRIMARY KEY (`dept_code`),
+                  UNIQUE KEY `dept_name` (`dept_name`),
+                  UNIQUE KEY `dept_code` (`dept_code`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="dept_sem_course">
+                CREATE TABLE `dept_sem_course` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `dsc_course_code` varchar(20) NOT NULL,
+                  `dsc_stu_dept_code` varchar(20) NOT NULL,
+                  `dsc_fac_dept_code` varchar(20) NOT NULL,
+                  `dsc_sem_code` varchar(20) NOT NULL,
+                  `dsc_active` tinyint(1) NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="faculty_login">
+                CREATE TABLE `faculty_login` (
+                  `fac_id` int(11) NOT NULL AUTO_INCREMENT,
+                  `fac_name` varchar(100) NOT NULL,
+                  `fac_username` varchar(100) NOT NULL,
+                  `fac_password` varchar(100) NOT NULL,
+                  `fac_dept_code` varchar(20) NOT NULL,
+                  `fac_position` varchar(100) NOT NULL,
+                  `fac_circular_event_access` tinyint(1) NOT NULL,
+                  `fac_active` tinyint(1) NOT NULL,
+                  PRIMARY KEY (`fac_id`),
+                  UNIQUE KEY `fac_username` (`fac_username`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="faculty_other_groups">
+                CREATE TABLE `faculty_other_groups` (
+                  `fog_id` int(11) NOT NULL AUTO_INCREMENT,
+                  `fog_fac_username` varchar(100) NOT NULL,
+                  `fog_grp_code` varchar(20) NOT NULL,
+                  PRIMARY KEY (`fog_id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="faculty_section_groups">
+                CREATE TABLE `faculty_section_groups` (
+                  `fsg_id` int(11) NOT NULL AUTO_INCREMENT,
+                  `fsg_fac_username` varchar(100) NOT NULL,
+                  `fsg_ss_code` varchar(20) NOT NULL,
+                  PRIMARY KEY (`fsg_id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="file">
+                CREATE TABLE `file` (
+                  `file_id` int(11) NOT NULL AUTO_INCREMENT,
+                  `file_fac_id` int(11) NOT NULL,
+                  `file_course_code` varchar(20) NOT NULL,
+                  `file_sem_code` varchar(20) NOT NULL,
+                  `file_name` varchar(200) NOT NULL,
+                  `file_size` int(11) NOT NULL,
+                  `file_type` varchar(100) NOT NULL,
+                  `file_content` longblob NOT NULL,
+                  `file_category` tinyint(4) NOT NULL,
+                  `file_date_upload` date NOT NULL,
+                  PRIMARY KEY (`file_id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="groups">
+                CREATE TABLE `groups` (
+                  `grp_code` varchar(20) NOT NULL,
+                  `grp_name` varchar(100) NOT NULL,
+                  PRIMARY KEY (`grp_code`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="group_files">
+                CREATE TABLE `group_files` (
+                  `gf_id` int(11) NOT NULL AUTO_INCREMENT,
+                  `gf_file_name` varchar(200) NOT NULL,
+                  `gf_file_size` int(11) NOT NULL,
+                  `gf_file_type` varchar(100) NOT NULL,
+                  `gf_file_content` longblob NOT NULL,
+                  `gf_category` tinyint(4) NOT NULL,
+                  `gf_description` text NOT NULL,
+                  `gf_fac_id` int(11) NOT NULL,
+                  `gf_grp_code` varchar(20) NOT NULL,
+                  `gf_date_upload` date NOT NULL,
+                  PRIMARY KEY (`gf_id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="semester">
+                CREATE TABLE `semester` (
+                  `sem_code` varchar(20) NOT NULL,
+                  `sem_name` varchar(100) NOT NULL,
+                  PRIMARY KEY (`sem_code`),
+                  UNIQUE KEY `sem_code` (`sem_code`),
+                  UNIQUE KEY `sem_name` (`sem_name`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="semester_section">
+                CREATE TABLE `semester_section` (
+                  `ss_code` varchar(20) NOT NULL,
+                  `ss_dept_code` varchar(20) NOT NULL,
+                  `ss_sem_code` varchar(20) NOT NULL,
+                  `ss_section` varchar(20) NOT NULL,
+                  PRIMARY KEY (`ss_code`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="student_groups">
+                CREATE TABLE `student_groups` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `sg_usn` varchar(100) NOT NULL,
+                  `sg_grp_code` varchar(20) NOT NULL,
+                  `sg_head` tinyint(1) NOT NULL DEFAULT '0',
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="student_login">
+                CREATE TABLE `student_login` (
+                  `stu_id` int(11) NOT NULL AUTO_INCREMENT,
+                  `stu_name` varchar(100) NOT NULL,
+                  `stu_usn` varchar(100) NOT NULL,
+                  `stu_password` varchar(100) NOT NULL,
+                  `stu_dept_code` varchar(20) NOT NULL,
+                  `stu_sem_code` varchar(20) NOT NULL,
+                  `stu_section` varchar(20) NOT NULL,
+                  `stu_active` tinyint(1) NOT NULL,
+                  PRIMARY KEY (`stu_id`),
+                  UNIQUE KEY `stu_username` (`stu_usn`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - Database: 'portal'
+    -->
+    <database name="portal">
+        <!-- Table admin -->
+        <table name="admin">
+            <column name="admin_id">1</column>
+            <column name="admin_user">ram</column>
+            <column name="admin_password">ram</column>
+            <column name="admin_name">Ram Srinivas</column>
+            <column name="admin_dept">CSE</column>
+        </table>
+        <!-- Table assignments -->
+        <table name="assignments">
+            <column name="as_id">1</column>
+            <column name="as_file_name">feedback form.docx</column>
+            <column name="as_file_size">17908</column>
+            <column name="as_file_type">application/vnd.openxmlformats-officedocument.wordprocessingml.document</column>
+            <column name="as_file_content"></column>
+            <column name="as_num">5</column>
+            <column name="as_stu_id">10</column>
+            <column name="as_grp_code">cse5a</column>
+            <column name="as_date_upload">2017-08-27</column>
+        </table>
+        <table name="assignments">
+            <column name="as_id">2</column>
+            <column name="as_file_name">ESC2.docx</column>
+            <column name="as_file_size">393404</column>
+            <column name="as_file_type">application/vnd.openxmlformats-officedocument.wordprocessingml.document</column>
+            <column name="as_file_content"></column>
+            <column name="as_num">18</column>
+            <column name="as_stu_id">10</column>
+            <column name="as_grp_code">cse5a</column>
+            <column name="as_date_upload">2017-08-27</column>
+        </table>
+        <table name="assignments">
+            <column name="as_id">5</column>
+            <column name="as_file_name">10.pdf</column>
+            <column name="as_file_size">71187</column>
+            <column name="as_file_type">application/pdf</column>
+            <column name="as_file_content"></column>
+            <column name="as_num">7</column>
+            <column name="as_stu_id">5</column>
+            <column name="as_grp_code">cse5c</column>
+            <column name="as_date_upload">2017-08-28</column>
+        </table>
+        <table name="assignments">
+            <column name="as_id">6</column>
+            <column name="as_file_name">dbms1.docx</column>
+            <column name="as_file_size">21212</column>
+            <column name="as_file_type">application/vnd.openxmlformats-officedocument.wordprocessingml.document</column>
+            <column name="as_file_content"></column>
+            <column name="as_num">21</column>
+            <column name="as_stu_id">10</column>
+            <column name="as_grp_code">cse5a</column>
+            <column name="as_date_upload">2017-09-14</column>
+        </table>
+        <!-- Table course -->
+        <table name="course">
+            <column name="course_dept_code">ch</column>
+            <column name="course_code">12ch12</column>
+            <column name="course_name">chemistry</column>
+            <column name="course_active">1</column>
+        </table>
+        <table name="course">
+            <column name="course_dept_code">ch</column>
+            <column name="course_code">12ch22</column>
+            <column name="course_name">chemistry</column>
+            <column name="course_active">1</column>
+        </table>
+        <table name="course">
+            <column name="course_dept_code">cse</column>
+            <column name="course_code">12cs33</column>
+            <column name="course_name">data structures</column>
+            <column name="course_active">1</column>
+        </table>
+        <table name="course">
+            <column name="course_dept_code">cse</column>
+            <column name="course_code">12cs42</column>
+            <column name="course_name">algorithms</column>
+            <column name="course_active">1</column>
+        </table>
+        <table name="course">
+            <column name="course_dept_code">cv</column>
+            <column name="course_code">12cv42</column>
+            <column name="course_name">structure design</column>
+            <column name="course_active">1</column>
+        </table>
+        <table name="course">
+            <column name="course_dept_code">ece</column>
+            <column name="course_code">12ec33</column>
+            <column name="course_name">analog micro-controllers</column>
+            <column name="course_active">1</column>
+        </table>
+        <table name="course">
+            <column name="course_dept_code">ece</column>
+            <column name="course_code">12ec51</column>
+            <column name="course_name">communication systems</column>
+            <column name="course_active">1</column>
+        </table>
+        <table name="course">
+            <column name="course_dept_code">me</column>
+            <column name="course_code">12em32</column>
+            <column name="course_name">engineering materials</column>
+            <column name="course_active">1</column>
+        </table>
+        <table name="course">
+            <column name="course_dept_code">ma</column>
+            <column name="course_code">12ma11</column>
+            <column name="course_name">maths-1</column>
+            <column name="course_active">1</column>
+        </table>
+        <table name="course">
+            <column name="course_dept_code">ma</column>
+            <column name="course_code">12ma21</column>
+            <column name="course_name">maths-2</column>
+            <column name="course_active">1</column>
+        </table>
+        <table name="course">
+            <column name="course_dept_code">me</column>
+            <column name="course_code">12me31</column>
+            <column name="course_name">thermodynamics</column>
+            <column name="course_active">1</column>
+        </table>
+        <table name="course">
+            <column name="course_dept_code">me</column>
+            <column name="course_code">12me51</column>
+            <column name="course_name">heat transfer</column>
+            <column name="course_active">1</column>
+        </table>
+        <table name="course">
+            <column name="course_dept_code">ph</column>
+            <column name="course_code">12ph13</column>
+            <column name="course_name">physics</column>
+            <column name="course_active">1</column>
+        </table>
+        <table name="course">
+            <column name="course_dept_code">ph</column>
+            <column name="course_code">12ph23</column>
+            <column name="course_name">physics</column>
+            <column name="course_active">1</column>
+        </table>
+        <!-- Table department -->
+        <table name="department">
+            <column name="dept_code">cse</column>
+            <column name="dept_name">computer science</column>
+            <column name="dept_active">1</column>
+        </table>
+        <table name="department">
+            <column name="dept_code">cv</column>
+            <column name="dept_name">civil</column>
+            <column name="dept_active">1</column>
+        </table>
+        <table name="department">
+            <column name="dept_code">ece</column>
+            <column name="dept_name">electronics</column>
+            <column name="dept_active">1</column>
+        </table>
+        <table name="department">
+            <column name="dept_code">eee</column>
+            <column name="dept_name">electrical</column>
+            <column name="dept_active">1</column>
+        </table>
+        <table name="department">
+            <column name="dept_code">is</column>
+            <column name="dept_name">information science</column>
+            <column name="dept_active">1</column>
+        </table>
+        <table name="department">
+            <column name="dept_code">me</column>
+            <column name="dept_name">mechanical</column>
+            <column name="dept_active">1</column>
+        </table>
+        <!-- Table dept_sem_course -->
+        <table name="dept_sem_course">
+            <column name="id">1</column>
+            <column name="dsc_course_code">12cs33</column>
+            <column name="dsc_stu_dept_code">cse</column>
+            <column name="dsc_fac_dept_code">cse</column>
+            <column name="dsc_sem_code">3</column>
+            <column name="dsc_active">1</column>
+        </table>
+        <table name="dept_sem_course">
+            <column name="id">2</column>
+            <column name="dsc_course_code">12cs42</column>
+            <column name="dsc_stu_dept_code">cse</column>
+            <column name="dsc_fac_dept_code">cse</column>
+            <column name="dsc_sem_code">4</column>
+            <column name="dsc_active">1</column>
+        </table>
+        <table name="dept_sem_course">
+            <column name="id">3</column>
+            <column name="dsc_course_code">12me31</column>
+            <column name="dsc_stu_dept_code">me</column>
+            <column name="dsc_fac_dept_code">me</column>
+            <column name="dsc_sem_code">3</column>
+            <column name="dsc_active">1</column>
+        </table>
+        <table name="dept_sem_course">
+            <column name="id">4</column>
+            <column name="dsc_course_code">12ec33</column>
+            <column name="dsc_stu_dept_code">ece</column>
+            <column name="dsc_fac_dept_code">ece</column>
+            <column name="dsc_sem_code">3</column>
+            <column name="dsc_active">1</column>
+        </table>
+        <table name="dept_sem_course">
+            <column name="id">5</column>
+            <column name="dsc_course_code">12cv42</column>
+            <column name="dsc_stu_dept_code">cv</column>
+            <column name="dsc_fac_dept_code">cv</column>
+            <column name="dsc_sem_code">4</column>
+            <column name="dsc_active">1</column>
+        </table>
+        <table name="dept_sem_course">
+            <column name="id">6</column>
+            <column name="dsc_course_code">12em32</column>
+            <column name="dsc_stu_dept_code">cse</column>
+            <column name="dsc_fac_dept_code">me</column>
+            <column name="dsc_sem_code">3</column>
+            <column name="dsc_active">1</column>
+        </table>
+        <table name="dept_sem_course">
+            <column name="id">7</column>
+            <column name="dsc_course_code">12em42</column>
+            <column name="dsc_stu_dept_code">ece</column>
+            <column name="dsc_fac_dept_code">me</column>
+            <column name="dsc_sem_code">4</column>
+            <column name="dsc_active">1</column>
+        </table>
+        <table name="dept_sem_course">
+            <column name="id">8</column>
+            <column name="dsc_course_code">12ma11</column>
+            <column name="dsc_stu_dept_code">cse</column>
+            <column name="dsc_fac_dept_code">ma</column>
+            <column name="dsc_sem_code">1</column>
+            <column name="dsc_active">1</column>
+        </table>
+        <table name="dept_sem_course">
+            <column name="id">9</column>
+            <column name="dsc_course_code">12ma21</column>
+            <column name="dsc_stu_dept_code">cse</column>
+            <column name="dsc_fac_dept_code">ma</column>
+            <column name="dsc_sem_code">2</column>
+            <column name="dsc_active">1</column>
+        </table>
+        <table name="dept_sem_course">
+            <column name="id">10</column>
+            <column name="dsc_course_code">12ph13</column>
+            <column name="dsc_stu_dept_code">ece</column>
+            <column name="dsc_fac_dept_code">ph</column>
+            <column name="dsc_sem_code">1</column>
+            <column name="dsc_active">1</column>
+        </table>
+        <table name="dept_sem_course">
+            <column name="id">11</column>
+            <column name="dsc_course_code">12ph23</column>
+            <column name="dsc_stu_dept_code">cse</column>
+            <column name="dsc_fac_dept_code">ph</column>
+            <column name="dsc_sem_code">2</column>
+            <column name="dsc_active">1</column>
+        </table>
+        <table name="dept_sem_course">
+            <column name="id">12</column>
+            <column name="dsc_course_code">12ch12</column>
+            <column name="dsc_stu_dept_code">cse</column>
+            <column name="dsc_fac_dept_code">ch</column>
+            <column name="dsc_sem_code">1</column>
+            <column name="dsc_active">1</column>
+        </table>
+        <table name="dept_sem_course">
+            <column name="id">13</column>
+            <column name="dsc_course_code">12ch22</column>
+            <column name="dsc_stu_dept_code">ece</column>
+            <column name="dsc_fac_dept_code">ch</column>
+            <column name="dsc_sem_code">2</column>
+            <column name="dsc_active">1</column>
+        </table>
+        <!-- Table faculty_login -->
+        <table name="faculty_login">
+            <column name="fac_id">1</column>
+            <column name="fac_name">Girish Rao Salanke</column>
+            <column name="fac_username">girish</column>
+            <column name="fac_password">girish</column>
+            <column name="fac_dept_code">cse</column>
+            <column name="fac_position">asst</column>
+            <column name="fac_circular_event_access">1</column>
+            <column name="fac_active">1</column>
+        </table>
+        <table name="faculty_login">
+            <column name="fac_id">2</column>
+            <column name="fac_name">anand</column>
+            <column name="fac_username">anand</column>
+            <column name="fac_password">anand</column>
+            <column name="fac_dept_code">me</column>
+            <column name="fac_position">prof</column>
+            <column name="fac_circular_event_access">1</column>
+            <column name="fac_active">1</column>
+        </table>
+        <table name="faculty_login">
+            <column name="fac_id">3</column>
+            <column name="fac_name">harish</column>
+            <column name="fac_username">harish</column>
+            <column name="fac_password">harish</column>
+            <column name="fac_dept_code">ma</column>
+            <column name="fac_position">asst</column>
+            <column name="fac_circular_event_access">0</column>
+            <column name="fac_active">1</column>
+        </table>
+        <table name="faculty_login">
+            <column name="fac_id">4</column>
+            <column name="fac_name">shanta</column>
+            <column name="fac_username">shanta</column>
+            <column name="fac_password">shanta</column>
+            <column name="fac_dept_code">cse</column>
+            <column name="fac_position">prof</column>
+            <column name="fac_circular_event_access">0</column>
+            <column name="fac_active">1</column>
+        </table>
+        <table name="faculty_login">
+            <column name="fac_id">5</column>
+            <column name="fac_name">soumya</column>
+            <column name="fac_username">soumya</column>
+            <column name="fac_password">soumya</column>
+            <column name="fac_dept_code">ece</column>
+            <column name="fac_position">asst</column>
+            <column name="fac_circular_event_access">0</column>
+            <column name="fac_active">1</column>
+        </table>
+        <table name="faculty_login">
+            <column name="fac_id">6</column>
+            <column name="fac_name">badrinath</column>
+            <column name="fac_username">badrinath</column>
+            <column name="fac_password">badrinath</column>
+            <column name="fac_dept_code">cse</column>
+            <column name="fac_position">prof</column>
+            <column name="fac_circular_event_access">1</column>
+            <column name="fac_active">1</column>
+        </table>
+        <table name="faculty_login">
+            <column name="fac_id">7</column>
+            <column name="fac_name">ashok</column>
+            <column name="fac_username">ashok</column>
+            <column name="fac_password">ashok</column>
+            <column name="fac_dept_code">cse</column>
+            <column name="fac_position">prof</column>
+            <column name="fac_circular_event_access">0</column>
+            <column name="fac_active">1</column>
+        </table>
+        <table name="faculty_login">
+            <column name="fac_id">8</column>
+            <column name="fac_name">1</column>
+            <column name="fac_username">1</column>
+            <column name="fac_password">1</column>
+            <column name="fac_dept_code">1</column>
+            <column name="fac_position">1</column>
+            <column name="fac_circular_event_access">1</column>
+            <column name="fac_active">1</column>
+        </table>
+        <!-- Table faculty_other_groups -->
+        <!-- Table faculty_section_groups -->
+        <table name="faculty_section_groups">
+            <column name="fsg_id">1</column>
+            <column name="fsg_fac_username">girish</column>
+            <column name="fsg_ss_code">cse5a</column>
+        </table>
+        <table name="faculty_section_groups">
+            <column name="fsg_id">2</column>
+            <column name="fsg_fac_username">anand</column>
+            <column name="fsg_ss_code">me5b</column>
+        </table>
+        <table name="faculty_section_groups">
+            <column name="fsg_id">3</column>
+            <column name="fsg_fac_username">shanta</column>
+            <column name="fsg_ss_code">cse5b</column>
+        </table>
+        <table name="faculty_section_groups">
+            <column name="fsg_id">4</column>
+            <column name="fsg_fac_username">soumya</column>
+            <column name="fsg_ss_code">ece5a</column>
+        </table>
+        <table name="faculty_section_groups">
+            <column name="fsg_id">5</column>
+            <column name="fsg_fac_username">badrinath</column>
+            <column name="fsg_ss_code">cse5c</column>
+        </table>
+        <table name="faculty_section_groups">
+            <column name="fsg_id">6</column>
+            <column name="fsg_fac_username">ashok</column>
+            <column name="fsg_ss_code">cse5c</column>
+        </table>
+        <!-- Table file -->
+        <table name="file">
+            <column name="file_id">9</column>
+            <column name="file_fac_id">2</column>
+            <column name="file_course_code">12me31</column>
+            <column name="file_sem_code">3</column>
+            <column name="file_name">abhishek.png</column>
+            <column name="file_size">22727</column>
+            <column name="file_type">image/png</column>
+            <column name="file_content"></column>
+            <column name="file_category">0</column>
+            <column name="file_date_upload">2017-08-20</column>
+        </table>
+        <table name="file">
+            <column name="file_id">10</column>
+            <column name="file_fac_id">2</column>
+            <column name="file_course_code">12me31</column>
+            <column name="file_sem_code">3</column>
+            <column name="file_name">ajay.png</column>
+            <column name="file_size">16779</column>
+            <column name="file_type">image/png</column>
+            <column name="file_content"></column>
+            <column name="file_category">0</column>
+            <column name="file_date_upload">2017-08-20</column>
+        </table>
+        <table name="file">
+            <column name="file_id">16</column>
+            <column name="file_fac_id">4</column>
+            <column name="file_course_code">12cs42</column>
+            <column name="file_sem_code">4</column>
+            <column name="file_name">09-10.doc</column>
+            <column name="file_size">72192</column>
+            <column name="file_type">application/msword</column>
+            <column name="file_content"></column>
+            <column name="file_category">0</column>
+            <column name="file_date_upload">2017-08-24</column>
+        </table>
+        <table name="file">
+            <column name="file_id">28</column>
+            <column name="file_fac_id">1</column>
+            <column name="file_course_code">12cs33</column>
+            <column name="file_sem_code">3</column>
+            <column name="file_name">09-10.pdf</column>
+            <column name="file_size">469718</column>
+            <column name="file_type">application/pdf</column>
+            <column name="file_content"></column>
+            <column name="file_category">0</column>
+            <column name="file_date_upload">2017-08-26</column>
+        </table>
+        <table name="file">
+            <column name="file_id">36</column>
+            <column name="file_fac_id">5</column>
+            <column name="file_course_code">12ec33</column>
+            <column name="file_sem_code">3</column>
+            <column name="file_name">ESC2.docx</column>
+            <column name="file_size">393404</column>
+            <column name="file_type">application/vnd.openxmlformats-officedocument.wordprocessingml.document</column>
+            <column name="file_content"></column>
+            <column name="file_category">0</column>
+            <column name="file_date_upload">2017-08-26</column>
+        </table>
+        <table name="file">
+            <column name="file_id">37</column>
+            <column name="file_fac_id">5</column>
+            <column name="file_course_code">12ec33</column>
+            <column name="file_sem_code">3</column>
+            <column name="file_name">feedback form.docx</column>
+            <column name="file_size">17908</column>
+            <column name="file_type">application/vnd.openxmlformats-officedocument.wordprocessingml.document</column>
+            <column name="file_content"></column>
+            <column name="file_category">0</column>
+            <column name="file_date_upload">2017-08-26</column>
+        </table>
+        <table name="file">
+            <column name="file_id">38</column>
+            <column name="file_fac_id">5</column>
+            <column name="file_course_code">12ec33</column>
+            <column name="file_sem_code">3</column>
+            <column name="file_name">Servo_Report.docx</column>
+            <column name="file_size">113221</column>
+            <column name="file_type">application/vnd.openxmlformats-officedocument.wordprocessingml.document</column>
+            <column name="file_content"></column>
+            <column name="file_category">0</column>
+            <column name="file_date_upload">2017-08-26</column>
+        </table>
+        <table name="file">
+            <column name="file_id">40</column>
+            <column name="file_fac_id">1</column>
+            <column name="file_course_code">12cs33</column>
+            <column name="file_sem_code">3</column>
+            <column name="file_name">09.doc</column>
+            <column name="file_size">747520</column>
+            <column name="file_type">application/msword</column>
+            <column name="file_content"></column>
+            <column name="file_category">0</column>
+            <column name="file_date_upload">2017-08-28</column>
+        </table>
+        <table name="file">
+            <column name="file_id">42</column>
+            <column name="file_fac_id">1</column>
+            <column name="file_course_code"></column>
+            <column name="file_sem_code"></column>
+            <column name="file_name">09-10.pdf</column>
+            <column name="file_size">469718</column>
+            <column name="file_type">application/pdf</column>
+            <column name="file_content"></column>
+            <column name="file_category">1</column>
+            <column name="file_date_upload">2017-08-28</column>
+        </table>
+        <table name="file">
+            <column name="file_id">43</column>
+            <column name="file_fac_id">1</column>
+            <column name="file_course_code"></column>
+            <column name="file_sem_code"></column>
+            <column name="file_name">10.pdf</column>
+            <column name="file_size">71187</column>
+            <column name="file_type">application/pdf</column>
+            <column name="file_content"></column>
+            <column name="file_category">1</column>
+            <column name="file_date_upload">2017-08-28</column>
+        </table>
+        <table name="file">
+            <column name="file_id">44</column>
+            <column name="file_fac_id">1</column>
+            <column name="file_course_code"></column>
+            <column name="file_sem_code"></column>
+            <column name="file_name">07-08.doc</column>
+            <column name="file_size">226816</column>
+            <column name="file_type">application/msword</column>
+            <column name="file_content"></column>
+            <column name="file_category">2</column>
+            <column name="file_date_upload">2017-08-28</column>
+        </table>
+        <table name="file">
+            <column name="file_id">45</column>
+            <column name="file_fac_id">1</column>
+            <column name="file_course_code"></column>
+            <column name="file_sem_code"></column>
+            <column name="file_name">08.doc</column>
+            <column name="file_size">216064</column>
+            <column name="file_type">application/msword</column>
+            <column name="file_content"></column>
+            <column name="file_category">2</column>
+            <column name="file_date_upload">2017-08-28</column>
+        </table>
+        <table name="file">
+            <column name="file_id">46</column>
+            <column name="file_fac_id">1</column>
+            <column name="file_course_code">12cs33</column>
+            <column name="file_sem_code">3</column>
+            <column name="file_name">dbms.docx</column>
+            <column name="file_size">19150</column>
+            <column name="file_type">application/vnd.openxmlformats-officedocument.wordprocessingml.document</column>
+            <column name="file_content"></column>
+            <column name="file_category">0</column>
+            <column name="file_date_upload">2017-09-14</column>
+        </table>
+        <table name="file">
+            <column name="file_id">47</column>
+            <column name="file_fac_id">1</column>
+            <column name="file_course_code">12cs33</column>
+            <column name="file_sem_code">3</column>
+            <column name="file_name">dbms1.docx</column>
+            <column name="file_size">21212</column>
+            <column name="file_type">application/vnd.openxmlformats-officedocument.wordprocessingml.document</column>
+            <column name="file_content"></column>
+            <column name="file_category">0</column>
+            <column name="file_date_upload">2017-09-14</column>
+        </table>
+        <!-- Table groups -->
+        <table name="groups">
+            <column name="grp_code">chimera</column>
+            <column name="grp_name">CHIMERA-Hybrid Car Team</column>
+        </table>
+        <table name="groups">
+            <column name="grp_code">cse5a</column>
+            <column name="grp_name">Computer Science-5A</column>
+        </table>
+        <table name="groups">
+            <column name="grp_code">cse5b</column>
+            <column name="grp_name">Computer Science-5B</column>
+        </table>
+        <table name="groups">
+            <column name="grp_code">cse5c</column>
+            <column name="grp_name">Computer Science-5C</column>
+        </table>
+        <table name="groups">
+            <column name="grp_code">cse5d</column>
+            <column name="grp_name">Computer Science-5D</column>
+        </table>
+        <table name="groups">
+            <column name="grp_code">ece5a</column>
+            <column name="grp_name">Electronics-5A</column>
+        </table>
+        <table name="groups">
+            <column name="grp_code">ece5b</column>
+            <column name="grp_name">Electronics-5B</column>
+        </table>
+        <table name="groups">
+            <column name="grp_code">me5b</column>
+            <column name="grp_name">Mechanical-5B</column>
+        </table>
+        <table name="groups">
+            <column name="grp_code">vyoma</column>
+            <column name="grp_name">VYOMA-Aerospace Team</column>
+        </table>
+        <!-- Table group_files -->
+        <table name="group_files">
+            <column name="gf_id">7</column>
+            <column name="gf_file_name">11-12.doc</column>
+            <column name="gf_file_size">109568</column>
+            <column name="gf_file_type">application/msword</column>
+            <column name="gf_file_content"></column>
+            <column name="gf_category">0</column>
+            <column name="gf_description">as-1</column>
+            <column name="gf_fac_id">7</column>
+            <column name="gf_grp_code">cse5c</column>
+            <column name="gf_date_upload">2017-08-24</column>
+        </table>
+        <table name="group_files">
+            <column name="gf_id">8</column>
+            <column name="gf_file_name">09-10.doc</column>
+            <column name="gf_file_size">72192</column>
+            <column name="gf_file_type">application/msword</column>
+            <column name="gf_file_content"></column>
+            <column name="gf_category">0</column>
+            <column name="gf_description">as-2</column>
+            <column name="gf_fac_id">7</column>
+            <column name="gf_grp_code">cse5c</column>
+            <column name="gf_date_upload">2017-08-24</column>
+        </table>
+        <table name="group_files">
+            <column name="gf_id">9</column>
+            <column name="gf_file_name">07-08.doc</column>
+            <column name="gf_file_size">121344</column>
+            <column name="gf_file_type">application/msword</column>
+            <column name="gf_file_content"></column>
+            <column name="gf_category">0</column>
+            <column name="gf_description">as-3</column>
+            <column name="gf_fac_id">6</column>
+            <column name="gf_grp_code">cse5c</column>
+            <column name="gf_date_upload">2017-08-24</column>
+        </table>
+        <table name="group_files">
+            <column name="gf_id">10</column>
+            <column name="gf_file_name">feedback form.docx</column>
+            <column name="gf_file_size">17908</column>
+            <column name="gf_file_type">application/vnd.openxmlformats-officedocument.wordprocessingml.document</column>
+            <column name="gf_file_content"></column>
+            <column name="gf_category">0</column>
+            <column name="gf_description">as-4</column>
+            <column name="gf_fac_id">6</column>
+            <column name="gf_grp_code">cse5c</column>
+            <column name="gf_date_upload">2017-08-27</column>
+        </table>
+        <table name="group_files">
+            <column name="gf_id">11</column>
+            <column name="gf_file_name">ESC2.docx</column>
+            <column name="gf_file_size">393404</column>
+            <column name="gf_file_type">application/vnd.openxmlformats-officedocument.wordprocessingml.document</column>
+            <column name="gf_file_content"></column>
+            <column name="gf_category">0</column>
+            <column name="gf_description">as-5</column>
+            <column name="gf_fac_id">6</column>
+            <column name="gf_grp_code">cse5c</column>
+            <column name="gf_date_upload">2017-08-27</column>
+        </table>
+        <table name="group_files">
+            <column name="gf_id">12</column>
+            <column name="gf_file_name">Quadroneium 2016 PDF.pdf</column>
+            <column name="gf_file_size">324391</column>
+            <column name="gf_file_type">application/pdf</column>
+            <column name="gf_file_content"></column>
+            <column name="gf_category">0</column>
+            <column name="gf_description">as-6</column>
+            <column name="gf_fac_id">6</column>
+            <column name="gf_grp_code">cse5c</column>
+            <column name="gf_date_upload">2017-08-27</column>
+        </table>
+        <table name="group_files">
+            <column name="gf_id">13</column>
+            <column name="gf_file_name">ESC2.docx</column>
+            <column name="gf_file_size">393404</column>
+            <column name="gf_file_type">application/vnd.openxmlformats-officedocument.wordprocessingml.document</column>
+            <column name="gf_file_content"></column>
+            <column name="gf_category">1</column>
+            <column name="gf_description">abcd</column>
+            <column name="gf_fac_id">6</column>
+            <column name="gf_grp_code">cse5c</column>
+            <column name="gf_date_upload">2017-08-27</column>
+        </table>
+        <table name="group_files">
+            <column name="gf_id">14</column>
+            <column name="gf_file_name">feedback form.docx</column>
+            <column name="gf_file_size">17908</column>
+            <column name="gf_file_type">application/vnd.openxmlformats-officedocument.wordprocessingml.document</column>
+            <column name="gf_file_content"></column>
+            <column name="gf_category">1</column>
+            <column name="gf_description">efgh</column>
+            <column name="gf_fac_id">6</column>
+            <column name="gf_grp_code">cse5c</column>
+            <column name="gf_date_upload">2017-08-27</column>
+        </table>
+        <table name="group_files">
+            <column name="gf_id">15</column>
+            <column name="gf_file_name">Quadroneium 2016.docx</column>
+            <column name="gf_file_size">250208</column>
+            <column name="gf_file_type">application/vnd.openxmlformats-officedocument.wordprocessingml.document</column>
+            <column name="gf_file_content"></column>
+            <column name="gf_category">1</column>
+            <column name="gf_description">ijkl</column>
+            <column name="gf_fac_id">7</column>
+            <column name="gf_grp_code">cse5c</column>
+            <column name="gf_date_upload">2017-08-27</column>
+        </table>
+        <table name="group_files">
+            <column name="gf_id">18</column>
+            <column name="gf_file_name">feedback form.docx</column>
+            <column name="gf_file_size">17908</column>
+            <column name="gf_file_type">application/vnd.openxmlformats-officedocument.wordprocessingml.document</column>
+            <column name="gf_file_content"></column>
+            <column name="gf_category">0</column>
+            <column name="gf_description">ass-4</column>
+            <column name="gf_fac_id">1</column>
+            <column name="gf_grp_code">cse5a</column>
+            <column name="gf_date_upload">2017-08-27</column>
+        </table>
+        <table name="group_files">
+            <column name="gf_id">19</column>
+            <column name="gf_file_name">Quadroneium 2016 PDF.pdf</column>
+            <column name="gf_file_size">324391</column>
+            <column name="gf_file_type">application/pdf</column>
+            <column name="gf_file_content"></column>
+            <column name="gf_category">1</column>
+            <column name="gf_description">an-2</column>
+            <column name="gf_fac_id">1</column>
+            <column name="gf_grp_code">cse5a</column>
+            <column name="gf_date_upload">2017-08-27</column>
+        </table>
+        <table name="group_files">
+            <column name="gf_id">20</column>
+            <column name="gf_file_name">10.pdf</column>
+            <column name="gf_file_size">71187</column>
+            <column name="gf_file_type">application/pdf</column>
+            <column name="gf_file_content"></column>
+            <column name="gf_category">1</column>
+            <column name="gf_description">ann-3</column>
+            <column name="gf_fac_id">1</column>
+            <column name="gf_grp_code">cse5a</column>
+            <column name="gf_date_upload">2017-08-28</column>
+        </table>
+        <table name="group_files">
+            <column name="gf_id">21</column>
+            <column name="gf_file_name">10.pdf</column>
+            <column name="gf_file_size">71187</column>
+            <column name="gf_file_type">application/pdf</column>
+            <column name="gf_file_content"></column>
+            <column name="gf_category">0</column>
+            <column name="gf_description">ass-5</column>
+            <column name="gf_fac_id">1</column>
+            <column name="gf_grp_code">cse5a</column>
+            <column name="gf_date_upload">2017-08-28</column>
+        </table>
+        <!-- Table semester -->
+        <table name="semester">
+            <column name="sem_code">8</column>
+            <column name="sem_name">Eighth Semester</column>
+        </table>
+        <table name="semester">
+            <column name="sem_code">1</column>
+            <column name="sem_name">First Semester</column>
+        </table>
+        <table name="semester">
+            <column name="sem_code">5</column>
+            <column name="sem_name">Five Semester</column>
+        </table>
+        <table name="semester">
+            <column name="sem_code">4</column>
+            <column name="sem_name">Fourth Semester</column>
+        </table>
+        <table name="semester">
+            <column name="sem_code">2</column>
+            <column name="sem_name">Second Semester</column>
+        </table>
+        <table name="semester">
+            <column name="sem_code">7</column>
+            <column name="sem_name">Seventh Semester</column>
+        </table>
+        <table name="semester">
+            <column name="sem_code">6</column>
+            <column name="sem_name">Sixth Semester</column>
+        </table>
+        <table name="semester">
+            <column name="sem_code">3</column>
+            <column name="sem_name">Third Semester</column>
+        </table>
+        <!-- Table semester_section -->
+        <table name="semester_section">
+            <column name="ss_code">cse5a</column>
+            <column name="ss_dept_code">cse</column>
+            <column name="ss_sem_code">5</column>
+            <column name="ss_section">a</column>
+        </table>
+        <table name="semester_section">
+            <column name="ss_code">cse5b</column>
+            <column name="ss_dept_code">cse</column>
+            <column name="ss_sem_code">5</column>
+            <column name="ss_section">b</column>
+        </table>
+        <table name="semester_section">
+            <column name="ss_code">cse5c</column>
+            <column name="ss_dept_code">cse</column>
+            <column name="ss_sem_code">5</column>
+            <column name="ss_section">c</column>
+        </table>
+        <table name="semester_section">
+            <column name="ss_code">cse5d</column>
+            <column name="ss_dept_code">cse</column>
+            <column name="ss_sem_code">5</column>
+            <column name="ss_section">d</column>
+        </table>
+        <table name="semester_section">
+            <column name="ss_code">ece5a</column>
+            <column name="ss_dept_code">ece</column>
+            <column name="ss_sem_code">5</column>
+            <column name="ss_section">a</column>
+        </table>
+        <table name="semester_section">
+            <column name="ss_code">ece5b</column>
+            <column name="ss_dept_code">ece</column>
+            <column name="ss_sem_code">5</column>
+            <column name="ss_section">b</column>
+        </table>
+        <table name="semester_section">
+            <column name="ss_code">is5a</column>
+            <column name="ss_dept_code">is</column>
+            <column name="ss_sem_code">5</column>
+            <column name="ss_section">a</column>
+        </table>
+        <table name="semester_section">
+            <column name="ss_code">is5b</column>
+            <column name="ss_dept_code">is</column>
+            <column name="ss_sem_code">5</column>
+            <column name="ss_section">b</column>
+        </table>
+        <table name="semester_section">
+            <column name="ss_code">me5a</column>
+            <column name="ss_dept_code">me</column>
+            <column name="ss_sem_code">5</column>
+            <column name="ss_section">a</column>
+        </table>
+        <table name="semester_section">
+            <column name="ss_code">me5b</column>
+            <column name="ss_dept_code">me</column>
+            <column name="ss_sem_code">5</column>
+            <column name="ss_section">b</column>
+        </table>
+        <!-- Table student_groups -->
+        <table name="student_groups">
+            <column name="id">1</column>
+            <column name="sg_usn">vinay</column>
+            <column name="sg_grp_code">vyoma</column>
+            <column name="sg_head">0</column>
+        </table>
+        <table name="student_groups">
+            <column name="id">2</column>
+            <column name="sg_usn">rahul</column>
+            <column name="sg_grp_code">chimera</column>
+            <column name="sg_head">0</column>
+        </table>
+        <!-- Table student_login -->
+        <table name="student_login">
+            <column name="stu_id">4</column>
+            <column name="stu_name">vinay</column>
+            <column name="stu_usn">vinay</column>
+            <column name="stu_password">vinay</column>
+            <column name="stu_dept_code">cse</column>
+            <column name="stu_sem_code">5</column>
+            <column name="stu_section">c</column>
+            <column name="stu_active">1</column>
+        </table>
+        <table name="student_login">
+            <column name="stu_id">5</column>
+            <column name="stu_name">rahul</column>
+            <column name="stu_usn">rahul</column>
+            <column name="stu_password">rahul</column>
+            <column name="stu_dept_code">cse</column>
+            <column name="stu_sem_code">5</column>
+            <column name="stu_section">c</column>
+            <column name="stu_active">1</column>
+        </table>
+        <table name="student_login">
+            <column name="stu_id">6</column>
+            <column name="stu_name">utkarsh</column>
+            <column name="stu_usn">utkarsh</column>
+            <column name="stu_password">utkarsh</column>
+            <column name="stu_dept_code">cse</column>
+            <column name="stu_sem_code">5</column>
+            <column name="stu_section">d</column>
+            <column name="stu_active">1</column>
+        </table>
+        <table name="student_login">
+            <column name="stu_id">7</column>
+            <column name="stu_name">gautham</column>
+            <column name="stu_usn">gautham</column>
+            <column name="stu_password">gautham</column>
+            <column name="stu_dept_code">ece</column>
+            <column name="stu_sem_code">5</column>
+            <column name="stu_section">a</column>
+            <column name="stu_active">1</column>
+        </table>
+        <table name="student_login">
+            <column name="stu_id">8</column>
+            <column name="stu_name">pranave</column>
+            <column name="stu_usn">pranave</column>
+            <column name="stu_password">pranave</column>
+            <column name="stu_dept_code">me</column>
+            <column name="stu_sem_code">5</column>
+            <column name="stu_section">b</column>
+            <column name="stu_active">1</column>
+        </table>
+        <table name="student_login">
+            <column name="stu_id">9</column>
+            <column name="stu_name">gagan</column>
+            <column name="stu_usn">gagan</column>
+            <column name="stu_password">gagan</column>
+            <column name="stu_dept_code">cse</column>
+            <column name="stu_sem_code">5</column>
+            <column name="stu_section">b</column>
+            <column name="stu_active">1</column>
+        </table>
+        <table name="student_login">
+            <column name="stu_id">10</column>
+            <column name="stu_name">anirudh</column>
+            <column name="stu_usn">anirudh</column>
+            <column name="stu_password">anirudh</column>
+            <column name="stu_dept_code">cse</column>
+            <column name="stu_sem_code">5</column>
+            <column name="stu_section">a</column>
+            <column name="stu_active">1</column>
+        </table>
+        <table name="student_login">
+            <column name="stu_id">12</column>
+            <column name="stu_name">Rammess</column>
+            <column name="stu_usn">1RV15CS125</column>
+            <column name="stu_password">ram</column>
+            <column name="stu_dept_code">CSE</column>
+            <column name="stu_sem_code">5</column>
+            <column name="stu_section">C</column>
+            <column name="stu_active">1</column>
+        </table>
+        <table name="student_login">
+            <column name="stu_id">14</column>
+            <column name="stu_name">1</column>
+            <column name="stu_usn">1</column>
+            <column name="stu_password">1</column>
+            <column name="stu_dept_code">1</column>
+            <column name="stu_sem_code">1</column>
+            <column name="stu_section">1</column>
+            <column name="stu_active">1</column>
+        </table>
+    </database>
+</pma_xml_export>
