@@ -116,14 +116,42 @@
     <?php
         $key = $_SESSION['modify_field'];
         //echo $key;
-        $username = $_SESSION['username'];
-        $query = "SELECT $key FROM faculty_login WHERE fac_username = '$username';";
-        //echo (string)$query;
-        $result = mysqli_query($conn, $query);
-        $row = mysqli_fetch_assoc($result);
-        $newkey = (string)$key;
-        $existing = $row[$newkey];
-        //echo $existing;
+    
+        if ($key=='fog_grp_code')
+        {
+            $username = $_SESSION['username'];
+            $query = "SELECT $key FROM faculty_other_groups WHERE fog_fac_username = '$username';";
+            //echo (string)$query;
+            $result = mysqli_query($conn, $query);
+            $row = mysqli_fetch_assoc($result);
+            $newkey = (string)$key;
+            $existing = $row[$newkey];
+        }
+    
+        
+        else if ($key=='fsg_ss_code')
+        {
+            $username = $_SESSION['username'];
+            $query = "SELECT $key FROM faculty_section_groups WHERE fsg_fac_username = '$username';";
+            //echo (string)$query;
+            $result = mysqli_query($conn, $query);
+            $row = mysqli_fetch_assoc($result);
+            $newkey = (string)$key;
+            $existing = $row[$newkey];
+        }
+    
+        else
+        {
+            $username = $_SESSION['username'];
+            $query = "SELECT $key FROM faculty_login WHERE fac_username = '$username';";
+            //echo (string)$query;
+            $result = mysqli_query($conn, $query);
+            $row = mysqli_fetch_assoc($result);
+            $newkey = (string)$key;
+            $existing = $row[$newkey];
+            //echo $existing;    
+        }
+        
     ?>
     
     <div class="container-fluid bg-3">
@@ -188,13 +216,37 @@
     
     if (isset($_POST['submit']))
     {
-
-        $new = $_POST['newdata'];  
-//        $check = $_POST['change'];
-        $query = "UPDATE `faculty_login` SET $key = '$new' WHERE `fac_username` = '$username';";
-        echo (string)$query;
-        mysqli_query($conn, $query);
-        header("Location: modifyFaculty.php");
+        
+        if ($key=='fog_grp_code')
+        {
+            $new = $_POST['newdata'];  
+//          $check = $_POST['change'];
+            $query = "UPDATE `faculty_other_groups` SET $key = '$new' WHERE `fog_fac_username` = '$username';";
+            echo (string)$query;
+            mysqli_query($conn, $query);
+            header("Location: modifyFaculty.php");
+        }
+        
+        else if ($key=='fsg_ss_code')
+        {
+            $new = $_POST['newdata'];  
+//          $check = $_POST['change'];
+            $query = "UPDATE `faculty_section_groups` SET $key = '$new' WHERE `fsg_fac_username` = '$username';";
+            echo (string)$query;
+            mysqli_query($conn, $query);
+            header("Location: modifyFaculty.php");
+        }
+        
+        else
+        {
+            $new = $_POST['newdata'];  
+//          $check = $_POST['change'];
+            $query = "UPDATE `faculty_login` SET $key = '$new' WHERE `fac_username` = '$username';";
+            echo (string)$query;
+            mysqli_query($conn, $query);
+            header("Location: modifyFaculty.php");    
+        }
+        
     }
 
 ?>

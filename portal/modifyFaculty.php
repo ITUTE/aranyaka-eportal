@@ -130,6 +130,8 @@
                       <option value="fac_password">Password</option>
                       <option value="fac_circular_event_access">Circular access</option>
                       <option value="fac_dept_code">Department</option>
+                      <option value="fog_grp_code">Other Groups</option>
+                      <option value="fsg_ss_code">Section Groups</option>
                       <option value="fac_active">Active</option>
                       
                   </select>
@@ -196,7 +198,7 @@
           $_SESSION['modify_field'] = $_POST["field"];
           $_SESSION['username'] = $_POST["username"];   
 
-    //      echo $_SESSION['modify_field'];
+          echo $_SESSION['modify_field'];
     //      echo $_SESSION['usn'];
 
           header("Location: modifyAttrFaculty.php");

@@ -130,6 +130,7 @@
                       <option value="stu_password">Password</option>
                       <option value="stu_section">Section</option>
                       <option value="stu_dept_code">Department</option>
+                      <option value="sg_grp_code">Group</option>
                       <option value="stu_active">Active</option>
                       
                   </select>

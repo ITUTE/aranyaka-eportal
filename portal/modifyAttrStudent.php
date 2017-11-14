@@ -115,15 +115,35 @@
     
     <?php
         $key = $_SESSION['modify_field'];
-        //echo $key;
-        $usn = $_SESSION['usn'];
-        $query = "SELECT $key FROM student_login WHERE stu_usn = '$usn';";
-        //echo (string)$query;
-        $result = mysqli_query($conn, $query);
-        $row = mysqli_fetch_assoc($result);
-        $newkey = (string)$key;
-        $existing = $row[$newkey];
-        //echo $existing;
+    
+        if ($key=='sg_grp_code')
+        {
+            //echo $key;
+            $usn = $_SESSION['usn'];
+            $query = "SELECT $key FROM student_groups WHERE sg_usn = '$usn';";
+            //echo (string)$query;
+            $result = mysqli_query($conn, $query);
+            $row = mysqli_fetch_assoc($result);
+            $newkey = (string)$key;
+            $existing = $row[$newkey];
+            //echo $existing;
+            
+        }
+    
+        else
+        {
+            //echo $key;
+            $usn = $_SESSION['usn'];
+            $query = "SELECT $key FROM student_login WHERE stu_usn = '$usn';";
+            //echo (string)$query;
+            $result = mysqli_query($conn, $query);
+            $row = mysqli_fetch_assoc($result);
+            $newkey = (string)$key;
+            $existing = $row[$newkey];
+            //echo $existing;
+            
+        }
+        
     ?>
     
     <div class="container-fluid bg-3">
@@ -189,12 +209,27 @@
     if (isset($_POST['submit']))
     {
 
-        $new = $_POST['newdata'];  
-//        $check = $_POST['change'];
-        $query = "UPDATE `student_login` SET $key = '$new' WHERE `stu_usn` = '$usn';";
-        echo (string)$query;
-        mysqli_query($conn, $query);
-        header("Location: modifyStudent.php");
+        if ($key='sg_grp_code')
+        {
+            $new = $_POST['newdata'];  
+//          $check = $_POST['change'];
+            $query = "UPDATE `student_groups` SET $key = '$new' WHERE `sg_usn` = '$usn';";
+            echo (string)$query;
+            mysqli_query($conn, $query);
+            header("Location: modifyStudent.php");
+        }
+        
+        else
+        {
+            $new = $_POST['newdata'];  
+//          $check = $_POST['change'];
+            $query = "UPDATE `student_login` SET $key = '$new' WHERE `stu_usn` = '$usn';";
+            echo (string)$query;
+            mysqli_query($conn, $query);
+            header("Location: modifyStudent.php");
+            
+        }
+        
     }
 
 ?>
