@@ -79,7 +79,6 @@
 				}
 				else
 				{
-					//alert(str);
 					if (window.XMLHttpRequest)
 					{
 						// code for IE7+, Firefox, Chrome, Opera, Safari

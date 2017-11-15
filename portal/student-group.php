@@ -256,7 +256,7 @@
 									?>
 									<form><td><button class="btn-success" name="assignment" value="<?php echo $id; ?>" ><?php echo $description;?></button></td></form>
 									<?php
-									$query = "SELECT as_id FROM assignments WHERE as_num = '$id' AND as_stu_id = '" . $_SESSION['stu_id'] . "'";
+									$query = "SELECT as_id, as_verify FROM assignments WHERE as_num = '$id' AND as_stu_id = '" . $_SESSION['stu_id'] . "'";
 									$result1 = mysqli_query($conn, $query);
 									if(mysqli_num_rows($result1)==0)
 									{
@@ -267,11 +267,13 @@
 									}
 									if(mysqli_num_rows($result1)!=0)
 									{
-										list($as_id) = mysqli_fetch_array($result1);
+										list($as_id, $as_verify) = mysqli_fetch_array($result1);
 										?>
 										<form><td><button class="btn-success" name="download" value="<?php echo $as_id; ?>" >View</button></td></form>
 										<td><button class="btn-danger" id= <?php echo $as_id; ?> onclick="del(this.id)">Delete</button></td>
 										<?php
+										if($as_verify==1)
+											echo "<td>&#10004</td>";
 									}
 									echo "</tr>";
 								}

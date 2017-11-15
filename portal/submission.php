@@ -18,6 +18,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.3/jquery.scrollTo.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
 	<style>
 		.logout{
@@ -76,7 +77,95 @@
 					margin-left: 30%;
 					margin-right: 30%;
 			  }
+			  
+			  
+		.checkbox label:after, 
+		.radio label:after {
+			content: '';
+			display: table;
+			clear: both;
+		}
+
+		.checkbox .cr,
+		.radio .cr {
+			position: relative;
+			display: inline-block;
+			border: 1px solid #a9a9a9;
+			border-radius: .25em;
+			width: 1.3em;
+			height: 1.3em;
+			float: left;
+			margin-right: .5em;
+		}
+
+		.radio .cr {
+			border-radius: 50%;
+		}
+
+		.checkbox .cr .cr-icon,
+		.radio .cr .cr-icon {
+			position: absolute;
+			font-size: .8em;
+			line-height: 0;
+			top: 50%;
+			left: 20%;
+		}
+
+		.radio .cr .cr-icon {
+			margin-left: 0.04em;
+		}
+
+		.checkbox label input[type="checkbox"],
+		.radio label input[type="radio"] {
+			display: none;
+		}
+
+		.checkbox label input[type="checkbox"] + .cr > .cr-icon,
+		.radio label input[type="radio"] + .cr > .cr-icon {
+			transform: scale(3) rotateZ(-20deg);
+			opacity: 0;
+			transition: all .3s ease-in;
+		}
+
+		.checkbox label input[type="checkbox"]:checked + .cr > .cr-icon,
+		.radio label input[type="radio"]:checked + .cr > .cr-icon {
+			transform: scale(1) rotateZ(0deg);
+			opacity: 1;
+		}
+
+		.checkbox label input[type="checkbox"]:disabled + .cr,
+		.radio label input[type="radio"]:disabled + .cr {
+			opacity: .5;
+		}
 	</style>
+	
+	<script>
+	function verify(x)
+	{
+		//alert(x+" checked");
+		if(document.getElementById(x).checked)
+		{
+			if (window.XMLHttpRequest)
+			{
+				// code for IE7+, Firefox, Chrome, Opera, Safari
+				xmlhttp = new XMLHttpRequest();
+			}
+			else
+			{
+				// code for IE6, IE5
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					//document.getElementById("demo").innerHTML =	this.responseText;
+				}
+			};
+			xmlhttp.open("GET", "update_db.php?id=" + x, true);
+			xmlhttp.send();
+		}
+	}
+	</script>
+	
 </head>
 <body>
 	<div class="se-pre-con"></div>
@@ -117,7 +206,7 @@
 					$_SESSION['assignment_id'] = $assignment_id;
 				}
 				$assignment_id = $_SESSION['assignment_id'];
-				$query = "SELECT as_id, as_file_name, as_date_upload, as_stu_id FROM assignments WHERE as_num = '$assignment_id'";
+				$query = "SELECT as_id, as_file_name, as_date_upload, as_stu_id, as_verify FROM assignments WHERE as_num = '$assignment_id'";
 				$result = mysqli_query($conn, $query) or die('Error, query failed');
 				if(mysqli_num_rows($result)==0) 
 				{
@@ -132,8 +221,9 @@
                         <th>Name</th>
                         <th>File Name</th>
                         <th></th>
+						<th>Verify</th>
 					 </tr>"; 
-				while(list($id, $file_name, $date, $student_id) = mysqli_fetch_array($result))
+				while(list($id, $file_name, $date, $student_id, $verify) = mysqli_fetch_array($result))
 				{
 					$query1 = "SELECT stu_usn, stu_name FROM student_login WHERE stu_id='" . $student_id . "'";
                     $result1 = mysqli_query($conn, $query1);
@@ -146,6 +236,33 @@
 					?>
 					<td><button class="btn-success" name="download" value="<?php echo $id; ?>" >Download</button></td>
 					<?php
+						if($verify == 0)
+						{
+							?>
+							<td>
+								<div class="checkbox">
+									<label style="font-size: 2em">
+										<input type="checkbox" id="<?php echo $id;?>" onclick="verify(this.id)">
+										<span class="cr"><i class="cr-icon fa fa-check"></i></span>
+									</label>
+								</div>
+							</td>
+							<?php
+						}
+						else
+						{
+							?>
+							<td>
+								<div class="checkbox">
+									<label style="font-size: 2em">
+										<input type="checkbox" id="<?php echo $id;?>" checked disabled>
+										<span class="cr"><i class="cr-icon fa fa-check"></i></span>
+									</label>
+								</div>
+							</td>
+							<?php
+						}
+						
 					echo "</tr>";
 				}
  				echo "</table>";
