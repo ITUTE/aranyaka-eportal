@@ -156,9 +156,9 @@
 
                 <span class="caret"></span>&nbsp;</a>
                 <ul class="dropdown-menu">
-                    <li><a href="#home"><font color = "darkcyan">View Profile</font></a></li>
-		    <a data-toggle="modal" href="#myModal3"><font size="2px" color = "darkcyan">Change Password</font></a>
-                    <li><a class = ""><form method="POST"><input type="submit" value="Logout " style="color:white; background-color:darkcyan;border:2px solid black" name="Logout"/></form></a></li>
+                    <li><a class = "text-center" href="myfHomed.php"><font color = "darkcyan">View Profile</font></a></li>
+		            <li><a class="stu_mat text-center" data-toggle="modal" href="#myModal3"><font size="2px" color = "darkcyan">Change Password</font></a></li>
+                    <li><a class = "text-center"><form method="POST"><input type="submit" value="Logout "style="color:white; background-color:darkcyan;border:2px solid black" name="Logout"/></form></a></li>		
                 </ul>
             </li>
           </ul>
@@ -166,7 +166,7 @@
       </div>
     </nav>
 
-    <div id="myModal3" class="modal fade bs-example text-center">
+    <div id="myModal3" class="modal fade bs-example text-center" style="margin-top:20%;">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">

@@ -97,8 +97,9 @@
 
                 <span class="caret"></span>&nbsp;</a>
                 <ul class="dropdown-menu">
-                    <li><a href="#home"><font color = "darkcyan">Profile</font></a></li>
-                    <li><a class = ""><form method="POST"><input type="submit" value="Logout "style="color:white; background-color:darkcyan;border:2px solid black" name="Logout"/></form></a></li>
+                    <li><a class = "text-center" href="myaHomed.php"><font color = "darkcyan">View Profile</font></a></li>
+		            <li><a class="stu_mat text-center" data-toggle="modal" href="#myModal3"><font size="2px" color = "darkcyan">Change Password</font></a></li>
+                    <li><a class = "text-center"><form method="POST"><input type="submit" value="Logout "style="color:white; background-color:darkcyan;border:2px solid black" name="Logout"/></form></a></li>		
                 </ul>
             </li>
           </ul>
@@ -110,6 +111,28 @@
         <i class='glyphicon glyphicon-education slide'></i>
         <h1 class="margin slide"><strong>Reports</strong></h1><br>
     </div>
+    
+    <div id="myModal" class="modal fade bs-example text-center" style="margin-top:20%;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">Your Submission</h4>
+                    </div>
+					<form method="POST" enctype="multipart/form-data" action="uploadStudent.php" autocomplete="off">
+						<div class="modal-body"> 						
+                            <label class="custom-file-upload btn btn-lg btn-info slide" for="userfile">
+                                <input type="file" name="userfile" id="userfile"/>Choose File
+                            </label><br>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+							<button type="submit" name="submit" id="submit" value="" class="btn btn-success">Upload</button>
+						</div>
+					</form><br>
+                </div>
+            </div>
+        </div>   
 	
 	
 	<div class="row">

@@ -146,9 +146,9 @@
 
                 <span class="caret"></span>&nbsp;</a>
                 <ul class="dropdown-menu">
-                    <li><a href="#home"><font color = "darkcyan">View Profile</font></a></li>
-		    <a class="stu_mat" data-toggle="modal" href="#myModal3"><font size="2px" color = "darkcyan">Change Password</font></a>
-                    <li><a class = ""><form method="POST"><input type="submit" value="Logout "style="color:white; background-color:darkcyan;border:2px solid black" name="Logout"/></form></a></li>		
+                    <li><a class = "text-center" href="#home"><font color = "darkcyan">View Profile</font></a></li>
+		            <li><a class="stu_mat text-center" data-toggle="modal" href="#myModal3"><font size="2px" color = "darkcyan">Change Password</font></a></li>
+                    <li><a class = "text-center"><form method="POST"><input type="submit" value="Logout "style="color:white; background-color:darkcyan;border:2px solid black" name="Logout"/></form></a></li>		
                 </ul>
             </li>
           </ul>
@@ -168,26 +168,26 @@
           <li><a data-toggle="tab" href="#groups">My Groups</a></li>
     </ul>
 
-    <div id="myModal3" class="modal fade bs-example text-center">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h4 class="modal-title">Password Settings</h4>
-                    </div>
-					<form name="frmChange" method="POST" onsubmit="return validatePassword()">
-						<div class="modal-body"> 						
-								<input type="password" name="current_pw" id="current_pw" class="form-control" placeholder="Current Password" maxlength="100" required />
-								<input type="password" name="new_pw" id="new_pw" class="form-control" placeholder="New Password" maxlength="100" required />
-								<input type="password" name="confirm_pw" id="confirm_pw" class="form-control" placeholder="Confirm Password" maxlength="100" required />
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-							<button type="submit" name="submit3" id="submit3" class="btn btn-success">Change</button>
-						</div>
-					</form><br>
+    <div id="myModal3" class="modal fade bs-example text-center" style="margin-top:20%;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Password Settings</h4>
                 </div>
+                <form name="frmChange" method="POST" onsubmit="return validatePassword()">
+                    <div class="modal-body"> 						
+                            <input type="password" name="current_pw" id="current_pw" class="form-control" placeholder="Current Password" maxlength="100" required />
+                            <input type="password" name="new_pw" id="new_pw" class="form-control" placeholder="New Password" maxlength="100" required />
+                            <input type="password" name="confirm_pw" id="confirm_pw" class="form-control" placeholder="Confirm Password" maxlength="100" required />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button type="submit" name="submit3" id="submit3" class="btn btn-success">Change</button>
+                    </div>
+                </form><br>
             </div>
+        </div>
     </div>   
 
     <div class="tab-content">

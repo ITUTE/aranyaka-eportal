@@ -94,7 +94,7 @@
 
                 <span class="caret"></span>&nbsp;</a>
                 <ul class="dropdown-menu">
-                    <li><a href="#home"><font color = "darkcyan">Profile</font></a></li>
+                    <li><a href="myaHomed.php"><font color = "darkcyan">Profile</font></a></li>
                     <li><a class = ""><form method="POST"><input type="submit" value="Logout "style="color:white; background-color:darkcyan;border:2px solid black" name="Logout"/></form></a></li>
                 </ul>
             </li>
@@ -144,28 +144,23 @@
         </div>
         
         <div id="add" class="tab-pane fade">
-                 <div class="container-fluid bg-3 text-center">
-                    <h3 class="margin slide"><strong>Add Student/Faculty</strong></h3><hr><br>
-
-                 
-            
-                <a href="addNewStudent.php" class="btn btn-info" role="button">Add new Student</a>
-                <br>
-                <br>
-                <br>
-                <a href="addNewFaculty.php" class="btn btn-info" role="button">Add new Faculty</a>
-                </div>
+            <div class="container-fluid bg-3 text-center">
+                <h3 class="margin slide"><strong>Modify Student/Faculty</strong></h3><hr><br>
+                <p>To add a new <strong>student </strong>click below:</p>
+                <a href="addNewStudent.php" class="btn btn-info" style="margin-top:1%;" role="button">Add New Student</a><br>
+                <p style="margin-top: 2%;">To add a new <strong>faculty</strong> click below:</p>
+                <a href="addNewFaculty.php" class="btn btn-danger" style="margin-bottom:3%; margin-top:1%;" role="button">Add New Faculty</a>
+            </div>
         </div>
         
         <div id="modify" class="tab-pane fade">
-                 <div class="container-fluid bg-3 text-center">
-                    <h3 class="margin slide"><strong>Modify Student/Faculty</strong></h3><hr><br>
-                     <a href="modifyStudent.php" class="btn btn-info" role="button">Modify Student</a>
-                     <br>
-                     <br>
-                     <br>
-                     <a href="modifyFaculty.php" class="btn btn-info" role="button">Modify Faculty</a>
-                 </div>
+            <div class="container-fluid bg-3 text-center">
+                <h3 class="margin slide"><strong>Modify Student/Faculty</strong></h3><hr><br>
+                <p>To modify the characterisitics of a <strong>student </strong>click below:</p>
+                <a href="modifyStudent.php" class="btn btn-info" style="margin-top:1%;" role="button">Modify Student</a><br>
+                <p style="margin-top: 2%;">To modify the characterisitics of a <strong>faculty</strong> click below:</p>
+                <a href="modifyFaculty.php" class="btn btn-danger" style="margin-bottom:3%; margin-top:1%;" role="button">Modify Faculty</a>
+            </div>
         </div>
 
         
