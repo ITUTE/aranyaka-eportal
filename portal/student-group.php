@@ -338,7 +338,7 @@
 										echo "<td>" . $faculty_name . "</td> ";
 										echo "<td>" . $name . "</td> ";
 										?>
-										<td><a class="btn btn-success">Download button</a>&nbsp;&nbsp;
+										<form><td><button class="btn-success" name="materials" value="<?php echo $id; ?>" >Download</button></td></form>
 										<?php
 									}
 									else if($category==3)
@@ -412,6 +412,19 @@
 	{
 		$id = $_GET['download'];
 		$query = "SELECT as_file_name, as_file_type, as_file_size, as_file_content FROM assignments WHERE as_id = '$id'";
+		$result = mysqli_query($conn, $query) or die('Error retrieving files');
+		list($name, $type, $size, $content) = mysqli_fetch_row($result);
+		header("Content-type: $type");
+		header("Content-Disposition: inline; filename=$name");
+		header("Content-length: $size");
+		ob_clean();
+		flush();
+		echo $content;
+	}
+	if(isset($_GET['materials']))
+	{
+		$id = $_GET['materials'];
+		$query = "SELECT gf_file_name, gf_file_type, gf_file_size, gf_file_content FROM group_files WHERE gf_id = '$id'";
 		$result = mysqli_query($conn, $query) or die('Error retrieving files');
 		list($name, $type, $size, $content) = mysqli_fetch_row($result);
 		header("Content-type: $type");
