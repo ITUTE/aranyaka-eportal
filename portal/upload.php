@@ -79,9 +79,6 @@
             <ul class="nav navbar-nav">
                 <li class=""><a href="index.php">Home</a></li> 
             </ul>
-            <ul style="margin-right:2%;" class="nav navbar-nav navbar-right">
-                <li><a class = ""><form method="POST"><input type="submit" value="Logout " style="color:white; background-color:darkcyan;border:2px solid white;" name="Logout"/></form></a></li>
-            </ul>
         </div>
       </div>
     </nav>
@@ -117,11 +114,7 @@
         </div> 
     </div>
         
-    <div class="container-fluid bg-3 text-center slide">    
-        <div class="row slide">
-			<p>To see information about syllabus <a href="infotable.php" target="_blank" class="btn btn-md btn-info">Click Here</a></p><br>
-        </div> 
-    </div>
+    
         
 	<footer class="container-fluid bg-4 text-center">
         <p><font size = "2">Developed by undergraduate students of CSE department.</font></p>

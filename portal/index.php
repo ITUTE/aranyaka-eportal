@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>E-portal RVCE</title>
+	<title>Aranyaka - RVCE</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -66,7 +66,7 @@
 	<div class="se-pre-con"></div>
 	<div class="container-fluid text-center ">
         <br>
-		<h2 class="margin slide"><strong>E-PORTAL</strong></h2>
+		<h2 class="margin slide"><strong>Aranyaka</strong></h2>
 		<img src="pics/rv.JPG" class="img-responsive img-circle margin1 slide" style="display:inline" alt="Bird" width="150" height="150">
 		<h3 class="slide"><strong>R.V. College of Engineering, Bangalore</strong></h3>
         <video autoplay loop id="video-background" muted plays-inline preload="none" poster="pics/poster.jpg">
