@@ -353,7 +353,7 @@
                             echo "<td>" . $faculty_name . "</td> ";
                             echo "<td>" . $description . "</td> ";
                             ?>
-                            <td><a class="btn btn-success" name="download" value="<?php echo $id; ?>">Download file</a>&nbsp;&nbsp;
+                            <form><td><button class="btn btn-success" name="download" value="<?php echo $id; ?>">Download file</button></form>&nbsp;&nbsp;
                             <?php
                                 if($faculty_id == $_SESSION['fac_id'])
                                     {
@@ -412,7 +412,7 @@
     if(isset($_GET['download']))
 	{
 		$id = $_GET['download'];
-		$query = "SELECT file_name, file_type, file_size, file_content FROM file WHERE file_id = '$id'";
+		$query = "SELECT gf_file_name, gf_file_type, gf_file_size, gf_file_content FROM group_files WHERE gf_id = '$id'";
 		$result = mysqli_query($conn, $query) or die('Error retrieving files');
 		list($name, $type, $size, $content) = mysqli_fetch_row($result);
 		header("Content-type: $type");
