@@ -115,66 +115,47 @@
     
     <?php
         $key = $_SESSION['modify_field'];
-    
-        if ($key=='sg_grp_code')
-        {
-            //echo $key;
-            $usn = $_SESSION['usn'];
-            $query = "SELECT $key FROM student_groups WHERE sg_usn = '$usn';";
-            //echo (string)$query;
-            $result = mysqli_query($conn, $query);
-            $row = mysqli_fetch_assoc($result);
-            $newkey = (string)$key;
-            $GLOBALS['existing'] = $row[$newkey];
-            //echo $existing;
-            
-        }
-    
-        else
-        {
-            //echo $key;
-            $usn = $_SESSION['usn'];
-            $query = "SELECT $key FROM student_login WHERE stu_usn = '$usn';";
-            //echo (string)$query;
-            $result = mysqli_query($conn, $query);
-            $row = mysqli_fetch_assoc($result);
-            $newkey = (string)$key;
-            $existing = $row[$newkey];
-            //echo $existing;
-            
-        }
-        
+        //echo $key;
+        $usn = $_SESSION['usn'];
+        $query = "SELECT $key FROM student_login WHERE stu_usn = '$usn';";
+        //echo (string)$query;
+        $result = mysqli_query($conn, $query);
+        $row = mysqli_fetch_assoc($result);
+        $newkey = (string)$key;
+        $existing = $row[$newkey];
+        //echo $existing;
     ?>
     
     <div class="container-fluid bg-3">
-        <form class="form-horizontal" method="POST">
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="usn">Existing data:</label>
-                <p>NEED TO FIX THE EXISITNG DATA PHP THING!!!!!!!!!!!!!!!</p>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="usn">Enter new data:</label>
-                <div class="col-sm-10">
-                  <input name="newdata" class="form-control" id="newdata" placeholder="Enter new data">
+            <form class="form-horizontal" method="POST">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="usn">Existing data:</label>
+                    <p><?= $existing ?></p>
                 </div>
-            </div>
-
+                
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="usn">Enter new data:</label>
+                    <div class="col-sm-10">
+                      <input name="newdata" class="form-control" id="newdata" placeholder="Enter new data">
+                    </div>
+                </div>
+                
 <!--
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="usn">Change another attribute?</label>
-                <div class="col-sm-10">
-                  <input type= "checkbox" name="change" class="form-control" id="change">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="usn">Change another attribute?</label>
+                    <div class="col-sm-10">
+                      <input type= "checkbox" name="change" class="form-control" id="change">
+                    </div>
                 </div>
-            </div>
 -->
-
-            <div class="form-group"> 
-                <div class="col-sm-offset-2 col-sm-10">
-                  <input type="submit" value="Submit" name="submit" class = "btn btn-lg btn-success"> 
-            </div>
-          </div>
-        </form> 
+                
+                <div class="form-group"> 
+                    <div class="col-sm-offset-2 col-sm-10">
+                      <input type="submit" value="Submit" name="submit" class = "btn btn-lg btn-success"> 
+                </div>
+              </div>
+            </form>
+        
     </div>
         
     
@@ -209,27 +190,12 @@
     if (isset($_POST['submit']))
     {
 
-        if ($key='sg_grp_code')
-        {
-            $new = $_POST['newdata'];  
-//          $check = $_POST['change'];
-            $query = "UPDATE `student_groups` SET $key = '$new' WHERE `sg_usn` = '$usn';";
-            echo (string)$query;
-            mysqli_query($conn, $query);
-            header("Location: modifyStudent.php");
-        }
-        
-        else
-        {
-            $new = $_POST['newdata'];  
-//          $check = $_POST['change'];
-            $query = "UPDATE `student_login` SET $key = '$new' WHERE `stu_usn` = '$usn';";
-            echo (string)$query;
-            mysqli_query($conn, $query);
-            header("Location: modifyStudent.php");
-            
-        }
-        
+        $new = $_POST['newdata'];  
+//        $check = $_POST['change'];
+        $query = "UPDATE `student_login` SET $key = '$new' WHERE `stu_usn` = '$usn';";
+        echo (string)$query;
+        mysqli_query($conn, $query);
+        header("Location: modifyStudent.php");
     }
 
 ?>

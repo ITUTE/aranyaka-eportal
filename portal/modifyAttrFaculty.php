@@ -157,7 +157,8 @@
     <div class="container-fluid bg-3">
             <form class="form-horizontal" method="POST">
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="username">Existing data:      <?= $existing ?></label>
+                    <label class="control-label col-sm-2" for="username">Existing data:      </label>
+                    <p><?= $existing ?></p>
                 </div>
                 
                 <div class="form-group">

@@ -84,7 +84,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <?php 
+                     <?php 
                             $query = "SELECT admin_name from admin WHERE admin_id = " . $_SESSION['admin_id'];
                             $result = mysqli_query($conn, $query);
                             list($name) = mysqli_fetch_array($result);
@@ -130,7 +130,6 @@
                       <option value="stu_password">Password</option>
                       <option value="stu_section">Section</option>
                       <option value="stu_dept_code">Department</option>
-                      <option value="sg_grp_code">Group</option>
                       <option value="stu_active">Active</option>
                       
                   </select>
