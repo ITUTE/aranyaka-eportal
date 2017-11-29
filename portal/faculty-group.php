@@ -348,11 +348,12 @@
                             $result1 = mysqli_query($conn, $query1);
                             list($faculty_name) = mysqli_fetch_array($result1);
 
+                            echo"<form>";
                             echo "<tr><td>" . $date . "</td> ";
                             echo "<td>" . $faculty_name . "</td> ";
-                            echo "<td>" . $name . "</td> ";
+                            echo "<td>" . $description . "</td> ";
                             ?>
-                            <td><a class="btn btn-success">Download button</a>&nbsp;&nbsp;
+                            <td><a class="btn btn-success" name="download" value="<?php echo $id; ?>">Download file</a>&nbsp;&nbsp;
                             <?php
                                 if($faculty_id == $_SESSION['fac_id'])
                                     {
@@ -370,6 +371,7 @@
                         }
                     ?>
                 </table><br>
+                </form>
             </div>
         </div>
     </div>
@@ -406,5 +408,20 @@
 		header("Location: index.php");
 		exit;
 	}
+    
+    if(isset($_GET['download']))
+	{
+		$id = $_GET['download'];
+		$query = "SELECT file_name, file_type, file_size, file_content FROM file WHERE file_id = '$id'";
+		$result = mysqli_query($conn, $query) or die('Error retrieving files');
+		list($name, $type, $size, $content) = mysqli_fetch_row($result);
+		header("Content-type: $type");
+		header("Content-Disposition: inline; filename=$name");
+		header("Content-length: $size");
+		ob_clean();
+		flush();
+		echo $content;
+	}
+
 	ob_end_flush();
 ?>

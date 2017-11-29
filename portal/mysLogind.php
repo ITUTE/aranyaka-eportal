@@ -93,7 +93,7 @@
             <h3 class="margin"><strong>Login</strong></h3><hr><br>
             <div class="row slide">
                 <form method="POST"> 	
-					<p>User Email: </p> 
+					<p>USN: </p> 
 					<div class="form-group  dropsize slide">
 						<div class="input-group">
 							<span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
